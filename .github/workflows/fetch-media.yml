@@ -3,8 +3,6 @@ on:
   schedule:
     - cron: "41 */6 * * *"   # GDELT every 6 hours
   workflow_dispatch:
-  push:
-    branches: [claude/media-tracker]   # TEMP: test run before merge; remove
 permissions:
   contents: write
 concurrency: { group: data-commit, cancel-in-progress: false }
@@ -16,6 +14,8 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
       - name: GDELT coverage and articles
+        # GDELT throttles and sometimes refuses GitHub runner IPs; don't let that block the X step.
+        continue-on-error: true
         run: node scripts/fetch-gdelt.mjs
       - name: X posts (once a day, budget-capped)
         env:
