@@ -176,7 +176,7 @@ function renderTransits() {
     el("transits-note").textContent = "";
     return;
   }
-  const data = transits.map((d) => ({ ...d, date: new Date(d.date) }));
+  const data = transits.map((d) => ({ ...d, date: new Date(d.date) })).filter((d) => d.date >= new Date("2025-01-01"));
   const plot = Plot.plot({
     width: el("transits").clientWidth || 600, height: 220, marginLeft: 36,
     x: { type: "utc", label: null }, y: { label: null, grid: true, ticks: 5 },
