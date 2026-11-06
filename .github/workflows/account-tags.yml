@@ -1,0 +1,41 @@
+name: Apply account tags
+# The app's "Send to repo" opens a prefilled issue titled "account-tags ...". Only the repo owner's issues are applied.
+on:
+  issues:
+    types: [opened]
+permissions:
+  contents: write
+  issues: write
+concurrency: { group: data-commit, cancel-in-progress: false }
+jobs:
+  apply:
+    if: startsWith(github.event.issue.title, 'account-tags') && github.event.issue.user.login == github.repository_owner
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Apply and validate
+        id: apply
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          n=$(node scripts/apply-account-tags.mjs)
+          node scripts/validate.mjs
+          echo "n=$n" >> "$GITHUB_OUTPUT"
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add data/account_overrides.csv
+          git diff --cached --quiet || git commit -m "data: account tags from #${{ github.event.issue.number }}"
+          git pull --rebase -q && git push
+      - name: Close issue
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OK: ${{ steps.apply.outcome }}
+          N: ${{ steps.apply.outputs.n }}
+        run: |
+          if [ "$OK" = success ]; then gh issue close ${{ github.event.issue.number }} -R ${{ github.repository }} --comment "Applied $N tag(s). The site picks them up on the next page load."
+          else gh issue comment ${{ github.event.issue.number }} -R ${{ github.repository }} --body "Could not apply these tags; see the workflow log. Nothing was changed."; fi

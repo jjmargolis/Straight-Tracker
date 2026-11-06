@@ -1,0 +1,105 @@
+handle,user_id,name,type,lean,identity,lang,reliability,flags,confidence,basis,evidence,notes
+TankerTrackers,,TankerTrackers.com,analyst,none_evident,named,en,high,,med,R,https://splash247.com/?p=107585,Marks unsure finds POSSIBLE; Iran-oil focus. Corrected a misattributed LNG-tanker clip in our own data [O]
+WindwardAI,,Windward,analyst,none_evident,named,en,high,vendor,med,R,https://windward.ai/?p=49358,Maritime-AI vendor; daily Iran war blog
+mwbockmann,,Michelle Wiese Bockmann,analyst,none_evident,named,en,high,,low,M,,Lloyd's List; handle unverified
+gCaptain,,gCaptain,media,none_evident,named,en,high,,med,R,https://gcaptain.com/new-reports-reveal-five-more-ships-hit-near-hormuz/,Quotes UKMTO/JMIC serials
+MikeSchuler,,Mike Schuler,media,none_evident,named,en,high,,low,M,,gCaptain editor; handle from page metadata
+UK_MTO,,UKMTO,state,western_gov,named,en,high,,med,M,,Royal Navy-run advisory; authoritative but under-reports (crews told not to report)
+DOTMARAD,,US MARAD,state,us_gov,named,en,high,,med,R,https://www.maritime.dot.gov/msci-advisories,
+CENTCOM,,US Central Command,state,us_gov,named,en,mixed,belligerent,high,M,,"Party to the war: claims, denials, strike video"
+US5thFleet,,US 5th Fleet / NAVCENT,state,us_gov,named,en,mixed,belligerent,med,M,,Official PR
+RoyalNavy,,Royal Navy,state,western_gov,named,en,mixed,,med,M,,
+MarineNationale,,Marine nationale,state,western_gov,named,fr,mixed,,med,M,,
+indiannavy,,Indian Navy,state,india,named,en,mixed,,med,R,https://en.wikipedia.org/wiki/Operation_Urja_Suraksha,Escorts (Op Urja Suraksha)
+detresfa_,,Damien Symon,analyst,none_evident,named,en,high,,med,R,research/source-catalog.md (cited on Wikipedia),Satellite-imagery OSINT
+MATA_osint,,MATA,hobbyist,unknown,pseudonymous,en,mixed,,low,R,https://erkansaka.net/2026/02/28/osint-tools-us-israel-iran-conflict/,Military flight tracking
+Intel_Sky,,Intel Sky,hobbyist,unknown,pseudonymous,en,mixed,,low,R,https://erkansaka.net/2026/02/28/osint-tools-us-israel-iran-conflict/,Military flight tracking
+WAMNEWS,,WAM (Emirates News Agency),state_media,uae,named,ar;en,low,downplays_hits,med,R,research/source-catalog.md 3a (Bellingcat),Documented downplaying of hits
+DXBMediaOffice,,Dubai Media Office,state,uae,named,ar;en,low,downplays_hits,med,R,research/source-catalog.md 3a (Bellingcat),
+modgovae,,UAE Ministry of Defence,state,uae,named,ar;en,low,,med,M,,
+spagov,,Saudi Press Agency,state_media,saudi,named,ar;en,mixed,,med,M,,
+modgovksa,,Saudi Ministry of Defense,state,saudi,named,ar,mixed,,med,M,,
+QNAEnglish,,Qatar News Agency,state_media,qatar,named,en,mixed,,med,M,,
+ONA_eng,,Oman News Agency,state_media,gulf_other,named,en,mixed,,med,M,,
+bna_en,,Bahrain News Agency,state_media,gulf_other,named,en,mixed,,med,M,,
+kuna_en,,Kuwait News Agency,state_media,gulf_other,named,en,mixed,,med,M,,
+AJArabic,,Al Jazeera Arabic,state_media,qatar,named,ar,mixed,,med,R,research/source-catalog.md 3a (LunarCrush),Qatar-funded; first mainstream carrier of IRGC-released clips
+AJEnglish,,Al Jazeera English,state_media,qatar,named,en,mixed,,med,R,research/source-catalog.md 3a (LunarCrush),Qatar-funded
+AlArabiya_Brk,,Al Arabiya Breaking,state_media,saudi,named,ar,mixed,,med,M,,Saudi-owned; anti-IRGC
+AsharqNews,,Asharq News,media,saudi,named,ar,mixed,,low,M,,Saudi-owned (SRMG)
+skynewsarabia,,Sky News Arabia,media,uae,named,ar,mixed,,low,M,,Abu Dhabi-owned
+TehranTimes79,,Tehran Times,state_media,iran_gov,named,en,low,fabrication_record,high,R,"research/source-catalog.md 3b (Euronews, Wikipedia, Gulf News)",Two documented AI fabrications; posted the unverified GFS Pride sinking clip
+PressTV,,Press TV,state_media,iran_gov,named,en,low,,med,M,,IRIB English channel
+IranIntl_En,,Iran International English,media,iran_opposition,named,en,mixed,,med,M,,"Diaspora outlet, reportedly Saudi-linked"
+ManotoNews,,Manoto,media,iran_opposition,named,fa,mixed,,low,M,,Diaspora
+1500tasvir,,1500tasvir,aggregator,iran_opposition,anonymous,fa,mixed,,low,M,,Citizen video from inside Iran
+IDF,,Israel Defense Forces,state,israel,named,en,mixed,belligerent,high,M,,
+idfonline,,IDF (Hebrew),state,israel,named,he,mixed,belligerent,med,M,,
+manniefabian,,Emanuel Fabian,media,israel,named,en,high,censored,low,M,,Times of Israel military reporter; Israeli military censor applies
+Doron_Kadosh,,Doron Kadosh,media,israel,named,he,high,censored,low,M,,Army Radio
+AmichaiStein1,,Amichai Stein,media,israel,named,en,high,censored,low,M,,Kan News
+kann_news,,Kan News,state_media,israel,named,he,high,censored,low,M,,Public broadcaster
+N12News,,N12,media,israel,named,he,mixed,censored,low,M,,
+Osint613,,Osint613,aggregator,israel,anonymous,en,low,,med,R,research/source-catalog.md 3c (LunarCrush),"Partisan ""OSINT""; never use alone"
+MOSSADil,,MOSSAD Commentary,aggregator,israel,anonymous,en,low,impersonation_risk,med,R,research/source-catalog.md 3c (LunarCrush),Not the Mossad
+CGTNOfficial,,CGTN,state_media,prc,named,en,low,,high,R,research/source-catalog.md 3d (NewsGuard),CCTV repeated the false IRGC carrier claim
+globaltimesnews,,Global Times,state_media,prc,named,en,low,,high,M,,
+XHNews,,Xinhua,state_media,prc,named,en,mixed,,high,M,,
+ChinaDaily,,China Daily,state_media,prc,named,en,mixed,,high,M,,
+HuXijin_GT,,Hu Xijin,state_media,prc,named,zh;en,low,,med,M,,Former Global Times editor; commentator
+SpoxCHN_MaoNing,,Mao Ning (PRC MFA),state,prc,named,en,mixed,,high,M,,
+whyyoutouzhele,,李老师不是你老师,aggregator,prc_opposition,pseudonymous,zh,low,,med,M,,Dissident aggregator; reposts mainland clips unchecked
+VOAChinese,,VOA Chinese,state_media,us_gov,named,zh,mixed,,med,M,,US-funded; status after 2025 cuts unverified
+RFA_Chinese,,RFA Chinese,state_media,us_gov,named,zh,mixed,,med,M,,US-funded
+NTDChinese,,NTD,media,prc_opposition,named,zh,low,,med,M,,Falun Gong-linked; poor sourcing
+dajiyuan,,Epoch Times (Chinese),media,prc_opposition,named,zh,low,,med,M,,Falun Gong-linked
+MarioNawfal,,Mario Nawfal,aggregator,western_right,named,en,low,,low,R,https://lunarcrush.com/blog/iran-war-creators-2026,#1 Iran-war engagement in Q1 [R]; low verification. Lean is [M] only
+clashreport,,Clash Report,aggregator,unknown,anonymous,en,low,,low,M,,Posts footage before it's checked
+sentdefender,,OSINTdefender,aggregator,unknown,pseudonymous,en,mixed,,low,R,research/source-catalog.md 3e (Thai PBS),Circulated the real Haj Qasem clip early; history of premature claims [M]
+Faytuks,,Faytuks News,aggregator,unknown,pseudonymous,en,mixed,,low,M,,
+BNONews,,BNO News,media,none_evident,named,en,mixed,,low,M,,Breaking-news agency
+visegrad24,,Visegrád 24,aggregator,western_right,anonymous,en,low,,low,M,,
+Megatron_ron,,Megatron,aggregator,unknown,anonymous,en,low,,low,M,,
+jacksonhinklle,,Jackson Hinkle,aggregator,russia,named,en,low,,low,M,,Amplifies Russian and Iranian state narratives [M]
+RT_com,,RT,state_media,russia,named,en,low,impersonation_risk,high,R,research/source-catalog.md 3e (inkl),Runs the Matryoshka impersonation operation
+GeoConfirmed,,GeoConfirmed,verifier,none_evident,pseudonymous,en,high,,med,M,,Volunteer geolocation
+bellingcat,,Bellingcat,verifier,none_evident,named,en,high,,high,M,,
+BBCVerify,,BBC Verify,verifier,none_evident,named,en,high,,high,M,,
+AFPFactCheck,,AFP Fact Check,verifier,none_evident,named,en,high,,high,M,,
+misbar_fc,,Misbar,verifier,none_evident,named,ar,high,,med,M,,Arabic fact-checker
+factnameh,,Factnameh,verifier,iran_opposition,named,fa,high,,low,M,,"Persian fact-checker, diaspora-run"
+FakeReporter,,FakeReporter,verifier,israel,named,he,high,,low,M,,Israeli disinformation watchdog
+osinthexagone,,Hexagone Intel,hobbyist,unknown,pseudonymous,en,unknown,,low,O,https://x.com/osinthexagone/status/2117844762480787577,"Daily hedged incident roundups (""possibly up to five"")"
+airpower33,,AirVector,hobbyist,unknown,pseudonymous,en,unknown,,low,O,https://x.com/airpower33/status/2117738689623441820,Cites UKMTO serials
+ConflictRadarME,,ConflictRadarME,aggregator,unknown,anonymous,en,unknown,,low,O,https://x.com/ConflictRadarME/status/2117490859012710665,Relays IRGC-channel claims and WaPo
+drhossamsamy65,,Dr. Sam Youssef,hobbyist,unknown,named,en,unknown,,low,O,https://x.com/drhossamsamy65/status/2117334086238838868,Flags unconfirmed claims as unconfirmed
+altinbase21,,Emre Altinbas,hobbyist,unknown,named,en,low,fiction,low,O,https://x.com/altinbase21/status/2118371652153098664,Posts hypothetical war scenarios that read like news
+rbg4lif,,rbg4lif,aggregator,unknown,anonymous,en,unknown,,low,O,https://x.com/rbg4lif/status/2118317910166773942,Reposts RT-style headlines
+supbrow,,Charlie B,hobbyist,unknown,named,en,unknown,,low,O,https://x.com/supbrow/status/2118060573837627546,Quotes US Treasury sanctions text
+srijanpalsingh,,Srijan Pal Singh,other,india,named,en,unknown,,low,O;M,https://x.com/srijanpalsingh/status/2117950586067059134,Indian author/public figure [M]
+dmoritz08151,,Breaking News,aggregator,unknown,anonymous,en,low,,low,O,https://x.com/dmoritz08151/status/2117946615231058104,Generic breaking-news persona
+HTX_Global,,HTX,other,none_evident,named,en,low,promo,med,O,https://x.com/HTX_Global/status/2117827316990795962,Crypto exchange marketing
+SignalHanter,,SignalHanter,hobbyist,unknown,pseudonymous,en,unknown,,low,O,https://x.com/SignalHanter/status/2117706187940438081,Flight-tracking posts
+ambernewsai,,Amber News,aggregator,unknown,anonymous,en,low,possible_ai,low,O,https://x.com/ambernewsai/status/2117668942105686524,"""ai"" in handle; possibly AI-generated news"
+GryphonIAB,,Gryphon Investment Advisors,other,none_evident,named,en,unknown,promo,low,O,https://x.com/GryphonIAB/status/2117539084763554177,Investment firm
+live_ais_com,,Live-AIS.com,other,none_evident,named,en,unknown,vendor,low,O,https://x.com/live_ais_com/status/2117512024980586810,AIS data vendor
+aprajitanefes,,Aprajita Nafs Nefes,hobbyist,unknown,pseudonymous,en,unknown,,low,O,https://x.com/aprajitanefes/status/2117502451528134720,
+theinformant_x,,The Informant,aggregator,unknown,anonymous,en,unknown,,low,O,https://x.com/theinformant_x/status/2117392135712612788,
+Terroralerts007,,Terror Alerts,aggregator,unknown,anonymous,en,unknown,,low,O,https://x.com/Terroralerts007/status/2117373654908752005,
+Viveksagarbjp,,Vivek Mishra,hobbyist,india,named,en,low,copy_network,low,O,https://x.com/Viveksagarbjp/status/2117086340751954085,"""bjp"" in handle; posted the same unsourced ""Rawalpindi secret meeting"" text as @Intel_Jackal"
+Intel_Jackal,,Rudraksh,aggregator,india,pseudonymous,en,low,copy_network,low,O,https://x.com/Intel_Jackal/status/2116924080574300542,"Same unsourced text as @Viveksagarbjp, 999 likes; lean inferred from Pakistan-focused content"
+alwaysFTweets,,Always First,aggregator,unknown,anonymous,en,unknown,,low,O,https://x.com/alwaysFTweets/status/2116769473357283549,
+EagleIntelMari,,Eagle Intelligence Maritime,hobbyist,unknown,pseudonymous,en,unknown,,low,O,https://x.com/EagleIntelMari/status/2116653040594002064,Cites UKMTO serials
+willowwhis22170,,Willow Whispers,aggregator,unknown,anonymous,en,unknown,,low,O,https://x.com/willowwhis22170/status/2116506866864009351,
+oheraldogoa,,Herald Goa,media,none_evident,named,en,unknown,,low,O;M,https://x.com/oheraldogoa/status/2116421857448780219,Indian regional newspaper [M]
+trtworld,,TRT World,state_media,turkey,named,en,mixed,,high,O;M,https://x.com/trtworld/status/2116362298092552368,Turkish state broadcaster [M]
+Aleena_Persian,,Aleena,hobbyist,unknown,pseudonymous,en,unknown,,low,O,https://x.com/Aleena_Persian/status/2116245939509706947,
+sanyasibisoyi01,,Sanyasi Bisoyi,hobbyist,unknown,named,en,low,spam,med,O,https://x.com/sanyasibisoyi01/status/2116242735875453206,Mass-tags world leaders
+AirRadarOSINT,,AirRadar OSINT,hobbyist,unknown,pseudonymous,en,unknown,,low,O,https://x.com/AirRadarOSINT/status/2116168050773033079,Flight tracking
+WW3_Monitor,,WW3 Monitor,aggregator,unknown,anonymous,en,low,,low,O,https://x.com/WW3_Monitor/status/2116161706569171346,"All-caps alerts, no sourcing"
+bradarska1,,STEELLDY.COM,other,none_evident,named,en,unknown,promo,low,O,https://x.com/bradarska1/status/2116091153879638209,Steel-trading site marketing
+_MartinKelly_,,Martin Kelly,analyst,none_evident,named,en,unknown,,low,O,https://x.com/_MartinKelly_/status/2116087127750349113,"Says he was the UK's regional maritime intelligence analyst at UKMCC Bahrain in 2019 (self-claim, unverified)"
+__Si__Botvp,,SiBot,other,unknown,anonymous,en,unknown,possible_bot,low,O,https://x.com/__Si__Botvp/status/2116061868670562439,Automated-looking; cites NASA FIRMS
+NemicoNetwork,,NΞMICO,aggregator,unknown,anonymous,en,low,copy_network,low,O,https://x.com/NemicoNetwork/status/2116014081786216477,Copies @Osinttechnical text verbatim
+Osinttechnical,,OSINTtechnical,aggregator,unknown,pseudonymous,en,mixed,,low,O;M,https://x.com/Osinttechnical/status/2116013248399241338,Large OSINT-branded account [M]
+Avionsint,,Avionsint,hobbyist,unknown,pseudonymous,en,unknown,,low,O,https://x.com/Avionsint/status/2116012959747145845,Flight tracking

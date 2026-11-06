@@ -171,3 +171,33 @@ body.monitoring > :not(#monitor):not(script) { display: none; }
 .tile .ph .vid { font-size: 0.7rem; font-weight: 600; color: var(--critical); }
 .m-more { height: 1px; }
 .m-end { text-align: center; color: var(--muted); font-size: 0.8rem; padding: 16px; }
+
+/* Account tags (SPEC 1B): one chip per author; tap to tag */
+.acct { align-self: flex-start; display: inline-block; font-size: 0.7rem; line-height: 1.5; padding: 0 7px; border-radius: 999px; border: 1px solid var(--border);
+  color: var(--ink-2); background: var(--surface); cursor: pointer; white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+.acct:hover, .acct:focus-visible { border-color: var(--accent); outline: none; }
+.acct.t-state, .acct.t-state_media { border-color: color-mix(in srgb, var(--serious) 60%, var(--border)); color: var(--ink); }
+.acct.t-media, .acct.t-analyst, .acct.t-verifier { border-color: color-mix(in srgb, var(--accent) 60%, var(--border)); color: var(--ink); }
+.acct.t-review { border-style: dashed; color: var(--muted); }
+.acct.mine::after { content: " ✓"; color: var(--accent); }
+.tile-acct { padding: 6px 8px 0; }
+.tile.embedded .tile-acct { padding: 0 0 4px; }
+.m-spend { flex-basis: 100%; margin: 0; font-size: 0.75rem; color: var(--muted); }
+.m-spend:empty { display: none; }
+.m-spend b { color: var(--ink); }
+.acct-dlg { width: min(560px, calc(100vw - 32px)); max-height: calc(100vh - 32px); border: 1px solid var(--border); border-radius: var(--radius);
+  background: var(--surface); color: var(--ink); padding: 16px; }
+.acct-dlg::backdrop { background: rgb(0 0 0 / 0.4); }
+.acct-dlg h3 { margin: 0 0 6px; font-size: 1rem; }
+.acct-dlg p { margin: 4px 0; font-size: 0.8rem; }
+.acct-dlg .bio { color: var(--ink-2); overflow-wrap: anywhere; }
+.tag-form { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px 10px; }
+.tag-form > h3, .tag-form > p, .tag-form .wide, .tag-form .row { grid-column: 1 / -1; }
+.tag-form label { display: flex; flex-direction: column; gap: 3px; font-size: 0.75rem; color: var(--ink-2); }
+.acct-dlg select, .acct-dlg input { font: inherit; font-size: 0.85rem; padding: 5px 8px; min-height: 32px; border: 1px solid var(--border); border-radius: 6px; background: var(--page); color: var(--ink); }
+.acct-dlg .row { display: flex; gap: 8px; justify-content: flex-end; margin-top: 6px; }
+.acct-dlg button { font: inherit; font-size: 0.85rem; min-height: 32px; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--border); background: transparent; color: var(--ink-2); cursor: pointer; }
+.acct-dlg button.go { background: var(--accent); color: #fff; border-color: var(--accent); }
+.queue ul { list-style: none; padding: 0; margin: 8px 0; max-height: 55vh; overflow: auto; }
+.queue li { padding: 4px 0; border-top: 1px solid var(--border); font-size: 0.8rem; }
+.queue li button { border: 0; padding: 0 4px 0 0; min-height: 28px; color: var(--accent); font-weight: 600; }

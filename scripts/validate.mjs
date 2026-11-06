@@ -70,5 +70,30 @@ src.rows.forEach((r, i) => {
 });
 for (const id of ids) if (!withSource.has(id)) errors.push(`data/incidents.csv: ${id} has no row in incident_sources.csv`);
 
+// Account registry (Claude's first pass) and Jacob's overrides. Vocabulary: data/account_vocab.json (SPEC 1B).
+const VOCAB = JSON.parse(fs.readFileSync("data/account_vocab.json", "utf8"));
+const ACCOUNT = Object.fromEntries(Object.entries(VOCAB).map(([k, v]) => [k, Object.keys(v)]));
+const ACC_HEAD = "handle,user_id,name,type,lean,identity,lang,reliability,flags,confidence,basis,evidence,notes";
+const OVR_HEAD = "handle,type,lean,reliability,note,at";
+const acc = parseCSV(fs.readFileSync("data/accounts.csv", "utf8"));
+if (acc.head.join(",") !== ACC_HEAD) err("data/accounts.csv", -1, `header mismatch.\n  want: ${ACC_HEAD}\n  got:  ${acc.head.join(",")}`);
+const handles = new Set();
+acc.rows.forEach((r, i) => {
+  const F = "data/accounts.csv", h = r.handle.toLowerCase();
+  if (!/^\w{1,15}$/.test(r.handle)) err(F, i, `bad handle "${r.handle}"`);
+  if (handles.has(h)) err(F, i, `duplicate handle ${r.handle}`); handles.add(h);
+  for (const k of ["type", "lean", "identity", "reliability", "confidence"]) enumCheck(F, i, r, k, ACCOUNT[k]);
+  for (const f of r.flags.split(";").filter(Boolean)) if (!ACCOUNT.flags.includes(f)) err(F, i, `flag "${f}" not in [${ACCOUNT.flags.join(", ")}]`);
+  if (!r.basis.split(";").every((b) => ["R", "O", "M"].includes(b))) err(F, i, `basis must be R, O, M (;-joined), got "${r.basis}"`);
+  if (r.basis.includes("R") && !r.evidence) err(F, i, "basis R needs evidence (URL or catalog reference)");
+});
+const ovr = parseCSV(fs.readFileSync("data/account_overrides.csv", "utf8"));
+if (ovr.head.join(",") !== OVR_HEAD) err("data/account_overrides.csv", -1, `header mismatch.\n  want: ${OVR_HEAD}\n  got:  ${ovr.head.join(",")}`);
+ovr.rows.forEach((r, i) => {
+  const F = "data/account_overrides.csv";
+  if (!/^\w{1,15}$/.test(r.handle)) err(F, i, `bad handle "${r.handle}"`);
+  for (const k of ["type", "lean", "reliability"]) enumCheck(F, i, r, k, ACCOUNT[k], true);
+});
+
 if (errors.length) { console.error(errors.join("\n")); console.error(`\n${errors.length} error(s)`); process.exit(1); }
-console.log(`OK: ${inc.rows.length} incidents, ${src.rows.length} sources`);
+console.log(`OK: ${inc.rows.length} incidents, ${src.rows.length} sources, ${acc.rows.length} accounts, ${ovr.rows.length} overrides`);

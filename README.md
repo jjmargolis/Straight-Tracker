@@ -23,6 +23,9 @@ Then open http://localhost:8000. No build step and no npm install. d3 and Observ
 | `data/transits_portwatch.csv` | IMF PortWatch daily tanker transits | GitHub Action, daily |
 | `data/media.csv` | Curated footage/posts with a verification label | Pull requests |
 | `data/x_posts.csv` | Top X posts with engagement counts | GitHub Action, daily, budget-capped (`data/x_budget.json`) |
+| `data/x_users.csv` | Profile of each X author seen (bio, followers, join date), looked up once | GitHub Action, with the X fetch |
+| `data/accounts.csv`, `data/account_vocab.json` | Who each author is: type, lean, reliability, with basis and evidence (SPEC 1B) | Claude, by pull request |
+| `data/account_overrides.csv` | Jacob's tags, which replace Claude's | Dashboard → GitHub issue → Action |
 | `data/coverage_gdelt.csv`, `data/gdelt_articles.csv` | News volume per day and latest articles | GitHub Action, every 6 h |
 | `data/land.json` | Natural Earth 1:10m coastline, clipped | `scripts/clip-land.mjs`, one-off |
 
