@@ -1,0 +1,84 @@
+%% 1. Overview: trust zones and the main data path. Source of 01-overview.svg.
+%% Edge labels: WHAT · FORMAT · TRIGGER/CADENCE · AUTH
+%% Node outline: thick blue dashed = in open PR #3 (not merged) · grey dotted = planned
+%% Line: solid = automated · dotted = manual step by a person or a Claude thread
+%% Red dashed boxes = trust boundaries. Render: docs/architecture/render.sh
+flowchart TB
+  subgraph SRC["External sources (public internet)"]
+    direction TB
+    XA[("X API v2<br/>recent search<br/>pay-per-use")]
+    GD[("GDELT DOC 2.0 API<br/>free, no key")]
+    PW[("IMF PortWatch<br/>+ straits.live mirror<br/>free, no auth")]
+    REP[("UKMTO, JMIC, EIA,<br/>trade press, Wikipedia<br/>HTML + PDF")]
+  end
+
+  J(["Jacob<br/>owner: reviews + merges PRs,<br/>supplies screenshots + X finds"])
+
+  subgraph Z1["TRUST ZONE 1: GitHub Actions runners<br/>only place with a secret or external API calls"]
+    direction TB
+    SEC{{"secret X_BEARER_TOKEN"}}
+    JOBS["Scheduled fetch jobs<br/>fetch-portwatch.yml · daily 06:17 UTC<br/>fetch-media.yml · every 6 h, X once a day"]
+    VAL["validate.yml<br/>every PR + push to main"]
+  end
+
+  subgraph Z2["TRUST ZONE 2: Claude workspace · private · PR-only"]
+    CL["Claude research threads<br/>+ _build/build.py"]
+  end
+
+  subgraph Z3["TRUST ZONE 3: public repo, branch main<br/>written only by the bot or a merged PR"]
+    direction TB
+    DATA[("data/<br/>CSV + JSON files<br/>the whole database")]
+    SITE["Static site code<br/>index.html · app.js · style.css · vendor/"]
+  end
+
+  subgraph Z4["TRUST ZONE 4: public web, read-only<br/>no secrets · no API calls · no login"]
+    direction TB
+    PAGES[["GitHub Pages<br/>deploy from main · not enabled yet"]]
+    subgraph BR["Any viewer's browser: ONE page, two views"]
+      direction TB
+      DASH["Dashboard view<br/>charts, map, X feed, news"]
+      MON["#monitor view<br/>4 scrolling columns"]
+    end
+  end
+
+  NOTE["Where the X posts come from:<br/>1. Once a day a GitHub Action calls X with the secret.<br/>2. It commits the results to data/x_posts.csv.<br/>3. The dashboard and #monitor both just read that file.<br/>The site never calls X and X numbers are up to ~24 h old.<br/>Posts are cards that link out to x.com, not live embeds."]
+
+  SEC -->|"env var at runtime · masked"| JOBS
+  XA -->|"posts + engagement · JSON · daily · Bearer token"| JOBS
+  GD -->|"news volume + articles · JSON · 6-hourly · none"| JOBS
+  PW -->|"tanker transits · JSON/CSV · daily · none"| JOBS
+  JOBS -->|"git commit as github-actions bot · CSV/JSON · only if changed"| DATA
+
+  REP -.->|"read by hand · HTML/PDF"| CL
+  J -.->|"screenshots, X links · in chat"| CL
+  CL -.->|"pull request · incidents CSV"| VAL
+  VAL -->|"green check, then Jacob merges the PR"| DATA
+
+  DATA -->|"push to main · triggers build"| PAGES
+  SITE -->|"push to main · triggers build"| PAGES
+  PAGES -->|"HTTPS GET · static HTML/JS/CSV/JSON · on page load"| DASH
+  PAGES -->|"HTTPS GET · same files · re-read every 10 min"| MON
+  DASH <-->|"URL hash #monitor"| MON
+  NOTE ~~~ BR
+
+  classDef ext fill:#e3eaf3,stroke:#5a6b80,color:#1b2430
+  classDef human fill:#fbe8cc,stroke:#a8742a,color:#3a2a10
+  classDef claude fill:#ebe3f6,stroke:#7a62a3,color:#2a2040
+  classDef job fill:#d9efe0,stroke:#3d7a4f,color:#143020
+  classDef script fill:#ffffff,stroke:#3d7a4f,color:#143020
+  classDef data fill:#fff3c4,stroke:#8a6d1f,color:#2e2408
+  classDef site fill:#e1ecf8,stroke:#2f5d8a,color:#10243a
+  classDef secret fill:#f9d9d4,stroke:#b3261e,color:#3a120c,stroke-width:2px
+  classDef pr3 stroke:#1f5fa8,stroke-width:3px,stroke-dasharray:8 4
+  classDef planned fill:#f5f5f5,stroke:#999999,color:#666666,stroke-dasharray:2 3
+  classDef note fill:#fff7d6,stroke:#c9a227,color:#3a2e08
+  classDef zone fill:#fffdfd,stroke:#b3261e,stroke-width:2px,stroke-dasharray:10 5,color:#b3261e
+  class XA,GD,PW,REP ext
+  class J human
+  class CL claude
+  class JOBS,VAL job
+  class DATA data
+  class SITE,PAGES,DASH,MON site
+  class SEC secret
+  class NOTE note
+  class Z1,Z2,Z3,Z4 zone

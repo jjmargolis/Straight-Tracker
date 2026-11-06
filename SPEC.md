@@ -119,6 +119,8 @@ Not in v1: live AIS ship positions (hormuz.now does this; heavy and adds little)
 
 ## 5. Stack (proposal)
 
+Diagrams of the built system, with every source, job, file and trust boundary: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+
 Principle: no server, no database, no build step unless it pays for itself.
 
 - **Static site** on **GitHub Pages**: `index.html` + one JS module + CSS. Free, fast on a phone.
