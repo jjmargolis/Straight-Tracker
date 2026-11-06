@@ -9,6 +9,7 @@ permissions:
 concurrency: { group: data-commit, cancel-in-progress: false }
 jobs:
   apply:
+    # Owner-only: the repo is public, so anyone can open an issue; only Jacob's tags may change the data.
     if: startsWith(github.event.issue.title, 'account-tags') && github.event.issue.user.login == github.repository_owner
     runs-on: ubuntu-latest
     steps:
@@ -18,6 +19,7 @@ jobs:
       - name: Apply and validate
         id: apply
         env:
+          # Passed via env, never interpolated into the script, so issue text cannot run as shell code.
           ISSUE_BODY: ${{ github.event.issue.body }}
         run: |
           n=$(node scripts/apply-account-tags.mjs)
@@ -31,6 +33,7 @@ jobs:
           git diff --cached --quiet || git commit -m "data: account tags from #${{ github.event.issue.number }}"
           git pull --rebase -q && git push
       - name: Close issue
+        # always(): report back on the issue even when apply failed, so a rejected tag is never silent.
         if: always()
         env:
           GH_TOKEN: ${{ github.token }}

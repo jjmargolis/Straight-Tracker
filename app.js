@@ -338,6 +338,7 @@ const lc = (h) => String(h ?? "").toLowerCase();
 const claudeTags = new Map((accountsRaw ?? []).map((a) => [lc(a.handle), a]));
 const repoTags = new Map((overridesRaw ?? []).map((o) => [lc(o.handle), o]));
 const profiles = new Map((xusers ?? []).map((u) => [lc(u.username), u]));
+// Local tags make an edit visible instantly; the repo copy (via issue + Action) is what everyone else sees.
 const TAGS = "hormuz-account-tags";
 let localTags = {};
 try { localTags = JSON.parse(localStorage.getItem(TAGS)) ?? {}; } catch {}
@@ -353,6 +354,7 @@ function account(handle) {
   if (o) return { ...base, type: o.type || base.type, lean: o.lean || base.lean, reliability: o.reliability || base.reliability, note: o.note, by: "jacob", review: false, unsent: !!localTags[h] };
   return { ...base, by: c ? "claude" : "none", review: !c || base.confidence === "low" || base.type === "unknown" || base.lean === "unknown" };
 }
+// The two middle filters exclude "Needs review" accounts so an unreviewed guess never sorts a post into a bucket.
 const SERIOUS = ["state", "state_media", "media", "analyst", "verifier"];
 const WHO = {
   all: { label: "All accounts", hint: "Everyone", test: () => true },
@@ -360,6 +362,7 @@ const WHO = {
   crowd: { label: "Hobbyists, aggregators", hint: "Hobbyists, aggregators, other (reviewed tags only)", test: (a) => !a.review && !SERIOUS.includes(a.type) },
   review: { label: "Needs review", hint: "Claude was unsure or hasn't tagged it", test: (a) => a.review },
 };
+// Hide "no evident lean" and "unknown" on the chip: they add words without telling the viewer anything.
 const leanShown = (l) => l && l !== "none_evident" && l !== "unknown";
 function chip(handle) {
   const a = account(handle);
@@ -369,6 +372,7 @@ function chip(handle) {
   return `<span class="acct t-${esc(a.review ? "review" : a.type)}${a.by === "jacob" ? " mine" : ""}" role="button" tabindex="0" data-handle="${esc(handle)}" title="${esc(tip)}">${esc(label)}</span>`;
 }
 // Accounts needing review that actually appear in fetched posts, most-shared first.
+// Only accounts that actually posted in our data: tagging accounts nobody sees is wasted effort.
 function reviewQueue() {
   const eng = d3.rollup(xposts ?? [], (v) => ({ s: d3.sum(v, score), h: v[0].username }), (p) => lc(p.username));
   return [...eng.values()].filter((e) => e.h && account(e.h).review).sort((a, b) => b.s - a.s).map((e) => e.h);
@@ -376,6 +380,7 @@ function reviewQueue() {
 
 const dlg = el("acct-dlg");
 const opts = (m, cur) => Object.entries(m).map(([k, l]) => `<option value="${k}"${k === cur ? " selected" : ""}>${esc(l)}</option>`).join("");
+// The dialog shows the bio and Claude's guess with its evidence, so Jacob judges from the same facts Claude had.
 function openTag(handle, back) {
   const a = account(handle), c = claudeTags.get(lc(handle)), u = profiles.get(lc(handle));
   const first = c ? `${V.type[c.type]} · ${V.lean[c.lean]} · reliability ${V.reliability[c.reliability]} · ${V.confidence[c.confidence]} confidence (basis ${esc(c.basis)})` : "not tagged yet";
@@ -409,16 +414,19 @@ function openQueue() {
   dlg.returnValue = ""; dlg.showModal();
 }
 // Saved tags reach the repo through a prefilled issue; an owner-only Action commits them (scripts/apply-account-tags.mjs).
+// A prefilled issue keeps the site static: no GitHub token ever lives in the browser.
 function sendTags() {
   const cell = (v) => (/[",\n]/.test(v ?? "") ? `"${String(v).replace(/"/g, '""')}"` : v ?? "");
   const lines = Object.values(localTags).map((t) => [t.handle, t.type, t.lean, t.reliability, t.note].map(cell).join(","));
   const body = "Account tags from the dashboard. Submit to apply.\n\n```csv\nhandle,type,lean,reliability,note\n" + lines.join("\n") + "\n```\n";
   open(`https://github.com/jjmargolis/straight-tracker/issues/new?${new URLSearchParams({ title: `account-tags (${lines.length})`, body })}`, "_blank", "noopener");
 }
+// Capture phase: chips sit inside links and buttons, and must win the click before those navigate.
 document.addEventListener("click", (e) => { const c = e.target.closest(".acct"); if (c) { e.preventDefault(); e.stopPropagation(); openTag(c.dataset.handle); } }, true);
 document.addEventListener("keydown", (e) => { const c = e.target.closest?.(".acct"); if (c && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); openTag(c.dataset.handle); } });
 
 // X spend: the fetcher counts units of $0.005 (post 1, media 1, author lookup 2). Jacob's balance is a prepaid $10.
+// Month-to-date from data/x_budget.json; the "lasts" figure assumes today's average pace continues.
 function renderSpend() {
   const units = budget?.units ?? budget?.reads;
   if (!units) { el("m-spend").textContent = ""; return; }
