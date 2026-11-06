@@ -1,2856 +1,606 @@
 date,n_tanker,n_total,capacity_tanker,via
-2019-01-01,33,52,2390755,IMF PortWatch FeatureServer
-2019-01-02,37,61,1022523,IMF PortWatch FeatureServer
-2019-01-03,49,71,2841667,IMF PortWatch FeatureServer
-2019-01-04,35,59,1207506,IMF PortWatch FeatureServer
-2019-01-05,34,61,1830227,IMF PortWatch FeatureServer
-2019-01-06,36,56,2219169,IMF PortWatch FeatureServer
-2019-01-07,52,72,1940965,IMF PortWatch FeatureServer
-2019-01-08,31,55,515105,IMF PortWatch FeatureServer
-2019-01-09,21,38,1805444,IMF PortWatch FeatureServer
-2019-01-10,35,58,789993,IMF PortWatch FeatureServer
-2019-01-11,40,60,1008345,IMF PortWatch FeatureServer
-2019-01-12,35,55,481324,IMF PortWatch FeatureServer
-2019-01-13,24,44,1557452,IMF PortWatch FeatureServer
-2019-01-14,35,50,2088547,IMF PortWatch FeatureServer
-2019-01-15,26,49,972941,IMF PortWatch FeatureServer
-2019-01-16,28,57,1922947,IMF PortWatch FeatureServer
-2019-01-17,31,53,1607029,IMF PortWatch FeatureServer
-2019-01-18,32,46,2116818,IMF PortWatch FeatureServer
-2019-01-19,38,61,1395862,IMF PortWatch FeatureServer
-2019-01-20,40,66,1387500,IMF PortWatch FeatureServer
-2019-01-21,36,57,312553,IMF PortWatch FeatureServer
-2019-01-22,39,59,2228951,IMF PortWatch FeatureServer
-2019-01-23,42,59,2096046,IMF PortWatch FeatureServer
-2019-01-24,32,42,1942712,IMF PortWatch FeatureServer
-2019-01-25,27,46,1444862,IMF PortWatch FeatureServer
-2019-01-26,38,60,1796329,IMF PortWatch FeatureServer
-2019-01-27,40,61,2352926,IMF PortWatch FeatureServer
-2019-01-28,33,61,846159,IMF PortWatch FeatureServer
-2019-01-29,33,46,2288161,IMF PortWatch FeatureServer
-2019-01-30,38,60,1181678,IMF PortWatch FeatureServer
-2019-01-31,28,50,1522445,IMF PortWatch FeatureServer
-2019-02-01,34,51,1249494,IMF PortWatch FeatureServer
-2019-02-02,32,49,2139350,IMF PortWatch FeatureServer
-2019-02-03,39,57,1686854,IMF PortWatch FeatureServer
-2019-02-04,36,57,1010318,IMF PortWatch FeatureServer
-2019-02-05,30,59,840247,IMF PortWatch FeatureServer
-2019-02-06,29,50,846722,IMF PortWatch FeatureServer
-2019-02-07,35,60,1604455,IMF PortWatch FeatureServer
-2019-02-08,35,56,1138264,IMF PortWatch FeatureServer
-2019-02-09,40,56,1597088,IMF PortWatch FeatureServer
-2019-02-10,39,59,1584091,IMF PortWatch FeatureServer
-2019-02-11,26,42,1160991,IMF PortWatch FeatureServer
-2019-02-12,30,54,418259,IMF PortWatch FeatureServer
-2019-02-13,27,44,909455,IMF PortWatch FeatureServer
-2019-02-14,39,62,971138,IMF PortWatch FeatureServer
-2019-02-15,36,63,1826351,IMF PortWatch FeatureServer
-2019-02-16,40,64,1490346,IMF PortWatch FeatureServer
-2019-02-17,42,65,1925960,IMF PortWatch FeatureServer
-2019-02-18,43,71,1368765,IMF PortWatch FeatureServer
-2019-02-19,32,65,788852,IMF PortWatch FeatureServer
-2019-02-20,39,62,760090,IMF PortWatch FeatureServer
-2019-02-21,42,68,711691,IMF PortWatch FeatureServer
-2019-02-22,44,76,1443209,IMF PortWatch FeatureServer
-2019-02-23,45,73,2383118,IMF PortWatch FeatureServer
-2019-02-24,41,72,1466085,IMF PortWatch FeatureServer
-2019-02-25,36,65,1548761,IMF PortWatch FeatureServer
-2019-02-26,27,52,578299,IMF PortWatch FeatureServer
-2019-02-27,30,53,910995,IMF PortWatch FeatureServer
-2019-02-28,33,56,1417121,IMF PortWatch FeatureServer
-2019-03-01,40,58,2161005,IMF PortWatch FeatureServer
-2019-03-02,34,61,1013580,IMF PortWatch FeatureServer
-2019-03-03,45,66,1059240,IMF PortWatch FeatureServer
-2019-03-04,35,56,631764,IMF PortWatch FeatureServer
-2019-03-05,40,68,1720874,IMF PortWatch FeatureServer
-2019-03-06,52,80,1360314,IMF PortWatch FeatureServer
-2019-03-07,39,58,1370719,IMF PortWatch FeatureServer
-2019-03-08,42,65,1740780,IMF PortWatch FeatureServer
-2019-03-09,48,74,2352261,IMF PortWatch FeatureServer
-2019-03-10,32,46,698929,IMF PortWatch FeatureServer
-2019-03-11,23,40,509330,IMF PortWatch FeatureServer
-2019-03-12,33,47,2969275,IMF PortWatch FeatureServer
-2019-03-13,39,70,1964304,IMF PortWatch FeatureServer
-2019-03-14,35,62,1142726,IMF PortWatch FeatureServer
-2019-03-15,33,51,2217509,IMF PortWatch FeatureServer
-2019-03-16,29,51,1322216,IMF PortWatch FeatureServer
-2019-03-17,42,68,886031,IMF PortWatch FeatureServer
-2019-03-18,52,68,1295476,IMF PortWatch FeatureServer
-2019-03-19,39,70,1278044,IMF PortWatch FeatureServer
-2019-03-20,40,61,1126521,IMF PortWatch FeatureServer
-2019-03-21,42,64,1583323,IMF PortWatch FeatureServer
-2019-03-22,29,48,1368091,IMF PortWatch FeatureServer
-2019-03-23,31,58,2250838,IMF PortWatch FeatureServer
-2019-03-24,31,55,641687,IMF PortWatch FeatureServer
-2019-03-25,25,47,581800,IMF PortWatch FeatureServer
-2019-03-26,33,57,949423,IMF PortWatch FeatureServer
-2019-03-27,38,61,761454,IMF PortWatch FeatureServer
-2019-03-28,45,68,2942718,IMF PortWatch FeatureServer
-2019-03-29,45,87,2632187,IMF PortWatch FeatureServer
-2019-03-30,57,87,3111288,IMF PortWatch FeatureServer
-2019-03-31,39,60,2266301,IMF PortWatch FeatureServer
-2019-04-01,43,70,1071342,IMF PortWatch FeatureServer
-2019-04-02,25,46,1162177,IMF PortWatch FeatureServer
-2019-04-03,32,58,1699083,IMF PortWatch FeatureServer
-2019-04-04,35,53,624019,IMF PortWatch FeatureServer
-2019-04-05,41,69,1982435,IMF PortWatch FeatureServer
-2019-04-06,46,70,1462514,IMF PortWatch FeatureServer
-2019-04-07,41,61,1767947,IMF PortWatch FeatureServer
-2019-04-08,41,70,968474,IMF PortWatch FeatureServer
-2019-04-09,51,72,2272056,IMF PortWatch FeatureServer
-2019-04-10,29,52,1125214,IMF PortWatch FeatureServer
-2019-04-11,42,61,2288556,IMF PortWatch FeatureServer
-2019-04-12,37,62,1506460,IMF PortWatch FeatureServer
-2019-04-13,41,66,1172514,IMF PortWatch FeatureServer
-2019-04-14,28,49,1015514,IMF PortWatch FeatureServer
-2019-04-15,40,75,1549587,IMF PortWatch FeatureServer
-2019-04-16,38,70,1716065,IMF PortWatch FeatureServer
-2019-04-17,39,69,3170336,IMF PortWatch FeatureServer
-2019-04-18,47,81,2637718,IMF PortWatch FeatureServer
-2019-04-19,57,85,2971950,IMF PortWatch FeatureServer
-2019-04-20,48,80,2275844,IMF PortWatch FeatureServer
-2019-04-21,41,76,1700031,IMF PortWatch FeatureServer
-2019-04-22,46,86,3027693,IMF PortWatch FeatureServer
-2019-04-23,40,67,2227717,IMF PortWatch FeatureServer
-2019-04-24,34,59,1116454,IMF PortWatch FeatureServer
-2019-04-25,46,72,1104716,IMF PortWatch FeatureServer
-2019-04-26,38,65,1431885,IMF PortWatch FeatureServer
-2019-04-27,58,91,2859488,IMF PortWatch FeatureServer
-2019-04-28,42,73,3222397,IMF PortWatch FeatureServer
-2019-04-29,52,94,2317026,IMF PortWatch FeatureServer
-2019-04-30,33,54,1849085,IMF PortWatch FeatureServer
-2019-05-01,51,81,1743576,IMF PortWatch FeatureServer
-2019-05-02,46,77,2372706,IMF PortWatch FeatureServer
-2019-05-03,46,90,2458929,IMF PortWatch FeatureServer
-2019-05-04,41,63,3518777,IMF PortWatch FeatureServer
-2019-05-05,30,54,1599252,IMF PortWatch FeatureServer
-2019-05-06,37,66,2150731,IMF PortWatch FeatureServer
-2019-05-07,49,73,1962989,IMF PortWatch FeatureServer
-2019-05-08,50,87,2724319,IMF PortWatch FeatureServer
-2019-05-09,44,81,2147060,IMF PortWatch FeatureServer
-2019-05-10,40,60,1293036,IMF PortWatch FeatureServer
-2019-05-11,50,81,1988602,IMF PortWatch FeatureServer
-2019-05-12,57,85,2567430,IMF PortWatch FeatureServer
-2019-05-13,47,76,2383458,IMF PortWatch FeatureServer
-2019-05-14,28,58,1697004,IMF PortWatch FeatureServer
-2019-05-15,47,70,2828230,IMF PortWatch FeatureServer
-2019-05-16,58,82,2918123,IMF PortWatch FeatureServer
-2019-05-17,47,88,2419184,IMF PortWatch FeatureServer
-2019-05-18,51,84,2489789,IMF PortWatch FeatureServer
-2019-05-19,42,64,2645047,IMF PortWatch FeatureServer
-2019-05-20,48,77,2342200,IMF PortWatch FeatureServer
-2019-05-21,35,55,2793845,IMF PortWatch FeatureServer
-2019-05-22,35,59,1349228,IMF PortWatch FeatureServer
-2019-05-23,43,66,2121730,IMF PortWatch FeatureServer
-2019-05-24,42,75,1465014,IMF PortWatch FeatureServer
-2019-05-25,52,86,2939998,IMF PortWatch FeatureServer
-2019-05-26,54,80,2367234,IMF PortWatch FeatureServer
-2019-05-27,53,85,3161050,IMF PortWatch FeatureServer
-2019-05-28,43,75,1692234,IMF PortWatch FeatureServer
-2019-05-29,50,89,2039626,IMF PortWatch FeatureServer
-2019-05-30,58,90,2640169,IMF PortWatch FeatureServer
-2019-05-31,49,82,1649583,IMF PortWatch FeatureServer
-2019-06-01,36,56,1417288,IMF PortWatch FeatureServer
-2019-06-02,50,79,2272259,IMF PortWatch FeatureServer
-2019-06-03,55,84,4071825,IMF PortWatch FeatureServer
-2019-06-04,60,93,2381885,IMF PortWatch FeatureServer
-2019-06-05,53,85,1879902,IMF PortWatch FeatureServer
-2019-06-06,38,73,425477,IMF PortWatch FeatureServer
-2019-06-07,44,77,3407731,IMF PortWatch FeatureServer
-2019-06-08,46,84,2764728,IMF PortWatch FeatureServer
-2019-06-09,45,75,1192375,IMF PortWatch FeatureServer
-2019-06-10,57,97,3023499,IMF PortWatch FeatureServer
-2019-06-11,47,81,2655706,IMF PortWatch FeatureServer
-2019-06-12,46,67,2357276,IMF PortWatch FeatureServer
-2019-06-13,41,65,1862675,IMF PortWatch FeatureServer
-2019-06-14,45,80,2054181,IMF PortWatch FeatureServer
-2019-06-15,49,85,3203898,IMF PortWatch FeatureServer
-2019-06-16,69,97,4245394,IMF PortWatch FeatureServer
-2019-06-17,47,74,2192748,IMF PortWatch FeatureServer
-2019-06-18,43,75,2967846,IMF PortWatch FeatureServer
-2019-06-19,51,81,1231263,IMF PortWatch FeatureServer
-2019-06-20,45,77,1486181,IMF PortWatch FeatureServer
-2019-06-21,42,77,2648921,IMF PortWatch FeatureServer
-2019-06-22,50,86,1545248,IMF PortWatch FeatureServer
-2019-06-23,43,70,2521295,IMF PortWatch FeatureServer
-2019-06-24,69,102,2657916,IMF PortWatch FeatureServer
-2019-06-25,63,93,3645780,IMF PortWatch FeatureServer
-2019-06-26,51,81,3106980,IMF PortWatch FeatureServer
-2019-06-27,51,86,2053476,IMF PortWatch FeatureServer
-2019-06-28,45,79,2810390,IMF PortWatch FeatureServer
-2019-06-29,57,84,1812900,IMF PortWatch FeatureServer
-2019-06-30,53,99,3022622,IMF PortWatch FeatureServer
-2019-07-01,56,90,2697110,IMF PortWatch FeatureServer
-2019-07-02,37,73,1462444,IMF PortWatch FeatureServer
-2019-07-03,65,102,2946298,IMF PortWatch FeatureServer
-2019-07-04,48,99,3519533,IMF PortWatch FeatureServer
-2019-07-05,62,102,3891337,IMF PortWatch FeatureServer
-2019-07-06,59,103,1711922,IMF PortWatch FeatureServer
-2019-07-07,46,86,2093153,IMF PortWatch FeatureServer
-2019-07-08,46,79,1803162,IMF PortWatch FeatureServer
-2019-07-09,56,91,2037901,IMF PortWatch FeatureServer
-2019-07-10,42,75,2620994,IMF PortWatch FeatureServer
-2019-07-11,50,86,2072698,IMF PortWatch FeatureServer
-2019-07-12,57,96,3294508,IMF PortWatch FeatureServer
-2019-07-13,57,91,2809206,IMF PortWatch FeatureServer
-2019-07-14,40,77,1998625,IMF PortWatch FeatureServer
-2019-07-15,46,87,2102855,IMF PortWatch FeatureServer
-2019-07-16,47,77,2442434,IMF PortWatch FeatureServer
-2019-07-17,47,76,2165205,IMF PortWatch FeatureServer
-2019-07-18,40,69,1685186,IMF PortWatch FeatureServer
-2019-07-19,44,70,2065696,IMF PortWatch FeatureServer
-2019-07-20,39,80,2539643,IMF PortWatch FeatureServer
-2019-07-21,54,87,2176215,IMF PortWatch FeatureServer
-2019-07-22,46,83,2583562,IMF PortWatch FeatureServer
-2019-07-23,47,71,2649431,IMF PortWatch FeatureServer
-2019-07-24,47,67,2485801,IMF PortWatch FeatureServer
-2019-07-25,53,90,2267083,IMF PortWatch FeatureServer
-2019-07-26,44,73,2807478,IMF PortWatch FeatureServer
-2019-07-27,38,61,1280229,IMF PortWatch FeatureServer
-2019-07-28,46,74,1926540,IMF PortWatch FeatureServer
-2019-07-29,45,82,2320599,IMF PortWatch FeatureServer
-2019-07-30,43,76,1806784,IMF PortWatch FeatureServer
-2019-07-31,42,74,2949083,IMF PortWatch FeatureServer
-2019-08-01,54,84,1934992,IMF PortWatch FeatureServer
-2019-08-02,48,84,2109404,IMF PortWatch FeatureServer
-2019-08-03,55,89,2924440,IMF PortWatch FeatureServer
-2019-08-04,59,93,2600073,IMF PortWatch FeatureServer
-2019-08-05,42,65,1714567,IMF PortWatch FeatureServer
-2019-08-06,52,86,2540766,IMF PortWatch FeatureServer
-2019-08-07,53,93,2439662,IMF PortWatch FeatureServer
-2019-08-08,53,84,2696775,IMF PortWatch FeatureServer
-2019-08-09,43,79,2914046,IMF PortWatch FeatureServer
-2019-08-10,58,88,2865393,IMF PortWatch FeatureServer
-2019-08-11,39,76,2251066,IMF PortWatch FeatureServer
-2019-08-12,45,78,2037012,IMF PortWatch FeatureServer
-2019-08-13,50,75,2360768,IMF PortWatch FeatureServer
-2019-08-14,50,79,2218088,IMF PortWatch FeatureServer
-2019-08-15,39,73,2562268,IMF PortWatch FeatureServer
-2019-08-16,46,68,2253126,IMF PortWatch FeatureServer
-2019-08-17,50,80,2646207,IMF PortWatch FeatureServer
-2019-08-18,55,86,2675883,IMF PortWatch FeatureServer
-2019-08-19,48,80,2238762,IMF PortWatch FeatureServer
-2019-08-20,35,59,2271474,IMF PortWatch FeatureServer
-2019-08-21,57,87,2135314,IMF PortWatch FeatureServer
-2019-08-22,40,64,1898292,IMF PortWatch FeatureServer
-2019-08-23,41,75,2136123,IMF PortWatch FeatureServer
-2019-08-24,46,83,2698760,IMF PortWatch FeatureServer
-2019-08-25,44,80,3191174,IMF PortWatch FeatureServer
-2019-08-26,54,85,1857617,IMF PortWatch FeatureServer
-2019-08-27,44,77,2425568,IMF PortWatch FeatureServer
-2019-08-28,46,68,2634039,IMF PortWatch FeatureServer
-2019-08-29,52,88,2920533,IMF PortWatch FeatureServer
-2019-08-30,51,82,2060171,IMF PortWatch FeatureServer
-2019-08-31,42,64,2120342,IMF PortWatch FeatureServer
-2019-09-01,41,76,1858579,IMF PortWatch FeatureServer
-2019-09-02,47,81,2452522,IMF PortWatch FeatureServer
-2019-09-03,32,63,2669959,IMF PortWatch FeatureServer
-2019-09-04,44,81,3080643,IMF PortWatch FeatureServer
-2019-09-05,49,81,2550205,IMF PortWatch FeatureServer
-2019-09-06,52,84,2818898,IMF PortWatch FeatureServer
-2019-09-07,46,78,1947167,IMF PortWatch FeatureServer
-2019-09-08,36,72,1876328,IMF PortWatch FeatureServer
-2019-09-09,52,74,2535365,IMF PortWatch FeatureServer
-2019-09-10,42,78,2863745,IMF PortWatch FeatureServer
-2019-09-11,43,72,1248453,IMF PortWatch FeatureServer
-2019-09-12,53,81,2744257,IMF PortWatch FeatureServer
-2019-09-13,51,81,2572528,IMF PortWatch FeatureServer
-2019-09-14,53,97,3252541,IMF PortWatch FeatureServer
-2019-09-15,38,67,1764877,IMF PortWatch FeatureServer
-2019-09-16,47,89,2034286,IMF PortWatch FeatureServer
-2019-09-17,44,75,1325944,IMF PortWatch FeatureServer
-2019-09-18,63,85,3003317,IMF PortWatch FeatureServer
-2019-09-19,47,73,2745102,IMF PortWatch FeatureServer
-2019-09-20,47,81,1513001,IMF PortWatch FeatureServer
-2019-09-21,47,82,3165880,IMF PortWatch FeatureServer
-2019-09-22,41,71,1805822,IMF PortWatch FeatureServer
-2019-09-23,43,78,1995314,IMF PortWatch FeatureServer
-2019-09-24,43,76,1627137,IMF PortWatch FeatureServer
-2019-09-25,33,58,1621049,IMF PortWatch FeatureServer
-2019-09-26,49,80,2355048,IMF PortWatch FeatureServer
-2019-09-27,47,74,2592967,IMF PortWatch FeatureServer
-2019-09-28,47,85,2101482,IMF PortWatch FeatureServer
-2019-09-29,59,97,2430447,IMF PortWatch FeatureServer
-2019-09-30,49,74,1976483,IMF PortWatch FeatureServer
-2019-10-01,51,79,1598125,IMF PortWatch FeatureServer
-2019-10-02,40,69,3050531,IMF PortWatch FeatureServer
-2019-10-03,34,56,2143308,IMF PortWatch FeatureServer
-2019-10-04,37,49,2106280,IMF PortWatch FeatureServer
-2019-10-05,44,75,2387086,IMF PortWatch FeatureServer
-2019-10-06,35,61,1568176,IMF PortWatch FeatureServer
-2019-10-07,44,64,1469025,IMF PortWatch FeatureServer
-2019-10-08,35,60,1934676,IMF PortWatch FeatureServer
-2019-10-09,42,68,2620992,IMF PortWatch FeatureServer
-2019-10-10,45,69,2347589,IMF PortWatch FeatureServer
-2019-10-11,49,66,2862491,IMF PortWatch FeatureServer
-2019-10-12,32,68,1800615,IMF PortWatch FeatureServer
-2019-10-13,45,69,2160944,IMF PortWatch FeatureServer
-2019-10-14,50,86,2403371,IMF PortWatch FeatureServer
-2019-10-15,59,98,2340688,IMF PortWatch FeatureServer
-2019-10-16,57,89,3257073,IMF PortWatch FeatureServer
-2019-10-17,62,94,2780829,IMF PortWatch FeatureServer
-2019-10-18,37,67,2865887,IMF PortWatch FeatureServer
-2019-10-19,50,79,2527504,IMF PortWatch FeatureServer
-2019-10-20,49,89,1961459,IMF PortWatch FeatureServer
-2019-10-21,45,74,2452771,IMF PortWatch FeatureServer
-2019-10-22,37,66,1171899,IMF PortWatch FeatureServer
-2019-10-23,45,75,2521811,IMF PortWatch FeatureServer
-2019-10-24,54,88,2882488,IMF PortWatch FeatureServer
-2019-10-25,43,71,1951455,IMF PortWatch FeatureServer
-2019-10-26,55,90,2906968,IMF PortWatch FeatureServer
-2019-10-27,36,67,2315365,IMF PortWatch FeatureServer
-2019-10-28,43,76,2724079,IMF PortWatch FeatureServer
-2019-10-29,42,64,2374294,IMF PortWatch FeatureServer
-2019-10-30,60,90,1994362,IMF PortWatch FeatureServer
-2019-10-31,39,62,1797824,IMF PortWatch FeatureServer
-2019-11-01,43,69,2356759,IMF PortWatch FeatureServer
-2019-11-02,40,67,458584,IMF PortWatch FeatureServer
-2019-11-03,31,50,1935237,IMF PortWatch FeatureServer
-2019-11-04,40,64,2525665,IMF PortWatch FeatureServer
-2019-11-05,33,69,2282766,IMF PortWatch FeatureServer
-2019-11-06,38,58,2052174,IMF PortWatch FeatureServer
-2019-11-07,39,69,1990345,IMF PortWatch FeatureServer
-2019-11-08,48,77,2412803,IMF PortWatch FeatureServer
-2019-11-09,36,62,2063653,IMF PortWatch FeatureServer
-2019-11-10,31,49,1757844,IMF PortWatch FeatureServer
-2019-11-11,43,61,1472131,IMF PortWatch FeatureServer
-2019-11-12,43,60,784577,IMF PortWatch FeatureServer
-2019-11-13,38,66,1320308,IMF PortWatch FeatureServer
-2019-11-14,26,47,409224,IMF PortWatch FeatureServer
-2019-11-15,22,39,1081749,IMF PortWatch FeatureServer
-2019-11-16,31,52,1294517,IMF PortWatch FeatureServer
-2019-11-17,35,55,387340,IMF PortWatch FeatureServer
-2019-11-18,20,43,723492,IMF PortWatch FeatureServer
-2019-11-19,27,47,948883,IMF PortWatch FeatureServer
-2019-11-20,34,53,838877,IMF PortWatch FeatureServer
-2019-11-21,31,47,351676,IMF PortWatch FeatureServer
-2019-11-22,27,45,612472,IMF PortWatch FeatureServer
-2019-11-23,42,62,1588825,IMF PortWatch FeatureServer
-2019-11-24,35,53,957580,IMF PortWatch FeatureServer
-2019-11-25,31,48,754161,IMF PortWatch FeatureServer
-2019-11-26,36,53,759712,IMF PortWatch FeatureServer
-2019-11-27,36,61,955628,IMF PortWatch FeatureServer
-2019-11-28,42,58,1528589,IMF PortWatch FeatureServer
-2019-11-29,37,54,850128,IMF PortWatch FeatureServer
-2019-11-30,39,55,1740179,IMF PortWatch FeatureServer
-2019-12-01,26,48,656565,IMF PortWatch FeatureServer
-2019-12-02,38,56,1700278,IMF PortWatch FeatureServer
-2019-12-03,37,56,1440368,IMF PortWatch FeatureServer
-2019-12-04,34,55,1577977,IMF PortWatch FeatureServer
-2019-12-05,31,45,314950,IMF PortWatch FeatureServer
-2019-12-06,20,37,482185,IMF PortWatch FeatureServer
-2019-12-07,30,44,804813,IMF PortWatch FeatureServer
-2019-12-08,38,56,1422352,IMF PortWatch FeatureServer
-2019-12-09,30,48,558535,IMF PortWatch FeatureServer
-2019-12-10,27,46,1725989,IMF PortWatch FeatureServer
-2019-12-11,29,51,1359005,IMF PortWatch FeatureServer
-2019-12-12,35,52,1573082,IMF PortWatch FeatureServer
-2019-12-13,39,55,1914887,IMF PortWatch FeatureServer
-2019-12-14,42,64,1992062,IMF PortWatch FeatureServer
-2019-12-15,41,70,1992952,IMF PortWatch FeatureServer
-2019-12-16,34,54,1647768,IMF PortWatch FeatureServer
-2019-12-17,36,53,1257493,IMF PortWatch FeatureServer
-2019-12-18,36,62,960329,IMF PortWatch FeatureServer
-2019-12-19,37,56,1025971,IMF PortWatch FeatureServer
-2019-12-20,44,60,694702,IMF PortWatch FeatureServer
-2019-12-21,27,55,997972,IMF PortWatch FeatureServer
-2019-12-22,38,62,1482057,IMF PortWatch FeatureServer
-2019-12-23,37,62,714849,IMF PortWatch FeatureServer
-2019-12-24,42,78,1082782,IMF PortWatch FeatureServer
-2019-12-25,41,78,645851,IMF PortWatch FeatureServer
-2019-12-26,48,76,1420075,IMF PortWatch FeatureServer
-2019-12-27,26,42,182135,IMF PortWatch FeatureServer
-2019-12-28,44,72,1752749,IMF PortWatch FeatureServer
-2019-12-29,29,52,1448796,IMF PortWatch FeatureServer
-2019-12-30,42,66,1486662,IMF PortWatch FeatureServer
-2019-12-31,41,60,2470549,IMF PortWatch FeatureServer
-2020-01-01,55,76,1988711,IMF PortWatch FeatureServer
-2020-01-02,40,67,2424528,IMF PortWatch FeatureServer
-2020-01-03,42,69,1344298,IMF PortWatch FeatureServer
-2020-01-04,40,59,1932775,IMF PortWatch FeatureServer
-2020-01-05,43,74,2289206,IMF PortWatch FeatureServer
-2020-01-06,30,56,1187729,IMF PortWatch FeatureServer
-2020-01-07,46,62,646317,IMF PortWatch FeatureServer
-2020-01-08,22,42,323119,IMF PortWatch FeatureServer
-2020-01-09,29,57,660055,IMF PortWatch FeatureServer
-2020-01-10,39,58,789236,IMF PortWatch FeatureServer
-2020-01-11,43,70,1314894,IMF PortWatch FeatureServer
-2020-01-12,31,54,518774,IMF PortWatch FeatureServer
-2020-01-13,24,58,430881,IMF PortWatch FeatureServer
-2020-01-14,30,59,541344,IMF PortWatch FeatureServer
-2020-01-15,35,58,581605,IMF PortWatch FeatureServer
-2020-01-16,24,37,202587,IMF PortWatch FeatureServer
-2020-01-17,40,69,1175153,IMF PortWatch FeatureServer
-2020-01-18,33,56,1028924,IMF PortWatch FeatureServer
-2020-01-19,35,63,1311930,IMF PortWatch FeatureServer
-2020-01-20,38,59,1550966,IMF PortWatch FeatureServer
-2020-01-21,27,60,946433,IMF PortWatch FeatureServer
-2020-01-22,34,59,941668,IMF PortWatch FeatureServer
-2020-01-23,32,56,976627,IMF PortWatch FeatureServer
-2020-01-24,42,66,1074055,IMF PortWatch FeatureServer
-2020-01-25,37,70,1651130,IMF PortWatch FeatureServer
-2020-01-26,45,71,1863795,IMF PortWatch FeatureServer
-2020-01-27,34,51,684174,IMF PortWatch FeatureServer
-2020-01-28,31,51,855530,IMF PortWatch FeatureServer
-2020-01-29,28,52,1092246,IMF PortWatch FeatureServer
-2020-01-30,39,65,1904944,IMF PortWatch FeatureServer
-2020-01-31,44,67,1869234,IMF PortWatch FeatureServer
-2020-02-01,39,63,1417157,IMF PortWatch FeatureServer
-2020-02-02,37,53,1182266,IMF PortWatch FeatureServer
-2020-02-03,45,65,2454589,IMF PortWatch FeatureServer
-2020-02-04,42,71,680144,IMF PortWatch FeatureServer
-2020-02-05,38,67,778398,IMF PortWatch FeatureServer
-2020-02-06,38,64,2547562,IMF PortWatch FeatureServer
-2020-02-07,43,71,2345476,IMF PortWatch FeatureServer
-2020-02-08,51,74,3112680,IMF PortWatch FeatureServer
-2020-02-09,25,43,1270054,IMF PortWatch FeatureServer
-2020-02-10,26,45,768755,IMF PortWatch FeatureServer
-2020-02-11,38,61,1329071,IMF PortWatch FeatureServer
-2020-02-12,32,53,456426,IMF PortWatch FeatureServer
-2020-02-13,18,39,247856,IMF PortWatch FeatureServer
-2020-02-14,24,45,463522,IMF PortWatch FeatureServer
-2020-02-15,35,54,1607406,IMF PortWatch FeatureServer
-2020-02-16,29,58,1140080,IMF PortWatch FeatureServer
-2020-02-17,52,88,2767646,IMF PortWatch FeatureServer
-2020-02-18,39,74,1442114,IMF PortWatch FeatureServer
-2020-02-19,35,57,2596577,IMF PortWatch FeatureServer
-2020-02-20,53,84,2601752,IMF PortWatch FeatureServer
-2020-02-21,32,61,1135716,IMF PortWatch FeatureServer
-2020-02-22,31,55,2733823,IMF PortWatch FeatureServer
-2020-02-23,46,64,1466615,IMF PortWatch FeatureServer
-2020-02-24,36,62,2092123,IMF PortWatch FeatureServer
-2020-02-25,33,71,1680221,IMF PortWatch FeatureServer
-2020-02-26,43,61,1373965,IMF PortWatch FeatureServer
-2020-02-27,18,30,514230,IMF PortWatch FeatureServer
-2020-02-28,40,62,882775,IMF PortWatch FeatureServer
-2020-02-29,43,75,2550798,IMF PortWatch FeatureServer
-2020-03-01,33,51,1674727,IMF PortWatch FeatureServer
-2020-03-02,47,76,3336031,IMF PortWatch FeatureServer
-2020-03-03,41,69,1548048,IMF PortWatch FeatureServer
-2020-03-04,29,44,1457336,IMF PortWatch FeatureServer
-2020-03-05,27,49,954942,IMF PortWatch FeatureServer
-2020-03-06,35,55,994516,IMF PortWatch FeatureServer
-2020-03-07,38,58,2570398,IMF PortWatch FeatureServer
-2020-03-08,53,81,1609368,IMF PortWatch FeatureServer
-2020-03-09,32,51,1535556,IMF PortWatch FeatureServer
-2020-03-10,37,49,1909210,IMF PortWatch FeatureServer
-2020-03-11,33,58,1183818,IMF PortWatch FeatureServer
-2020-03-12,40,60,2966855,IMF PortWatch FeatureServer
-2020-03-13,43,71,1787267,IMF PortWatch FeatureServer
-2020-03-14,51,77,3057265,IMF PortWatch FeatureServer
-2020-03-15,27,45,1102372,IMF PortWatch FeatureServer
-2020-03-16,22,41,1057684,IMF PortWatch FeatureServer
-2020-03-17,40,57,2300979,IMF PortWatch FeatureServer
-2020-03-18,38,61,1190879,IMF PortWatch FeatureServer
-2020-03-19,31,54,1934466,IMF PortWatch FeatureServer
-2020-03-20,38,58,2077056,IMF PortWatch FeatureServer
-2020-03-21,41,58,2034501,IMF PortWatch FeatureServer
-2020-03-22,36,58,1117800,IMF PortWatch FeatureServer
-2020-03-23,32,52,967365,IMF PortWatch FeatureServer
-2020-03-24,27,48,831255,IMF PortWatch FeatureServer
-2020-03-25,29,54,679900,IMF PortWatch FeatureServer
-2020-03-26,44,70,2566135,IMF PortWatch FeatureServer
-2020-03-27,30,47,1204831,IMF PortWatch FeatureServer
-2020-03-28,42,71,2118572,IMF PortWatch FeatureServer
-2020-03-29,31,43,1655761,IMF PortWatch FeatureServer
-2020-03-30,37,58,1112783,IMF PortWatch FeatureServer
-2020-03-31,38,61,1528259,IMF PortWatch FeatureServer
-2020-04-01,33,55,2490083,IMF PortWatch FeatureServer
-2020-04-02,49,78,2763003,IMF PortWatch FeatureServer
-2020-04-03,48,77,2928895,IMF PortWatch FeatureServer
-2020-04-04,38,61,1920097,IMF PortWatch FeatureServer
-2020-04-05,57,85,3865969,IMF PortWatch FeatureServer
-2020-04-06,51,81,2617130,IMF PortWatch FeatureServer
-2020-04-07,41,77,1014140,IMF PortWatch FeatureServer
-2020-04-08,47,85,2522187,IMF PortWatch FeatureServer
-2020-04-09,47,77,3668175,IMF PortWatch FeatureServer
-2020-04-10,44,70,1469385,IMF PortWatch FeatureServer
-2020-04-11,46,76,2981307,IMF PortWatch FeatureServer
-2020-04-12,48,70,2846843,IMF PortWatch FeatureServer
-2020-04-13,45,66,2430689,IMF PortWatch FeatureServer
-2020-04-14,32,51,2606017,IMF PortWatch FeatureServer
-2020-04-15,31,56,1076004,IMF PortWatch FeatureServer
-2020-04-16,49,67,1807543,IMF PortWatch FeatureServer
-2020-04-17,41,64,2495754,IMF PortWatch FeatureServer
-2020-04-18,42,68,1850565,IMF PortWatch FeatureServer
-2020-04-19,45,73,2732440,IMF PortWatch FeatureServer
-2020-04-20,43,65,2601499,IMF PortWatch FeatureServer
-2020-04-21,55,76,3306083,IMF PortWatch FeatureServer
-2020-04-22,30,58,238218,IMF PortWatch FeatureServer
-2020-04-23,46,70,1757547,IMF PortWatch FeatureServer
-2020-04-24,51,77,3041014,IMF PortWatch FeatureServer
-2020-04-25,50,73,2178554,IMF PortWatch FeatureServer
-2020-04-26,47,73,2467393,IMF PortWatch FeatureServer
-2020-04-27,46,68,1725397,IMF PortWatch FeatureServer
-2020-04-28,50,86,2281322,IMF PortWatch FeatureServer
-2020-04-29,37,62,2153604,IMF PortWatch FeatureServer
-2020-04-30,33,65,2053022,IMF PortWatch FeatureServer
-2020-05-01,39,66,3958899,IMF PortWatch FeatureServer
-2020-05-02,53,77,3855177,IMF PortWatch FeatureServer
-2020-05-03,44,71,2890254,IMF PortWatch FeatureServer
-2020-05-04,60,93,3124356,IMF PortWatch FeatureServer
-2020-05-05,40,66,2179256,IMF PortWatch FeatureServer
-2020-05-06,60,98,3773162,IMF PortWatch FeatureServer
-2020-05-07,46,83,1293736,IMF PortWatch FeatureServer
-2020-05-08,55,85,2874267,IMF PortWatch FeatureServer
-2020-05-09,49,84,2393375,IMF PortWatch FeatureServer
-2020-05-10,39,81,1737216,IMF PortWatch FeatureServer
-2020-05-11,56,91,3604348,IMF PortWatch FeatureServer
-2020-05-12,53,78,2357620,IMF PortWatch FeatureServer
-2020-05-13,51,80,2341268,IMF PortWatch FeatureServer
-2020-05-14,59,96,2570918,IMF PortWatch FeatureServer
-2020-05-15,46,75,2630845,IMF PortWatch FeatureServer
-2020-05-16,58,89,2698053,IMF PortWatch FeatureServer
-2020-05-17,47,83,2423074,IMF PortWatch FeatureServer
-2020-05-18,41,61,2233789,IMF PortWatch FeatureServer
-2020-05-19,53,88,2709424,IMF PortWatch FeatureServer
-2020-05-20,44,86,2307759,IMF PortWatch FeatureServer
-2020-05-21,53,85,4084718,IMF PortWatch FeatureServer
-2020-05-22,37,58,2448218,IMF PortWatch FeatureServer
-2020-05-23,48,85,1547009,IMF PortWatch FeatureServer
-2020-05-24,42,66,2173854,IMF PortWatch FeatureServer
-2020-05-25,41,74,1272705,IMF PortWatch FeatureServer
-2020-05-26,51,86,2466096,IMF PortWatch FeatureServer
-2020-05-27,47,77,2099657,IMF PortWatch FeatureServer
-2020-05-28,51,81,2222845,IMF PortWatch FeatureServer
-2020-05-29,52,78,3077328,IMF PortWatch FeatureServer
-2020-05-30,41,76,1442424,IMF PortWatch FeatureServer
-2020-05-31,55,89,3277094,IMF PortWatch FeatureServer
-2020-06-01,46,77,2434904,IMF PortWatch FeatureServer
-2020-06-02,55,91,2426621,IMF PortWatch FeatureServer
-2020-06-03,49,84,2702550,IMF PortWatch FeatureServer
-2020-06-04,65,98,3809429,IMF PortWatch FeatureServer
-2020-06-05,44,80,2427333,IMF PortWatch FeatureServer
-2020-06-06,48,76,2679981,IMF PortWatch FeatureServer
-2020-06-07,47,78,1868224,IMF PortWatch FeatureServer
-2020-06-08,44,72,2004806,IMF PortWatch FeatureServer
-2020-06-09,52,85,2323696,IMF PortWatch FeatureServer
-2020-06-10,56,93,3537632,IMF PortWatch FeatureServer
-2020-06-11,51,84,1960405,IMF PortWatch FeatureServer
-2020-06-12,54,88,3190379,IMF PortWatch FeatureServer
-2020-06-13,51,81,2436340,IMF PortWatch FeatureServer
-2020-06-14,59,97,2784261,IMF PortWatch FeatureServer
-2020-06-15,45,78,1961867,IMF PortWatch FeatureServer
-2020-06-16,50,86,2015063,IMF PortWatch FeatureServer
-2020-06-17,54,95,2238221,IMF PortWatch FeatureServer
-2020-06-18,51,77,2681114,IMF PortWatch FeatureServer
-2020-06-19,47,98,2965987,IMF PortWatch FeatureServer
-2020-06-20,57,87,2137578,IMF PortWatch FeatureServer
-2020-06-21,58,88,2826314,IMF PortWatch FeatureServer
-2020-06-22,65,96,2701263,IMF PortWatch FeatureServer
-2020-06-23,55,82,2032641,IMF PortWatch FeatureServer
-2020-06-24,46,83,2283656,IMF PortWatch FeatureServer
-2020-06-25,45,75,2526001,IMF PortWatch FeatureServer
-2020-06-26,69,97,3474632,IMF PortWatch FeatureServer
-2020-06-27,53,83,1306790,IMF PortWatch FeatureServer
-2020-06-28,41,71,1496119,IMF PortWatch FeatureServer
-2020-06-29,60,99,1573780,IMF PortWatch FeatureServer
-2020-06-30,55,93,1624856,IMF PortWatch FeatureServer
-2020-07-01,37,70,2014081,IMF PortWatch FeatureServer
-2020-07-02,40,69,1721825,IMF PortWatch FeatureServer
-2020-07-03,55,89,2888327,IMF PortWatch FeatureServer
-2020-07-04,43,81,3167920,IMF PortWatch FeatureServer
-2020-07-05,56,89,2259157,IMF PortWatch FeatureServer
-2020-07-06,43,73,2093883,IMF PortWatch FeatureServer
-2020-07-07,70,104,3693333,IMF PortWatch FeatureServer
-2020-07-08,41,70,1581283,IMF PortWatch FeatureServer
-2020-07-09,47,82,1953259,IMF PortWatch FeatureServer
-2020-07-10,51,80,2767271,IMF PortWatch FeatureServer
-2020-07-11,63,93,3918150,IMF PortWatch FeatureServer
-2020-07-12,51,80,2535302,IMF PortWatch FeatureServer
-2020-07-13,47,86,2313395,IMF PortWatch FeatureServer
-2020-07-14,54,86,2846631,IMF PortWatch FeatureServer
-2020-07-15,45,72,2740548,IMF PortWatch FeatureServer
-2020-07-16,57,83,2358881,IMF PortWatch FeatureServer
-2020-07-17,54,81,2561547,IMF PortWatch FeatureServer
-2020-07-18,55,90,2325879,IMF PortWatch FeatureServer
-2020-07-19,44,71,1567599,IMF PortWatch FeatureServer
-2020-07-20,60,95,2438701,IMF PortWatch FeatureServer
-2020-07-21,49,72,2561426,IMF PortWatch FeatureServer
-2020-07-22,44,74,1346806,IMF PortWatch FeatureServer
-2020-07-23,45,67,2327674,IMF PortWatch FeatureServer
-2020-07-24,62,94,2908969,IMF PortWatch FeatureServer
-2020-07-25,58,91,2809349,IMF PortWatch FeatureServer
-2020-07-26,56,98,1983340,IMF PortWatch FeatureServer
-2020-07-27,61,96,2107720,IMF PortWatch FeatureServer
-2020-07-28,55,78,2743651,IMF PortWatch FeatureServer
-2020-07-29,44,87,2232111,IMF PortWatch FeatureServer
-2020-07-30,65,95,3141525,IMF PortWatch FeatureServer
-2020-07-31,60,93,2500762,IMF PortWatch FeatureServer
-2020-08-01,51,80,2087924,IMF PortWatch FeatureServer
-2020-08-02,52,88,2311696,IMF PortWatch FeatureServer
-2020-08-03,59,90,2926889,IMF PortWatch FeatureServer
-2020-08-04,63,98,3009901,IMF PortWatch FeatureServer
-2020-08-05,52,84,3583615,IMF PortWatch FeatureServer
-2020-08-06,60,99,2282850,IMF PortWatch FeatureServer
-2020-08-07,54,87,3876156,IMF PortWatch FeatureServer
-2020-08-08,57,78,2639533,IMF PortWatch FeatureServer
-2020-08-09,52,86,1851121,IMF PortWatch FeatureServer
-2020-08-10,46,75,1312711,IMF PortWatch FeatureServer
-2020-08-11,52,78,2848697,IMF PortWatch FeatureServer
-2020-08-12,59,86,2379138,IMF PortWatch FeatureServer
-2020-08-13,49,85,2439258,IMF PortWatch FeatureServer
-2020-08-14,55,93,2742871,IMF PortWatch FeatureServer
-2020-08-15,76,117,3088932,IMF PortWatch FeatureServer
-2020-08-16,57,85,3675894,IMF PortWatch FeatureServer
-2020-08-17,43,80,1431769,IMF PortWatch FeatureServer
-2020-08-18,60,96,3176628,IMF PortWatch FeatureServer
-2020-08-19,51,85,2155953,IMF PortWatch FeatureServer
-2020-08-20,59,104,3312225,IMF PortWatch FeatureServer
-2020-08-21,43,67,1481148,IMF PortWatch FeatureServer
-2020-08-22,45,72,2764625,IMF PortWatch FeatureServer
-2020-08-23,55,88,2064371,IMF PortWatch FeatureServer
-2020-08-24,43,65,1290965,IMF PortWatch FeatureServer
-2020-08-25,56,74,2289426,IMF PortWatch FeatureServer
-2020-08-26,42,65,2033780,IMF PortWatch FeatureServer
-2020-08-27,41,76,1436519,IMF PortWatch FeatureServer
-2020-08-28,38,74,2168011,IMF PortWatch FeatureServer
-2020-08-29,44,83,2046014,IMF PortWatch FeatureServer
-2020-08-30,47,84,1832276,IMF PortWatch FeatureServer
-2020-08-31,43,77,2644297,IMF PortWatch FeatureServer
-2020-09-01,54,86,2638977,IMF PortWatch FeatureServer
-2020-09-02,43,81,1992833,IMF PortWatch FeatureServer
-2020-09-03,46,87,2125030,IMF PortWatch FeatureServer
-2020-09-04,57,80,3449817,IMF PortWatch FeatureServer
-2020-09-05,52,82,1618398,IMF PortWatch FeatureServer
-2020-09-06,46,91,1871421,IMF PortWatch FeatureServer
-2020-09-07,59,102,2014117,IMF PortWatch FeatureServer
-2020-09-08,52,84,1940393,IMF PortWatch FeatureServer
-2020-09-09,51,95,2929609,IMF PortWatch FeatureServer
-2020-09-10,42,86,2688601,IMF PortWatch FeatureServer
-2020-09-11,61,93,2173240,IMF PortWatch FeatureServer
-2020-09-12,55,99,3534206,IMF PortWatch FeatureServer
-2020-09-13,62,91,2923009,IMF PortWatch FeatureServer
-2020-09-14,40,67,1220274,IMF PortWatch FeatureServer
-2020-09-15,45,69,2319560,IMF PortWatch FeatureServer
-2020-09-16,51,91,1885171,IMF PortWatch FeatureServer
-2020-09-17,55,94,3937886,IMF PortWatch FeatureServer
-2020-09-18,50,84,1963906,IMF PortWatch FeatureServer
-2020-09-19,43,92,1215195,IMF PortWatch FeatureServer
-2020-09-20,57,91,2693384,IMF PortWatch FeatureServer
-2020-09-21,53,106,2552761,IMF PortWatch FeatureServer
-2020-09-22,54,95,2260655,IMF PortWatch FeatureServer
-2020-09-23,47,77,2611093,IMF PortWatch FeatureServer
-2020-09-24,57,93,2338522,IMF PortWatch FeatureServer
-2020-09-25,60,101,2817983,IMF PortWatch FeatureServer
-2020-09-26,41,83,1796742,IMF PortWatch FeatureServer
-2020-09-27,66,112,2887670,IMF PortWatch FeatureServer
-2020-09-28,40,91,1779861,IMF PortWatch FeatureServer
-2020-09-29,41,72,1891190,IMF PortWatch FeatureServer
-2020-09-30,53,94,2032495,IMF PortWatch FeatureServer
-2020-10-01,52,88,2489704,IMF PortWatch FeatureServer
-2020-10-02,54,90,2590432,IMF PortWatch FeatureServer
-2020-10-03,65,107,4027033,IMF PortWatch FeatureServer
-2020-10-04,52,88,1203023,IMF PortWatch FeatureServer
-2020-10-05,49,88,2684992,IMF PortWatch FeatureServer
-2020-10-06,72,100,2795373,IMF PortWatch FeatureServer
-2020-10-07,60,100,2456157,IMF PortWatch FeatureServer
-2020-10-08,62,108,2726675,IMF PortWatch FeatureServer
-2020-10-09,52,88,3185554,IMF PortWatch FeatureServer
-2020-10-10,47,86,1676558,IMF PortWatch FeatureServer
-2020-10-11,40,68,1577014,IMF PortWatch FeatureServer
-2020-10-12,44,77,1452391,IMF PortWatch FeatureServer
-2020-10-13,37,63,1643005,IMF PortWatch FeatureServer
-2020-10-14,40,60,1209036,IMF PortWatch FeatureServer
-2020-10-15,68,95,3484670,IMF PortWatch FeatureServer
-2020-10-16,44,72,2625611,IMF PortWatch FeatureServer
-2020-10-17,43,78,2493052,IMF PortWatch FeatureServer
-2020-10-18,57,83,2406624,IMF PortWatch FeatureServer
-2020-10-19,42,71,2326438,IMF PortWatch FeatureServer
-2020-10-20,50,86,1859726,IMF PortWatch FeatureServer
-2020-10-21,60,92,2842377,IMF PortWatch FeatureServer
-2020-10-22,53,89,2528002,IMF PortWatch FeatureServer
-2020-10-23,55,99,2346930,IMF PortWatch FeatureServer
-2020-10-24,59,97,1937829,IMF PortWatch FeatureServer
-2020-10-25,45,75,2296556,IMF PortWatch FeatureServer
-2020-10-26,53,90,2355158,IMF PortWatch FeatureServer
-2020-10-27,55,90,1550429,IMF PortWatch FeatureServer
-2020-10-28,57,94,1658470,IMF PortWatch FeatureServer
-2020-10-29,45,77,2259255,IMF PortWatch FeatureServer
-2020-10-30,58,90,2361486,IMF PortWatch FeatureServer
-2020-10-31,44,86,2633204,IMF PortWatch FeatureServer
-2020-11-01,51,86,3766666,IMF PortWatch FeatureServer
-2020-11-02,55,85,2508706,IMF PortWatch FeatureServer
-2020-11-03,52,83,3072625,IMF PortWatch FeatureServer
-2020-11-04,47,81,2680839,IMF PortWatch FeatureServer
-2020-11-05,49,88,2102578,IMF PortWatch FeatureServer
-2020-11-06,34,61,580007,IMF PortWatch FeatureServer
-2020-11-07,42,61,2235242,IMF PortWatch FeatureServer
-2020-11-08,41,57,2100018,IMF PortWatch FeatureServer
-2020-11-09,43,66,2197319,IMF PortWatch FeatureServer
-2020-11-10,59,89,1997074,IMF PortWatch FeatureServer
-2020-11-11,55,93,2881938,IMF PortWatch FeatureServer
-2020-11-12,49,71,960961,IMF PortWatch FeatureServer
-2020-11-13,31,53,1135696,IMF PortWatch FeatureServer
-2020-11-14,35,60,1371598,IMF PortWatch FeatureServer
-2020-11-15,30,53,455472,IMF PortWatch FeatureServer
-2020-11-16,27,49,715837,IMF PortWatch FeatureServer
-2020-11-17,42,64,1715650,IMF PortWatch FeatureServer
-2020-11-18,34,54,963418,IMF PortWatch FeatureServer
-2020-11-19,34,59,600973,IMF PortWatch FeatureServer
-2020-11-20,30,53,966685,IMF PortWatch FeatureServer
-2020-11-21,36,53,1649091,IMF PortWatch FeatureServer
-2020-11-22,36,65,1299060,IMF PortWatch FeatureServer
-2020-11-23,29,43,642666,IMF PortWatch FeatureServer
-2020-11-24,31,61,260933,IMF PortWatch FeatureServer
-2020-11-25,41,60,855478,IMF PortWatch FeatureServer
-2020-11-26,34,57,754613,IMF PortWatch FeatureServer
-2020-11-27,42,64,1552465,IMF PortWatch FeatureServer
-2020-11-28,44,63,689170,IMF PortWatch FeatureServer
-2020-11-29,38,57,806326,IMF PortWatch FeatureServer
-2020-11-30,38,57,607731,IMF PortWatch FeatureServer
-2020-12-01,34,56,1193412,IMF PortWatch FeatureServer
-2020-12-02,54,80,2181178,IMF PortWatch FeatureServer
-2020-12-03,56,86,3286019,IMF PortWatch FeatureServer
-2020-12-04,54,76,2418631,IMF PortWatch FeatureServer
-2020-12-05,45,71,2966443,IMF PortWatch FeatureServer
-2020-12-06,26,48,1753346,IMF PortWatch FeatureServer
-2020-12-07,41,53,1210877,IMF PortWatch FeatureServer
-2020-12-08,25,51,369612,IMF PortWatch FeatureServer
-2020-12-09,40,62,1836815,IMF PortWatch FeatureServer
-2020-12-10,30,55,930816,IMF PortWatch FeatureServer
-2020-12-11,37,59,1328077,IMF PortWatch FeatureServer
-2020-12-12,31,48,1002940,IMF PortWatch FeatureServer
-2020-12-13,35,53,719467,IMF PortWatch FeatureServer
-2020-12-14,42,59,857137,IMF PortWatch FeatureServer
-2020-12-15,29,53,1397123,IMF PortWatch FeatureServer
-2020-12-16,29,59,1029798,IMF PortWatch FeatureServer
-2020-12-17,38,55,1314917,IMF PortWatch FeatureServer
-2020-12-18,30,53,636630,IMF PortWatch FeatureServer
-2020-12-19,32,56,553076,IMF PortWatch FeatureServer
-2020-12-20,43,63,1061470,IMF PortWatch FeatureServer
-2020-12-21,32,45,1123926,IMF PortWatch FeatureServer
-2020-12-22,38,52,1731722,IMF PortWatch FeatureServer
-2020-12-23,41,67,1934185,IMF PortWatch FeatureServer
-2020-12-24,35,55,850672,IMF PortWatch FeatureServer
-2020-12-25,34,63,1786255,IMF PortWatch FeatureServer
-2020-12-26,57,71,985136,IMF PortWatch FeatureServer
-2020-12-27,39,59,1425392,IMF PortWatch FeatureServer
-2020-12-28,34,58,391817,IMF PortWatch FeatureServer
-2020-12-29,40,63,1281476,IMF PortWatch FeatureServer
-2020-12-30,43,65,1446398,IMF PortWatch FeatureServer
-2020-12-31,44,70,1832402,IMF PortWatch FeatureServer
-2021-01-01,43,66,758317,IMF PortWatch FeatureServer
-2021-01-02,43,64,1296630,IMF PortWatch FeatureServer
-2021-01-03,43,66,1545637,IMF PortWatch FeatureServer
-2021-01-04,33,51,806470,IMF PortWatch FeatureServer
-2021-01-05,47,71,2036510,IMF PortWatch FeatureServer
-2021-01-06,42,69,1018448,IMF PortWatch FeatureServer
-2021-01-07,38,59,1919987,IMF PortWatch FeatureServer
-2021-01-08,34,54,1129927,IMF PortWatch FeatureServer
-2021-01-09,40,63,935549,IMF PortWatch FeatureServer
-2021-01-10,30,43,595034,IMF PortWatch FeatureServer
-2021-01-11,39,64,825311,IMF PortWatch FeatureServer
-2021-01-12,35,59,1142436,IMF PortWatch FeatureServer
-2021-01-13,37,62,1532549,IMF PortWatch FeatureServer
-2021-01-14,37,64,1340906,IMF PortWatch FeatureServer
-2021-01-15,43,72,1583492,IMF PortWatch FeatureServer
-2021-01-16,45,66,2264517,IMF PortWatch FeatureServer
-2021-01-17,46,72,2052758,IMF PortWatch FeatureServer
-2021-01-18,46,86,2334880,IMF PortWatch FeatureServer
-2021-01-19,55,103,2120141,IMF PortWatch FeatureServer
-2021-01-20,53,82,2553224,IMF PortWatch FeatureServer
-2021-01-21,42,70,2749725,IMF PortWatch FeatureServer
-2021-01-22,33,58,1154838,IMF PortWatch FeatureServer
-2021-01-23,36,56,980782,IMF PortWatch FeatureServer
-2021-01-24,26,43,511370,IMF PortWatch FeatureServer
-2021-01-25,41,56,2600956,IMF PortWatch FeatureServer
-2021-01-26,44,61,2623826,IMF PortWatch FeatureServer
-2021-01-27,52,84,2189447,IMF PortWatch FeatureServer
-2021-01-28,52,74,2469421,IMF PortWatch FeatureServer
-2021-01-29,48,87,2136795,IMF PortWatch FeatureServer
-2021-01-30,42,69,1693139,IMF PortWatch FeatureServer
-2021-01-31,37,60,2268087,IMF PortWatch FeatureServer
-2021-02-01,39,63,1662502,IMF PortWatch FeatureServer
-2021-02-02,36,65,1320756,IMF PortWatch FeatureServer
-2021-02-03,49,68,2921095,IMF PortWatch FeatureServer
-2021-02-04,56,85,2706965,IMF PortWatch FeatureServer
-2021-02-05,46,70,2015514,IMF PortWatch FeatureServer
-2021-02-06,45,64,2892064,IMF PortWatch FeatureServer
-2021-02-07,39,63,1576669,IMF PortWatch FeatureServer
-2021-02-08,37,56,1817072,IMF PortWatch FeatureServer
-2021-02-09,50,69,2057499,IMF PortWatch FeatureServer
-2021-02-10,39,69,1392070,IMF PortWatch FeatureServer
-2021-02-11,40,78,1961727,IMF PortWatch FeatureServer
-2021-02-12,64,93,3455165,IMF PortWatch FeatureServer
-2021-02-13,47,73,2310183,IMF PortWatch FeatureServer
-2021-02-14,55,76,2887967,IMF PortWatch FeatureServer
-2021-02-15,62,102,2457892,IMF PortWatch FeatureServer
-2021-02-16,44,81,2393318,IMF PortWatch FeatureServer
-2021-02-17,45,77,1854388,IMF PortWatch FeatureServer
-2021-02-18,43,70,2071912,IMF PortWatch FeatureServer
-2021-02-19,49,78,2320106,IMF PortWatch FeatureServer
-2021-02-20,36,62,1361059,IMF PortWatch FeatureServer
-2021-02-21,29,46,832483,IMF PortWatch FeatureServer
-2021-02-22,33,60,1315157,IMF PortWatch FeatureServer
-2021-02-23,44,67,2860352,IMF PortWatch FeatureServer
-2021-02-24,30,52,467784,IMF PortWatch FeatureServer
-2021-02-25,50,76,2270680,IMF PortWatch FeatureServer
-2021-02-26,33,51,1684595,IMF PortWatch FeatureServer
-2021-02-27,40,64,787010,IMF PortWatch FeatureServer
-2021-02-28,19,36,276926,IMF PortWatch FeatureServer
-2021-03-01,42,72,1809307,IMF PortWatch FeatureServer
-2021-03-02,45,78,2112349,IMF PortWatch FeatureServer
-2021-03-03,48,80,2066534,IMF PortWatch FeatureServer
-2021-03-04,49,69,2553893,IMF PortWatch FeatureServer
-2021-03-05,44,75,2004951,IMF PortWatch FeatureServer
-2021-03-06,38,66,1716303,IMF PortWatch FeatureServer
-2021-03-07,27,40,953938,IMF PortWatch FeatureServer
-2021-03-08,33,65,1046824,IMF PortWatch FeatureServer
-2021-03-09,50,80,2398894,IMF PortWatch FeatureServer
-2021-03-10,26,43,858417,IMF PortWatch FeatureServer
-2021-03-11,53,81,3852469,IMF PortWatch FeatureServer
-2021-03-12,46,68,1390575,IMF PortWatch FeatureServer
-2021-03-13,35,60,1509569,IMF PortWatch FeatureServer
-2021-03-14,39,62,1546336,IMF PortWatch FeatureServer
-2021-03-15,49,81,2420719,IMF PortWatch FeatureServer
-2021-03-16,54,88,2776452,IMF PortWatch FeatureServer
-2021-03-17,37,57,2827332,IMF PortWatch FeatureServer
-2021-03-18,37,64,1523732,IMF PortWatch FeatureServer
-2021-03-19,53,87,2201709,IMF PortWatch FeatureServer
-2021-03-20,40,70,2254040,IMF PortWatch FeatureServer
-2021-03-21,39,59,2555770,IMF PortWatch FeatureServer
-2021-03-22,45,63,1481268,IMF PortWatch FeatureServer
-2021-03-23,45,85,1922243,IMF PortWatch FeatureServer
-2021-03-24,56,88,3165455,IMF PortWatch FeatureServer
-2021-03-25,61,90,2390031,IMF PortWatch FeatureServer
-2021-03-26,34,58,1176847,IMF PortWatch FeatureServer
-2021-03-27,53,85,2093205,IMF PortWatch FeatureServer
-2021-03-28,42,68,1656511,IMF PortWatch FeatureServer
-2021-03-29,48,80,1471125,IMF PortWatch FeatureServer
-2021-03-30,55,90,2291525,IMF PortWatch FeatureServer
-2021-03-31,52,92,2021023,IMF PortWatch FeatureServer
-2021-04-01,60,112,2489377,IMF PortWatch FeatureServer
-2021-04-02,49,80,2502396,IMF PortWatch FeatureServer
-2021-04-03,65,101,4453617,IMF PortWatch FeatureServer
-2021-04-04,63,89,3408932,IMF PortWatch FeatureServer
-2021-04-05,50,73,2007289,IMF PortWatch FeatureServer
-2021-04-06,26,59,1183906,IMF PortWatch FeatureServer
-2021-04-07,68,101,2819348,IMF PortWatch FeatureServer
-2021-04-08,63,102,2829979,IMF PortWatch FeatureServer
-2021-04-09,71,115,2465141,IMF PortWatch FeatureServer
-2021-04-10,59,94,1973746,IMF PortWatch FeatureServer
-2021-04-11,47,80,2117058,IMF PortWatch FeatureServer
-2021-04-12,42,73,2836800,IMF PortWatch FeatureServer
-2021-04-13,42,57,2460066,IMF PortWatch FeatureServer
-2021-04-14,37,57,1443194,IMF PortWatch FeatureServer
-2021-04-15,45,82,2467821,IMF PortWatch FeatureServer
-2021-04-16,58,93,2517647,IMF PortWatch FeatureServer
-2021-04-17,61,94,3224553,IMF PortWatch FeatureServer
-2021-04-18,50,83,2911981,IMF PortWatch FeatureServer
-2021-04-19,47,84,2826169,IMF PortWatch FeatureServer
-2021-04-20,62,103,3707946,IMF PortWatch FeatureServer
-2021-04-21,53,99,2472293,IMF PortWatch FeatureServer
-2021-04-22,60,105,2878984,IMF PortWatch FeatureServer
-2021-04-23,57,92,2155422,IMF PortWatch FeatureServer
-2021-04-24,59,104,2872051,IMF PortWatch FeatureServer
-2021-04-25,46,78,1959323,IMF PortWatch FeatureServer
-2021-04-26,50,74,3044301,IMF PortWatch FeatureServer
-2021-04-27,42,80,2097330,IMF PortWatch FeatureServer
-2021-04-28,47,75,2527825,IMF PortWatch FeatureServer
-2021-04-29,42,73,996553,IMF PortWatch FeatureServer
-2021-04-30,41,74,2040979,IMF PortWatch FeatureServer
-2021-05-01,34,68,1597983,IMF PortWatch FeatureServer
-2021-05-02,53,81,2017922,IMF PortWatch FeatureServer
-2021-05-03,64,85,2853367,IMF PortWatch FeatureServer
-2021-05-04,44,73,1414667,IMF PortWatch FeatureServer
-2021-05-05,38,59,2378220,IMF PortWatch FeatureServer
-2021-05-06,55,83,4242514,IMF PortWatch FeatureServer
-2021-05-07,56,94,2435667,IMF PortWatch FeatureServer
-2021-05-08,63,104,2567874,IMF PortWatch FeatureServer
-2021-05-09,49,69,2351311,IMF PortWatch FeatureServer
-2021-05-10,46,85,2480712,IMF PortWatch FeatureServer
-2021-05-11,60,101,3353633,IMF PortWatch FeatureServer
-2021-05-12,52,98,3031424,IMF PortWatch FeatureServer
-2021-05-13,69,104,3203837,IMF PortWatch FeatureServer
-2021-05-14,56,88,2827271,IMF PortWatch FeatureServer
-2021-05-15,49,63,2738005,IMF PortWatch FeatureServer
-2021-05-16,44,80,1841541,IMF PortWatch FeatureServer
-2021-05-17,46,84,1877568,IMF PortWatch FeatureServer
-2021-05-18,52,83,3475533,IMF PortWatch FeatureServer
-2021-05-19,52,86,2303558,IMF PortWatch FeatureServer
-2021-05-20,50,85,2349478,IMF PortWatch FeatureServer
-2021-05-21,49,89,3051958,IMF PortWatch FeatureServer
-2021-05-22,56,89,2793287,IMF PortWatch FeatureServer
-2021-05-23,60,86,2250044,IMF PortWatch FeatureServer
-2021-05-24,56,87,2147805,IMF PortWatch FeatureServer
-2021-05-25,50,77,3119163,IMF PortWatch FeatureServer
-2021-05-26,52,84,1616472,IMF PortWatch FeatureServer
-2021-05-27,52,86,2646773,IMF PortWatch FeatureServer
-2021-05-28,45,83,1499640,IMF PortWatch FeatureServer
-2021-05-29,56,92,2040097,IMF PortWatch FeatureServer
-2021-05-30,62,94,2511209,IMF PortWatch FeatureServer
-2021-05-31,56,91,2763244,IMF PortWatch FeatureServer
-2021-06-01,58,105,2863438,IMF PortWatch FeatureServer
-2021-06-02,61,90,2406501,IMF PortWatch FeatureServer
-2021-06-03,67,98,3087043,IMF PortWatch FeatureServer
-2021-06-04,55,97,2853996,IMF PortWatch FeatureServer
-2021-06-05,57,98,3698999,IMF PortWatch FeatureServer
-2021-06-06,46,88,1997408,IMF PortWatch FeatureServer
-2021-06-07,60,83,2669625,IMF PortWatch FeatureServer
-2021-06-08,51,74,2786037,IMF PortWatch FeatureServer
-2021-06-09,51,93,2930976,IMF PortWatch FeatureServer
-2021-06-10,44,92,1747649,IMF PortWatch FeatureServer
-2021-06-11,60,96,2967411,IMF PortWatch FeatureServer
-2021-06-12,48,93,2105518,IMF PortWatch FeatureServer
-2021-06-13,60,91,2483032,IMF PortWatch FeatureServer
-2021-06-14,48,86,3144611,IMF PortWatch FeatureServer
-2021-06-15,49,90,2358723,IMF PortWatch FeatureServer
-2021-06-16,63,104,2486275,IMF PortWatch FeatureServer
-2021-06-17,59,92,2837639,IMF PortWatch FeatureServer
-2021-06-18,68,96,3471598,IMF PortWatch FeatureServer
-2021-06-19,51,86,2724144,IMF PortWatch FeatureServer
-2021-06-20,52,89,2658482,IMF PortWatch FeatureServer
-2021-06-21,61,90,2956069,IMF PortWatch FeatureServer
-2021-06-22,65,97,2845713,IMF PortWatch FeatureServer
-2021-06-23,56,94,3489995,IMF PortWatch FeatureServer
-2021-06-24,50,84,2070315,IMF PortWatch FeatureServer
-2021-06-25,69,108,2938032,IMF PortWatch FeatureServer
-2021-06-26,50,88,2207656,IMF PortWatch FeatureServer
-2021-06-27,45,74,3195596,IMF PortWatch FeatureServer
-2021-06-28,64,94,3590437,IMF PortWatch FeatureServer
-2021-06-29,53,86,1906189,IMF PortWatch FeatureServer
-2021-06-30,56,86,2348132,IMF PortWatch FeatureServer
-2021-07-01,58,98,1878191,IMF PortWatch FeatureServer
-2021-07-02,61,93,2623401,IMF PortWatch FeatureServer
-2021-07-03,51,87,3803649,IMF PortWatch FeatureServer
-2021-07-04,50,82,2510046,IMF PortWatch FeatureServer
-2021-07-05,51,87,2574957,IMF PortWatch FeatureServer
-2021-07-06,47,78,1354947,IMF PortWatch FeatureServer
-2021-07-07,65,106,4080279,IMF PortWatch FeatureServer
-2021-07-08,48,84,2260210,IMF PortWatch FeatureServer
-2021-07-09,54,95,2422290,IMF PortWatch FeatureServer
-2021-07-10,55,82,2307435,IMF PortWatch FeatureServer
-2021-07-11,56,77,2717637,IMF PortWatch FeatureServer
-2021-07-12,58,87,2071570,IMF PortWatch FeatureServer
-2021-07-13,44,75,2759452,IMF PortWatch FeatureServer
-2021-07-14,62,92,2979381,IMF PortWatch FeatureServer
-2021-07-15,44,78,1966684,IMF PortWatch FeatureServer
-2021-07-16,51,81,2787869,IMF PortWatch FeatureServer
-2021-07-17,53,78,2067291,IMF PortWatch FeatureServer
-2021-07-18,51,71,2020902,IMF PortWatch FeatureServer
-2021-07-19,58,89,3242353,IMF PortWatch FeatureServer
-2021-07-20,60,91,2196062,IMF PortWatch FeatureServer
-2021-07-21,58,82,2303529,IMF PortWatch FeatureServer
-2021-07-22,55,86,2374883,IMF PortWatch FeatureServer
-2021-07-23,65,98,4133137,IMF PortWatch FeatureServer
-2021-07-24,38,72,1749786,IMF PortWatch FeatureServer
-2021-07-25,53,80,2253319,IMF PortWatch FeatureServer
-2021-07-26,61,95,3346304,IMF PortWatch FeatureServer
-2021-07-27,61,99,2852912,IMF PortWatch FeatureServer
-2021-07-28,68,96,3522210,IMF PortWatch FeatureServer
-2021-07-29,48,77,2650820,IMF PortWatch FeatureServer
-2021-07-30,51,84,1394975,IMF PortWatch FeatureServer
-2021-07-31,58,83,3069071,IMF PortWatch FeatureServer
-2021-08-01,49,87,1730456,IMF PortWatch FeatureServer
-2021-08-02,57,84,2665146,IMF PortWatch FeatureServer
-2021-08-03,52,93,3191420,IMF PortWatch FeatureServer
-2021-08-04,63,94,2530884,IMF PortWatch FeatureServer
-2021-08-05,55,91,2552702,IMF PortWatch FeatureServer
-2021-08-06,60,102,3006278,IMF PortWatch FeatureServer
-2021-08-07,53,91,1277717,IMF PortWatch FeatureServer
-2021-08-08,57,88,3366217,IMF PortWatch FeatureServer
-2021-08-09,53,93,2655395,IMF PortWatch FeatureServer
-2021-08-10,52,83,3183008,IMF PortWatch FeatureServer
-2021-08-11,38,68,1390788,IMF PortWatch FeatureServer
-2021-08-12,47,82,2746786,IMF PortWatch FeatureServer
-2021-08-13,55,98,3390788,IMF PortWatch FeatureServer
-2021-08-14,53,92,2867969,IMF PortWatch FeatureServer
-2021-08-15,52,80,2893769,IMF PortWatch FeatureServer
-2021-08-16,40,72,1658427,IMF PortWatch FeatureServer
-2021-08-17,42,62,2087415,IMF PortWatch FeatureServer
-2021-08-18,39,62,1976198,IMF PortWatch FeatureServer
-2021-08-19,42,75,2307645,IMF PortWatch FeatureServer
-2021-08-20,49,73,2663068,IMF PortWatch FeatureServer
-2021-08-21,62,100,4058581,IMF PortWatch FeatureServer
-2021-08-22,42,73,2504894,IMF PortWatch FeatureServer
-2021-08-23,53,84,2286313,IMF PortWatch FeatureServer
-2021-08-24,46,83,2680598,IMF PortWatch FeatureServer
-2021-08-25,41,64,2269804,IMF PortWatch FeatureServer
-2021-08-26,61,95,2641917,IMF PortWatch FeatureServer
-2021-08-27,58,93,2268679,IMF PortWatch FeatureServer
-2021-08-28,54,89,2036677,IMF PortWatch FeatureServer
-2021-08-29,47,83,2490646,IMF PortWatch FeatureServer
-2021-08-30,50,80,2653990,IMF PortWatch FeatureServer
-2021-08-31,61,94,2353788,IMF PortWatch FeatureServer
-2021-09-01,48,80,1975412,IMF PortWatch FeatureServer
-2021-09-02,58,89,3012171,IMF PortWatch FeatureServer
-2021-09-03,50,88,3308101,IMF PortWatch FeatureServer
-2021-09-04,50,78,2760683,IMF PortWatch FeatureServer
-2021-09-05,51,75,3307359,IMF PortWatch FeatureServer
-2021-09-06,44,79,2558370,IMF PortWatch FeatureServer
-2021-09-07,44,70,1838482,IMF PortWatch FeatureServer
-2021-09-08,55,87,2301806,IMF PortWatch FeatureServer
-2021-09-09,59,95,2693979,IMF PortWatch FeatureServer
-2021-09-10,50,79,2222447,IMF PortWatch FeatureServer
-2021-09-11,43,75,2039938,IMF PortWatch FeatureServer
-2021-09-12,46,75,1605431,IMF PortWatch FeatureServer
-2021-09-13,53,80,2982585,IMF PortWatch FeatureServer
-2021-09-14,56,96,2225294,IMF PortWatch FeatureServer
-2021-09-15,56,94,2896228,IMF PortWatch FeatureServer
-2021-09-16,65,110,3711283,IMF PortWatch FeatureServer
-2021-09-17,53,94,2466735,IMF PortWatch FeatureServer
-2021-09-18,60,102,3204525,IMF PortWatch FeatureServer
-2021-09-19,53,76,2744624,IMF PortWatch FeatureServer
-2021-09-20,58,83,2547622,IMF PortWatch FeatureServer
-2021-09-21,45,76,2003521,IMF PortWatch FeatureServer
-2021-09-22,47,88,2547811,IMF PortWatch FeatureServer
-2021-09-23,52,79,3029766,IMF PortWatch FeatureServer
-2021-09-24,59,99,3067845,IMF PortWatch FeatureServer
-2021-09-25,69,110,3159849,IMF PortWatch FeatureServer
-2021-09-26,59,84,2245190,IMF PortWatch FeatureServer
-2021-09-27,43,72,2631270,IMF PortWatch FeatureServer
-2021-09-28,50,82,2175559,IMF PortWatch FeatureServer
-2021-09-29,58,105,2354460,IMF PortWatch FeatureServer
-2021-09-30,57,99,2538310,IMF PortWatch FeatureServer
-2021-10-01,53,89,2311310,IMF PortWatch FeatureServer
-2021-10-02,58,86,1832229,IMF PortWatch FeatureServer
-2021-10-03,43,53,2389205,IMF PortWatch FeatureServer
-2021-10-04,46,79,3117513,IMF PortWatch FeatureServer
-2021-10-05,51,90,3327564,IMF PortWatch FeatureServer
-2021-10-06,58,97,2369897,IMF PortWatch FeatureServer
-2021-10-07,52,86,2706090,IMF PortWatch FeatureServer
-2021-10-08,76,114,3600673,IMF PortWatch FeatureServer
-2021-10-09,64,101,3403837,IMF PortWatch FeatureServer
-2021-10-10,54,94,2482762,IMF PortWatch FeatureServer
-2021-10-11,25,37,1765961,IMF PortWatch FeatureServer
-2021-10-12,46,69,3166867,IMF PortWatch FeatureServer
-2021-10-13,43,84,2052860,IMF PortWatch FeatureServer
-2021-10-14,62,95,2828305,IMF PortWatch FeatureServer
-2021-10-15,71,104,3117390,IMF PortWatch FeatureServer
-2021-10-16,58,95,1843725,IMF PortWatch FeatureServer
-2021-10-17,41,72,3346968,IMF PortWatch FeatureServer
-2021-10-18,63,88,3357944,IMF PortWatch FeatureServer
-2021-10-19,43,73,1568097,IMF PortWatch FeatureServer
-2021-10-20,51,91,3103699,IMF PortWatch FeatureServer
-2021-10-21,51,81,1928925,IMF PortWatch FeatureServer
-2021-10-22,45,65,2202915,IMF PortWatch FeatureServer
-2021-10-23,42,83,1352732,IMF PortWatch FeatureServer
-2021-10-24,53,86,2389266,IMF PortWatch FeatureServer
-2021-10-25,45,64,2639374,IMF PortWatch FeatureServer
-2021-10-26,40,71,2147647,IMF PortWatch FeatureServer
-2021-10-27,42,59,1666137,IMF PortWatch FeatureServer
-2021-10-28,38,64,2296911,IMF PortWatch FeatureServer
-2021-10-29,36,70,3136336,IMF PortWatch FeatureServer
-2021-10-30,54,84,3320742,IMF PortWatch FeatureServer
-2021-10-31,53,80,2255231,IMF PortWatch FeatureServer
-2021-11-01,69,104,2542885,IMF PortWatch FeatureServer
-2021-11-02,45,83,2177240,IMF PortWatch FeatureServer
-2021-11-03,54,93,2769662,IMF PortWatch FeatureServer
-2021-11-04,48,67,2086399,IMF PortWatch FeatureServer
-2021-11-05,54,79,2348757,IMF PortWatch FeatureServer
-2021-11-06,34,56,1142157,IMF PortWatch FeatureServer
-2021-11-07,24,44,1663783,IMF PortWatch FeatureServer
-2021-11-08,31,53,933315,IMF PortWatch FeatureServer
-2021-11-09,53,94,3061994,IMF PortWatch FeatureServer
-2021-11-10,47,83,2065283,IMF PortWatch FeatureServer
-2021-11-11,61,98,3667099,IMF PortWatch FeatureServer
-2021-11-12,41,72,2611193,IMF PortWatch FeatureServer
-2021-11-13,51,88,2417494,IMF PortWatch FeatureServer
-2021-11-14,53,81,3034571,IMF PortWatch FeatureServer
-2021-11-15,52,86,2076729,IMF PortWatch FeatureServer
-2021-11-16,64,94,4017453,IMF PortWatch FeatureServer
-2021-11-17,62,84,2586854,IMF PortWatch FeatureServer
-2021-11-18,33,74,930099,IMF PortWatch FeatureServer
-2021-11-19,52,83,2842185,IMF PortWatch FeatureServer
-2021-11-20,60,87,3093121,IMF PortWatch FeatureServer
-2021-11-21,59,93,1716403,IMF PortWatch FeatureServer
-2021-11-22,59,97,4097307,IMF PortWatch FeatureServer
-2021-11-23,66,108,3410227,IMF PortWatch FeatureServer
-2021-11-24,52,88,2235607,IMF PortWatch FeatureServer
-2021-11-25,62,104,2518037,IMF PortWatch FeatureServer
-2021-11-26,61,102,3091088,IMF PortWatch FeatureServer
-2021-11-27,52,99,2894177,IMF PortWatch FeatureServer
-2021-11-28,43,67,2374496,IMF PortWatch FeatureServer
-2021-11-29,50,86,2570814,IMF PortWatch FeatureServer
-2021-11-30,39,70,1990814,IMF PortWatch FeatureServer
-2021-12-01,57,88,3010003,IMF PortWatch FeatureServer
-2021-12-02,43,71,2356215,IMF PortWatch FeatureServer
-2021-12-03,66,95,3821872,IMF PortWatch FeatureServer
-2021-12-04,46,73,2017014,IMF PortWatch FeatureServer
-2021-12-05,50,82,3477313,IMF PortWatch FeatureServer
-2021-12-06,42,61,2007603,IMF PortWatch FeatureServer
-2021-12-07,54,71,2510675,IMF PortWatch FeatureServer
-2021-12-08,39,60,2352832,IMF PortWatch FeatureServer
-2021-12-09,65,101,3288546,IMF PortWatch FeatureServer
-2021-12-10,55,88,3511157,IMF PortWatch FeatureServer
-2021-12-11,46,73,2012373,IMF PortWatch FeatureServer
-2021-12-12,51,77,2446825,IMF PortWatch FeatureServer
-2021-12-13,43,64,3673561,IMF PortWatch FeatureServer
-2021-12-14,57,86,2428945,IMF PortWatch FeatureServer
-2021-12-15,56,87,2760748,IMF PortWatch FeatureServer
-2021-12-16,35,57,1673578,IMF PortWatch FeatureServer
-2021-12-17,38,70,1826548,IMF PortWatch FeatureServer
-2021-12-18,59,99,2994636,IMF PortWatch FeatureServer
-2021-12-19,60,91,2671855,IMF PortWatch FeatureServer
-2021-12-20,49,78,1991382,IMF PortWatch FeatureServer
-2021-12-21,40,61,1062020,IMF PortWatch FeatureServer
-2021-12-22,42,71,3253692,IMF PortWatch FeatureServer
-2021-12-23,48,75,1537911,IMF PortWatch FeatureServer
-2021-12-24,64,98,3443681,IMF PortWatch FeatureServer
-2021-12-25,60,102,3417295,IMF PortWatch FeatureServer
-2021-12-26,49,86,2453843,IMF PortWatch FeatureServer
-2021-12-27,43,63,1936635,IMF PortWatch FeatureServer
-2021-12-28,45,69,2715834,IMF PortWatch FeatureServer
-2021-12-29,53,89,3304059,IMF PortWatch FeatureServer
-2021-12-30,43,65,2880154,IMF PortWatch FeatureServer
-2021-12-31,55,83,1741951,IMF PortWatch FeatureServer
-2022-01-01,39,60,2792960,IMF PortWatch FeatureServer
-2022-01-02,51,76,2154226,IMF PortWatch FeatureServer
-2022-01-03,54,73,3817549,IMF PortWatch FeatureServer
-2022-01-04,47,73,2019310,IMF PortWatch FeatureServer
-2022-01-05,46,76,2945916,IMF PortWatch FeatureServer
-2022-01-06,43,71,1162995,IMF PortWatch FeatureServer
-2022-01-07,44,66,2818187,IMF PortWatch FeatureServer
-2022-01-08,47,74,2806786,IMF PortWatch FeatureServer
-2022-01-09,62,82,3119552,IMF PortWatch FeatureServer
-2022-01-10,58,89,3394777,IMF PortWatch FeatureServer
-2022-01-11,47,71,2882543,IMF PortWatch FeatureServer
-2022-01-12,48,88,2196878,IMF PortWatch FeatureServer
-2022-01-13,58,77,2511275,IMF PortWatch FeatureServer
-2022-01-14,55,88,2777756,IMF PortWatch FeatureServer
-2022-01-15,45,70,2892083,IMF PortWatch FeatureServer
-2022-01-16,52,85,1950887,IMF PortWatch FeatureServer
-2022-01-17,49,75,3410981,IMF PortWatch FeatureServer
-2022-01-18,55,85,2485772,IMF PortWatch FeatureServer
-2022-01-19,44,82,1845604,IMF PortWatch FeatureServer
-2022-01-20,56,83,4371885,IMF PortWatch FeatureServer
-2022-01-21,49,70,2015734,IMF PortWatch FeatureServer
-2022-01-22,37,65,2010085,IMF PortWatch FeatureServer
-2022-01-23,39,71,1704688,IMF PortWatch FeatureServer
-2022-01-24,50,79,2549753,IMF PortWatch FeatureServer
-2022-01-25,60,89,3912134,IMF PortWatch FeatureServer
-2022-01-26,59,95,2730131,IMF PortWatch FeatureServer
-2022-01-27,66,99,3154085,IMF PortWatch FeatureServer
-2022-01-28,53,86,3749291,IMF PortWatch FeatureServer
-2022-01-29,68,103,2970060,IMF PortWatch FeatureServer
-2022-01-30,53,90,2347889,IMF PortWatch FeatureServer
-2022-01-31,53,89,2381643,IMF PortWatch FeatureServer
-2022-02-01,50,93,2347361,IMF PortWatch FeatureServer
-2022-02-02,56,88,3235562,IMF PortWatch FeatureServer
-2022-02-03,66,104,3133138,IMF PortWatch FeatureServer
-2022-02-04,63,98,3067891,IMF PortWatch FeatureServer
-2022-02-05,64,102,3317494,IMF PortWatch FeatureServer
-2022-02-06,53,84,2930168,IMF PortWatch FeatureServer
-2022-02-07,48,70,1800448,IMF PortWatch FeatureServer
-2022-02-08,54,98,2004839,IMF PortWatch FeatureServer
-2022-02-09,62,100,4138534,IMF PortWatch FeatureServer
-2022-02-10,54,92,2721007,IMF PortWatch FeatureServer
-2022-02-11,66,107,4329925,IMF PortWatch FeatureServer
-2022-02-12,65,106,3328419,IMF PortWatch FeatureServer
-2022-02-13,48,84,2036856,IMF PortWatch FeatureServer
-2022-02-14,53,78,2792032,IMF PortWatch FeatureServer
-2022-02-15,59,90,3090961,IMF PortWatch FeatureServer
-2022-02-16,53,101,2552118,IMF PortWatch FeatureServer
-2022-02-17,60,98,3194031,IMF PortWatch FeatureServer
-2022-02-18,56,93,3016880,IMF PortWatch FeatureServer
-2022-02-19,55,109,2688981,IMF PortWatch FeatureServer
-2022-02-20,69,99,3020171,IMF PortWatch FeatureServer
-2022-02-21,65,90,3833614,IMF PortWatch FeatureServer
-2022-02-22,58,78,2531891,IMF PortWatch FeatureServer
-2022-02-23,63,104,2190238,IMF PortWatch FeatureServer
-2022-02-24,50,90,2228851,IMF PortWatch FeatureServer
-2022-02-25,72,115,4284399,IMF PortWatch FeatureServer
-2022-02-26,64,99,3419909,IMF PortWatch FeatureServer
-2022-02-27,60,93,2929831,IMF PortWatch FeatureServer
-2022-02-28,42,71,1092434,IMF PortWatch FeatureServer
-2022-03-01,44,77,1860683,IMF PortWatch FeatureServer
-2022-03-02,56,84,2441547,IMF PortWatch FeatureServer
-2022-03-03,68,106,5120938,IMF PortWatch FeatureServer
-2022-03-04,54,89,1962512,IMF PortWatch FeatureServer
-2022-03-05,56,82,3771276,IMF PortWatch FeatureServer
-2022-03-06,61,99,2826339,IMF PortWatch FeatureServer
-2022-03-07,51,83,2384077,IMF PortWatch FeatureServer
-2022-03-08,63,96,3356148,IMF PortWatch FeatureServer
-2022-03-09,49,80,3207908,IMF PortWatch FeatureServer
-2022-03-10,67,112,2742943,IMF PortWatch FeatureServer
-2022-03-11,61,101,3252756,IMF PortWatch FeatureServer
-2022-03-12,52,102,3154091,IMF PortWatch FeatureServer
-2022-03-13,75,113,3907554,IMF PortWatch FeatureServer
-2022-03-14,64,109,2640731,IMF PortWatch FeatureServer
-2022-03-15,53,94,2569070,IMF PortWatch FeatureServer
-2022-03-16,70,106,3746923,IMF PortWatch FeatureServer
-2022-03-17,45,82,2136689,IMF PortWatch FeatureServer
-2022-03-18,39,53,1839557,IMF PortWatch FeatureServer
-2022-03-19,49,84,2646137,IMF PortWatch FeatureServer
-2022-03-20,54,85,2176373,IMF PortWatch FeatureServer
-2022-03-21,62,104,2577861,IMF PortWatch FeatureServer
-2022-03-22,61,99,3733690,IMF PortWatch FeatureServer
-2022-03-23,77,113,4030701,IMF PortWatch FeatureServer
-2022-03-24,70,117,3919248,IMF PortWatch FeatureServer
-2022-03-25,65,108,3489125,IMF PortWatch FeatureServer
-2022-03-26,67,103,3896175,IMF PortWatch FeatureServer
-2022-03-27,59,92,2014523,IMF PortWatch FeatureServer
-2022-03-28,47,73,2427290,IMF PortWatch FeatureServer
-2022-03-29,44,71,1607512,IMF PortWatch FeatureServer
-2022-03-30,37,72,1590908,IMF PortWatch FeatureServer
-2022-03-31,67,107,4692245,IMF PortWatch FeatureServer
-2022-04-01,74,111,3535991,IMF PortWatch FeatureServer
-2022-04-02,70,120,3174037,IMF PortWatch FeatureServer
-2022-04-03,69,101,3422579,IMF PortWatch FeatureServer
-2022-04-04,68,103,4870628,IMF PortWatch FeatureServer
-2022-04-05,57,103,1738993,IMF PortWatch FeatureServer
-2022-04-06,71,111,3424476,IMF PortWatch FeatureServer
-2022-04-07,67,100,3222741,IMF PortWatch FeatureServer
-2022-04-08,56,91,2820187,IMF PortWatch FeatureServer
-2022-04-09,59,105,4204545,IMF PortWatch FeatureServer
-2022-04-10,59,104,3638681,IMF PortWatch FeatureServer
-2022-04-11,57,86,2508343,IMF PortWatch FeatureServer
-2022-04-12,68,102,2855345,IMF PortWatch FeatureServer
-2022-04-13,54,101,2968139,IMF PortWatch FeatureServer
-2022-04-14,65,108,3155548,IMF PortWatch FeatureServer
-2022-04-15,73,98,2704923,IMF PortWatch FeatureServer
-2022-04-16,58,92,2383068,IMF PortWatch FeatureServer
-2022-04-17,67,98,4736329,IMF PortWatch FeatureServer
-2022-04-18,57,93,2520414,IMF PortWatch FeatureServer
-2022-04-19,63,97,3610334,IMF PortWatch FeatureServer
-2022-04-20,67,100,3577762,IMF PortWatch FeatureServer
-2022-04-21,47,93,2287135,IMF PortWatch FeatureServer
-2022-04-22,66,102,3240763,IMF PortWatch FeatureServer
-2022-04-23,73,114,3627524,IMF PortWatch FeatureServer
-2022-04-24,49,91,2493985,IMF PortWatch FeatureServer
-2022-04-25,59,95,2996226,IMF PortWatch FeatureServer
-2022-04-26,74,112,3062229,IMF PortWatch FeatureServer
-2022-04-27,68,104,3131469,IMF PortWatch FeatureServer
-2022-04-28,54,100,3230740,IMF PortWatch FeatureServer
-2022-04-29,62,97,2908018,IMF PortWatch FeatureServer
-2022-04-30,54,83,2405878,IMF PortWatch FeatureServer
-2022-05-01,60,92,1917539,IMF PortWatch FeatureServer
-2022-05-02,53,90,2567943,IMF PortWatch FeatureServer
-2022-05-03,66,96,3962050,IMF PortWatch FeatureServer
-2022-05-04,59,98,2279824,IMF PortWatch FeatureServer
-2022-05-05,69,106,2765187,IMF PortWatch FeatureServer
-2022-05-06,61,116,3172169,IMF PortWatch FeatureServer
-2022-05-07,66,110,2819907,IMF PortWatch FeatureServer
-2022-05-08,57,103,3661890,IMF PortWatch FeatureServer
-2022-05-09,61,91,2662827,IMF PortWatch FeatureServer
-2022-05-10,45,85,2339795,IMF PortWatch FeatureServer
-2022-05-11,65,103,3574313,IMF PortWatch FeatureServer
-2022-05-12,60,96,3430046,IMF PortWatch FeatureServer
-2022-05-13,32,56,1838170,IMF PortWatch FeatureServer
-2022-05-14,59,95,2425821,IMF PortWatch FeatureServer
-2022-05-15,46,70,2215638,IMF PortWatch FeatureServer
-2022-05-16,58,95,1912391,IMF PortWatch FeatureServer
-2022-05-17,62,108,3895466,IMF PortWatch FeatureServer
-2022-05-18,62,96,2130367,IMF PortWatch FeatureServer
-2022-05-19,60,106,2978587,IMF PortWatch FeatureServer
-2022-05-20,59,97,2553192,IMF PortWatch FeatureServer
-2022-05-21,59,106,3109559,IMF PortWatch FeatureServer
-2022-05-22,66,89,3895113,IMF PortWatch FeatureServer
-2022-05-23,62,88,2886446,IMF PortWatch FeatureServer
-2022-05-24,60,95,3210856,IMF PortWatch FeatureServer
-2022-05-25,52,90,2700948,IMF PortWatch FeatureServer
-2022-05-26,58,87,1576842,IMF PortWatch FeatureServer
-2022-05-27,70,107,4028117,IMF PortWatch FeatureServer
-2022-05-28,66,98,2643847,IMF PortWatch FeatureServer
-2022-05-29,62,103,3193880,IMF PortWatch FeatureServer
-2022-05-30,64,99,2555903,IMF PortWatch FeatureServer
-2022-05-31,65,97,2454506,IMF PortWatch FeatureServer
-2022-06-01,61,102,2315085,IMF PortWatch FeatureServer
-2022-06-02,71,116,3678818,IMF PortWatch FeatureServer
-2022-06-03,62,101,4160358,IMF PortWatch FeatureServer
-2022-06-04,48,87,1626351,IMF PortWatch FeatureServer
-2022-06-05,61,97,3412500,IMF PortWatch FeatureServer
-2022-06-06,67,96,2167050,IMF PortWatch FeatureServer
-2022-06-07,64,108,3763683,IMF PortWatch FeatureServer
-2022-06-08,64,119,3132889,IMF PortWatch FeatureServer
-2022-06-09,62,89,1805347,IMF PortWatch FeatureServer
-2022-06-10,79,120,4313716,IMF PortWatch FeatureServer
-2022-06-11,52,85,3401109,IMF PortWatch FeatureServer
-2022-06-12,60,88,2142259,IMF PortWatch FeatureServer
-2022-06-13,41,63,2106555,IMF PortWatch FeatureServer
-2022-06-14,68,109,5025407,IMF PortWatch FeatureServer
-2022-06-15,68,107,3338232,IMF PortWatch FeatureServer
-2022-06-16,69,111,3466191,IMF PortWatch FeatureServer
-2022-06-17,60,98,2183568,IMF PortWatch FeatureServer
-2022-06-18,52,84,3176625,IMF PortWatch FeatureServer
-2022-06-19,68,102,2697006,IMF PortWatch FeatureServer
-2022-06-20,56,93,2882250,IMF PortWatch FeatureServer
-2022-06-21,48,85,1511933,IMF PortWatch FeatureServer
-2022-06-22,63,106,4099101,IMF PortWatch FeatureServer
-2022-06-23,47,89,2038388,IMF PortWatch FeatureServer
-2022-06-24,50,85,3800553,IMF PortWatch FeatureServer
-2022-06-25,68,118,3422479,IMF PortWatch FeatureServer
-2022-06-26,63,94,3771129,IMF PortWatch FeatureServer
-2022-06-27,72,109,3021130,IMF PortWatch FeatureServer
-2022-06-28,54,90,2273120,IMF PortWatch FeatureServer
-2022-06-29,57,99,2175875,IMF PortWatch FeatureServer
-2022-06-30,74,116,3226950,IMF PortWatch FeatureServer
-2022-07-01,55,93,2465171,IMF PortWatch FeatureServer
-2022-07-02,55,92,3714434,IMF PortWatch FeatureServer
-2022-07-03,59,88,4103430,IMF PortWatch FeatureServer
-2022-07-04,71,111,3592687,IMF PortWatch FeatureServer
-2022-07-05,58,84,3274990,IMF PortWatch FeatureServer
-2022-07-06,57,96,2313670,IMF PortWatch FeatureServer
-2022-07-07,50,80,3080036,IMF PortWatch FeatureServer
-2022-07-08,66,100,4261633,IMF PortWatch FeatureServer
-2022-07-09,55,96,2954944,IMF PortWatch FeatureServer
-2022-07-10,55,85,2626293,IMF PortWatch FeatureServer
-2022-07-11,56,83,2966753,IMF PortWatch FeatureServer
-2022-07-12,48,80,2279545,IMF PortWatch FeatureServer
-2022-07-13,48,87,2131613,IMF PortWatch FeatureServer
-2022-07-14,78,117,3533686,IMF PortWatch FeatureServer
-2022-07-15,76,106,4607232,IMF PortWatch FeatureServer
-2022-07-16,55,96,3083197,IMF PortWatch FeatureServer
-2022-07-17,61,93,2955510,IMF PortWatch FeatureServer
-2022-07-18,66,103,3493344,IMF PortWatch FeatureServer
-2022-07-19,47,72,2552005,IMF PortWatch FeatureServer
-2022-07-20,61,100,3730238,IMF PortWatch FeatureServer
-2022-07-21,72,112,2751124,IMF PortWatch FeatureServer
-2022-07-22,58,80,2961657,IMF PortWatch FeatureServer
-2022-07-23,57,87,2980929,IMF PortWatch FeatureServer
-2022-07-24,64,97,2343755,IMF PortWatch FeatureServer
-2022-07-25,62,94,3022195,IMF PortWatch FeatureServer
-2022-07-26,64,104,2507512,IMF PortWatch FeatureServer
-2022-07-27,62,88,2963686,IMF PortWatch FeatureServer
-2022-07-28,49,83,2475914,IMF PortWatch FeatureServer
-2022-07-29,46,80,2563885,IMF PortWatch FeatureServer
-2022-07-30,64,101,2559153,IMF PortWatch FeatureServer
-2022-07-31,60,101,3675096,IMF PortWatch FeatureServer
-2022-08-01,55,90,3466531,IMF PortWatch FeatureServer
-2022-08-02,50,98,2153204,IMF PortWatch FeatureServer
-2022-08-03,61,115,2338951,IMF PortWatch FeatureServer
-2022-08-04,58,103,3127695,IMF PortWatch FeatureServer
-2022-08-05,71,112,3800412,IMF PortWatch FeatureServer
-2022-08-06,61,95,3447564,IMF PortWatch FeatureServer
-2022-08-07,65,102,1959682,IMF PortWatch FeatureServer
-2022-08-08,53,95,3392709,IMF PortWatch FeatureServer
-2022-08-09,49,88,1914035,IMF PortWatch FeatureServer
-2022-08-10,72,110,3865102,IMF PortWatch FeatureServer
-2022-08-11,67,109,2860910,IMF PortWatch FeatureServer
-2022-08-12,66,101,2840081,IMF PortWatch FeatureServer
-2022-08-13,59,98,2427151,IMF PortWatch FeatureServer
-2022-08-14,54,86,3439456,IMF PortWatch FeatureServer
-2022-08-15,62,98,2384601,IMF PortWatch FeatureServer
-2022-08-16,63,104,3083127,IMF PortWatch FeatureServer
-2022-08-17,72,118,4335243,IMF PortWatch FeatureServer
-2022-08-18,65,104,3176972,IMF PortWatch FeatureServer
-2022-08-19,72,125,2542736,IMF PortWatch FeatureServer
-2022-08-20,66,98,2869528,IMF PortWatch FeatureServer
-2022-08-21,55,88,3124429,IMF PortWatch FeatureServer
-2022-08-22,54,92,3171139,IMF PortWatch FeatureServer
-2022-08-23,65,105,2441331,IMF PortWatch FeatureServer
-2022-08-24,62,103,3560381,IMF PortWatch FeatureServer
-2022-08-25,68,111,2515229,IMF PortWatch FeatureServer
-2022-08-26,61,110,3671079,IMF PortWatch FeatureServer
-2022-08-27,62,114,3309485,IMF PortWatch FeatureServer
-2022-08-28,70,122,3241982,IMF PortWatch FeatureServer
-2022-08-29,61,102,3308327,IMF PortWatch FeatureServer
-2022-08-30,58,105,1947092,IMF PortWatch FeatureServer
-2022-08-31,63,102,5053925,IMF PortWatch FeatureServer
-2022-09-01,68,118,3261814,IMF PortWatch FeatureServer
-2022-09-02,65,100,3327977,IMF PortWatch FeatureServer
-2022-09-03,64,108,3930097,IMF PortWatch FeatureServer
-2022-09-04,63,104,4233805,IMF PortWatch FeatureServer
-2022-09-05,63,93,4302572,IMF PortWatch FeatureServer
-2022-09-06,51,94,1525854,IMF PortWatch FeatureServer
-2022-09-07,45,80,2431216,IMF PortWatch FeatureServer
-2022-09-08,52,89,3751378,IMF PortWatch FeatureServer
-2022-09-09,56,105,2650359,IMF PortWatch FeatureServer
-2022-09-10,71,108,2560909,IMF PortWatch FeatureServer
-2022-09-11,72,97,3497274,IMF PortWatch FeatureServer
-2022-09-12,68,115,2898975,IMF PortWatch FeatureServer
-2022-09-13,60,96,2962287,IMF PortWatch FeatureServer
-2022-09-14,55,113,3102888,IMF PortWatch FeatureServer
-2022-09-15,70,112,4008714,IMF PortWatch FeatureServer
-2022-09-16,69,106,2222365,IMF PortWatch FeatureServer
-2022-09-17,57,86,2370902,IMF PortWatch FeatureServer
-2022-09-18,46,85,2723124,IMF PortWatch FeatureServer
-2022-09-19,45,74,2268901,IMF PortWatch FeatureServer
-2022-09-20,60,101,3187709,IMF PortWatch FeatureServer
-2022-09-21,62,95,3013860,IMF PortWatch FeatureServer
-2022-09-22,60,90,2594417,IMF PortWatch FeatureServer
-2022-09-23,68,101,2481434,IMF PortWatch FeatureServer
-2022-09-24,63,121,3194479,IMF PortWatch FeatureServer
-2022-09-25,73,109,3916092,IMF PortWatch FeatureServer
-2022-09-26,51,100,1540557,IMF PortWatch FeatureServer
-2022-09-27,49,80,2052226,IMF PortWatch FeatureServer
-2022-09-28,59,88,2529130,IMF PortWatch FeatureServer
-2022-09-29,63,92,2712618,IMF PortWatch FeatureServer
-2022-09-30,61,98,3480062,IMF PortWatch FeatureServer
-2022-10-01,61,94,3620718,IMF PortWatch FeatureServer
-2022-10-02,54,93,2173620,IMF PortWatch FeatureServer
-2022-10-03,55,82,4019379,IMF PortWatch FeatureServer
-2022-10-04,56,89,4039750,IMF PortWatch FeatureServer
-2022-10-05,66,109,3352375,IMF PortWatch FeatureServer
-2022-10-06,50,85,1949122,IMF PortWatch FeatureServer
-2022-10-07,63,108,3030196,IMF PortWatch FeatureServer
-2022-10-08,61,99,2478850,IMF PortWatch FeatureServer
-2022-10-09,60,98,2501148,IMF PortWatch FeatureServer
-2022-10-10,51,95,2333721,IMF PortWatch FeatureServer
-2022-10-11,56,94,1949614,IMF PortWatch FeatureServer
-2022-10-12,67,114,3288702,IMF PortWatch FeatureServer
-2022-10-13,65,103,3305308,IMF PortWatch FeatureServer
-2022-10-14,57,103,2269104,IMF PortWatch FeatureServer
-2022-10-15,66,108,3381621,IMF PortWatch FeatureServer
-2022-10-16,61,96,3671928,IMF PortWatch FeatureServer
-2022-10-17,66,107,4327157,IMF PortWatch FeatureServer
-2022-10-18,54,100,2172782,IMF PortWatch FeatureServer
-2022-10-19,72,114,3353753,IMF PortWatch FeatureServer
-2022-10-20,58,89,2348272,IMF PortWatch FeatureServer
-2022-10-21,67,109,2702935,IMF PortWatch FeatureServer
-2022-10-22,60,99,2954589,IMF PortWatch FeatureServer
-2022-10-23,71,118,1808463,IMF PortWatch FeatureServer
-2022-10-24,71,104,4501770,IMF PortWatch FeatureServer
-2022-10-25,64,111,2979996,IMF PortWatch FeatureServer
-2022-10-26,69,108,3389940,IMF PortWatch FeatureServer
-2022-10-27,70,114,3174477,IMF PortWatch FeatureServer
-2022-10-28,77,123,3651303,IMF PortWatch FeatureServer
-2022-10-29,59,87,2892501,IMF PortWatch FeatureServer
-2022-10-30,60,106,3074569,IMF PortWatch FeatureServer
-2022-10-31,46,75,2324696,IMF PortWatch FeatureServer
-2022-11-01,54,95,3623551,IMF PortWatch FeatureServer
-2022-11-02,59,88,3735233,IMF PortWatch FeatureServer
-2022-11-03,61,107,3125065,IMF PortWatch FeatureServer
-2022-11-04,43,71,2941586,IMF PortWatch FeatureServer
-2022-11-05,49,79,2504483,IMF PortWatch FeatureServer
-2022-11-06,44,76,2863904,IMF PortWatch FeatureServer
-2022-11-07,52,87,2595177,IMF PortWatch FeatureServer
-2022-11-08,60,98,2314018,IMF PortWatch FeatureServer
-2022-11-09,45,72,3100576,IMF PortWatch FeatureServer
-2022-11-10,54,93,3014190,IMF PortWatch FeatureServer
-2022-11-11,74,117,3807063,IMF PortWatch FeatureServer
-2022-11-12,46,89,2142064,IMF PortWatch FeatureServer
-2022-11-13,49,75,3233964,IMF PortWatch FeatureServer
-2022-11-14,34,57,1186104,IMF PortWatch FeatureServer
-2022-11-15,47,70,2515694,IMF PortWatch FeatureServer
-2022-11-16,46,88,3758967,IMF PortWatch FeatureServer
-2022-11-17,66,99,3998417,IMF PortWatch FeatureServer
-2022-11-18,59,101,2605425,IMF PortWatch FeatureServer
-2022-11-19,34,55,1324729,IMF PortWatch FeatureServer
-2022-11-20,59,88,2270513,IMF PortWatch FeatureServer
-2022-11-21,37,62,1880843,IMF PortWatch FeatureServer
-2022-11-22,46,71,1280215,IMF PortWatch FeatureServer
-2022-11-23,46,91,2958695,IMF PortWatch FeatureServer
-2022-11-24,49,77,2916907,IMF PortWatch FeatureServer
-2022-11-25,57,85,2064616,IMF PortWatch FeatureServer
-2022-11-26,39,67,1968528,IMF PortWatch FeatureServer
-2022-11-27,57,91,2641411,IMF PortWatch FeatureServer
-2022-11-28,57,96,1770692,IMF PortWatch FeatureServer
-2022-11-29,57,100,2559702,IMF PortWatch FeatureServer
-2022-11-30,61,99,3587959,IMF PortWatch FeatureServer
-2022-12-01,50,88,2220075,IMF PortWatch FeatureServer
-2022-12-02,55,86,3294861,IMF PortWatch FeatureServer
-2022-12-03,52,83,3570841,IMF PortWatch FeatureServer
-2022-12-04,50,76,3020762,IMF PortWatch FeatureServer
-2022-12-05,48,77,2375601,IMF PortWatch FeatureServer
-2022-12-06,41,77,1269782,IMF PortWatch FeatureServer
-2022-12-07,49,81,3510004,IMF PortWatch FeatureServer
-2022-12-08,47,75,1936419,IMF PortWatch FeatureServer
-2022-12-09,36,71,1854515,IMF PortWatch FeatureServer
-2022-12-10,48,82,2469738,IMF PortWatch FeatureServer
-2022-12-11,40,74,1826703,IMF PortWatch FeatureServer
-2022-12-12,49,85,3221438,IMF PortWatch FeatureServer
-2022-12-13,50,76,1512575,IMF PortWatch FeatureServer
-2022-12-14,40,69,3408085,IMF PortWatch FeatureServer
-2022-12-15,53,84,3017803,IMF PortWatch FeatureServer
-2022-12-16,42,71,2372259,IMF PortWatch FeatureServer
-2022-12-17,56,89,2906387,IMF PortWatch FeatureServer
-2022-12-18,56,93,2324320,IMF PortWatch FeatureServer
-2022-12-19,35,66,1638193,IMF PortWatch FeatureServer
-2022-12-20,55,83,2795964,IMF PortWatch FeatureServer
-2022-12-21,46,75,2500624,IMF PortWatch FeatureServer
-2022-12-22,63,90,2449582,IMF PortWatch FeatureServer
-2022-12-23,50,78,2293719,IMF PortWatch FeatureServer
-2022-12-24,61,96,2913474,IMF PortWatch FeatureServer
-2022-12-25,43,79,2557374,IMF PortWatch FeatureServer
-2022-12-26,50,74,2738524,IMF PortWatch FeatureServer
-2022-12-27,43,78,1000833,IMF PortWatch FeatureServer
-2022-12-28,53,79,2692653,IMF PortWatch FeatureServer
-2022-12-29,36,63,1809004,IMF PortWatch FeatureServer
-2022-12-30,46,67,1469989,IMF PortWatch FeatureServer
-2022-12-31,49,86,2425412,IMF PortWatch FeatureServer
-2023-01-01,39,74,2748188,IMF PortWatch FeatureServer
-2023-01-02,52,86,2447189,IMF PortWatch FeatureServer
-2023-01-03,51,86,2760422,IMF PortWatch FeatureServer
-2023-01-04,51,80,4001385,IMF PortWatch FeatureServer
-2023-01-05,41,77,1528222,IMF PortWatch FeatureServer
-2023-01-06,35,53,1935599,IMF PortWatch FeatureServer
-2023-01-07,58,88,2877337,IMF PortWatch FeatureServer
-2023-01-08,44,77,2480918,IMF PortWatch FeatureServer
-2023-01-09,47,73,1681841,IMF PortWatch FeatureServer
-2023-01-10,44,77,1588923,IMF PortWatch FeatureServer
-2023-01-11,31,62,1688075,IMF PortWatch FeatureServer
-2023-01-12,39,67,1835785,IMF PortWatch FeatureServer
-2023-01-13,33,55,2119947,IMF PortWatch FeatureServer
-2023-01-14,49,81,4030262,IMF PortWatch FeatureServer
-2023-01-15,35,74,1729518,IMF PortWatch FeatureServer
-2023-01-16,42,67,2882262,IMF PortWatch FeatureServer
-2023-01-17,44,71,2699024,IMF PortWatch FeatureServer
-2023-01-18,50,81,2676557,IMF PortWatch FeatureServer
-2023-01-19,40,75,1609742,IMF PortWatch FeatureServer
-2023-01-20,45,69,2004156,IMF PortWatch FeatureServer
-2023-01-21,51,79,2517756,IMF PortWatch FeatureServer
-2023-01-22,54,84,3309586,IMF PortWatch FeatureServer
-2023-01-23,49,76,2619409,IMF PortWatch FeatureServer
-2023-01-24,45,81,2250382,IMF PortWatch FeatureServer
-2023-01-25,58,94,4119432,IMF PortWatch FeatureServer
-2023-01-26,51,79,2418100,IMF PortWatch FeatureServer
-2023-01-27,49,78,1725033,IMF PortWatch FeatureServer
-2023-01-28,54,85,2352473,IMF PortWatch FeatureServer
-2023-01-29,48,73,2369726,IMF PortWatch FeatureServer
-2023-01-30,44,72,2030859,IMF PortWatch FeatureServer
-2023-01-31,50,83,2315180,IMF PortWatch FeatureServer
-2023-02-01,53,76,2455712,IMF PortWatch FeatureServer
-2023-02-02,43,64,2404618,IMF PortWatch FeatureServer
-2023-02-03,55,91,2674702,IMF PortWatch FeatureServer
-2023-02-04,55,80,2949458,IMF PortWatch FeatureServer
-2023-02-05,39,64,2475180,IMF PortWatch FeatureServer
-2023-02-06,47,78,2640582,IMF PortWatch FeatureServer
-2023-02-07,52,92,1916394,IMF PortWatch FeatureServer
-2023-02-08,66,106,3686349,IMF PortWatch FeatureServer
-2023-02-09,44,80,2884548,IMF PortWatch FeatureServer
-2023-02-10,36,58,1831528,IMF PortWatch FeatureServer
-2023-02-11,45,77,2320882,IMF PortWatch FeatureServer
-2023-02-12,62,105,2377257,IMF PortWatch FeatureServer
-2023-02-13,64,99,3185822,IMF PortWatch FeatureServer
-2023-02-14,47,76,1776977,IMF PortWatch FeatureServer
-2023-02-15,39,70,1979001,IMF PortWatch FeatureServer
-2023-02-16,73,131,3496850,IMF PortWatch FeatureServer
-2023-02-17,55,98,2947001,IMF PortWatch FeatureServer
-2023-02-18,42,70,2356472,IMF PortWatch FeatureServer
-2023-02-19,41,70,1963693,IMF PortWatch FeatureServer
-2023-02-20,50,88,1660972,IMF PortWatch FeatureServer
-2023-02-21,38,77,1330551,IMF PortWatch FeatureServer
-2023-02-22,71,111,3395079,IMF PortWatch FeatureServer
-2023-02-23,60,106,2908812,IMF PortWatch FeatureServer
-2023-02-24,77,120,4536489,IMF PortWatch FeatureServer
-2023-02-25,50,94,2320098,IMF PortWatch FeatureServer
-2023-02-26,65,107,3280424,IMF PortWatch FeatureServer
-2023-02-27,57,83,2588254,IMF PortWatch FeatureServer
-2023-02-28,46,86,3378321,IMF PortWatch FeatureServer
-2023-03-01,58,91,2245306,IMF PortWatch FeatureServer
-2023-03-02,42,71,2078829,IMF PortWatch FeatureServer
-2023-03-03,46,76,3359562,IMF PortWatch FeatureServer
-2023-03-04,46,80,3001862,IMF PortWatch FeatureServer
-2023-03-05,63,87,4084677,IMF PortWatch FeatureServer
-2023-03-06,56,108,1521640,IMF PortWatch FeatureServer
-2023-03-07,67,109,3345950,IMF PortWatch FeatureServer
-2023-03-08,59,101,2689598,IMF PortWatch FeatureServer
-2023-03-09,55,99,2332181,IMF PortWatch FeatureServer
-2023-03-10,50,91,1664945,IMF PortWatch FeatureServer
-2023-03-11,69,112,3526742,IMF PortWatch FeatureServer
-2023-03-12,62,100,3197648,IMF PortWatch FeatureServer
-2023-03-13,47,81,2260893,IMF PortWatch FeatureServer
-2023-03-14,64,108,2939197,IMF PortWatch FeatureServer
-2023-03-15,57,99,2936002,IMF PortWatch FeatureServer
-2023-03-16,52,90,2678630,IMF PortWatch FeatureServer
-2023-03-17,43,77,1407541,IMF PortWatch FeatureServer
-2023-03-18,53,85,2579106,IMF PortWatch FeatureServer
-2023-03-19,60,96,2973065,IMF PortWatch FeatureServer
-2023-03-20,44,75,2831003,IMF PortWatch FeatureServer
-2023-03-21,40,66,1460983,IMF PortWatch FeatureServer
-2023-03-22,33,62,1957068,IMF PortWatch FeatureServer
-2023-03-23,43,71,2402665,IMF PortWatch FeatureServer
-2023-03-24,46,69,3130246,IMF PortWatch FeatureServer
-2023-03-25,54,92,1597323,IMF PortWatch FeatureServer
-2023-03-26,52,81,2766816,IMF PortWatch FeatureServer
-2023-03-27,45,75,1962927,IMF PortWatch FeatureServer
-2023-03-28,47,73,2554868,IMF PortWatch FeatureServer
-2023-03-29,36,68,1902366,IMF PortWatch FeatureServer
-2023-03-30,54,92,2713702,IMF PortWatch FeatureServer
-2023-03-31,63,104,3549102,IMF PortWatch FeatureServer
-2023-04-01,58,105,2295116,IMF PortWatch FeatureServer
-2023-04-02,58,83,2946734,IMF PortWatch FeatureServer
-2023-04-03,35,60,2127859,IMF PortWatch FeatureServer
-2023-04-04,45,81,1822512,IMF PortWatch FeatureServer
-2023-04-05,43,72,2409198,IMF PortWatch FeatureServer
-2023-04-06,70,117,3780548,IMF PortWatch FeatureServer
-2023-04-07,62,114,3692726,IMF PortWatch FeatureServer
-2023-04-08,70,115,3534186,IMF PortWatch FeatureServer
-2023-04-09,71,108,3286894,IMF PortWatch FeatureServer
-2023-04-10,66,113,2635432,IMF PortWatch FeatureServer
-2023-04-11,69,126,4504486,IMF PortWatch FeatureServer
-2023-04-12,74,112,2619323,IMF PortWatch FeatureServer
-2023-04-13,66,107,3716447,IMF PortWatch FeatureServer
-2023-04-14,51,83,2515871,IMF PortWatch FeatureServer
-2023-04-15,53,91,2125424,IMF PortWatch FeatureServer
-2023-04-16,54,94,3294833,IMF PortWatch FeatureServer
-2023-04-17,48,77,2320403,IMF PortWatch FeatureServer
-2023-04-18,62,107,3564921,IMF PortWatch FeatureServer
-2023-04-19,57,92,2566346,IMF PortWatch FeatureServer
-2023-04-20,80,129,3592200,IMF PortWatch FeatureServer
-2023-04-21,52,97,2740239,IMF PortWatch FeatureServer
-2023-04-22,74,123,3806009,IMF PortWatch FeatureServer
-2023-04-23,53,90,2798769,IMF PortWatch FeatureServer
-2023-04-24,68,116,2946921,IMF PortWatch FeatureServer
-2023-04-25,54,86,2670440,IMF PortWatch FeatureServer
-2023-04-26,49,79,2135096,IMF PortWatch FeatureServer
-2023-04-27,52,85,2759433,IMF PortWatch FeatureServer
-2023-04-28,46,83,1564958,IMF PortWatch FeatureServer
-2023-04-29,63,95,3728574,IMF PortWatch FeatureServer
-2023-04-30,46,76,1821541,IMF PortWatch FeatureServer
-2023-05-01,52,86,3943975,IMF PortWatch FeatureServer
-2023-05-02,48,89,1882760,IMF PortWatch FeatureServer
-2023-05-03,65,102,3673944,IMF PortWatch FeatureServer
-2023-05-04,65,104,2026269,IMF PortWatch FeatureServer
-2023-05-05,47,79,2577017,IMF PortWatch FeatureServer
-2023-05-06,63,116,3611896,IMF PortWatch FeatureServer
-2023-05-07,55,100,2447056,IMF PortWatch FeatureServer
-2023-05-08,61,111,3797974,IMF PortWatch FeatureServer
-2023-05-09,68,106,2880750,IMF PortWatch FeatureServer
-2023-05-10,56,100,2954955,IMF PortWatch FeatureServer
-2023-05-11,71,115,3890952,IMF PortWatch FeatureServer
-2023-05-12,79,119,3248681,IMF PortWatch FeatureServer
-2023-05-13,58,102,2564001,IMF PortWatch FeatureServer
-2023-05-14,62,105,3605431,IMF PortWatch FeatureServer
-2023-05-15,65,100,3002349,IMF PortWatch FeatureServer
-2023-05-16,57,109,2889399,IMF PortWatch FeatureServer
-2023-05-17,55,90,3932159,IMF PortWatch FeatureServer
-2023-05-18,58,100,2805906,IMF PortWatch FeatureServer
-2023-05-19,77,118,3151356,IMF PortWatch FeatureServer
-2023-05-20,77,115,3842275,IMF PortWatch FeatureServer
-2023-05-21,48,70,1417814,IMF PortWatch FeatureServer
-2023-05-22,57,94,2344953,IMF PortWatch FeatureServer
-2023-05-23,60,106,1181409,IMF PortWatch FeatureServer
-2023-05-24,70,108,3211377,IMF PortWatch FeatureServer
-2023-05-25,67,111,4311935,IMF PortWatch FeatureServer
-2023-05-26,59,104,1757987,IMF PortWatch FeatureServer
-2023-05-27,66,111,3656449,IMF PortWatch FeatureServer
-2023-05-28,73,128,3416131,IMF PortWatch FeatureServer
-2023-05-29,61,96,3083399,IMF PortWatch FeatureServer
-2023-05-30,69,112,2722174,IMF PortWatch FeatureServer
-2023-05-31,60,103,2910429,IMF PortWatch FeatureServer
-2023-06-01,68,102,2160664,IMF PortWatch FeatureServer
-2023-06-02,49,94,2271302,IMF PortWatch FeatureServer
-2023-06-03,74,126,4336830,IMF PortWatch FeatureServer
-2023-06-04,69,106,4186562,IMF PortWatch FeatureServer
-2023-06-05,69,115,4126490,IMF PortWatch FeatureServer
-2023-06-06,44,91,1896731,IMF PortWatch FeatureServer
-2023-06-07,72,116,3413104,IMF PortWatch FeatureServer
-2023-06-08,47,89,2559305,IMF PortWatch FeatureServer
-2023-06-09,61,103,2921213,IMF PortWatch FeatureServer
-2023-06-10,66,111,4300102,IMF PortWatch FeatureServer
-2023-06-11,79,122,3162008,IMF PortWatch FeatureServer
-2023-06-12,66,113,4039134,IMF PortWatch FeatureServer
-2023-06-13,61,112,3106608,IMF PortWatch FeatureServer
-2023-06-14,43,80,2411544,IMF PortWatch FeatureServer
-2023-06-15,49,81,4011677,IMF PortWatch FeatureServer
-2023-06-16,53,74,3308531,IMF PortWatch FeatureServer
-2023-06-17,57,91,2461700,IMF PortWatch FeatureServer
-2023-06-18,54,92,3181731,IMF PortWatch FeatureServer
-2023-06-19,67,111,2652918,IMF PortWatch FeatureServer
-2023-06-20,52,103,2553589,IMF PortWatch FeatureServer
-2023-06-21,62,101,1813963,IMF PortWatch FeatureServer
-2023-06-22,57,101,4079405,IMF PortWatch FeatureServer
-2023-06-23,61,110,2617042,IMF PortWatch FeatureServer
-2023-06-24,76,117,3989870,IMF PortWatch FeatureServer
-2023-06-25,48,90,2926587,IMF PortWatch FeatureServer
-2023-06-26,71,113,3251697,IMF PortWatch FeatureServer
-2023-06-27,45,82,2067081,IMF PortWatch FeatureServer
-2023-06-28,62,98,2606646,IMF PortWatch FeatureServer
-2023-06-29,64,103,3528259,IMF PortWatch FeatureServer
-2023-06-30,65,114,2945622,IMF PortWatch FeatureServer
-2023-07-01,72,125,2488778,IMF PortWatch FeatureServer
-2023-07-02,58,89,3366768,IMF PortWatch FeatureServer
-2023-07-03,48,78,3585114,IMF PortWatch FeatureServer
-2023-07-04,61,97,2777219,IMF PortWatch FeatureServer
-2023-07-05,78,121,4231787,IMF PortWatch FeatureServer
-2023-07-06,70,115,3165578,IMF PortWatch FeatureServer
-2023-07-07,79,128,3330536,IMF PortWatch FeatureServer
-2023-07-08,61,94,2601667,IMF PortWatch FeatureServer
-2023-07-09,62,95,2824566,IMF PortWatch FeatureServer
-2023-07-10,61,100,3382011,IMF PortWatch FeatureServer
-2023-07-11,62,95,3299897,IMF PortWatch FeatureServer
-2023-07-12,51,90,2543134,IMF PortWatch FeatureServer
-2023-07-13,65,110,3673023,IMF PortWatch FeatureServer
-2023-07-14,67,110,2264490,IMF PortWatch FeatureServer
-2023-07-15,63,98,3074416,IMF PortWatch FeatureServer
-2023-07-16,64,103,3228651,IMF PortWatch FeatureServer
-2023-07-17,58,99,3317411,IMF PortWatch FeatureServer
-2023-07-18,65,109,3229661,IMF PortWatch FeatureServer
-2023-07-19,61,107,3329719,IMF PortWatch FeatureServer
-2023-07-20,75,119,4073676,IMF PortWatch FeatureServer
-2023-07-21,62,100,1848376,IMF PortWatch FeatureServer
-2023-07-22,64,100,2513292,IMF PortWatch FeatureServer
-2023-07-23,51,87,2536515,IMF PortWatch FeatureServer
-2023-07-24,61,90,3203299,IMF PortWatch FeatureServer
-2023-07-25,53,90,2862580,IMF PortWatch FeatureServer
-2023-07-26,55,91,2211471,IMF PortWatch FeatureServer
-2023-07-27,41,75,2639447,IMF PortWatch FeatureServer
-2023-07-28,61,96,3297758,IMF PortWatch FeatureServer
-2023-07-29,51,83,2157616,IMF PortWatch FeatureServer
-2023-07-30,64,111,2215811,IMF PortWatch FeatureServer
-2023-07-31,76,116,3840000,IMF PortWatch FeatureServer
-2023-08-01,80,117,3254183,IMF PortWatch FeatureServer
-2023-08-02,73,113,2828457,IMF PortWatch FeatureServer
-2023-08-03,57,108,3257195,IMF PortWatch FeatureServer
-2023-08-04,64,99,2472380,IMF PortWatch FeatureServer
-2023-08-05,58,99,2588368,IMF PortWatch FeatureServer
-2023-08-06,58,99,3229425,IMF PortWatch FeatureServer
-2023-08-07,66,105,2769194,IMF PortWatch FeatureServer
-2023-08-08,55,93,2742057,IMF PortWatch FeatureServer
-2023-08-09,58,106,3169541,IMF PortWatch FeatureServer
-2023-08-10,63,105,2647579,IMF PortWatch FeatureServer
-2023-08-11,66,110,2590232,IMF PortWatch FeatureServer
-2023-08-12,75,115,3734057,IMF PortWatch FeatureServer
-2023-08-13,65,114,3093383,IMF PortWatch FeatureServer
-2023-08-14,63,104,2435863,IMF PortWatch FeatureServer
-2023-08-15,48,89,2801876,IMF PortWatch FeatureServer
-2023-08-16,62,112,2338417,IMF PortWatch FeatureServer
-2023-08-17,72,107,3540698,IMF PortWatch FeatureServer
-2023-08-18,57,102,2708982,IMF PortWatch FeatureServer
-2023-08-19,65,107,3181506,IMF PortWatch FeatureServer
-2023-08-20,61,104,3604527,IMF PortWatch FeatureServer
-2023-08-21,74,124,3179155,IMF PortWatch FeatureServer
-2023-08-22,59,93,2525962,IMF PortWatch FeatureServer
-2023-08-23,56,105,2896463,IMF PortWatch FeatureServer
-2023-08-24,72,106,3751592,IMF PortWatch FeatureServer
-2023-08-25,53,106,1990237,IMF PortWatch FeatureServer
-2023-08-26,76,116,3105940,IMF PortWatch FeatureServer
-2023-08-27,46,90,1507810,IMF PortWatch FeatureServer
-2023-08-28,60,101,3367156,IMF PortWatch FeatureServer
-2023-08-29,72,107,2708080,IMF PortWatch FeatureServer
-2023-08-30,53,93,2736105,IMF PortWatch FeatureServer
-2023-08-31,47,88,1753065,IMF PortWatch FeatureServer
-2023-09-01,55,100,2683024,IMF PortWatch FeatureServer
-2023-09-02,47,92,2912178,IMF PortWatch FeatureServer
-2023-09-03,59,91,2417879,IMF PortWatch FeatureServer
-2023-09-04,65,95,2754310,IMF PortWatch FeatureServer
-2023-09-05,60,106,3321811,IMF PortWatch FeatureServer
-2023-09-06,67,107,3177813,IMF PortWatch FeatureServer
-2023-09-07,62,107,3152075,IMF PortWatch FeatureServer
-2023-09-08,66,102,2984164,IMF PortWatch FeatureServer
-2023-09-09,57,97,2936258,IMF PortWatch FeatureServer
-2023-09-10,65,96,2815476,IMF PortWatch FeatureServer
-2023-09-11,49,102,3182613,IMF PortWatch FeatureServer
-2023-09-12,48,90,2317836,IMF PortWatch FeatureServer
-2023-09-13,66,104,2664219,IMF PortWatch FeatureServer
-2023-09-14,81,123,4676122,IMF PortWatch FeatureServer
-2023-09-15,58,100,1758360,IMF PortWatch FeatureServer
-2023-09-16,50,88,2022054,IMF PortWatch FeatureServer
-2023-09-17,40,71,2221555,IMF PortWatch FeatureServer
-2023-09-18,61,100,1843771,IMF PortWatch FeatureServer
-2023-09-19,67,106,3430783,IMF PortWatch FeatureServer
-2023-09-20,57,98,3363423,IMF PortWatch FeatureServer
-2023-09-21,61,106,1913004,IMF PortWatch FeatureServer
-2023-09-22,83,129,3619265,IMF PortWatch FeatureServer
-2023-09-23,48,82,1742560,IMF PortWatch FeatureServer
-2023-09-24,65,119,2214998,IMF PortWatch FeatureServer
-2023-09-25,61,105,3222080,IMF PortWatch FeatureServer
-2023-09-26,66,101,3497367,IMF PortWatch FeatureServer
-2023-09-27,62,107,2889925,IMF PortWatch FeatureServer
-2023-09-28,73,114,2533287,IMF PortWatch FeatureServer
-2023-09-29,68,113,2811199,IMF PortWatch FeatureServer
-2023-09-30,63,121,3430100,IMF PortWatch FeatureServer
-2023-10-01,64,105,2760654,IMF PortWatch FeatureServer
-2023-10-02,62,101,3478979,IMF PortWatch FeatureServer
-2023-10-03,68,109,3193193,IMF PortWatch FeatureServer
-2023-10-04,63,110,2462991,IMF PortWatch FeatureServer
-2023-10-05,66,109,2747803,IMF PortWatch FeatureServer
-2023-10-06,73,108,3658016,IMF PortWatch FeatureServer
-2023-10-07,42,85,2057247,IMF PortWatch FeatureServer
-2023-10-08,73,105,3373814,IMF PortWatch FeatureServer
-2023-10-09,63,105,2828967,IMF PortWatch FeatureServer
-2023-10-10,74,117,4304820,IMF PortWatch FeatureServer
-2023-10-11,57,96,2556993,IMF PortWatch FeatureServer
-2023-10-12,79,131,3062602,IMF PortWatch FeatureServer
-2023-10-13,58,106,1897383,IMF PortWatch FeatureServer
-2023-10-14,65,113,3765952,IMF PortWatch FeatureServer
-2023-10-15,59,93,3005508,IMF PortWatch FeatureServer
-2023-10-16,42,83,2422155,IMF PortWatch FeatureServer
-2023-10-17,58,86,1469039,IMF PortWatch FeatureServer
-2023-10-18,54,87,3098946,IMF PortWatch FeatureServer
-2023-10-19,49,91,3028015,IMF PortWatch FeatureServer
-2023-10-20,64,104,2746392,IMF PortWatch FeatureServer
-2023-10-21,47,81,2007536,IMF PortWatch FeatureServer
-2023-10-22,30,64,2010908,IMF PortWatch FeatureServer
-2023-10-23,50,80,1620702,IMF PortWatch FeatureServer
-2023-10-24,51,83,2240799,IMF PortWatch FeatureServer
-2023-10-25,47,84,1967881,IMF PortWatch FeatureServer
-2023-10-26,50,74,2221127,IMF PortWatch FeatureServer
-2023-10-27,43,77,1735667,IMF PortWatch FeatureServer
-2023-10-28,32,61,1277855,IMF PortWatch FeatureServer
-2023-10-29,61,102,3352358,IMF PortWatch FeatureServer
-2023-10-30,71,109,3108422,IMF PortWatch FeatureServer
-2023-10-31,54,92,3084244,IMF PortWatch FeatureServer
-2023-11-01,62,93,2387930,IMF PortWatch FeatureServer
-2023-11-02,67,105,2533890,IMF PortWatch FeatureServer
-2023-11-03,69,100,3144204,IMF PortWatch FeatureServer
-2023-11-04,28,59,1796120,IMF PortWatch FeatureServer
-2023-11-05,40,66,1756049,IMF PortWatch FeatureServer
-2023-11-06,43,65,2339122,IMF PortWatch FeatureServer
-2023-11-07,31,62,1071010,IMF PortWatch FeatureServer
-2023-11-08,39,66,2224178,IMF PortWatch FeatureServer
-2023-11-09,53,88,2648536,IMF PortWatch FeatureServer
-2023-11-10,52,95,2800317,IMF PortWatch FeatureServer
-2023-11-11,67,100,3016682,IMF PortWatch FeatureServer
-2023-11-12,67,109,3053686,IMF PortWatch FeatureServer
-2023-11-13,67,105,2386185,IMF PortWatch FeatureServer
-2023-11-14,56,87,3210859,IMF PortWatch FeatureServer
-2023-11-15,54,85,1361988,IMF PortWatch FeatureServer
-2023-11-16,30,59,2250287,IMF PortWatch FeatureServer
-2023-11-17,43,70,2345772,IMF PortWatch FeatureServer
-2023-11-18,52,79,2199689,IMF PortWatch FeatureServer
-2023-11-19,35,76,1707762,IMF PortWatch FeatureServer
-2023-11-20,45,70,1106633,IMF PortWatch FeatureServer
-2023-11-21,42,68,2124712,IMF PortWatch FeatureServer
-2023-11-22,37,61,1011297,IMF PortWatch FeatureServer
-2023-11-23,33,60,1038072,IMF PortWatch FeatureServer
-2023-11-24,47,79,1492290,IMF PortWatch FeatureServer
-2023-11-25,36,60,1960633,IMF PortWatch FeatureServer
-2023-11-26,41,55,3124322,IMF PortWatch FeatureServer
-2023-11-27,46,73,2927312,IMF PortWatch FeatureServer
-2023-11-28,52,81,2682146,IMF PortWatch FeatureServer
-2023-11-29,37,68,2203502,IMF PortWatch FeatureServer
-2023-11-30,42,62,2029393,IMF PortWatch FeatureServer
-2023-12-01,42,68,2419739,IMF PortWatch FeatureServer
-2023-12-02,38,69,2813831,IMF PortWatch FeatureServer
-2023-12-03,52,85,3036334,IMF PortWatch FeatureServer
-2023-12-04,51,88,2660585,IMF PortWatch FeatureServer
-2023-12-05,53,85,2485838,IMF PortWatch FeatureServer
-2023-12-06,54,81,2117551,IMF PortWatch FeatureServer
-2023-12-07,48,84,2912445,IMF PortWatch FeatureServer
-2023-12-08,41,68,1285358,IMF PortWatch FeatureServer
-2023-12-09,41,66,2466665,IMF PortWatch FeatureServer
-2023-12-10,45,72,1264158,IMF PortWatch FeatureServer
-2023-12-11,39,62,1637915,IMF PortWatch FeatureServer
-2023-12-12,45,76,1776043,IMF PortWatch FeatureServer
-2023-12-13,38,75,1394271,IMF PortWatch FeatureServer
-2023-12-14,31,59,1965214,IMF PortWatch FeatureServer
-2023-12-15,45,70,2418811,IMF PortWatch FeatureServer
-2023-12-16,36,64,1946420,IMF PortWatch FeatureServer
-2023-12-17,39,70,1940376,IMF PortWatch FeatureServer
-2023-12-18,33,56,1590582,IMF PortWatch FeatureServer
-2023-12-19,45,75,1240422,IMF PortWatch FeatureServer
-2023-12-20,43,73,2179269,IMF PortWatch FeatureServer
-2023-12-21,41,79,1887992,IMF PortWatch FeatureServer
-2023-12-22,48,82,2098142,IMF PortWatch FeatureServer
-2023-12-23,55,77,1855039,IMF PortWatch FeatureServer
-2023-12-24,39,68,1826548,IMF PortWatch FeatureServer
-2023-12-25,52,87,2643843,IMF PortWatch FeatureServer
-2023-12-26,50,75,2707690,IMF PortWatch FeatureServer
-2023-12-27,42,71,1170022,IMF PortWatch FeatureServer
-2023-12-28,62,99,3270756,IMF PortWatch FeatureServer
-2023-12-29,50,86,1855903,IMF PortWatch FeatureServer
-2023-12-30,49,83,3081229,IMF PortWatch FeatureServer
-2023-12-31,46,70,2894668,IMF PortWatch FeatureServer
-2024-01-01,39,60,2237537,IMF PortWatch FeatureServer
-2024-01-02,48,73,2308302,IMF PortWatch FeatureServer
-2024-01-03,38,74,2902755,IMF PortWatch FeatureServer
-2024-01-04,47,79,2229185,IMF PortWatch FeatureServer
-2024-01-05,49,77,2499608,IMF PortWatch FeatureServer
-2024-01-06,45,72,2324709,IMF PortWatch FeatureServer
-2024-01-07,41,66,2537313,IMF PortWatch FeatureServer
-2024-01-08,43,68,1696204,IMF PortWatch FeatureServer
-2024-01-09,35,49,1554657,IMF PortWatch FeatureServer
-2024-01-10,34,60,1049313,IMF PortWatch FeatureServer
-2024-01-11,52,74,3447433,IMF PortWatch FeatureServer
-2024-01-12,49,75,2120832,IMF PortWatch FeatureServer
-2024-01-13,44,69,1946603,IMF PortWatch FeatureServer
-2024-01-14,52,85,2153034,IMF PortWatch FeatureServer
-2024-01-15,68,100,3925997,IMF PortWatch FeatureServer
-2024-01-16,54,87,2759801,IMF PortWatch FeatureServer
-2024-01-17,40,74,2691610,IMF PortWatch FeatureServer
-2024-01-18,42,63,1344347,IMF PortWatch FeatureServer
-2024-01-19,32,58,1473983,IMF PortWatch FeatureServer
-2024-01-20,43,85,1529902,IMF PortWatch FeatureServer
-2024-01-21,44,68,1597183,IMF PortWatch FeatureServer
-2024-01-22,42,75,2309697,IMF PortWatch FeatureServer
-2024-01-23,43,91,1674978,IMF PortWatch FeatureServer
-2024-01-24,54,85,2620662,IMF PortWatch FeatureServer
-2024-01-25,43,69,2862232,IMF PortWatch FeatureServer
-2024-01-26,51,82,1551296,IMF PortWatch FeatureServer
-2024-01-27,40,67,2638859,IMF PortWatch FeatureServer
-2024-01-28,40,84,2395012,IMF PortWatch FeatureServer
-2024-01-29,34,62,2166534,IMF PortWatch FeatureServer
-2024-01-30,34,56,2451394,IMF PortWatch FeatureServer
-2024-01-31,48,71,1812511,IMF PortWatch FeatureServer
-2024-02-01,50,85,3098068,IMF PortWatch FeatureServer
-2024-02-02,32,58,3229953,IMF PortWatch FeatureServer
-2024-02-03,33,64,1463719,IMF PortWatch FeatureServer
-2024-02-04,32,61,1463247,IMF PortWatch FeatureServer
-2024-02-05,43,67,2399504,IMF PortWatch FeatureServer
-2024-02-06,32,70,1194725,IMF PortWatch FeatureServer
-2024-02-07,45,80,1809302,IMF PortWatch FeatureServer
-2024-02-08,51,78,2462308,IMF PortWatch FeatureServer
-2024-02-09,35,67,1043391,IMF PortWatch FeatureServer
-2024-02-10,44,77,2357111,IMF PortWatch FeatureServer
-2024-02-11,48,78,2464580,IMF PortWatch FeatureServer
-2024-02-12,48,74,1918590,IMF PortWatch FeatureServer
-2024-02-13,32,62,2099381,IMF PortWatch FeatureServer
-2024-02-14,44,67,2107320,IMF PortWatch FeatureServer
-2024-02-15,55,93,1910793,IMF PortWatch FeatureServer
-2024-02-16,56,88,3094401,IMF PortWatch FeatureServer
-2024-02-17,49,74,2562091,IMF PortWatch FeatureServer
-2024-02-18,35,65,1463955,IMF PortWatch FeatureServer
-2024-02-19,39,66,2265698,IMF PortWatch FeatureServer
-2024-02-20,44,75,2186112,IMF PortWatch FeatureServer
-2024-02-21,42,70,2232936,IMF PortWatch FeatureServer
-2024-02-22,35,57,1939589,IMF PortWatch FeatureServer
-2024-02-23,31,66,651185,IMF PortWatch FeatureServer
-2024-02-24,54,81,3020490,IMF PortWatch FeatureServer
-2024-02-25,51,81,2672285,IMF PortWatch FeatureServer
-2024-02-26,42,77,2604242,IMF PortWatch FeatureServer
-2024-02-27,42,63,1728595,IMF PortWatch FeatureServer
-2024-02-28,42,76,1176609,IMF PortWatch FeatureServer
-2024-02-29,36,67,1279320,IMF PortWatch FeatureServer
-2024-03-01,42,76,2667248,IMF PortWatch FeatureServer
-2024-03-02,30,59,742773,IMF PortWatch FeatureServer
-2024-03-03,52,91,2165151,IMF PortWatch FeatureServer
-2024-03-04,64,89,3232756,IMF PortWatch FeatureServer
-2024-03-05,46,74,2262691,IMF PortWatch FeatureServer
-2024-03-06,40,63,2732954,IMF PortWatch FeatureServer
-2024-03-07,45,84,1904220,IMF PortWatch FeatureServer
-2024-03-08,65,108,2979412,IMF PortWatch FeatureServer
-2024-03-09,46,82,1582183,IMF PortWatch FeatureServer
-2024-03-10,35,66,2555138,IMF PortWatch FeatureServer
-2024-03-11,60,100,2461118,IMF PortWatch FeatureServer
-2024-03-12,68,111,3301612,IMF PortWatch FeatureServer
-2024-03-13,50,90,2595965,IMF PortWatch FeatureServer
-2024-03-14,71,119,3477463,IMF PortWatch FeatureServer
-2024-03-15,63,105,3088515,IMF PortWatch FeatureServer
-2024-03-16,72,127,3890020,IMF PortWatch FeatureServer
-2024-03-17,65,99,3487795,IMF PortWatch FeatureServer
-2024-03-18,59,106,2393652,IMF PortWatch FeatureServer
-2024-03-19,51,109,2525025,IMF PortWatch FeatureServer
-2024-03-20,71,119,4372624,IMF PortWatch FeatureServer
-2024-03-21,63,108,2830497,IMF PortWatch FeatureServer
-2024-03-22,61,99,3001079,IMF PortWatch FeatureServer
-2024-03-23,49,96,2109141,IMF PortWatch FeatureServer
-2024-03-24,57,93,1694836,IMF PortWatch FeatureServer
-2024-03-25,61,102,3319580,IMF PortWatch FeatureServer
-2024-03-26,45,78,1618296,IMF PortWatch FeatureServer
-2024-03-27,60,95,2413485,IMF PortWatch FeatureServer
-2024-03-28,51,83,2422788,IMF PortWatch FeatureServer
-2024-03-29,64,95,4024373,IMF PortWatch FeatureServer
-2024-03-30,55,93,3867294,IMF PortWatch FeatureServer
-2024-03-31,68,105,3403246,IMF PortWatch FeatureServer
-2024-04-01,59,95,2318689,IMF PortWatch FeatureServer
-2024-04-02,58,109,2185971,IMF PortWatch FeatureServer
-2024-04-03,61,112,3236726,IMF PortWatch FeatureServer
-2024-04-04,62,95,2817118,IMF PortWatch FeatureServer
-2024-04-05,58,107,3066185,IMF PortWatch FeatureServer
-2024-04-06,70,124,3883284,IMF PortWatch FeatureServer
-2024-04-07,58,99,2855319,IMF PortWatch FeatureServer
-2024-04-08,65,116,2257948,IMF PortWatch FeatureServer
-2024-04-09,67,109,2796706,IMF PortWatch FeatureServer
-2024-04-10,67,110,3504215,IMF PortWatch FeatureServer
-2024-04-11,62,96,2735143,IMF PortWatch FeatureServer
-2024-04-12,56,106,2359460,IMF PortWatch FeatureServer
-2024-04-13,74,115,3384163,IMF PortWatch FeatureServer
-2024-04-14,62,98,3634521,IMF PortWatch FeatureServer
-2024-04-15,55,93,2755806,IMF PortWatch FeatureServer
-2024-04-16,48,78,3193904,IMF PortWatch FeatureServer
-2024-04-17,42,70,1184755,IMF PortWatch FeatureServer
-2024-04-18,48,77,2051320,IMF PortWatch FeatureServer
-2024-04-19,62,99,3823627,IMF PortWatch FeatureServer
-2024-04-20,65,104,3156322,IMF PortWatch FeatureServer
-2024-04-21,66,104,3458394,IMF PortWatch FeatureServer
-2024-04-22,68,106,2399714,IMF PortWatch FeatureServer
-2024-04-23,64,109,2426852,IMF PortWatch FeatureServer
-2024-04-24,60,105,3622143,IMF PortWatch FeatureServer
-2024-04-25,51,85,2992550,IMF PortWatch FeatureServer
-2024-04-26,49,94,2338700,IMF PortWatch FeatureServer
-2024-04-27,69,103,2548414,IMF PortWatch FeatureServer
-2024-04-28,57,88,3290936,IMF PortWatch FeatureServer
-2024-04-29,44,81,1491754,IMF PortWatch FeatureServer
-2024-04-30,72,124,2365738,IMF PortWatch FeatureServer
-2024-05-01,65,108,3461764,IMF PortWatch FeatureServer
-2024-05-02,37,65,1633914,IMF PortWatch FeatureServer
-2024-05-03,44,77,2463153,IMF PortWatch FeatureServer
-2024-05-04,75,116,3295786,IMF PortWatch FeatureServer
-2024-05-05,72,112,3882108,IMF PortWatch FeatureServer
-2024-05-06,59,103,3294131,IMF PortWatch FeatureServer
-2024-05-07,69,106,3524648,IMF PortWatch FeatureServer
-2024-05-08,53,99,1471054,IMF PortWatch FeatureServer
-2024-05-09,63,104,2978688,IMF PortWatch FeatureServer
-2024-05-10,51,94,3631932,IMF PortWatch FeatureServer
-2024-05-11,73,125,3184767,IMF PortWatch FeatureServer
-2024-05-12,53,97,1464233,IMF PortWatch FeatureServer
-2024-05-13,77,126,5507350,IMF PortWatch FeatureServer
-2024-05-14,68,106,2760889,IMF PortWatch FeatureServer
-2024-05-15,63,109,2339785,IMF PortWatch FeatureServer
-2024-05-16,64,107,2253933,IMF PortWatch FeatureServer
-2024-05-17,61,103,2626881,IMF PortWatch FeatureServer
-2024-05-18,57,116,2438287,IMF PortWatch FeatureServer
-2024-05-19,63,101,3075316,IMF PortWatch FeatureServer
-2024-05-20,55,106,2847049,IMF PortWatch FeatureServer
-2024-05-21,69,102,3536713,IMF PortWatch FeatureServer
-2024-05-22,59,106,2002467,IMF PortWatch FeatureServer
-2024-05-23,67,106,3488093,IMF PortWatch FeatureServer
-2024-05-24,66,118,3247477,IMF PortWatch FeatureServer
-2024-05-25,66,108,2855541,IMF PortWatch FeatureServer
-2024-05-26,70,114,2057396,IMF PortWatch FeatureServer
-2024-05-27,63,103,3161042,IMF PortWatch FeatureServer
-2024-05-28,71,120,4066590,IMF PortWatch FeatureServer
-2024-05-29,58,108,2897457,IMF PortWatch FeatureServer
-2024-05-30,58,101,2250761,IMF PortWatch FeatureServer
-2024-05-31,51,91,2717395,IMF PortWatch FeatureServer
-2024-06-01,61,99,3093160,IMF PortWatch FeatureServer
-2024-06-02,78,113,3527134,IMF PortWatch FeatureServer
-2024-06-03,65,107,3517393,IMF PortWatch FeatureServer
-2024-06-04,61,105,2636285,IMF PortWatch FeatureServer
-2024-06-05,55,101,3457765,IMF PortWatch FeatureServer
-2024-06-06,57,117,2693060,IMF PortWatch FeatureServer
-2024-06-07,61,102,2117925,IMF PortWatch FeatureServer
-2024-06-08,65,98,3318475,IMF PortWatch FeatureServer
-2024-06-09,77,110,3410887,IMF PortWatch FeatureServer
-2024-06-10,67,119,2249839,IMF PortWatch FeatureServer
-2024-06-11,62,106,2147617,IMF PortWatch FeatureServer
-2024-06-12,60,116,2691915,IMF PortWatch FeatureServer
-2024-06-13,56,113,2544384,IMF PortWatch FeatureServer
-2024-06-14,55,99,3217531,IMF PortWatch FeatureServer
-2024-06-15,67,114,2876943,IMF PortWatch FeatureServer
-2024-06-16,52,94,2878976,IMF PortWatch FeatureServer
-2024-06-17,66,96,2704315,IMF PortWatch FeatureServer
-2024-06-18,52,96,2362135,IMF PortWatch FeatureServer
-2024-06-19,59,105,3533785,IMF PortWatch FeatureServer
-2024-06-20,67,108,2548334,IMF PortWatch FeatureServer
-2024-06-21,52,86,2045005,IMF PortWatch FeatureServer
-2024-06-22,56,103,2457743,IMF PortWatch FeatureServer
-2024-06-23,56,96,2462698,IMF PortWatch FeatureServer
-2024-06-24,66,118,3052044,IMF PortWatch FeatureServer
-2024-06-25,69,116,2835334,IMF PortWatch FeatureServer
-2024-06-26,55,95,2212870,IMF PortWatch FeatureServer
-2024-06-27,79,117,2852129,IMF PortWatch FeatureServer
-2024-06-28,57,96,3321805,IMF PortWatch FeatureServer
-2024-06-29,54,99,2066719,IMF PortWatch FeatureServer
-2024-06-30,65,102,3348045,IMF PortWatch FeatureServer
-2024-07-01,44,92,1870717,IMF PortWatch FeatureServer
-2024-07-02,78,131,3034325,IMF PortWatch FeatureServer
-2024-07-03,62,106,2902267,IMF PortWatch FeatureServer
-2024-07-04,73,110,2357218,IMF PortWatch FeatureServer
-2024-07-05,53,89,2413545,IMF PortWatch FeatureServer
-2024-07-06,61,109,3278915,IMF PortWatch FeatureServer
-2024-07-07,68,104,3623801,IMF PortWatch FeatureServer
-2024-07-08,60,99,2050220,IMF PortWatch FeatureServer
-2024-07-09,76,127,3864638,IMF PortWatch FeatureServer
-2024-07-10,60,96,2550532,IMF PortWatch FeatureServer
-2024-07-11,70,130,3107431,IMF PortWatch FeatureServer
-2024-07-12,63,97,2756554,IMF PortWatch FeatureServer
-2024-07-13,57,105,2715252,IMF PortWatch FeatureServer
-2024-07-14,69,109,3411519,IMF PortWatch FeatureServer
-2024-07-15,64,97,2488111,IMF PortWatch FeatureServer
-2024-07-16,64,108,2175990,IMF PortWatch FeatureServer
-2024-07-17,68,120,4483491,IMF PortWatch FeatureServer
-2024-07-18,57,96,2326830,IMF PortWatch FeatureServer
-2024-07-19,60,98,3202544,IMF PortWatch FeatureServer
-2024-07-20,59,96,1603433,IMF PortWatch FeatureServer
-2024-07-21,59,102,3570772,IMF PortWatch FeatureServer
-2024-07-22,54,92,2314871,IMF PortWatch FeatureServer
-2024-07-23,53,95,3027497,IMF PortWatch FeatureServer
-2024-07-24,57,91,2696785,IMF PortWatch FeatureServer
-2024-07-25,76,119,3765743,IMF PortWatch FeatureServer
-2024-07-26,42,79,2086094,IMF PortWatch FeatureServer
-2024-07-27,66,107,3103310,IMF PortWatch FeatureServer
-2024-07-28,61,105,2649619,IMF PortWatch FeatureServer
-2024-07-29,61,100,3209615,IMF PortWatch FeatureServer
-2024-07-30,50,94,2330792,IMF PortWatch FeatureServer
-2024-07-31,64,93,2704215,IMF PortWatch FeatureServer
-2024-08-01,46,94,1782297,IMF PortWatch FeatureServer
-2024-08-02,59,92,2543637,IMF PortWatch FeatureServer
-2024-08-03,62,106,3192318,IMF PortWatch FeatureServer
-2024-08-04,58,100,1824423,IMF PortWatch FeatureServer
-2024-08-05,48,90,2317004,IMF PortWatch FeatureServer
-2024-08-06,56,88,2603612,IMF PortWatch FeatureServer
-2024-08-07,46,75,2453290,IMF PortWatch FeatureServer
-2024-08-08,61,89,2700370,IMF PortWatch FeatureServer
-2024-08-09,55,92,3024404,IMF PortWatch FeatureServer
-2024-08-10,66,110,3371308,IMF PortWatch FeatureServer
-2024-08-11,51,95,2214531,IMF PortWatch FeatureServer
-2024-08-12,68,99,2653310,IMF PortWatch FeatureServer
-2024-08-13,54,89,3385813,IMF PortWatch FeatureServer
-2024-08-14,48,89,2300352,IMF PortWatch FeatureServer
-2024-08-15,46,65,2710055,IMF PortWatch FeatureServer
-2024-08-16,43,85,2516520,IMF PortWatch FeatureServer
-2024-08-17,38,60,2806202,IMF PortWatch FeatureServer
-2024-08-18,42,63,2325520,IMF PortWatch FeatureServer
-2024-08-19,46,83,1891498,IMF PortWatch FeatureServer
-2024-08-20,35,62,2218449,IMF PortWatch FeatureServer
-2024-08-21,48,82,2608703,IMF PortWatch FeatureServer
-2024-08-22,41,84,956008,IMF PortWatch FeatureServer
-2024-08-23,48,100,2870371,IMF PortWatch FeatureServer
-2024-08-24,75,121,3115747,IMF PortWatch FeatureServer
-2024-08-25,54,96,2662249,IMF PortWatch FeatureServer
-2024-08-26,64,118,3121183,IMF PortWatch FeatureServer
-2024-08-27,71,112,2582657,IMF PortWatch FeatureServer
-2024-08-28,81,131,4301436,IMF PortWatch FeatureServer
-2024-08-29,69,111,1794550,IMF PortWatch FeatureServer
-2024-08-30,63,109,2669367,IMF PortWatch FeatureServer
-2024-08-31,51,80,2247768,IMF PortWatch FeatureServer
-2024-09-01,43,84,1364152,IMF PortWatch FeatureServer
-2024-09-02,52,91,2478274,IMF PortWatch FeatureServer
-2024-09-03,81,128,3319044,IMF PortWatch FeatureServer
-2024-09-04,74,117,3800708,IMF PortWatch FeatureServer
-2024-09-05,55,92,3080193,IMF PortWatch FeatureServer
-2024-09-06,55,106,3177309,IMF PortWatch FeatureServer
-2024-09-07,69,107,1705343,IMF PortWatch FeatureServer
-2024-09-08,47,93,1639533,IMF PortWatch FeatureServer
-2024-09-09,69,112,3596307,IMF PortWatch FeatureServer
-2024-09-10,63,110,3064101,IMF PortWatch FeatureServer
-2024-09-11,56,98,2402009,IMF PortWatch FeatureServer
-2024-09-12,61,109,2531908,IMF PortWatch FeatureServer
-2024-09-13,66,120,2069063,IMF PortWatch FeatureServer
-2024-09-14,65,112,2969081,IMF PortWatch FeatureServer
-2024-09-15,57,109,2432686,IMF PortWatch FeatureServer
-2024-09-16,53,93,2779312,IMF PortWatch FeatureServer
-2024-09-17,51,92,2226543,IMF PortWatch FeatureServer
-2024-09-18,72,122,4296140,IMF PortWatch FeatureServer
-2024-09-19,59,93,3248278,IMF PortWatch FeatureServer
-2024-09-20,63,105,1664293,IMF PortWatch FeatureServer
-2024-09-21,58,105,2347440,IMF PortWatch FeatureServer
-2024-09-22,56,107,2774319,IMF PortWatch FeatureServer
-2024-09-23,74,121,4425456,IMF PortWatch FeatureServer
-2024-09-24,65,111,2210481,IMF PortWatch FeatureServer
-2024-09-25,69,109,4037055,IMF PortWatch FeatureServer
-2024-09-26,53,90,1460247,IMF PortWatch FeatureServer
-2024-09-27,50,112,2709841,IMF PortWatch FeatureServer
-2024-09-28,70,120,2160689,IMF PortWatch FeatureServer
-2024-09-29,43,80,2546166,IMF PortWatch FeatureServer
-2024-09-30,41,71,2170164,IMF PortWatch FeatureServer
-2024-10-01,50,89,1946370,IMF PortWatch FeatureServer
-2024-10-02,72,131,3608351,IMF PortWatch FeatureServer
-2024-10-03,48,86,1503108,IMF PortWatch FeatureServer
-2024-10-04,58,97,2949049,IMF PortWatch FeatureServer
-2024-10-05,53,90,3288386,IMF PortWatch FeatureServer
-2024-10-06,41,85,2199476,IMF PortWatch FeatureServer
-2024-10-07,52,86,2665081,IMF PortWatch FeatureServer
-2024-10-08,54,94,2623729,IMF PortWatch FeatureServer
-2024-10-09,57,112,2622493,IMF PortWatch FeatureServer
-2024-10-10,55,107,2825581,IMF PortWatch FeatureServer
-2024-10-11,59,98,3010402,IMF PortWatch FeatureServer
-2024-10-12,67,115,3562871,IMF PortWatch FeatureServer
-2024-10-13,66,111,2626079,IMF PortWatch FeatureServer
-2024-10-14,45,80,2497227,IMF PortWatch FeatureServer
-2024-10-15,43,76,1624887,IMF PortWatch FeatureServer
-2024-10-16,47,73,1554570,IMF PortWatch FeatureServer
-2024-10-17,58,105,2073341,IMF PortWatch FeatureServer
-2024-10-18,58,98,3618751,IMF PortWatch FeatureServer
-2024-10-19,59,103,2332484,IMF PortWatch FeatureServer
-2024-10-20,55,105,2289650,IMF PortWatch FeatureServer
-2024-10-21,46,75,1296895,IMF PortWatch FeatureServer
-2024-10-22,38,69,1743660,IMF PortWatch FeatureServer
-2024-10-23,34,67,2419883,IMF PortWatch FeatureServer
-2024-10-24,54,102,2574432,IMF PortWatch FeatureServer
-2024-10-25,57,98,3263339,IMF PortWatch FeatureServer
-2024-10-26,40,82,1957650,IMF PortWatch FeatureServer
-2024-10-27,47,87,1616458,IMF PortWatch FeatureServer
-2024-10-28,38,59,1536959,IMF PortWatch FeatureServer
-2024-10-29,38,70,1223132,IMF PortWatch FeatureServer
-2024-10-30,39,71,742883,IMF PortWatch FeatureServer
-2024-10-31,33,70,1077547,IMF PortWatch FeatureServer
-2024-11-01,48,81,1687448,IMF PortWatch FeatureServer
-2024-11-02,58,97,2979947,IMF PortWatch FeatureServer
-2024-11-03,65,100,3114111,IMF PortWatch FeatureServer
-2024-11-04,62,120,3063825,IMF PortWatch FeatureServer
-2024-11-05,63,111,2892448,IMF PortWatch FeatureServer
-2024-11-06,52,91,3235603,IMF PortWatch FeatureServer
-2024-11-07,59,113,3000713,IMF PortWatch FeatureServer
-2024-11-08,58,99,3015581,IMF PortWatch FeatureServer
-2024-11-09,54,88,2916692,IMF PortWatch FeatureServer
-2024-11-10,54,99,2782889,IMF PortWatch FeatureServer
-2024-11-11,67,111,3536580,IMF PortWatch FeatureServer
-2024-11-12,43,78,2606223,IMF PortWatch FeatureServer
-2024-11-13,45,81,2122857,IMF PortWatch FeatureServer
-2024-11-14,37,72,1316521,IMF PortWatch FeatureServer
-2024-11-15,46,78,1502188,IMF PortWatch FeatureServer
-2024-11-16,37,72,1884570,IMF PortWatch FeatureServer
-2024-11-17,32,67,1490807,IMF PortWatch FeatureServer
-2024-11-18,48,81,2567880,IMF PortWatch FeatureServer
-2024-11-19,38,78,2167944,IMF PortWatch FeatureServer
-2024-11-20,46,75,2201729,IMF PortWatch FeatureServer
-2024-11-21,41,79,2822801,IMF PortWatch FeatureServer
-2024-11-22,39,75,1775459,IMF PortWatch FeatureServer
-2024-11-23,38,63,1537552,IMF PortWatch FeatureServer
-2024-11-24,38,70,1058476,IMF PortWatch FeatureServer
-2024-11-25,35,64,2301109,IMF PortWatch FeatureServer
-2024-11-26,30,59,2036424,IMF PortWatch FeatureServer
-2024-11-27,46,74,2850416,IMF PortWatch FeatureServer
-2024-11-28,43,71,1179862,IMF PortWatch FeatureServer
-2024-11-29,39,58,1651464,IMF PortWatch FeatureServer
-2024-11-30,44,91,2652004,IMF PortWatch FeatureServer
-2024-12-01,32,54,240812,IMF PortWatch FeatureServer
-2024-12-02,42,68,1728012,IMF PortWatch FeatureServer
-2024-12-03,22,54,559952,IMF PortWatch FeatureServer
-2024-12-04,39,68,1311694,IMF PortWatch FeatureServer
-2024-12-05,47,88,2650264,IMF PortWatch FeatureServer
-2024-12-06,43,72,1686897,IMF PortWatch FeatureServer
-2024-12-07,43,68,2520446,IMF PortWatch FeatureServer
-2024-12-08,39,66,1789794,IMF PortWatch FeatureServer
-2024-12-09,38,76,1763372,IMF PortWatch FeatureServer
-2024-12-10,42,69,2249578,IMF PortWatch FeatureServer
-2024-12-11,37,73,1415972,IMF PortWatch FeatureServer
-2024-12-12,42,77,2040943,IMF PortWatch FeatureServer
-2024-12-13,43,81,2139932,IMF PortWatch FeatureServer
-2024-12-14,44,77,1679436,IMF PortWatch FeatureServer
-2024-12-15,35,65,2286624,IMF PortWatch FeatureServer
-2024-12-16,43,63,1563075,IMF PortWatch FeatureServer
-2024-12-17,35,66,1153539,IMF PortWatch FeatureServer
-2024-12-18,53,85,2876381,IMF PortWatch FeatureServer
-2024-12-19,39,75,1179321,IMF PortWatch FeatureServer
-2024-12-20,43,64,1464037,IMF PortWatch FeatureServer
-2024-12-21,48,81,2041931,IMF PortWatch FeatureServer
-2024-12-22,33,60,2333837,IMF PortWatch FeatureServer
-2024-12-23,29,50,1189716,IMF PortWatch FeatureServer
-2024-12-24,42,77,1738856,IMF PortWatch FeatureServer
-2024-12-25,40,87,2203732,IMF PortWatch FeatureServer
-2024-12-26,43,72,1520615,IMF PortWatch FeatureServer
-2024-12-27,41,72,2136957,IMF PortWatch FeatureServer
-2024-12-28,38,72,1478851,IMF PortWatch FeatureServer
-2024-12-29,38,56,1783238,IMF PortWatch FeatureServer
-2024-12-30,40,82,1724806,IMF PortWatch FeatureServer
-2024-12-31,37,72,1696423,IMF PortWatch FeatureServer
-2025-01-01,41,75,2225748,IMF PortWatch FeatureServer
-2025-01-02,37,65,1743466,IMF PortWatch FeatureServer
-2025-01-03,37,67,2615342,IMF PortWatch FeatureServer
-2025-01-04,40,77,1557733,IMF PortWatch FeatureServer
-2025-01-05,38,56,1457594,IMF PortWatch FeatureServer
-2025-01-06,25,54,564363,IMF PortWatch FeatureServer
-2025-01-07,34,63,1957933,IMF PortWatch FeatureServer
-2025-01-08,30,65,1083148,IMF PortWatch FeatureServer
-2025-01-09,37,64,1832266,IMF PortWatch FeatureServer
-2025-01-10,42,68,2050750,IMF PortWatch FeatureServer
-2025-01-11,49,80,2642729,IMF PortWatch FeatureServer
-2025-01-12,53,91,2919789,IMF PortWatch FeatureServer
-2025-01-13,38,64,1537924,IMF PortWatch FeatureServer
-2025-01-14,33,71,1433408,IMF PortWatch FeatureServer
-2025-01-15,33,66,1947788,IMF PortWatch FeatureServer
-2025-01-16,43,74,1650742,IMF PortWatch FeatureServer
-2025-01-17,46,76,2714135,IMF PortWatch FeatureServer
-2025-01-18,45,77,2236196,IMF PortWatch FeatureServer
-2025-01-19,32,65,1160028,IMF PortWatch FeatureServer
-2025-01-20,45,72,1665943,IMF PortWatch FeatureServer
-2025-01-21,38,71,1465745,IMF PortWatch FeatureServer
-2025-01-22,35,59,2133054,IMF PortWatch FeatureServer
-2025-01-23,41,62,1886518,IMF PortWatch FeatureServer
-2025-01-24,31,68,1654768,IMF PortWatch FeatureServer
-2025-01-25,52,89,2177915,IMF PortWatch FeatureServer
-2025-01-26,54,79,2569602,IMF PortWatch FeatureServer
-2025-01-27,41,73,1073686,IMF PortWatch FeatureServer
-2025-01-28,33,60,1458593,IMF PortWatch FeatureServer
-2025-01-29,48,83,1551214,IMF PortWatch FeatureServer
-2025-01-30,38,75,2554673,IMF PortWatch FeatureServer
-2025-01-31,46,78,1479761,IMF PortWatch FeatureServer
-2025-02-01,31,60,1439569,IMF PortWatch FeatureServer
-2025-02-02,40,59,1194124,IMF PortWatch FeatureServer
-2025-02-03,44,78,2068522,IMF PortWatch FeatureServer
-2025-02-04,46,80,1475376,IMF PortWatch FeatureServer
-2025-02-05,35,62,1112829,IMF PortWatch FeatureServer
-2025-02-06,34,77,1493448,IMF PortWatch FeatureServer
-2025-02-07,29,56,1309308,IMF PortWatch FeatureServer
-2025-02-08,33,60,1230252,IMF PortWatch FeatureServer
-2025-02-09,45,75,1623694,IMF PortWatch FeatureServer
-2025-02-10,45,66,2733106,IMF PortWatch FeatureServer
-2025-02-11,49,92,1912801,IMF PortWatch FeatureServer
-2025-02-12,59,100,3252718,IMF PortWatch FeatureServer
-2025-02-13,63,128,3211579,IMF PortWatch FeatureServer
-2025-02-14,47,75,2390359,IMF PortWatch FeatureServer
-2025-02-15,38,70,1548888,IMF PortWatch FeatureServer
-2025-02-16,40,67,2411271,IMF PortWatch FeatureServer
-2025-02-17,33,64,1837081,IMF PortWatch FeatureServer
-2025-02-18,39,83,2101234,IMF PortWatch FeatureServer
-2025-02-19,43,76,2200837,IMF PortWatch FeatureServer
-2025-02-20,45,67,1661163,IMF PortWatch FeatureServer
-2025-02-21,40,83,1995161,IMF PortWatch FeatureServer
-2025-02-22,65,114,3448889,IMF PortWatch FeatureServer
-2025-02-23,40,78,856058,IMF PortWatch FeatureServer
-2025-02-24,40,68,1777190,IMF PortWatch FeatureServer
-2025-02-25,39,64,1593506,IMF PortWatch FeatureServer
-2025-02-26,20,37,784662,IMF PortWatch FeatureServer
-2025-02-27,38,70,623847,IMF PortWatch FeatureServer
-2025-02-28,35,60,1082888,IMF PortWatch FeatureServer
-2025-03-01,36,65,1523394,IMF PortWatch FeatureServer
-2025-03-02,34,60,2047318,IMF PortWatch FeatureServer
-2025-03-03,54,74,3240590,IMF PortWatch FeatureServer
-2025-03-04,39,74,1544028,IMF PortWatch FeatureServer
-2025-03-05,40,71,1855781,IMF PortWatch FeatureServer
-2025-03-06,68,105,3273775,IMF PortWatch FeatureServer
-2025-03-07,56,82,1956564,IMF PortWatch FeatureServer
-2025-03-08,68,104,2759723,IMF PortWatch FeatureServer
-2025-03-09,36,63,1750104,IMF PortWatch FeatureServer
-2025-03-10,46,82,3440936,IMF PortWatch FeatureServer
-2025-03-11,37,74,2567557,IMF PortWatch FeatureServer
-2025-03-12,55,94,2365327,IMF PortWatch FeatureServer
-2025-03-13,44,79,1904997,IMF PortWatch FeatureServer
-2025-03-14,41,94,1654456,IMF PortWatch FeatureServer
-2025-03-15,45,77,1660592,IMF PortWatch FeatureServer
-2025-03-16,62,109,2910303,IMF PortWatch FeatureServer
-2025-03-17,35,76,1736797,IMF PortWatch FeatureServer
-2025-03-18,46,83,2893943,IMF PortWatch FeatureServer
-2025-03-19,45,81,1497961,IMF PortWatch FeatureServer
-2025-03-20,70,113,3637372,IMF PortWatch FeatureServer
-2025-03-21,55,91,1966341,IMF PortWatch FeatureServer
-2025-03-22,53,85,2945525,IMF PortWatch FeatureServer
-2025-03-23,40,79,1730454,IMF PortWatch FeatureServer
-2025-03-24,41,76,1634613,IMF PortWatch FeatureServer
-2025-03-25,36,61,824950,IMF PortWatch FeatureServer
-2025-03-26,24,56,817854,IMF PortWatch FeatureServer
-2025-03-27,34,64,2670274,IMF PortWatch FeatureServer
-2025-03-28,64,115,2716538,IMF PortWatch FeatureServer
-2025-03-29,68,110,2944362,IMF PortWatch FeatureServer
-2025-03-30,66,99,2403544,IMF PortWatch FeatureServer
-2025-03-31,54,101,2818174,IMF PortWatch FeatureServer
-2025-04-01,62,117,3025459,IMF PortWatch FeatureServer
-2025-04-02,60,115,2544880,IMF PortWatch FeatureServer
-2025-04-03,80,127,3912819,IMF PortWatch FeatureServer
-2025-04-04,60,105,4068086,IMF PortWatch FeatureServer
-2025-04-05,58,112,2763260,IMF PortWatch FeatureServer
-2025-04-06,58,104,2685482,IMF PortWatch FeatureServer
-2025-04-07,54,96,2479881,IMF PortWatch FeatureServer
-2025-04-08,69,106,3350720,IMF PortWatch FeatureServer
-2025-04-09,59,112,2230641,IMF PortWatch FeatureServer
-2025-04-10,55,99,3193992,IMF PortWatch FeatureServer
-2025-04-11,59,109,2906187,IMF PortWatch FeatureServer
-2025-04-12,50,100,3098466,IMF PortWatch FeatureServer
-2025-04-13,58,96,3043148,IMF PortWatch FeatureServer
-2025-04-14,56,104,3444282,IMF PortWatch FeatureServer
-2025-04-15,72,124,2032587,IMF PortWatch FeatureServer
-2025-04-16,60,101,3058780,IMF PortWatch FeatureServer
-2025-04-17,31,58,971818,IMF PortWatch FeatureServer
-2025-04-18,25,51,928919,IMF PortWatch FeatureServer
-2025-04-19,42,76,1875675,IMF PortWatch FeatureServer
-2025-04-20,50,80,2808057,IMF PortWatch FeatureServer
-2025-04-21,61,108,2787722,IMF PortWatch FeatureServer
-2025-04-22,61,124,2459374,IMF PortWatch FeatureServer
-2025-04-23,65,107,2625071,IMF PortWatch FeatureServer
-2025-04-24,64,122,2068468,IMF PortWatch FeatureServer
-2025-04-25,63,102,3138601,IMF PortWatch FeatureServer
-2025-04-26,67,110,3103280,IMF PortWatch FeatureServer
-2025-04-27,59,93,2287353,IMF PortWatch FeatureServer
-2025-04-28,52,94,2791742,IMF PortWatch FeatureServer
-2025-04-29,56,101,2404523,IMF PortWatch FeatureServer
-2025-04-30,63,118,3166598,IMF PortWatch FeatureServer
-2025-05-01,58,101,3396172,IMF PortWatch FeatureServer
-2025-05-02,63,97,2234276,IMF PortWatch FeatureServer
-2025-05-03,52,97,2890700,IMF PortWatch FeatureServer
-2025-05-04,48,77,2884464,IMF PortWatch FeatureServer
-2025-05-05,66,110,3074045,IMF PortWatch FeatureServer
-2025-05-06,54,105,2133741,IMF PortWatch FeatureServer
-2025-05-07,30,64,1797624,IMF PortWatch FeatureServer
-2025-05-08,41,85,935400,IMF PortWatch FeatureServer
-2025-05-09,58,101,1445163,IMF PortWatch FeatureServer
-2025-05-10,68,113,2596131,IMF PortWatch FeatureServer
-2025-05-11,69,107,3072802,IMF PortWatch FeatureServer
-2025-05-12,68,112,3493837,IMF PortWatch FeatureServer
-2025-05-13,54,99,2240828,IMF PortWatch FeatureServer
-2025-05-14,66,115,2875400,IMF PortWatch FeatureServer
-2025-05-15,61,105,2950498,IMF PortWatch FeatureServer
-2025-05-16,49,98,2564139,IMF PortWatch FeatureServer
-2025-05-17,56,105,2238507,IMF PortWatch FeatureServer
-2025-05-18,71,115,3174032,IMF PortWatch FeatureServer
-2025-05-19,64,114,3165537,IMF PortWatch FeatureServer
-2025-05-20,67,120,3318877,IMF PortWatch FeatureServer
-2025-05-21,63,115,2723501,IMF PortWatch FeatureServer
-2025-05-22,59,103,1756704,IMF PortWatch FeatureServer
-2025-05-23,68,119,3234111,IMF PortWatch FeatureServer
-2025-05-24,51,100,2280069,IMF PortWatch FeatureServer
-2025-05-25,53,106,2212664,IMF PortWatch FeatureServer
-2025-05-26,54,117,3616130,IMF PortWatch FeatureServer
-2025-05-27,53,97,2487890,IMF PortWatch FeatureServer
-2025-05-28,44,82,2607278,IMF PortWatch FeatureServer
-2025-05-29,73,112,4045410,IMF PortWatch FeatureServer
-2025-05-30,65,107,1867395,IMF PortWatch FeatureServer
-2025-05-31,51,94,2186634,IMF PortWatch FeatureServer
-2025-06-01,47,99,2207649,IMF PortWatch FeatureServer
-2025-06-02,66,121,3473409,IMF PortWatch FeatureServer
-2025-06-03,55,94,2218109,IMF PortWatch FeatureServer
-2025-06-04,67,110,3461280,IMF PortWatch FeatureServer
-2025-06-05,50,87,2634857,IMF PortWatch FeatureServer
-2025-06-06,43,71,979768,IMF PortWatch FeatureServer
-2025-06-07,45,77,2596020,IMF PortWatch FeatureServer
-2025-06-08,61,107,3204347,IMF PortWatch FeatureServer
-2025-06-09,69,133,3654936,IMF PortWatch FeatureServer
-2025-06-10,60,117,2781090,IMF PortWatch FeatureServer
-2025-06-11,50,99,2320057,IMF PortWatch FeatureServer
-2025-06-12,63,98,3216294,IMF PortWatch FeatureServer
-2025-06-13,66,113,2725831,IMF PortWatch FeatureServer
-2025-06-14,53,102,2061273,IMF PortWatch FeatureServer
-2025-06-15,63,102,3481253,IMF PortWatch FeatureServer
-2025-06-16,58,112,3132243,IMF PortWatch FeatureServer
-2025-06-17,49,85,2591660,IMF PortWatch FeatureServer
-2025-06-18,71,124,2654939,IMF PortWatch FeatureServer
-2025-06-19,53,101,3425533,IMF PortWatch FeatureServer
-2025-06-20,49,88,2078094,IMF PortWatch FeatureServer
-2025-06-21,68,118,2294139,IMF PortWatch FeatureServer
-2025-06-22,60,96,3226492,IMF PortWatch FeatureServer
-2025-06-23,39,87,1936442,IMF PortWatch FeatureServer
-2025-06-24,65,108,2757877,IMF PortWatch FeatureServer
-2025-06-25,68,104,3130021,IMF PortWatch FeatureServer
-2025-06-26,55,99,3072869,IMF PortWatch FeatureServer
-2025-06-27,70,116,2452105,IMF PortWatch FeatureServer
-2025-06-28,58,104,3215116,IMF PortWatch FeatureServer
-2025-06-29,55,102,2473998,IMF PortWatch FeatureServer
-2025-06-30,49,93,2427179,IMF PortWatch FeatureServer
-2025-07-01,44,85,1658116,IMF PortWatch FeatureServer
-2025-07-02,54,93,2182855,IMF PortWatch FeatureServer
-2025-07-03,48,83,2194170,IMF PortWatch FeatureServer
-2025-07-04,58,96,2799793,IMF PortWatch FeatureServer
-2025-07-05,62,98,2106511,IMF PortWatch FeatureServer
-2025-07-06,45,76,1374650,IMF PortWatch FeatureServer
-2025-07-07,31,70,2078031,IMF PortWatch FeatureServer
-2025-07-08,42,77,1359103,IMF PortWatch FeatureServer
-2025-07-09,60,91,3514007,IMF PortWatch FeatureServer
-2025-07-10,62,111,3068082,IMF PortWatch FeatureServer
-2025-07-11,55,85,3344799,IMF PortWatch FeatureServer
-2025-07-12,62,106,3912441,IMF PortWatch FeatureServer
-2025-07-13,53,95,2124256,IMF PortWatch FeatureServer
-2025-07-14,69,116,2691895,IMF PortWatch FeatureServer
-2025-07-15,53,109,3182087,IMF PortWatch FeatureServer
-2025-07-16,67,111,3082708,IMF PortWatch FeatureServer
-2025-07-17,61,116,3498766,IMF PortWatch FeatureServer
-2025-07-18,42,81,2239938,IMF PortWatch FeatureServer
-2025-07-19,52,86,2304512,IMF PortWatch FeatureServer
-2025-07-20,64,112,2986319,IMF PortWatch FeatureServer
-2025-07-21,47,88,3056542,IMF PortWatch FeatureServer
-2025-07-22,44,96,2079937,IMF PortWatch FeatureServer
-2025-07-23,60,100,2499493,IMF PortWatch FeatureServer
-2025-07-24,47,88,2124879,IMF PortWatch FeatureServer
-2025-07-25,48,82,2478169,IMF PortWatch FeatureServer
-2025-07-26,63,93,2833815,IMF PortWatch FeatureServer
-2025-07-27,59,102,3299079,IMF PortWatch FeatureServer
-2025-07-28,55,96,2051368,IMF PortWatch FeatureServer
-2025-07-29,54,98,2517124,IMF PortWatch FeatureServer
-2025-07-30,65,110,3597243,IMF PortWatch FeatureServer
-2025-07-31,55,102,2103165,IMF PortWatch FeatureServer
-2025-08-01,52,75,1754952,IMF PortWatch FeatureServer
-2025-08-02,60,103,3713856,IMF PortWatch FeatureServer
-2025-08-03,43,80,2459241,IMF PortWatch FeatureServer
-2025-08-04,39,72,1525727,IMF PortWatch FeatureServer
-2025-08-05,54,105,3419438,IMF PortWatch FeatureServer
-2025-08-06,33,72,1483852,IMF PortWatch FeatureServer
-2025-08-07,39,70,2293325,IMF PortWatch FeatureServer
-2025-08-08,43,75,1629400,IMF PortWatch FeatureServer
-2025-08-09,42,71,2350268,IMF PortWatch FeatureServer
-2025-08-10,57,98,2779055,IMF PortWatch FeatureServer
-2025-08-11,59,101,2686975,IMF PortWatch FeatureServer
-2025-08-12,68,127,2725047,IMF PortWatch FeatureServer
-2025-08-13,71,120,2511282,IMF PortWatch FeatureServer
-2025-08-14,57,103,2743608,IMF PortWatch FeatureServer
-2025-08-15,49,75,1917237,IMF PortWatch FeatureServer
-2025-08-16,45,82,1925877,IMF PortWatch FeatureServer
-2025-08-17,74,127,4001781,IMF PortWatch FeatureServer
-2025-08-18,49,94,2055719,IMF PortWatch FeatureServer
-2025-08-19,53,106,3953849,IMF PortWatch FeatureServer
-2025-08-20,49,86,2942038,IMF PortWatch FeatureServer
-2025-08-21,48,81,2451059,IMF PortWatch FeatureServer
-2025-08-22,73,115,3049896,IMF PortWatch FeatureServer
-2025-08-23,52,87,2162407,IMF PortWatch FeatureServer
-2025-08-24,56,104,3069295,IMF PortWatch FeatureServer
-2025-08-25,49,90,2260610,IMF PortWatch FeatureServer
-2025-08-26,39,82,1976976,IMF PortWatch FeatureServer
-2025-08-27,45,90,2630494,IMF PortWatch FeatureServer
-2025-08-28,64,108,2418119,IMF PortWatch FeatureServer
-2025-08-29,51,101,2275780,IMF PortWatch FeatureServer
-2025-08-30,74,121,4309715,IMF PortWatch FeatureServer
-2025-08-31,60,109,2584331,IMF PortWatch FeatureServer
-2025-09-01,69,114,2868315,IMF PortWatch FeatureServer
-2025-09-02,45,81,1688845,IMF PortWatch FeatureServer
-2025-09-03,39,86,2091423,IMF PortWatch FeatureServer
-2025-09-04,39,61,1456304,IMF PortWatch FeatureServer
-2025-09-05,75,121,3599143,IMF PortWatch FeatureServer
-2025-09-06,64,104,2742870,IMF PortWatch FeatureServer
-2025-09-07,55,101,3010705,IMF PortWatch FeatureServer
-2025-09-08,58,99,2653045,IMF PortWatch FeatureServer
-2025-09-09,43,85,1668185,IMF PortWatch FeatureServer
-2025-09-10,44,86,2267581,IMF PortWatch FeatureServer
-2025-09-11,33,69,1620037,IMF PortWatch FeatureServer
-2025-09-12,41,61,1201950,IMF PortWatch FeatureServer
-2025-09-13,32,61,1480424,IMF PortWatch FeatureServer
-2025-09-14,39,64,1363264,IMF PortWatch FeatureServer
-2025-09-15,34,76,1085154,IMF PortWatch FeatureServer
-2025-09-16,62,99,2354138,IMF PortWatch FeatureServer
-2025-09-17,55,107,2286099,IMF PortWatch FeatureServer
-2025-09-18,66,115,2928645,IMF PortWatch FeatureServer
-2025-09-19,37,77,2171937,IMF PortWatch FeatureServer
-2025-09-20,46,64,1777491,IMF PortWatch FeatureServer
-2025-09-21,51,73,1632000,IMF PortWatch FeatureServer
-2025-09-22,37,63,1496639,IMF PortWatch FeatureServer
-2025-09-23,53,88,2720643,IMF PortWatch FeatureServer
-2025-09-24,52,90,2236283,IMF PortWatch FeatureServer
-2025-09-25,26,62,1745296,IMF PortWatch FeatureServer
-2025-09-26,38,76,889704,IMF PortWatch FeatureServer
-2025-09-27,60,102,3006967,IMF PortWatch FeatureServer
-2025-09-28,76,124,3732513,IMF PortWatch FeatureServer
-2025-09-29,70,129,2652585,IMF PortWatch FeatureServer
-2025-09-30,56,100,2097595,IMF PortWatch FeatureServer
-2025-10-01,72,116,3296811,IMF PortWatch FeatureServer
-2025-10-02,56,94,4213415,IMF PortWatch FeatureServer
-2025-10-03,55,101,2985012,IMF PortWatch FeatureServer
-2025-10-04,73,118,1767642,IMF PortWatch FeatureServer
-2025-10-05,72,121,3521158,IMF PortWatch FeatureServer
-2025-10-06,44,89,2090605,IMF PortWatch FeatureServer
-2025-10-07,56,101,2677093,IMF PortWatch FeatureServer
-2025-10-08,26,55,1037540,IMF PortWatch FeatureServer
-2025-10-09,30,56,1496030,IMF PortWatch FeatureServer
-2025-10-10,31,69,979332,IMF PortWatch FeatureServer
-2025-10-11,39,69,1820603,IMF PortWatch FeatureServer
-2025-10-12,23,55,890370,IMF PortWatch FeatureServer
-2025-10-13,38,71,1636984,IMF PortWatch FeatureServer
-2025-10-14,63,120,4567780,IMF PortWatch FeatureServer
-2025-10-15,38,62,1592552,IMF PortWatch FeatureServer
-2025-10-16,28,51,1206092,IMF PortWatch FeatureServer
-2025-10-17,24,58,1208079,IMF PortWatch FeatureServer
-2025-10-18,43,72,1747594,IMF PortWatch FeatureServer
-2025-10-19,47,82,2057561,IMF PortWatch FeatureServer
-2025-10-20,48,82,1795983,IMF PortWatch FeatureServer
-2025-10-21,53,103,2285006,IMF PortWatch FeatureServer
-2025-10-22,65,116,3684915,IMF PortWatch FeatureServer
-2025-10-23,58,109,2955595,IMF PortWatch FeatureServer
-2025-10-24,63,104,2242037,IMF PortWatch FeatureServer
-2025-10-25,61,101,3609411,IMF PortWatch FeatureServer
-2025-10-26,59,99,3305933,IMF PortWatch FeatureServer
-2025-10-27,57,106,2798994,IMF PortWatch FeatureServer
-2025-10-28,52,103,1912261,IMF PortWatch FeatureServer
-2025-10-29,70,114,2918046,IMF PortWatch FeatureServer
-2025-10-30,48,95,2635302,IMF PortWatch FeatureServer
-2025-10-31,42,80,3436232,IMF PortWatch FeatureServer
-2025-11-01,47,74,1808993,IMF PortWatch FeatureServer
-2025-11-02,35,60,1878385,IMF PortWatch FeatureServer
-2025-11-03,25,51,680417,IMF PortWatch FeatureServer
-2025-11-04,50,74,987633,IMF PortWatch FeatureServer
-2025-11-05,47,78,2980784,IMF PortWatch FeatureServer
-2025-11-06,39,69,2011944,IMF PortWatch FeatureServer
-2025-11-07,36,77,2024502,IMF PortWatch FeatureServer
-2025-11-08,63,107,3348133,IMF PortWatch FeatureServer
-2025-11-09,45,71,2533855,IMF PortWatch FeatureServer
-2025-11-10,41,67,2050581,IMF PortWatch FeatureServer
-2025-11-11,60,100,3049537,IMF PortWatch FeatureServer
-2025-11-12,41,70,2040948,IMF PortWatch FeatureServer
-2025-11-13,51,100,1940299,IMF PortWatch FeatureServer
-2025-11-14,47,83,3239720,IMF PortWatch FeatureServer
-2025-11-15,38,69,2322682,IMF PortWatch FeatureServer
-2025-11-16,33,70,1322659,IMF PortWatch FeatureServer
-2025-11-17,33,60,1314019,IMF PortWatch FeatureServer
-2025-11-18,41,72,1609802,IMF PortWatch FeatureServer
-2025-11-19,38,64,1997768,IMF PortWatch FeatureServer
-2025-11-20,43,67,2064640,IMF PortWatch FeatureServer
-2025-11-21,32,49,1584138,IMF PortWatch FeatureServer
-2025-11-22,30,51,962561,IMF PortWatch FeatureServer
-2025-11-23,27,61,776010,IMF PortWatch FeatureServer
-2025-11-24,23,46,939319,IMF PortWatch FeatureServer
-2025-11-25,36,67,1565770,IMF PortWatch FeatureServer
-2025-11-26,32,51,1174915,IMF PortWatch FeatureServer
-2025-11-27,29,49,2042975,IMF PortWatch FeatureServer
-2025-11-28,26,50,1185354,IMF PortWatch FeatureServer
-2025-11-29,29,57,823763,IMF PortWatch FeatureServer
-2025-11-30,35,57,2472791,IMF PortWatch FeatureServer
-2025-12-01,35,65,3025778,IMF PortWatch FeatureServer
-2025-12-02,30,59,1234964,IMF PortWatch FeatureServer
-2025-12-03,26,51,1516768,IMF PortWatch FeatureServer
-2025-12-04,30,45,1715620,IMF PortWatch FeatureServer
-2025-12-05,26,44,1204017,IMF PortWatch FeatureServer
-2025-12-06,39,68,1323388,IMF PortWatch FeatureServer
-2025-12-07,40,64,2225547,IMF PortWatch FeatureServer
-2025-12-08,27,59,1135754,IMF PortWatch FeatureServer
-2025-12-09,46,82,1806733,IMF PortWatch FeatureServer
-2025-12-10,31,52,1006238,IMF PortWatch FeatureServer
-2025-12-11,30,50,1964902,IMF PortWatch FeatureServer
-2025-12-12,22,41,1184935,IMF PortWatch FeatureServer
-2025-12-13,26,46,1256662,IMF PortWatch FeatureServer
-2025-12-14,36,49,2455638,IMF PortWatch FeatureServer
-2025-12-15,18,47,1304890,IMF PortWatch FeatureServer
-2025-12-16,31,55,1891843,IMF PortWatch FeatureServer
-2025-12-17,32,50,862506,IMF PortWatch FeatureServer
-2025-12-18,33,55,1963432,IMF PortWatch FeatureServer
-2025-12-19,17,31,828897,IMF PortWatch FeatureServer
-2025-12-20,20,48,1143589,IMF PortWatch FeatureServer
-2025-12-21,29,54,719285,IMF PortWatch FeatureServer
-2025-12-22,26,46,858100,IMF PortWatch FeatureServer
-2025-12-23,26,58,1994683,IMF PortWatch FeatureServer
-2025-12-24,29,65,929216,IMF PortWatch FeatureServer
-2025-12-25,32,68,1167192,IMF PortWatch FeatureServer
-2025-12-26,36,62,2507207,IMF PortWatch FeatureServer
-2025-12-27,39,66,1867382,IMF PortWatch FeatureServer
-2025-12-28,24,55,1632034,IMF PortWatch FeatureServer
-2025-12-29,26,50,643850,IMF PortWatch FeatureServer
-2025-12-30,35,66,1680707,IMF PortWatch FeatureServer
-2025-12-31,46,71,1449369,IMF PortWatch FeatureServer
-2026-01-01,29,64,1713442,IMF PortWatch FeatureServer
-2026-01-02,23,51,1162313,IMF PortWatch FeatureServer
-2026-01-03,34,59,1748158,IMF PortWatch FeatureServer
-2026-01-04,26,49,1127400,IMF PortWatch FeatureServer
-2026-01-05,30,61,1948403,IMF PortWatch FeatureServer
-2026-01-06,31,61,379967,IMF PortWatch FeatureServer
-2026-01-07,37,66,1536799,IMF PortWatch FeatureServer
-2026-01-08,37,62,2085390,IMF PortWatch FeatureServer
-2026-01-09,40,74,2991391,IMF PortWatch FeatureServer
-2026-01-10,34,63,1184808,IMF PortWatch FeatureServer
-2026-01-11,31,64,1935469,IMF PortWatch FeatureServer
-2026-01-12,34,52,1663154,IMF PortWatch FeatureServer
-2026-01-13,26,53,641841,IMF PortWatch FeatureServer
-2026-01-14,34,61,1260279,IMF PortWatch FeatureServer
-2026-01-15,35,62,1845107,IMF PortWatch FeatureServer
-2026-01-16,29,53,1066232,IMF PortWatch FeatureServer
-2026-01-17,23,38,901828,IMF PortWatch FeatureServer
-2026-01-18,20,54,1302150,IMF PortWatch FeatureServer
-2026-01-19,29,58,924715,IMF PortWatch FeatureServer
-2026-01-20,33,58,1253055,IMF PortWatch FeatureServer
-2026-01-21,29,56,2051286,IMF PortWatch FeatureServer
-2026-01-22,38,64,1411533,IMF PortWatch FeatureServer
-2026-01-23,24,48,1230089,IMF PortWatch FeatureServer
-2026-01-24,21,46,878943,IMF PortWatch FeatureServer
-2026-01-25,41,64,2629818,IMF PortWatch FeatureServer
-2026-01-26,19,43,1238981,IMF PortWatch FeatureServer
-2026-01-27,30,61,1253238,IMF PortWatch FeatureServer
-2026-01-28,28,54,1214507,IMF PortWatch FeatureServer
-2026-01-29,41,72,1593036,IMF PortWatch FeatureServer
-2026-01-30,39,71,1648687,IMF PortWatch FeatureServer
-2026-01-31,40,70,1652157,IMF PortWatch FeatureServer
-2026-02-01,19,49,1035130,IMF PortWatch FeatureServer
-2026-02-02,41,67,2714863,IMF PortWatch FeatureServer
-2026-02-03,33,66,1211012,IMF PortWatch FeatureServer
-2026-02-04,20,43,986199,IMF PortWatch FeatureServer
-2026-02-05,36,71,1814047,IMF PortWatch FeatureServer
-2026-02-06,34,60,1050896,IMF PortWatch FeatureServer
-2026-02-07,40,60,2323504,IMF PortWatch FeatureServer
-2026-02-08,32,58,1066129,IMF PortWatch FeatureServer
-2026-02-09,33,53,999250,IMF PortWatch FeatureServer
-2026-02-10,39,65,2479703,IMF PortWatch FeatureServer
-2026-02-11,49,81,1444919,IMF PortWatch FeatureServer
-2026-02-12,32,68,1916098,IMF PortWatch FeatureServer
-2026-02-13,54,103,2415490,IMF PortWatch FeatureServer
-2026-02-14,53,91,2559173,IMF PortWatch FeatureServer
-2026-02-15,42,74,1436990,IMF PortWatch FeatureServer
-2026-02-16,35,54,1965358,IMF PortWatch FeatureServer
-2026-02-17,40,75,1902017,IMF PortWatch FeatureServer
-2026-02-18,54,109,2925472,IMF PortWatch FeatureServer
-2026-02-19,63,115,3441832,IMF PortWatch FeatureServer
-2026-02-20,55,94,2985825,IMF PortWatch FeatureServer
-2026-02-21,53,86,1816744,IMF PortWatch FeatureServer
-2026-02-22,69,127,3572104,IMF PortWatch FeatureServer
-2026-02-23,65,104,1956111,IMF PortWatch FeatureServer
-2026-02-24,49,93,1756199,IMF PortWatch FeatureServer
-2026-02-25,59,116,4168541,IMF PortWatch FeatureServer
-2026-02-26,45,89,909158,IMF PortWatch FeatureServer
-2026-02-27,37,64,1196784,IMF PortWatch FeatureServer
-2026-02-28,36,57,2598963,IMF PortWatch FeatureServer
-2026-03-01,5,20,153007,IMF PortWatch FeatureServer
-2026-03-02,1,4,0,IMF PortWatch FeatureServer
-2026-03-03,1,4,6701,IMF PortWatch FeatureServer
-2026-03-04,0,0,0,IMF PortWatch FeatureServer
-2026-03-05,1,3,0,IMF PortWatch FeatureServer
-2026-03-06,0,2,0,IMF PortWatch FeatureServer
-2026-03-07,1,3,0,IMF PortWatch FeatureServer
-2026-03-08,0,2,0,IMF PortWatch FeatureServer
-2026-03-09,1,2,0,IMF PortWatch FeatureServer
-2026-03-10,1,2,42122,IMF PortWatch FeatureServer
-2026-03-11,0,2,0,IMF PortWatch FeatureServer
-2026-03-12,0,1,0,IMF PortWatch FeatureServer
-2026-03-13,0,0,0,IMF PortWatch FeatureServer
-2026-03-14,0,1,0,IMF PortWatch FeatureServer
-2026-03-15,2,7,339183,IMF PortWatch FeatureServer
-2026-03-16,0,4,0,IMF PortWatch FeatureServer
-2026-03-17,1,1,47804,IMF PortWatch FeatureServer
-2026-03-18,0,0,0,IMF PortWatch FeatureServer
-2026-03-19,0,0,0,IMF PortWatch FeatureServer
-2026-03-20,2,3,118692,IMF PortWatch FeatureServer
-2026-03-21,0,0,0,IMF PortWatch FeatureServer
-2026-03-22,0,2,0,IMF PortWatch FeatureServer
-2026-03-23,2,4,48834,IMF PortWatch FeatureServer
-2026-03-24,1,2,0,IMF PortWatch FeatureServer
-2026-03-25,2,2,3212,IMF PortWatch FeatureServer
-2026-03-26,0,4,0,IMF PortWatch FeatureServer
-2026-03-27,0,2,0,IMF PortWatch FeatureServer
-2026-03-28,1,6,0,IMF PortWatch FeatureServer
-2026-03-29,2,5,5464,IMF PortWatch FeatureServer
-2026-03-30,3,6,0,IMF PortWatch FeatureServer
-2026-03-31,2,5,70842,IMF PortWatch FeatureServer
-2026-04-01,1,7,4062,IMF PortWatch FeatureServer
-2026-04-02,0,1,0,IMF PortWatch FeatureServer
-2026-04-03,2,3,97195,IMF PortWatch FeatureServer
-2026-04-04,3,11,38238,IMF PortWatch FeatureServer
-2026-04-05,4,4,264106,IMF PortWatch FeatureServer
-2026-04-06,0,5,0,IMF PortWatch FeatureServer
-2026-04-07,2,3,69890,IMF PortWatch FeatureServer
-2026-04-08,0,3,0,IMF PortWatch FeatureServer
-2026-04-09,5,8,164591,IMF PortWatch FeatureServer
-2026-04-10,0,3,0,IMF PortWatch FeatureServer
-2026-04-11,3,7,287665,IMF PortWatch FeatureServer
-2026-04-12,3,12,33937,IMF PortWatch FeatureServer
-2026-04-13,4,7,34634,IMF PortWatch FeatureServer
-2026-04-14,3,5,30952,IMF PortWatch FeatureServer
-2026-04-15,4,7,6839,IMF PortWatch FeatureServer
-2026-04-16,1,3,75745,IMF PortWatch FeatureServer
-2026-04-17,3,8,5366,IMF PortWatch FeatureServer
-2026-04-18,12,20,516261,IMF PortWatch FeatureServer
-2026-04-19,1,2,6839,IMF PortWatch FeatureServer
-2026-04-20,2,3,36579,IMF PortWatch FeatureServer
-2026-04-21,3,4,75113,IMF PortWatch FeatureServer
-2026-04-22,2,5,0,IMF PortWatch FeatureServer
-2026-04-23,0,3,0,IMF PortWatch FeatureServer
-2026-04-24,2,6,33283,IMF PortWatch FeatureServer
-2026-04-25,2,4,53759,IMF PortWatch FeatureServer
-2026-04-26,1,3,0,IMF PortWatch FeatureServer
-2026-04-27,2,7,30787,IMF PortWatch FeatureServer
-2026-04-28,3,10,323392,IMF PortWatch FeatureServer
-2026-04-29,23,39,136489,IMF PortWatch FeatureServer
-2026-04-30,4,11,64253,IMF PortWatch FeatureServer
-2026-05-01,2,7,36640,IMF PortWatch FeatureServer
-2026-05-02,4,6,93041,IMF PortWatch FeatureServer
-2026-05-03,1,6,0,IMF PortWatch FeatureServer
-2026-05-04,0,2,0,IMF PortWatch FeatureServer
-2026-05-05,0,0,0,IMF PortWatch FeatureServer
-2026-05-06,0,0,0,IMF PortWatch FeatureServer
-2026-05-07,0,0,0,IMF PortWatch FeatureServer
-2026-05-08,0,0,0,IMF PortWatch FeatureServer
-2026-05-09,1,1,98525,IMF PortWatch FeatureServer
-2026-05-10,2,7,319376,IMF PortWatch FeatureServer
-2026-05-11,4,7,88456,IMF PortWatch FeatureServer
-2026-05-12,1,3,0,IMF PortWatch FeatureServer
-2026-05-13,2,4,349804,IMF PortWatch FeatureServer
-2026-05-14,3,10,42976,IMF PortWatch FeatureServer
-2026-05-15,2,4,5341,IMF PortWatch FeatureServer
-2026-05-16,1,7,36579,IMF PortWatch FeatureServer
-2026-05-17,1,3,0,IMF PortWatch FeatureServer
-2026-05-18,1,4,13968,IMF PortWatch FeatureServer
-2026-05-19,3,4,570517,IMF PortWatch FeatureServer
-2026-05-20,4,8,290295,IMF PortWatch FeatureServer
-2026-05-21,2,5,42682,IMF PortWatch FeatureServer
-2026-05-22,0,2,0,IMF PortWatch FeatureServer
-2026-05-23,1,6,284471,IMF PortWatch FeatureServer
-2026-05-24,2,5,6839,IMF PortWatch FeatureServer
-2026-05-25,0,4,0,IMF PortWatch FeatureServer
-2026-05-26,2,4,0,IMF PortWatch FeatureServer
-2026-05-27,1,1,106096,IMF PortWatch FeatureServer
-2026-05-28,0,2,0,IMF PortWatch FeatureServer
-2026-05-29,0,1,0,IMF PortWatch FeatureServer
-2026-05-30,0,4,0,IMF PortWatch FeatureServer
-2026-05-31,0,5,0,IMF PortWatch FeatureServer
-2026-06-01,1,2,38238,IMF PortWatch FeatureServer
-2026-06-02,3,11,33268,IMF PortWatch FeatureServer
-2026-06-03,3,9,12593,IMF PortWatch FeatureServer
-2026-06-04,1,3,0,IMF PortWatch FeatureServer
-2026-06-05,0,2,0,IMF PortWatch FeatureServer
-2026-06-06,0,2,0,IMF PortWatch FeatureServer
-2026-06-07,0,2,0,IMF PortWatch FeatureServer
-2026-06-08,1,7,6794,IMF PortWatch FeatureServer
-2026-06-09,2,4,48671,IMF PortWatch FeatureServer
-2026-06-10,0,3,0,IMF PortWatch FeatureServer
-2026-06-11,2,2,11142,IMF PortWatch FeatureServer
-2026-06-12,1,1,11375,IMF PortWatch FeatureServer
-2026-06-13,0,0,0,IMF PortWatch FeatureServer
-2026-06-14,0,0,0,IMF PortWatch FeatureServer
-2026-06-15,2,7,0,IMF PortWatch FeatureServer
-2026-06-16,3,10,35583,IMF PortWatch FeatureServer
-2026-06-17,0,8,0,IMF PortWatch FeatureServer
-2026-06-18,10,20,459872,IMF PortWatch FeatureServer
-2026-06-19,3,9,600658,IMF PortWatch FeatureServer
-2026-06-20,12,25,543037,IMF PortWatch FeatureServer
-2026-06-21,1,6,65755,IMF PortWatch FeatureServer
-2026-06-22,12,16,394079,IMF PortWatch FeatureServer
-2026-06-23,12,29,953326,IMF PortWatch FeatureServer
-2026-06-24,20,51,1261562,IMF PortWatch FeatureServer
-2026-06-25,21,46,1383947,IMF PortWatch FeatureServer
-2026-06-26,17,30,655492,IMF PortWatch FeatureServer
-2026-06-27,9,25,552718,IMF PortWatch FeatureServer
-2026-06-28,7,16,86241,IMF PortWatch FeatureServer
-2026-06-29,13,26,976186,IMF PortWatch FeatureServer
-2026-06-30,6,16,232679,IMF PortWatch FeatureServer
-2026-07-01,18,29,1409459,IMF PortWatch FeatureServer
-2026-07-02,15,28,235228,IMF PortWatch FeatureServer
-2026-07-03,17,24,1127426,IMF PortWatch FeatureServer
-2026-07-04,8,17,353844,IMF PortWatch FeatureServer
-2026-07-05,16,22,782230,IMF PortWatch FeatureServer
-2026-07-06,16,25,2149176,IMF PortWatch FeatureServer
-2026-07-07,10,26,1210489,IMF PortWatch FeatureServer
-2026-07-08,8,20,316479,IMF PortWatch FeatureServer
-2026-07-09,3,10,45539,IMF PortWatch FeatureServer
-2026-07-10,4,7,50372,IMF PortWatch FeatureServer
-2026-07-11,3,6,118896,IMF PortWatch FeatureServer
-2026-07-12,1,4,58739,IMF PortWatch FeatureServer
-2026-07-13,2,10,42247,IMF PortWatch FeatureServer
-2026-07-14,5,8,45089,IMF PortWatch FeatureServer
-2026-07-15,3,9,0,IMF PortWatch FeatureServer
-2026-07-16,1,6,0,IMF PortWatch FeatureServer
-2026-07-17,1,1,1231,IMF PortWatch FeatureServer
-2026-07-18,2,6,36937,IMF PortWatch FeatureServer
-2026-07-19,2,4,39216,IMF PortWatch FeatureServer
-2026-07-20,2,5,0,IMF PortWatch FeatureServer
-2026-07-21,1,6,43064,IMF PortWatch FeatureServer
-2026-07-22,1,6,0,IMF PortWatch FeatureServer
-2026-07-23,0,0,0,IMF PortWatch FeatureServer
-2026-07-24,0,3,0,IMF PortWatch FeatureServer
-2026-07-25,0,2,0,IMF PortWatch FeatureServer
-2026-07-26,2,3,81157,IMF PortWatch FeatureServer
-2026-07-27,0,5,0,IMF PortWatch FeatureServer
-2026-07-28,1,5,38762,IMF PortWatch FeatureServer
-2026-07-29,3,7,115119,IMF PortWatch FeatureServer
-2026-07-30,1,4,5325,IMF PortWatch FeatureServer
-2026-07-31,2,8,282046,IMF PortWatch FeatureServer
-2026-08-01,3,5,3003,IMF PortWatch FeatureServer
-2026-08-02,0,3,0,IMF PortWatch FeatureServer
-2026-08-03,3,6,6134,IMF PortWatch FeatureServer
-2026-08-04,4,7,64214,IMF PortWatch FeatureServer
-2026-08-05,0,5,0,IMF PortWatch FeatureServer
-2026-08-06,0,2,0,IMF PortWatch FeatureServer
-2026-08-07,4,6,4245,IMF PortWatch FeatureServer
-2026-08-08,2,10,10939,IMF PortWatch FeatureServer
-2026-08-09,0,3,0,IMF PortWatch FeatureServer
-2026-08-10,2,4,11478,IMF PortWatch FeatureServer
-2026-08-11,2,9,1067,IMF PortWatch FeatureServer
-2026-08-12,1,3,13189,IMF PortWatch FeatureServer
-2026-08-13,2,6,36112,IMF PortWatch FeatureServer
-2026-08-14,2,7,4395,IMF PortWatch FeatureServer
-2026-08-15,1,1,1067,IMF PortWatch FeatureServer
-2026-08-16,1,1,0,IMF PortWatch FeatureServer
-2026-08-17,3,4,24505,IMF PortWatch FeatureServer
-2026-08-18,4,6,0,IMF PortWatch FeatureServer
-2026-08-19,4,6,78587,IMF PortWatch FeatureServer
-2026-08-20,2,5,55226,IMF PortWatch FeatureServer
-2026-08-21,2,4,0,IMF PortWatch FeatureServer
-2026-08-22,1,7,0,IMF PortWatch FeatureServer
-2026-08-23,1,3,0,IMF PortWatch FeatureServer
-2026-08-24,2,3,69775,IMF PortWatch FeatureServer
-2026-08-25,4,4,56680,IMF PortWatch FeatureServer
-2026-08-26,2,5,0,IMF PortWatch FeatureServer
-2026-08-27,2,2,4989,IMF PortWatch FeatureServer
-2026-08-28,0,7,0,IMF PortWatch FeatureServer
-2026-08-29,1,3,9744,IMF PortWatch FeatureServer
-2026-08-30,2,6,42932,IMF PortWatch FeatureServer
-2026-08-31,1,3,0,IMF PortWatch FeatureServer
-2026-09-01,1,4,14589,IMF PortWatch FeatureServer
-2026-09-02,1,3,45387,IMF PortWatch FeatureServer
-2026-09-03,1,2,44440,IMF PortWatch FeatureServer
-2026-09-04,0,2,0,IMF PortWatch FeatureServer
-2026-09-05,0,2,0,IMF PortWatch FeatureServer
-2026-09-06,2,6,60280,IMF PortWatch FeatureServer
-2026-09-07,2,5,4758,IMF PortWatch FeatureServer
-2026-09-08,2,6,0,IMF PortWatch FeatureServer
-2026-09-09,0,3,0,IMF PortWatch FeatureServer
-2026-09-10,1,5,0,IMF PortWatch FeatureServer
-2026-09-11,3,8,81604,IMF PortWatch FeatureServer
-2026-09-12,1,2,4771,IMF PortWatch FeatureServer
-2026-09-13,1,8,0,IMF PortWatch FeatureServer
-2026-09-14,0,2,0,IMF PortWatch FeatureServer
-2026-09-15,1,2,0,IMF PortWatch FeatureServer
-2026-09-16,0,1,0,IMF PortWatch FeatureServer
-2026-09-17,0,3,0,IMF PortWatch FeatureServer
-2026-09-18,2,7,6821,IMF PortWatch FeatureServer
-2026-09-19,1,6,3149,IMF PortWatch FeatureServer
-2026-09-20,0,1,0,IMF PortWatch FeatureServer
-2026-09-21,0,2,0,IMF PortWatch FeatureServer
-2026-09-22,1,3,40377,IMF PortWatch FeatureServer
-2026-09-23,1,4,0,IMF PortWatch FeatureServer
-2026-09-24,3,5,56216,IMF PortWatch FeatureServer
-2026-09-25,2,3,4771,IMF PortWatch FeatureServer
-2026-09-26,1,4,14589,IMF PortWatch FeatureServer
-2026-09-27,1,1,8866,IMF PortWatch FeatureServer
-2026-09-28,2,4,19870,IMF PortWatch FeatureServer
-2026-09-29,0,1,0,IMF PortWatch FeatureServer
-2026-09-30,4,4,94024,IMF PortWatch FeatureServer
-2026-10-01,0,0,0,IMF PortWatch FeatureServer
-2026-10-02,0,4,0,IMF PortWatch FeatureServer
-2026-10-03,0,2,0,IMF PortWatch FeatureServer
-2026-10-04,0,4,0,IMF PortWatch FeatureServer
-2026-10-05,1,8,4771,IMF PortWatch FeatureServer
-2026-10-06,1,2,119052,IMF PortWatch FeatureServer
-2026-10-07,1,6,40860,IMF PortWatch FeatureServer
-2026-10-08,0,4,0,IMF PortWatch FeatureServer
-2026-10-09,0,3,0,IMF PortWatch FeatureServer
-2026-10-10,0,4,0,IMF PortWatch FeatureServer
-2026-10-11,1,2,4636,IMF PortWatch FeatureServer
-2026-10-12,0,3,0,IMF PortWatch FeatureServer
-2026-10-13,0,7,0,IMF PortWatch FeatureServer
-2026-10-14,0,3,0,IMF PortWatch FeatureServer
-2026-10-15,1,2,0,IMF PortWatch FeatureServer
-2026-10-16,1,7,68520,IMF PortWatch FeatureServer
-2026-10-17,0,0,0,IMF PortWatch FeatureServer
-2026-10-18,2,4,19163,IMF PortWatch FeatureServer
-2026-10-19,1,4,0,IMF PortWatch FeatureServer
-2026-10-20,1,3,5341,IMF PortWatch FeatureServer
-2026-10-21,0,3,0,IMF PortWatch FeatureServer
-2026-10-22,1,4,0,IMF PortWatch FeatureServer
-2026-10-23,1,5,0,IMF PortWatch FeatureServer
-2026-10-24,1,2,37735,IMF PortWatch FeatureServer
-2026-10-25,1,2,0,IMF PortWatch FeatureServer
+2025-02-28,35,60,,straits.live mirror of IMF PortWatch
+2025-03-01,36,65,,straits.live mirror of IMF PortWatch
+2025-03-02,34,60,,straits.live mirror of IMF PortWatch
+2025-03-03,54,74,,straits.live mirror of IMF PortWatch
+2025-03-04,39,74,,straits.live mirror of IMF PortWatch
+2025-03-05,40,71,,straits.live mirror of IMF PortWatch
+2025-03-06,68,105,,straits.live mirror of IMF PortWatch
+2025-03-07,56,82,,straits.live mirror of IMF PortWatch
+2025-03-08,68,104,,straits.live mirror of IMF PortWatch
+2025-03-09,36,63,,straits.live mirror of IMF PortWatch
+2025-03-10,46,82,,straits.live mirror of IMF PortWatch
+2025-03-11,37,74,,straits.live mirror of IMF PortWatch
+2025-03-12,55,94,,straits.live mirror of IMF PortWatch
+2025-03-13,44,79,,straits.live mirror of IMF PortWatch
+2025-03-14,41,94,,straits.live mirror of IMF PortWatch
+2025-03-15,45,77,,straits.live mirror of IMF PortWatch
+2025-03-16,62,109,,straits.live mirror of IMF PortWatch
+2025-03-17,35,76,,straits.live mirror of IMF PortWatch
+2025-03-18,46,83,,straits.live mirror of IMF PortWatch
+2025-03-19,45,81,,straits.live mirror of IMF PortWatch
+2025-03-20,70,113,,straits.live mirror of IMF PortWatch
+2025-03-21,55,91,,straits.live mirror of IMF PortWatch
+2025-03-22,53,85,,straits.live mirror of IMF PortWatch
+2025-03-23,40,79,,straits.live mirror of IMF PortWatch
+2025-03-24,41,76,,straits.live mirror of IMF PortWatch
+2025-03-25,36,61,,straits.live mirror of IMF PortWatch
+2025-03-26,24,56,,straits.live mirror of IMF PortWatch
+2025-03-27,34,64,,straits.live mirror of IMF PortWatch
+2025-03-28,64,115,,straits.live mirror of IMF PortWatch
+2025-03-29,68,110,,straits.live mirror of IMF PortWatch
+2025-03-30,66,99,,straits.live mirror of IMF PortWatch
+2025-03-31,54,101,,straits.live mirror of IMF PortWatch
+2025-04-01,62,117,,straits.live mirror of IMF PortWatch
+2025-04-02,60,115,,straits.live mirror of IMF PortWatch
+2025-04-03,80,127,,straits.live mirror of IMF PortWatch
+2025-04-04,60,105,,straits.live mirror of IMF PortWatch
+2025-04-05,58,112,,straits.live mirror of IMF PortWatch
+2025-04-06,58,104,,straits.live mirror of IMF PortWatch
+2025-04-07,54,96,,straits.live mirror of IMF PortWatch
+2025-04-08,69,106,,straits.live mirror of IMF PortWatch
+2025-04-09,59,112,,straits.live mirror of IMF PortWatch
+2025-04-10,55,99,,straits.live mirror of IMF PortWatch
+2025-04-11,59,109,,straits.live mirror of IMF PortWatch
+2025-04-12,50,100,,straits.live mirror of IMF PortWatch
+2025-04-13,58,96,,straits.live mirror of IMF PortWatch
+2025-04-14,56,104,,straits.live mirror of IMF PortWatch
+2025-04-15,72,124,,straits.live mirror of IMF PortWatch
+2025-04-16,60,101,,straits.live mirror of IMF PortWatch
+2025-04-17,31,58,,straits.live mirror of IMF PortWatch
+2025-04-18,25,51,,straits.live mirror of IMF PortWatch
+2025-04-19,42,76,,straits.live mirror of IMF PortWatch
+2025-04-20,50,80,,straits.live mirror of IMF PortWatch
+2025-04-21,61,108,,straits.live mirror of IMF PortWatch
+2025-04-22,61,124,,straits.live mirror of IMF PortWatch
+2025-04-23,65,107,,straits.live mirror of IMF PortWatch
+2025-04-24,64,122,,straits.live mirror of IMF PortWatch
+2025-04-25,63,102,,straits.live mirror of IMF PortWatch
+2025-04-26,67,110,,straits.live mirror of IMF PortWatch
+2025-04-27,59,93,,straits.live mirror of IMF PortWatch
+2025-04-28,52,94,,straits.live mirror of IMF PortWatch
+2025-04-29,56,101,,straits.live mirror of IMF PortWatch
+2025-04-30,63,118,,straits.live mirror of IMF PortWatch
+2025-05-01,58,101,,straits.live mirror of IMF PortWatch
+2025-05-02,63,97,,straits.live mirror of IMF PortWatch
+2025-05-03,52,97,,straits.live mirror of IMF PortWatch
+2025-05-04,48,77,,straits.live mirror of IMF PortWatch
+2025-05-05,66,110,,straits.live mirror of IMF PortWatch
+2025-05-06,54,105,,straits.live mirror of IMF PortWatch
+2025-05-07,30,64,,straits.live mirror of IMF PortWatch
+2025-05-08,41,85,,straits.live mirror of IMF PortWatch
+2025-05-09,58,101,,straits.live mirror of IMF PortWatch
+2025-05-10,68,113,,straits.live mirror of IMF PortWatch
+2025-05-11,69,107,,straits.live mirror of IMF PortWatch
+2025-05-12,68,112,,straits.live mirror of IMF PortWatch
+2025-05-13,54,99,,straits.live mirror of IMF PortWatch
+2025-05-14,66,115,,straits.live mirror of IMF PortWatch
+2025-05-15,61,105,,straits.live mirror of IMF PortWatch
+2025-05-16,49,98,,straits.live mirror of IMF PortWatch
+2025-05-17,56,105,,straits.live mirror of IMF PortWatch
+2025-05-18,71,115,,straits.live mirror of IMF PortWatch
+2025-05-19,64,114,,straits.live mirror of IMF PortWatch
+2025-05-20,67,120,,straits.live mirror of IMF PortWatch
+2025-05-21,63,115,,straits.live mirror of IMF PortWatch
+2025-05-22,59,103,,straits.live mirror of IMF PortWatch
+2025-05-23,68,119,,straits.live mirror of IMF PortWatch
+2025-05-24,51,100,,straits.live mirror of IMF PortWatch
+2025-05-25,53,106,,straits.live mirror of IMF PortWatch
+2025-05-26,54,117,,straits.live mirror of IMF PortWatch
+2025-05-27,53,97,,straits.live mirror of IMF PortWatch
+2025-05-28,44,82,,straits.live mirror of IMF PortWatch
+2025-05-29,73,112,,straits.live mirror of IMF PortWatch
+2025-05-30,65,107,,straits.live mirror of IMF PortWatch
+2025-05-31,51,94,,straits.live mirror of IMF PortWatch
+2025-06-01,47,99,,straits.live mirror of IMF PortWatch
+2025-06-02,66,121,,straits.live mirror of IMF PortWatch
+2025-06-03,55,94,,straits.live mirror of IMF PortWatch
+2025-06-04,67,110,,straits.live mirror of IMF PortWatch
+2025-06-05,50,87,,straits.live mirror of IMF PortWatch
+2025-06-06,43,71,,straits.live mirror of IMF PortWatch
+2025-06-07,45,77,,straits.live mirror of IMF PortWatch
+2025-06-08,61,107,,straits.live mirror of IMF PortWatch
+2025-06-09,69,133,,straits.live mirror of IMF PortWatch
+2025-06-10,60,117,,straits.live mirror of IMF PortWatch
+2025-06-11,50,99,,straits.live mirror of IMF PortWatch
+2025-06-12,63,98,,straits.live mirror of IMF PortWatch
+2025-06-13,66,113,,straits.live mirror of IMF PortWatch
+2025-06-14,53,102,,straits.live mirror of IMF PortWatch
+2025-06-15,63,102,,straits.live mirror of IMF PortWatch
+2025-06-16,58,112,,straits.live mirror of IMF PortWatch
+2025-06-17,49,85,,straits.live mirror of IMF PortWatch
+2025-06-18,71,124,,straits.live mirror of IMF PortWatch
+2025-06-19,53,101,,straits.live mirror of IMF PortWatch
+2025-06-20,49,88,,straits.live mirror of IMF PortWatch
+2025-06-21,68,118,,straits.live mirror of IMF PortWatch
+2025-06-22,60,96,,straits.live mirror of IMF PortWatch
+2025-06-23,39,87,,straits.live mirror of IMF PortWatch
+2025-06-24,65,108,,straits.live mirror of IMF PortWatch
+2025-06-25,68,104,,straits.live mirror of IMF PortWatch
+2025-06-26,55,99,,straits.live mirror of IMF PortWatch
+2025-06-27,70,116,,straits.live mirror of IMF PortWatch
+2025-06-28,58,104,,straits.live mirror of IMF PortWatch
+2025-06-29,55,102,,straits.live mirror of IMF PortWatch
+2025-06-30,49,93,,straits.live mirror of IMF PortWatch
+2025-07-01,44,85,,straits.live mirror of IMF PortWatch
+2025-07-02,54,93,,straits.live mirror of IMF PortWatch
+2025-07-03,48,83,,straits.live mirror of IMF PortWatch
+2025-07-04,58,96,,straits.live mirror of IMF PortWatch
+2025-07-05,62,98,,straits.live mirror of IMF PortWatch
+2025-07-06,45,76,,straits.live mirror of IMF PortWatch
+2025-07-07,31,70,,straits.live mirror of IMF PortWatch
+2025-07-08,42,77,,straits.live mirror of IMF PortWatch
+2025-07-09,60,91,,straits.live mirror of IMF PortWatch
+2025-07-10,62,111,,straits.live mirror of IMF PortWatch
+2025-07-11,55,85,,straits.live mirror of IMF PortWatch
+2025-07-12,62,106,,straits.live mirror of IMF PortWatch
+2025-07-13,53,95,,straits.live mirror of IMF PortWatch
+2025-07-14,69,116,,straits.live mirror of IMF PortWatch
+2025-07-15,53,109,,straits.live mirror of IMF PortWatch
+2025-07-16,67,111,,straits.live mirror of IMF PortWatch
+2025-07-17,61,116,,straits.live mirror of IMF PortWatch
+2025-07-18,42,81,,straits.live mirror of IMF PortWatch
+2025-07-19,52,86,,straits.live mirror of IMF PortWatch
+2025-07-20,64,112,,straits.live mirror of IMF PortWatch
+2025-07-21,47,88,,straits.live mirror of IMF PortWatch
+2025-07-22,44,96,,straits.live mirror of IMF PortWatch
+2025-07-23,60,100,,straits.live mirror of IMF PortWatch
+2025-07-24,47,88,,straits.live mirror of IMF PortWatch
+2025-07-25,48,82,,straits.live mirror of IMF PortWatch
+2025-07-26,63,93,,straits.live mirror of IMF PortWatch
+2025-07-27,59,102,,straits.live mirror of IMF PortWatch
+2025-07-28,55,96,,straits.live mirror of IMF PortWatch
+2025-07-29,54,98,,straits.live mirror of IMF PortWatch
+2025-07-30,65,110,,straits.live mirror of IMF PortWatch
+2025-07-31,55,102,,straits.live mirror of IMF PortWatch
+2025-08-01,52,75,,straits.live mirror of IMF PortWatch
+2025-08-02,60,103,,straits.live mirror of IMF PortWatch
+2025-08-03,43,80,,straits.live mirror of IMF PortWatch
+2025-08-04,39,72,,straits.live mirror of IMF PortWatch
+2025-08-05,54,105,,straits.live mirror of IMF PortWatch
+2025-08-06,33,72,,straits.live mirror of IMF PortWatch
+2025-08-07,39,70,,straits.live mirror of IMF PortWatch
+2025-08-08,43,75,,straits.live mirror of IMF PortWatch
+2025-08-09,42,71,,straits.live mirror of IMF PortWatch
+2025-08-10,57,98,,straits.live mirror of IMF PortWatch
+2025-08-11,59,101,,straits.live mirror of IMF PortWatch
+2025-08-12,68,127,,straits.live mirror of IMF PortWatch
+2025-08-13,71,120,,straits.live mirror of IMF PortWatch
+2025-08-14,57,103,,straits.live mirror of IMF PortWatch
+2025-08-15,49,75,,straits.live mirror of IMF PortWatch
+2025-08-16,45,82,,straits.live mirror of IMF PortWatch
+2025-08-17,74,127,,straits.live mirror of IMF PortWatch
+2025-08-18,49,94,,straits.live mirror of IMF PortWatch
+2025-08-19,53,106,,straits.live mirror of IMF PortWatch
+2025-08-20,49,86,,straits.live mirror of IMF PortWatch
+2025-08-21,48,81,,straits.live mirror of IMF PortWatch
+2025-08-22,73,115,,straits.live mirror of IMF PortWatch
+2025-08-23,52,87,,straits.live mirror of IMF PortWatch
+2025-08-24,56,104,,straits.live mirror of IMF PortWatch
+2025-08-25,49,90,,straits.live mirror of IMF PortWatch
+2025-08-26,39,82,,straits.live mirror of IMF PortWatch
+2025-08-27,45,90,,straits.live mirror of IMF PortWatch
+2025-08-28,64,108,,straits.live mirror of IMF PortWatch
+2025-08-29,51,101,,straits.live mirror of IMF PortWatch
+2025-08-30,74,121,,straits.live mirror of IMF PortWatch
+2025-08-31,60,109,,straits.live mirror of IMF PortWatch
+2025-09-01,69,114,,straits.live mirror of IMF PortWatch
+2025-09-02,45,81,,straits.live mirror of IMF PortWatch
+2025-09-03,39,86,,straits.live mirror of IMF PortWatch
+2025-09-04,39,61,,straits.live mirror of IMF PortWatch
+2025-09-05,75,121,,straits.live mirror of IMF PortWatch
+2025-09-06,64,104,,straits.live mirror of IMF PortWatch
+2025-09-07,55,101,,straits.live mirror of IMF PortWatch
+2025-09-08,58,99,,straits.live mirror of IMF PortWatch
+2025-09-09,43,85,,straits.live mirror of IMF PortWatch
+2025-09-10,44,86,,straits.live mirror of IMF PortWatch
+2025-09-11,33,69,,straits.live mirror of IMF PortWatch
+2025-09-12,41,61,,straits.live mirror of IMF PortWatch
+2025-09-13,32,61,,straits.live mirror of IMF PortWatch
+2025-09-14,39,64,,straits.live mirror of IMF PortWatch
+2025-09-15,34,76,,straits.live mirror of IMF PortWatch
+2025-09-16,62,99,,straits.live mirror of IMF PortWatch
+2025-09-17,55,107,,straits.live mirror of IMF PortWatch
+2025-09-18,66,115,,straits.live mirror of IMF PortWatch
+2025-09-19,37,77,,straits.live mirror of IMF PortWatch
+2025-09-20,46,64,,straits.live mirror of IMF PortWatch
+2025-09-21,51,73,,straits.live mirror of IMF PortWatch
+2025-09-22,37,63,,straits.live mirror of IMF PortWatch
+2025-09-23,53,88,,straits.live mirror of IMF PortWatch
+2025-09-24,52,90,,straits.live mirror of IMF PortWatch
+2025-09-25,26,62,,straits.live mirror of IMF PortWatch
+2025-09-26,38,76,,straits.live mirror of IMF PortWatch
+2025-09-27,60,102,,straits.live mirror of IMF PortWatch
+2025-09-28,76,124,,straits.live mirror of IMF PortWatch
+2025-09-29,70,129,,straits.live mirror of IMF PortWatch
+2025-09-30,56,100,,straits.live mirror of IMF PortWatch
+2025-10-01,72,116,,straits.live mirror of IMF PortWatch
+2025-10-02,56,94,,straits.live mirror of IMF PortWatch
+2025-10-03,55,101,,straits.live mirror of IMF PortWatch
+2025-10-04,73,118,,straits.live mirror of IMF PortWatch
+2025-10-05,72,121,,straits.live mirror of IMF PortWatch
+2025-10-06,44,89,,straits.live mirror of IMF PortWatch
+2025-10-07,56,101,,straits.live mirror of IMF PortWatch
+2025-10-08,26,55,,straits.live mirror of IMF PortWatch
+2025-10-09,30,56,,straits.live mirror of IMF PortWatch
+2025-10-10,31,69,,straits.live mirror of IMF PortWatch
+2025-10-11,39,69,,straits.live mirror of IMF PortWatch
+2025-10-12,23,55,,straits.live mirror of IMF PortWatch
+2025-10-13,38,71,,straits.live mirror of IMF PortWatch
+2025-10-14,63,120,,straits.live mirror of IMF PortWatch
+2025-10-15,38,62,,straits.live mirror of IMF PortWatch
+2025-10-16,28,51,,straits.live mirror of IMF PortWatch
+2025-10-17,24,58,,straits.live mirror of IMF PortWatch
+2025-10-18,43,72,,straits.live mirror of IMF PortWatch
+2025-10-19,47,82,,straits.live mirror of IMF PortWatch
+2025-10-20,48,82,,straits.live mirror of IMF PortWatch
+2025-10-21,53,103,,straits.live mirror of IMF PortWatch
+2025-10-22,65,116,,straits.live mirror of IMF PortWatch
+2025-10-23,58,109,,straits.live mirror of IMF PortWatch
+2025-10-24,63,104,,straits.live mirror of IMF PortWatch
+2025-10-25,61,101,,straits.live mirror of IMF PortWatch
+2025-10-26,59,99,,straits.live mirror of IMF PortWatch
+2025-10-27,57,106,,straits.live mirror of IMF PortWatch
+2025-10-28,52,103,,straits.live mirror of IMF PortWatch
+2025-10-29,70,114,,straits.live mirror of IMF PortWatch
+2025-10-30,48,95,,straits.live mirror of IMF PortWatch
+2025-10-31,42,80,,straits.live mirror of IMF PortWatch
+2025-11-01,47,74,,straits.live mirror of IMF PortWatch
+2025-11-02,35,60,,straits.live mirror of IMF PortWatch
+2025-11-03,25,51,,straits.live mirror of IMF PortWatch
+2025-11-04,50,74,,straits.live mirror of IMF PortWatch
+2025-11-05,47,78,,straits.live mirror of IMF PortWatch
+2025-11-06,39,69,,straits.live mirror of IMF PortWatch
+2025-11-07,36,77,,straits.live mirror of IMF PortWatch
+2025-11-08,63,107,,straits.live mirror of IMF PortWatch
+2025-11-09,45,71,,straits.live mirror of IMF PortWatch
+2025-11-10,41,67,,straits.live mirror of IMF PortWatch
+2025-11-11,60,100,,straits.live mirror of IMF PortWatch
+2025-11-12,41,70,,straits.live mirror of IMF PortWatch
+2025-11-13,51,100,,straits.live mirror of IMF PortWatch
+2025-11-14,47,83,,straits.live mirror of IMF PortWatch
+2025-11-15,38,69,,straits.live mirror of IMF PortWatch
+2025-11-16,33,70,,straits.live mirror of IMF PortWatch
+2025-11-17,33,60,,straits.live mirror of IMF PortWatch
+2025-11-18,41,72,,straits.live mirror of IMF PortWatch
+2025-11-19,38,64,,straits.live mirror of IMF PortWatch
+2025-11-20,43,67,,straits.live mirror of IMF PortWatch
+2025-11-21,32,49,,straits.live mirror of IMF PortWatch
+2025-11-22,30,51,,straits.live mirror of IMF PortWatch
+2025-11-23,27,61,,straits.live mirror of IMF PortWatch
+2025-11-24,23,46,,straits.live mirror of IMF PortWatch
+2025-11-25,36,67,,straits.live mirror of IMF PortWatch
+2025-11-26,32,51,,straits.live mirror of IMF PortWatch
+2025-11-27,29,49,,straits.live mirror of IMF PortWatch
+2025-11-28,26,50,,straits.live mirror of IMF PortWatch
+2025-11-29,29,57,,straits.live mirror of IMF PortWatch
+2025-11-30,35,57,,straits.live mirror of IMF PortWatch
+2025-12-01,35,65,,straits.live mirror of IMF PortWatch
+2025-12-02,30,59,,straits.live mirror of IMF PortWatch
+2025-12-03,26,51,,straits.live mirror of IMF PortWatch
+2025-12-04,30,45,,straits.live mirror of IMF PortWatch
+2025-12-05,26,44,,straits.live mirror of IMF PortWatch
+2025-12-06,39,68,,straits.live mirror of IMF PortWatch
+2025-12-07,40,64,,straits.live mirror of IMF PortWatch
+2025-12-08,27,59,,straits.live mirror of IMF PortWatch
+2025-12-09,46,82,,straits.live mirror of IMF PortWatch
+2025-12-10,31,52,,straits.live mirror of IMF PortWatch
+2025-12-11,30,50,,straits.live mirror of IMF PortWatch
+2025-12-12,22,41,,straits.live mirror of IMF PortWatch
+2025-12-13,26,46,,straits.live mirror of IMF PortWatch
+2025-12-14,36,49,,straits.live mirror of IMF PortWatch
+2025-12-15,18,47,,straits.live mirror of IMF PortWatch
+2025-12-16,31,55,,straits.live mirror of IMF PortWatch
+2025-12-17,32,50,,straits.live mirror of IMF PortWatch
+2025-12-18,33,55,,straits.live mirror of IMF PortWatch
+2025-12-19,17,31,,straits.live mirror of IMF PortWatch
+2025-12-20,20,48,,straits.live mirror of IMF PortWatch
+2025-12-21,29,54,,straits.live mirror of IMF PortWatch
+2025-12-22,26,46,,straits.live mirror of IMF PortWatch
+2025-12-23,26,58,,straits.live mirror of IMF PortWatch
+2025-12-24,29,65,,straits.live mirror of IMF PortWatch
+2025-12-25,32,68,,straits.live mirror of IMF PortWatch
+2025-12-26,36,62,,straits.live mirror of IMF PortWatch
+2025-12-27,39,66,,straits.live mirror of IMF PortWatch
+2025-12-28,24,55,,straits.live mirror of IMF PortWatch
+2025-12-29,26,50,,straits.live mirror of IMF PortWatch
+2025-12-30,35,66,,straits.live mirror of IMF PortWatch
+2025-12-31,46,71,,straits.live mirror of IMF PortWatch
+2026-01-01,29,64,,straits.live mirror of IMF PortWatch
+2026-01-02,23,51,,straits.live mirror of IMF PortWatch
+2026-01-03,34,59,,straits.live mirror of IMF PortWatch
+2026-01-04,26,49,,straits.live mirror of IMF PortWatch
+2026-01-05,30,61,,straits.live mirror of IMF PortWatch
+2026-01-06,31,61,,straits.live mirror of IMF PortWatch
+2026-01-07,37,66,,straits.live mirror of IMF PortWatch
+2026-01-08,37,62,,straits.live mirror of IMF PortWatch
+2026-01-09,40,74,,straits.live mirror of IMF PortWatch
+2026-01-10,34,63,,straits.live mirror of IMF PortWatch
+2026-01-11,31,64,,straits.live mirror of IMF PortWatch
+2026-01-12,34,52,,straits.live mirror of IMF PortWatch
+2026-01-13,26,53,,straits.live mirror of IMF PortWatch
+2026-01-14,34,61,,straits.live mirror of IMF PortWatch
+2026-01-15,35,62,,straits.live mirror of IMF PortWatch
+2026-01-16,29,53,,straits.live mirror of IMF PortWatch
+2026-01-17,23,38,,straits.live mirror of IMF PortWatch
+2026-01-18,20,54,,straits.live mirror of IMF PortWatch
+2026-01-19,29,58,,straits.live mirror of IMF PortWatch
+2026-01-20,33,58,,straits.live mirror of IMF PortWatch
+2026-01-21,29,56,,straits.live mirror of IMF PortWatch
+2026-01-22,38,64,,straits.live mirror of IMF PortWatch
+2026-01-23,24,48,,straits.live mirror of IMF PortWatch
+2026-01-24,21,46,,straits.live mirror of IMF PortWatch
+2026-01-25,41,64,,straits.live mirror of IMF PortWatch
+2026-01-26,19,43,,straits.live mirror of IMF PortWatch
+2026-01-27,30,61,,straits.live mirror of IMF PortWatch
+2026-01-28,28,54,,straits.live mirror of IMF PortWatch
+2026-01-29,41,72,,straits.live mirror of IMF PortWatch
+2026-01-30,39,71,,straits.live mirror of IMF PortWatch
+2026-01-31,40,70,,straits.live mirror of IMF PortWatch
+2026-02-01,19,49,,straits.live mirror of IMF PortWatch
+2026-02-02,41,67,,straits.live mirror of IMF PortWatch
+2026-02-03,33,66,,straits.live mirror of IMF PortWatch
+2026-02-04,20,43,,straits.live mirror of IMF PortWatch
+2026-02-05,36,71,,straits.live mirror of IMF PortWatch
+2026-02-06,34,60,,straits.live mirror of IMF PortWatch
+2026-02-07,40,60,,straits.live mirror of IMF PortWatch
+2026-02-08,32,58,,straits.live mirror of IMF PortWatch
+2026-02-09,33,53,,straits.live mirror of IMF PortWatch
+2026-02-10,39,65,,straits.live mirror of IMF PortWatch
+2026-02-11,49,81,,straits.live mirror of IMF PortWatch
+2026-02-12,32,68,,straits.live mirror of IMF PortWatch
+2026-02-13,54,103,,straits.live mirror of IMF PortWatch
+2026-02-14,53,91,,straits.live mirror of IMF PortWatch
+2026-02-15,42,74,,straits.live mirror of IMF PortWatch
+2026-02-16,35,54,,straits.live mirror of IMF PortWatch
+2026-02-17,40,75,,straits.live mirror of IMF PortWatch
+2026-02-18,54,109,,straits.live mirror of IMF PortWatch
+2026-02-19,63,115,,straits.live mirror of IMF PortWatch
+2026-02-20,55,94,,straits.live mirror of IMF PortWatch
+2026-02-21,53,86,,straits.live mirror of IMF PortWatch
+2026-02-22,69,127,,straits.live mirror of IMF PortWatch
+2026-02-23,65,104,,straits.live mirror of IMF PortWatch
+2026-02-24,49,93,,straits.live mirror of IMF PortWatch
+2026-02-25,59,116,,straits.live mirror of IMF PortWatch
+2026-02-26,45,89,,straits.live mirror of IMF PortWatch
+2026-02-27,37,64,,straits.live mirror of IMF PortWatch
+2026-02-28,36,57,,straits.live mirror of IMF PortWatch
+2026-03-01,5,20,,straits.live mirror of IMF PortWatch
+2026-03-02,1,4,,straits.live mirror of IMF PortWatch
+2026-03-03,1,4,,straits.live mirror of IMF PortWatch
+2026-03-04,0,0,,straits.live mirror of IMF PortWatch
+2026-03-05,1,3,,straits.live mirror of IMF PortWatch
+2026-03-06,0,2,,straits.live mirror of IMF PortWatch
+2026-03-07,1,3,,straits.live mirror of IMF PortWatch
+2026-03-08,0,2,,straits.live mirror of IMF PortWatch
+2026-03-09,1,2,,straits.live mirror of IMF PortWatch
+2026-03-10,1,2,,straits.live mirror of IMF PortWatch
+2026-03-11,0,2,,straits.live mirror of IMF PortWatch
+2026-03-12,0,1,,straits.live mirror of IMF PortWatch
+2026-03-13,0,0,,straits.live mirror of IMF PortWatch
+2026-03-14,0,1,,straits.live mirror of IMF PortWatch
+2026-03-15,2,7,,straits.live mirror of IMF PortWatch
+2026-03-16,0,4,,straits.live mirror of IMF PortWatch
+2026-03-17,1,1,,straits.live mirror of IMF PortWatch
+2026-03-18,0,0,,straits.live mirror of IMF PortWatch
+2026-03-19,0,0,,straits.live mirror of IMF PortWatch
+2026-03-20,2,3,,straits.live mirror of IMF PortWatch
+2026-03-21,0,0,,straits.live mirror of IMF PortWatch
+2026-03-22,0,2,,straits.live mirror of IMF PortWatch
+2026-03-23,2,4,,straits.live mirror of IMF PortWatch
+2026-03-24,1,2,,straits.live mirror of IMF PortWatch
+2026-03-25,2,2,,straits.live mirror of IMF PortWatch
+2026-03-26,0,4,,straits.live mirror of IMF PortWatch
+2026-03-27,0,2,,straits.live mirror of IMF PortWatch
+2026-03-28,1,6,,straits.live mirror of IMF PortWatch
+2026-03-29,2,5,,straits.live mirror of IMF PortWatch
+2026-03-30,3,6,,straits.live mirror of IMF PortWatch
+2026-03-31,2,5,,straits.live mirror of IMF PortWatch
+2026-04-01,1,7,,straits.live mirror of IMF PortWatch
+2026-04-02,0,1,,straits.live mirror of IMF PortWatch
+2026-04-03,2,3,,straits.live mirror of IMF PortWatch
+2026-04-04,3,11,,straits.live mirror of IMF PortWatch
+2026-04-05,4,4,,straits.live mirror of IMF PortWatch
+2026-04-06,0,5,,straits.live mirror of IMF PortWatch
+2026-04-07,2,3,,straits.live mirror of IMF PortWatch
+2026-04-08,0,3,,straits.live mirror of IMF PortWatch
+2026-04-09,5,8,,straits.live mirror of IMF PortWatch
+2026-04-10,0,3,,straits.live mirror of IMF PortWatch
+2026-04-11,3,7,,straits.live mirror of IMF PortWatch
+2026-04-12,3,12,,straits.live mirror of IMF PortWatch
+2026-04-13,4,7,,straits.live mirror of IMF PortWatch
+2026-04-14,3,5,,straits.live mirror of IMF PortWatch
+2026-04-15,4,7,,straits.live mirror of IMF PortWatch
+2026-04-16,1,3,,straits.live mirror of IMF PortWatch
+2026-04-17,3,8,,straits.live mirror of IMF PortWatch
+2026-04-18,12,20,,straits.live mirror of IMF PortWatch
+2026-04-19,1,2,,straits.live mirror of IMF PortWatch
+2026-04-20,2,3,,straits.live mirror of IMF PortWatch
+2026-04-21,3,4,,straits.live mirror of IMF PortWatch
+2026-04-22,2,5,,straits.live mirror of IMF PortWatch
+2026-04-23,0,3,,straits.live mirror of IMF PortWatch
+2026-04-24,2,6,,straits.live mirror of IMF PortWatch
+2026-04-25,2,4,,straits.live mirror of IMF PortWatch
+2026-04-26,1,3,,straits.live mirror of IMF PortWatch
+2026-04-27,2,7,,straits.live mirror of IMF PortWatch
+2026-04-28,3,10,,straits.live mirror of IMF PortWatch
+2026-04-29,23,39,,straits.live mirror of IMF PortWatch
+2026-04-30,4,11,,straits.live mirror of IMF PortWatch
+2026-05-01,2,7,,straits.live mirror of IMF PortWatch
+2026-05-02,4,6,,straits.live mirror of IMF PortWatch
+2026-05-03,1,6,,straits.live mirror of IMF PortWatch
+2026-05-04,0,2,,straits.live mirror of IMF PortWatch
+2026-05-05,0,0,,straits.live mirror of IMF PortWatch
+2026-05-06,0,0,,straits.live mirror of IMF PortWatch
+2026-05-07,0,0,,straits.live mirror of IMF PortWatch
+2026-05-08,0,0,,straits.live mirror of IMF PortWatch
+2026-05-09,1,1,,straits.live mirror of IMF PortWatch
+2026-05-10,2,7,,straits.live mirror of IMF PortWatch
+2026-05-11,4,7,,straits.live mirror of IMF PortWatch
+2026-05-12,1,3,,straits.live mirror of IMF PortWatch
+2026-05-13,2,4,,straits.live mirror of IMF PortWatch
+2026-05-14,3,10,,straits.live mirror of IMF PortWatch
+2026-05-15,2,4,,straits.live mirror of IMF PortWatch
+2026-05-16,1,7,,straits.live mirror of IMF PortWatch
+2026-05-17,1,3,,straits.live mirror of IMF PortWatch
+2026-05-18,1,4,,straits.live mirror of IMF PortWatch
+2026-05-19,3,4,,straits.live mirror of IMF PortWatch
+2026-05-20,4,8,,straits.live mirror of IMF PortWatch
+2026-05-21,2,5,,straits.live mirror of IMF PortWatch
+2026-05-22,0,2,,straits.live mirror of IMF PortWatch
+2026-05-23,1,6,,straits.live mirror of IMF PortWatch
+2026-05-24,2,5,,straits.live mirror of IMF PortWatch
+2026-05-25,0,4,,straits.live mirror of IMF PortWatch
+2026-05-26,2,4,,straits.live mirror of IMF PortWatch
+2026-05-27,1,1,,straits.live mirror of IMF PortWatch
+2026-05-28,0,2,,straits.live mirror of IMF PortWatch
+2026-05-29,0,1,,straits.live mirror of IMF PortWatch
+2026-05-30,0,4,,straits.live mirror of IMF PortWatch
+2026-05-31,0,5,,straits.live mirror of IMF PortWatch
+2026-06-01,1,2,,straits.live mirror of IMF PortWatch
+2026-06-02,3,11,,straits.live mirror of IMF PortWatch
+2026-06-03,3,9,,straits.live mirror of IMF PortWatch
+2026-06-04,1,3,,straits.live mirror of IMF PortWatch
+2026-06-05,0,2,,straits.live mirror of IMF PortWatch
+2026-06-06,0,2,,straits.live mirror of IMF PortWatch
+2026-06-07,0,2,,straits.live mirror of IMF PortWatch
+2026-06-08,1,7,,straits.live mirror of IMF PortWatch
+2026-06-09,2,4,,straits.live mirror of IMF PortWatch
+2026-06-10,0,3,,straits.live mirror of IMF PortWatch
+2026-06-11,2,2,,straits.live mirror of IMF PortWatch
+2026-06-12,1,1,,straits.live mirror of IMF PortWatch
+2026-06-13,0,0,,straits.live mirror of IMF PortWatch
+2026-06-14,0,0,,straits.live mirror of IMF PortWatch
+2026-06-15,2,7,,straits.live mirror of IMF PortWatch
+2026-06-16,3,10,,straits.live mirror of IMF PortWatch
+2026-06-17,0,8,,straits.live mirror of IMF PortWatch
+2026-06-18,10,20,,straits.live mirror of IMF PortWatch
+2026-06-19,3,9,,straits.live mirror of IMF PortWatch
+2026-06-20,12,25,,straits.live mirror of IMF PortWatch
+2026-06-21,1,6,,straits.live mirror of IMF PortWatch
+2026-06-22,12,16,,straits.live mirror of IMF PortWatch
+2026-06-23,12,29,,straits.live mirror of IMF PortWatch
+2026-06-24,20,51,,straits.live mirror of IMF PortWatch
+2026-06-25,21,46,,straits.live mirror of IMF PortWatch
+2026-06-26,17,30,,straits.live mirror of IMF PortWatch
+2026-06-27,9,25,,straits.live mirror of IMF PortWatch
+2026-06-28,7,16,,straits.live mirror of IMF PortWatch
+2026-06-29,13,26,,straits.live mirror of IMF PortWatch
+2026-06-30,6,16,,straits.live mirror of IMF PortWatch
+2026-07-01,18,29,,straits.live mirror of IMF PortWatch
+2026-07-02,15,28,,straits.live mirror of IMF PortWatch
+2026-07-03,17,24,,straits.live mirror of IMF PortWatch
+2026-07-04,8,17,,straits.live mirror of IMF PortWatch
+2026-07-05,16,22,,straits.live mirror of IMF PortWatch
+2026-07-06,16,25,,straits.live mirror of IMF PortWatch
+2026-07-07,10,26,,straits.live mirror of IMF PortWatch
+2026-07-08,8,20,,straits.live mirror of IMF PortWatch
+2026-07-09,3,10,,straits.live mirror of IMF PortWatch
+2026-07-10,4,7,,straits.live mirror of IMF PortWatch
+2026-07-11,3,6,,straits.live mirror of IMF PortWatch
+2026-07-12,1,4,,straits.live mirror of IMF PortWatch
+2026-07-13,2,10,,straits.live mirror of IMF PortWatch
+2026-07-14,5,8,,straits.live mirror of IMF PortWatch
+2026-07-15,3,9,,straits.live mirror of IMF PortWatch
+2026-07-16,1,6,,straits.live mirror of IMF PortWatch
+2026-07-17,1,1,,straits.live mirror of IMF PortWatch
+2026-07-18,2,6,,straits.live mirror of IMF PortWatch
+2026-07-19,2,4,,straits.live mirror of IMF PortWatch
+2026-07-20,2,5,,straits.live mirror of IMF PortWatch
+2026-07-21,1,6,,straits.live mirror of IMF PortWatch
+2026-07-22,1,6,,straits.live mirror of IMF PortWatch
+2026-07-23,0,0,,straits.live mirror of IMF PortWatch
+2026-07-24,0,3,,straits.live mirror of IMF PortWatch
+2026-07-25,0,2,,straits.live mirror of IMF PortWatch
+2026-07-26,2,3,,straits.live mirror of IMF PortWatch
+2026-07-27,0,5,,straits.live mirror of IMF PortWatch
+2026-07-28,1,5,,straits.live mirror of IMF PortWatch
+2026-07-29,3,7,,straits.live mirror of IMF PortWatch
+2026-07-30,1,4,,straits.live mirror of IMF PortWatch
+2026-07-31,2,8,,straits.live mirror of IMF PortWatch
+2026-08-01,3,5,,straits.live mirror of IMF PortWatch
+2026-08-02,0,3,,straits.live mirror of IMF PortWatch
+2026-08-03,3,6,,straits.live mirror of IMF PortWatch
+2026-08-04,4,7,,straits.live mirror of IMF PortWatch
+2026-08-05,0,5,,straits.live mirror of IMF PortWatch
+2026-08-06,0,2,,straits.live mirror of IMF PortWatch
+2026-08-07,4,6,,straits.live mirror of IMF PortWatch
+2026-08-08,2,10,,straits.live mirror of IMF PortWatch
+2026-08-09,0,3,,straits.live mirror of IMF PortWatch
+2026-08-10,2,4,,straits.live mirror of IMF PortWatch
+2026-08-11,2,9,,straits.live mirror of IMF PortWatch
+2026-08-12,1,3,,straits.live mirror of IMF PortWatch
+2026-08-13,2,6,,straits.live mirror of IMF PortWatch
+2026-08-14,2,7,,straits.live mirror of IMF PortWatch
+2026-08-15,1,1,,straits.live mirror of IMF PortWatch
+2026-08-16,1,1,,straits.live mirror of IMF PortWatch
+2026-08-17,3,4,,straits.live mirror of IMF PortWatch
+2026-08-18,4,6,,straits.live mirror of IMF PortWatch
+2026-08-19,4,6,,straits.live mirror of IMF PortWatch
+2026-08-20,2,5,,straits.live mirror of IMF PortWatch
+2026-08-21,2,4,,straits.live mirror of IMF PortWatch
+2026-08-22,1,7,,straits.live mirror of IMF PortWatch
+2026-08-23,1,3,,straits.live mirror of IMF PortWatch
+2026-08-24,2,3,,straits.live mirror of IMF PortWatch
+2026-08-25,4,4,,straits.live mirror of IMF PortWatch
+2026-08-26,2,5,,straits.live mirror of IMF PortWatch
+2026-08-27,2,2,,straits.live mirror of IMF PortWatch
+2026-08-28,0,7,,straits.live mirror of IMF PortWatch
+2026-08-29,1,3,,straits.live mirror of IMF PortWatch
+2026-08-30,2,6,,straits.live mirror of IMF PortWatch
+2026-08-31,1,3,,straits.live mirror of IMF PortWatch
+2026-09-01,1,4,,straits.live mirror of IMF PortWatch
+2026-09-02,1,3,,straits.live mirror of IMF PortWatch
+2026-09-03,1,2,,straits.live mirror of IMF PortWatch
+2026-09-04,0,2,,straits.live mirror of IMF PortWatch
+2026-09-05,0,2,,straits.live mirror of IMF PortWatch
+2026-09-06,2,6,,straits.live mirror of IMF PortWatch
+2026-09-07,2,5,,straits.live mirror of IMF PortWatch
+2026-09-08,2,6,,straits.live mirror of IMF PortWatch
+2026-09-09,0,3,,straits.live mirror of IMF PortWatch
+2026-09-10,1,5,,straits.live mirror of IMF PortWatch
+2026-09-11,3,8,,straits.live mirror of IMF PortWatch
+2026-09-12,1,2,,straits.live mirror of IMF PortWatch
+2026-09-13,1,8,,straits.live mirror of IMF PortWatch
+2026-09-14,0,2,,straits.live mirror of IMF PortWatch
+2026-09-15,1,2,,straits.live mirror of IMF PortWatch
+2026-09-16,0,1,,straits.live mirror of IMF PortWatch
+2026-09-17,0,3,,straits.live mirror of IMF PortWatch
+2026-09-18,2,7,,straits.live mirror of IMF PortWatch
+2026-09-19,1,6,,straits.live mirror of IMF PortWatch
+2026-09-20,0,1,,straits.live mirror of IMF PortWatch
+2026-09-21,0,2,,straits.live mirror of IMF PortWatch
+2026-09-22,1,3,,straits.live mirror of IMF PortWatch
+2026-09-23,1,4,,straits.live mirror of IMF PortWatch
+2026-09-24,3,5,,straits.live mirror of IMF PortWatch
+2026-09-25,2,3,,straits.live mirror of IMF PortWatch
+2026-09-26,1,4,,straits.live mirror of IMF PortWatch
+2026-09-27,1,1,,straits.live mirror of IMF PortWatch
+2026-09-28,2,4,,straits.live mirror of IMF PortWatch
+2026-09-29,0,1,,straits.live mirror of IMF PortWatch
+2026-09-30,4,4,,straits.live mirror of IMF PortWatch
+2026-10-01,0,0,,straits.live mirror of IMF PortWatch
+2026-10-02,0,4,,straits.live mirror of IMF PortWatch
+2026-10-03,0,2,,straits.live mirror of IMF PortWatch
+2026-10-04,0,4,,straits.live mirror of IMF PortWatch
+2026-10-05,1,8,,straits.live mirror of IMF PortWatch
+2026-10-06,1,2,,straits.live mirror of IMF PortWatch
+2026-10-07,1,6,,straits.live mirror of IMF PortWatch
+2026-10-08,0,4,,straits.live mirror of IMF PortWatch
+2026-10-09,0,3,,straits.live mirror of IMF PortWatch
+2026-10-10,0,4,,straits.live mirror of IMF PortWatch
+2026-10-11,1,2,,straits.live mirror of IMF PortWatch
+2026-10-12,0,3,,straits.live mirror of IMF PortWatch
+2026-10-13,0,7,,straits.live mirror of IMF PortWatch
+2026-10-14,0,3,,straits.live mirror of IMF PortWatch
+2026-10-15,1,2,,straits.live mirror of IMF PortWatch
+2026-10-16,1,7,,straits.live mirror of IMF PortWatch
+2026-10-17,0,0,,straits.live mirror of IMF PortWatch
+2026-10-18,2,4,,straits.live mirror of IMF PortWatch
+2026-10-19,1,4,,straits.live mirror of IMF PortWatch
+2026-10-20,1,3,,straits.live mirror of IMF PortWatch
+2026-10-21,0,3,,straits.live mirror of IMF PortWatch
+2026-10-22,1,4,,straits.live mirror of IMF PortWatch
+2026-10-23,1,5,,straits.live mirror of IMF PortWatch
+2026-10-24,1,2,,straits.live mirror of IMF PortWatch
+2026-10-25,1,2,,straits.live mirror of IMF PortWatch
