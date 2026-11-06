@@ -4,6 +4,7 @@ A static dashboard of oil flow through the Strait of Hormuz and attacks on shipp
 
 - **Live site:** GitHub Pages (Settings → Pages → deploy from `main`, root).
 - **Spec and decisions:** [SPEC.md](SPEC.md).
+- **Architecture diagrams:** [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 ## Run locally
 

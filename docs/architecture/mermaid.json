@@ -1,0 +1,12 @@
+{
+  "theme": "base",
+  "layout": "elk",
+  "elk": { "nodePlacementStrategy": "NETWORK_SIMPLEX", "mergeEdges": false, "cycleBreakingStrategy": "GREEDY" },
+  "flowchart": { "htmlLabels": false, "curve": "linear", "nodeSpacing": 40, "rankSpacing": 60, "padding": 14, "wrappingWidth": 420 },
+  "themeVariables": {
+    "fontFamily": "Helvetica, Arial, sans-serif", "fontSize": "14px",
+    "lineColor": "#444444", "edgeLabelBackground": "#ffffff",
+    "clusterBkg": "#fafafa", "clusterBorder": "#999999", "primaryTextColor": "#1b2430"
+  },
+  "themeCSS": ".cluster-label text { paint-order: stroke; stroke: #ffffff; stroke-width: 6px; stroke-linejoin: round; font-weight: bold; }"
+}

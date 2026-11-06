@@ -1,0 +1,102 @@
+%% 1. Overview: trust zones and the main data path.
+%% Mermaid source. Render with ./render.sh (ELK layout, right-angle edges).
+%% Edge labels: what · format · cadence · auth. Shapes, colours and line styles: see 00-legend.mmd.
+flowchart TB
+  subgraph SRC["External data sources"]
+    PW[("IMF PortWatch<br/>+ straits.live mirror<br/>free, no auth")]
+    XA[("X API v2 · recent search<br/>pay-per-use, needs key")]
+    GD[("GDELT DOC 2.0 API<br/>free, no key")]
+    REP[("UKMTO, JMIC, EIA,<br/>trade press, Wikipedia")]
+  end
+  J(["Jacob<br/>owner · reviews + merges PRs"])
+
+  subgraph Z1["TRUST ZONE 1 · GitHub Actions · secrets live only here"]
+    PWJ["fetch-portwatch.yml<br/>daily 06:17 UTC"]
+    SEC{{"secret<br/>X_BEARER_TOKEN"}}
+    MEDIA["fetch-media.yml · every 6 h<br/>GDELT, then 1 X query (15 posts)"]
+    VAL["validate.yml<br/>every PR + push to main"]
+  end
+
+  subgraph Z2["TRUST ZONE 2 · Claude workspace · private"]
+    CL["Claude research threads<br/>+ _build/build.py"]
+  end
+
+  subgraph Z3["TRUST ZONE 3 · public repo · written by the bot or a merged PR"]
+    SITE["static site code<br/>index.html · app.js · style.css"]
+    DATA[("data/ on main<br/>CSV + JSON files<br/>= the whole database")]
+  end
+
+  subgraph Z4["TRUST ZONE 4 · public web · no secrets, no API keys"]
+    PAGES[["GitHub Pages<br/>static hosting, no server code"]]
+    subgraph BR["viewer's browser · one page, two views"]
+      DASH["Dashboard<br/>charts · strike map · X feed · news"]
+      MON["#monitor<br/>wall of embedded X posts"]
+    end
+  end
+  XEMB[("X embed service<br/>platform.twitter.com<br/>public, no key")]
+
+  subgraph LEG["Legend"]
+    direction LR
+    a1[("data store<br/>file, API, storage")] ~~~ a2["GitHub workflow<br/>or job"] ~~~ a3["script"] ~~~ a4{{"secret"}} ~~~ a5(["person"]) ~~~ a6["Claude thread or<br/>Claude-built file"]
+    a7[["hosting"]] ~~~ a8["web page or<br/>site code"] ~~~ a9["external<br/>service"] ~~~ a10["planned,<br/>not built"] ~~~ a11["in an open PR,<br/>not merged"]
+    b1[" "] -->|"automated"| b2[" "] ~~~ c1[" "] -.->|"manual (person or Claude)"| c2[" "]
+    subgraph ZONE["TRUST ZONE"]
+      z1["red dashed box = trust boundary:<br/>who can write inside, and whether<br/>secrets or API keys exist there"]
+    end
+    c2 ~~~ ZONE
+  end
+
+  XEMB ~~~ LEG
+  PW -->|"tanker transits · JSON/CSV · no auth"| PWJ
+  XA -->|"X posts + counts · JSON · Bearer key"| MEDIA
+  GD -->|"news volume + articles · JSON · no key"| MEDIA
+  SEC -->|"env var"| MEDIA
+  REP -.->|"read · HTML/PDF"| CL
+  J -.->|"screenshots · X links"| CL
+  CL -.->|"pull request · CSV"| VAL
+  PWJ -->|"git commit · CSV"| DATA
+  MEDIA -->|"git commit · CSV/JSON"| DATA
+  VAL -->|"green check · Jacob merges"| DATA
+  SITE -->|"push to main · deploy"| PAGES
+  DATA -->|"push to main · deploy"| PAGES
+  PAGES -->|"HTML, JS, CSV · on load"| DASH
+  PAGES -->|"x_posts.csv · every 10 min"| MON
+  DASH <-->|"URL #monitor"| MON
+  MON -->|"request embeds · JS + iframes · no key"| XEMB
+
+  classDef ext fill:#e3eaf3,stroke:#5a6b80,color:#1b2430
+  classDef human fill:#fbe8cc,stroke:#a8742a,color:#3a2a10
+  classDef claude fill:#ebe3f6,stroke:#7a62a3,color:#2a2040
+  classDef job fill:#d9efe0,stroke:#3d7a4f,color:#143020
+  classDef script fill:#ffffff,stroke:#3d7a4f,color:#143020
+  classDef data fill:#fff3c4,stroke:#8a6d1f,color:#2e2408
+  classDef site fill:#e1ecf8,stroke:#2f5d8a,color:#10243a
+  classDef secret fill:#f9d9d4,stroke:#b3261e,color:#3a120c,stroke-width:2px
+  classDef pending stroke:#1f5fa8,stroke-width:3px,stroke-dasharray:8 4
+  classDef planned fill:#f5f5f5,stroke:#999999,color:#666666,stroke-dasharray:2 3
+  classDef note fill:#fff7d6,stroke:#c9a227,color:#3a2e08
+  classDef zone fill:#fffafa,stroke:#b3261e,stroke-width:2px,stroke-dasharray:10 5,color:#b3261e
+  classDef group fill:#fafafa,stroke:#bbbbbb,color:#333333
+  class PW,XA,GD,REP,XEMB ext
+  class J human
+  class CL claude
+  class PWJ,MEDIA,VAL job
+  class DATA data
+  class SITE,PAGES,DASH,MON site
+  class SEC secret
+  class Z1,Z2,Z3,Z4 zone
+  class SRC,BR,LEG group
+  class a1 data
+  class a2 job
+  class a3 script
+  class a4 secret
+  class a5 human
+  class a6 claude
+  class a7,a8 site
+  class a9 ext
+  class a10 planned
+  class a11 script
+  class a11 pending
+  class b1,b2,c1,c2 group
+  class ZONE zone
+  class z1 group

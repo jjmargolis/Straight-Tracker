@@ -1,0 +1,80 @@
+%% 3. Curated data: every change is a reviewed pull request.
+%% Mermaid source. Render with ./render.sh (ELK layout, right-angle edges).
+%% Edge labels: what · format · cadence · auth. Shapes, colours and line styles: see 00-legend.mmd.
+flowchart TB
+  subgraph IN["Inputs"]
+    OFF[("UKMTO warnings, JMIC notes,<br/>Windward, gCaptain, Reuters, Wikipedia")]
+    JS(["Jacob · UKMTO weekly<br/>dashboard screenshots"])
+    JX(["Jacob · X posts,<br/>WGOWS videos"])
+    EIA[("EIA STEO +<br/>Transit Chokepoints")]
+    NE[("Natural Earth 1:10m<br/>npm world-atlas")]
+  end
+
+  subgraph WS["TRUST ZONE · Claude workspace · private"]
+    CL["Claude research threads"]
+    AJ[("_build/agent_*.json")]
+    GN[("geonamescache<br/>offline GeoNames")]
+    BP["_build/build.py<br/>merge · dedupe · geocode · schema"]
+    RT["Claude routine<br/>daily news + weekly reports"]
+  end
+
+  S5["scripts/clip-land.mjs<br/>one-off, local"]
+
+  subgraph GH["GitHub"]
+    PR["pull request<br/>never auto-merged"]
+    W3["validate.yml"]
+    S4["validate.mjs<br/>headers · enums incl. target · dates ·<br/>region box · IMO · every incident has a source"]
+    J(["Jacob · reviews + merges"])
+    subgraph DATA["data/ on main"]
+      D7[("incidents.csv<br/>ships + civil infrastructure<br/>target column")]
+      D8[("incident_sources.csv")]
+      D11[("landmarks.csv")]
+      D6[("media.csv")]
+      D9[("flow_eia.csv")]
+      D10[("land.json")]
+    end
+  end
+
+  OFF -.->|"read · HTML/PDF"| CL
+  JS -.->|"PNG in chat"| CL
+  JX -.->|"links in chat"| CL
+  CL -.->|"findings · JSON"| AJ
+  AJ -.-> BP
+  GN -.->|"coords"| BP
+  BP -.->|"CSV"| PR
+  CL -.->|"media rows · CSV"| PR
+  EIA -.->|"figures by hand · CSV"| PR
+  RT -.->|"planned · new rows"| PR
+  NE -.->|"npm"| S5
+  S5 -.->|"GeoJSON · commit"| D10
+  PR -->|"pull_request event"| W3
+  W3 -->|"runs"| S4
+  S4 -->|"pass / fail check"| J
+  J -.->|"merge"| D7
+  J -.->|"merge"| D8
+  J -.->|"merge"| D11
+  J -.->|"merge"| D6
+  J -.->|"merge"| D9
+
+  classDef ext fill:#e3eaf3,stroke:#5a6b80,color:#1b2430
+  classDef human fill:#fbe8cc,stroke:#a8742a,color:#3a2a10
+  classDef claude fill:#ebe3f6,stroke:#7a62a3,color:#2a2040
+  classDef job fill:#d9efe0,stroke:#3d7a4f,color:#143020
+  classDef script fill:#ffffff,stroke:#3d7a4f,color:#143020
+  classDef data fill:#fff3c4,stroke:#8a6d1f,color:#2e2408
+  classDef site fill:#e1ecf8,stroke:#2f5d8a,color:#10243a
+  classDef secret fill:#f9d9d4,stroke:#b3261e,color:#3a120c,stroke-width:2px
+  classDef pending stroke:#1f5fa8,stroke-width:3px,stroke-dasharray:8 4
+  classDef planned fill:#f5f5f5,stroke:#999999,color:#666666,stroke-dasharray:2 3
+  classDef note fill:#fff7d6,stroke:#c9a227,color:#3a2e08
+  classDef zone fill:#fffafa,stroke:#b3261e,stroke-width:2px,stroke-dasharray:10 5,color:#b3261e
+  classDef group fill:#fafafa,stroke:#bbbbbb,color:#333333
+  class OFF,EIA,NE ext
+  class JS,JX,J human
+  class CL,AJ,GN,BP claude
+  class RT planned
+  class PR,W3 job
+  class S4,S5 script
+  class D6,D7,D8,D9,D10,D11 data
+  class WS zone
+  class IN,GH,DATA group
