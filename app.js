@@ -29,7 +29,7 @@ const CLASSES = [
 const classOf = (d) => OUTCOME[d.outcome] ?? "other";
 const colorOf = (k) => CLASSES.find((c) => c.key === k).color;
 
-const state = { view: "strait", showClaimed: false, selected: null };
+const state = { view: "strait", showClaimed: false, showNaval: false, selected: null };
 const fmtDate = d3.utcFormat("%-d %b %Y");
 const el = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -48,6 +48,7 @@ const [incidentsRaw, sources, flow, transits, land] = await Promise.all([
 
 const incidents = incidentsRaw.map((d) => ({
   ...d,
+  vessel_type: String(d.vessel_type ?? "").replaceAll("_", " "),
   date: d.date instanceof Date ? d.date : new Date(d.date),
   cls: classOf(d),
   located: Number.isFinite(d.lat) && Number.isFinite(d.lon),
@@ -55,7 +56,7 @@ const incidents = incidentsRaw.map((d) => ({
 }));
 const trailById = d3.group(sources ?? [], (s) => s.incident_id);
 
-const visible = () => incidents.filter((d) => state.showClaimed || d.confidence !== "claimed");
+const visible = () => incidents.filter((d) => (state.showClaimed || d.confidence !== "claimed") && (state.showNaval || d.vessel_type !== "naval"));
 
 /* ---------- KPIs ---------- */
 function renderKpis() {
@@ -68,7 +69,7 @@ function renderKpis() {
   const pct = Math.round((last.mbd / pre.mbd - 1) * 100);
   const tiles = [
     { v: `${last.mbd}`, l: `mb/d oil flow, ${last.period}`, s: `${pct}% vs ${pre.mbd} in ${pre.period} · <a href="${esc(last.source_url)}">EIA</a>` },
-    { v: inc.length, l: "ships hit since 28 Feb", s: "in this dataset; true count is higher" },
+    { v: inc.filter((d) => d.event_type === "attack").length, l: "attacks on ships since 28 Feb", s: `plus ${inc.filter((d) => d.event_type !== "attack").length} seizures, mines, near misses; true count is higher` },
     { v: lost, l: "sunk or total loss", s: "in this dataset" },
     { v: deaths, l: "seafarer deaths recorded", s: "where a source gives a number" },
     { v: days, l: "days since war began", s: "28 Feb 2026" },
@@ -79,12 +80,14 @@ function renderKpis() {
 /* ---------- Filters ---------- */
 function renderFilters() {
   const views = Object.entries(VIEWS).map(([k, v]) => `<button data-view="${k}" aria-pressed="${state.view === k}">${v.label}</button>`);
+  const naval = `<button data-naval aria-pressed="${state.showNaval}" title="Include Iranian naval vessels">Naval</button>`;
   const claimed = `<button data-claimed aria-pressed="${state.showClaimed}" title="Include unverified claims, e.g. social media">Unverified claims</button>`;
-  el("filters").innerHTML = views.join("") + claimed;
+  el("filters").innerHTML = views.join("") + naval + claimed;
   el("filters").onclick = (e) => {
     const b = e.target.closest("button"); if (!b) return;
     if (b.dataset.view) state.view = b.dataset.view;
     if ("claimed" in b.dataset) state.showClaimed = !state.showClaimed;
+    if ("naval" in b.dataset) state.showNaval = !state.showNaval;
     renderAll();
   };
 }

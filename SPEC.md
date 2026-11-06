@@ -1,6 +1,6 @@
 # Hormuz Dashboard: SPEC
 
-Status: **v0.5** (2026-11-06). Living document, updated as work proceeds.
+Status: **v0.6** (2026-11-06). Living document, updated as work proceeds.
 Owner: Jacob. Repo: [`jjmargolis/straight-tracker`](https://github.com/jjmargolis/straight-tracker).
 
 Evidence tags used throughout:
@@ -147,3 +147,4 @@ Principle: no server, no database, no build step unless it pays for itself.
 - 2026-11-06 v0.3: multi-source trail per incident (`incident_sources.csv`), source types, dedup rule.
 - 2026-11-06 v0.4: daily Claude news-search routine opens incident PRs.
 - 2026-11-06 v0.5: repo is `straight-tracker`; map moved from Leaflet to Plot geo; final incidents schema (`location_text`, `deaths`, `attacker`, `unknown` position); first build (seed data only).
+- 2026-11-06 v0.6: ingested research-thread dataset v0.1 (151 incidents, 275 sources). UKMTO screenshot rows merged only when vessel name or a unique date+type match; otherwise kept and flagged POSSIBLE DUPLICATE (5 rows), so counts may be overstated by up to 5. Naval toggle added. `landmarks.csv` coordinates are from model memory, so every `inferred` position is approximate.
