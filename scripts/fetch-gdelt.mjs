@@ -1,54 +1,46 @@
 // Daily news-coverage volume for Hormuz attacks from the GDELT DOC 2.0 API (free, no key).
-// Writes data/coverage_gdelt.csv (date,articles,total), merging with what is already there so
-// history survives GDELT's ~3-month lookback. Also writes data/gdelt_articles.csv: the most
-// recent matching articles, for the media feed.
+// Writes data/coverage_gdelt.csv (date,articles,total), merging by date so history accumulates.
+//
+// GDELT allows one request per 5 s per IP and often answers GitHub's shared runner IPs with 429
+// (seen in this repo's runs, 2026-11-06). So each run makes ONE small request (last 7 days),
+// retries a few times, and gives up quietly: any later run fills the gap, because 7 days overlap.
+// The article list now comes from scripts/fetch-news.mjs (Google News + outlet RSS).
 import { readCSV, writeCSV } from "./lib.mjs";
 
 const QUERY = '(hormuz OR "gulf of oman") (tanker OR ship OR vessel OR sank OR sunk) (attack OR strike OR missile OR drone OR mine)';
-const API = "https://api.gdeltproject.org/api/v2/doc/doc";
-const WAR_START = "20260228000000";
-const stamp = (d) => d.toISOString().replace(/[-:T]/g, "").slice(0, 14);
-
-// GDELT asks for at most one request every 5 seconds and answers 429 otherwise
-// (shared CI IPs can hit this too), so pace every call and back off on 429.
+const URL_ = `https://api.gdeltproject.org/api/v2/doc/doc?${new URLSearchParams({ query: QUERY, format: "json", mode: "timelinevolraw", timespan: "7d", timelinesmooth: "0" })}`;
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-async function get(params) {
-  const url = `${API}?${new URLSearchParams({ query: QUERY, format: "json", ...params })}`;
-  for (let attempt = 1; ; attempt++) {
-    await sleep(attempt === 1 ? 6000 : 15000 * attempt);
-    const res = await fetch(url, { headers: { "user-agent": "straight-tracker (github.com/jjmargolis/straight-tracker)" } });
-    const text = await res.text();
-    if (res.status === 429 && attempt < 5) { console.warn(`GDELT 429, retry ${attempt}`); continue; }
-    if (!res.ok) throw new Error(`GDELT HTTP ${res.status}: ${text.slice(0, 200)}`);
-    try { return JSON.parse(text); } catch { throw new Error(`GDELT non-JSON: ${text.slice(0, 200)}`); }
-  }
-}
 
-// 1) Volume timeline. Fetch from war start (beyond 3 months is best effort), fall back to 90 days.
 let tl;
-try { tl = await get({ mode: "timelinevolraw", startdatetime: WAR_START, enddatetime: stamp(new Date()), timelinesmooth: "0" }); }
-catch (e) { console.warn(`Full-range timeline failed (${e.message}); using 3 months`); tl = await get({ mode: "timelinevolraw", timespan: "3months", timelinesmooth: "0" }); }
-const series = tl.timeline?.[0]?.data;
-if (!series?.length) throw new Error(`GDELT timeline empty: ${JSON.stringify(tl).slice(0, 300)}`);
-console.log(`timeline: ${series.length} points, first ${JSON.stringify(series[0])}, last ${JSON.stringify(series.at(-1))}`);
-if (series.length < 7) console.warn(`Suspiciously short timeline. Raw: ${JSON.stringify(tl).slice(0, 600)}`);
+for (let attempt = 1; attempt <= 4 && !tl; attempt++) {
+  if (attempt > 1) await sleep(20000 * attempt);
+  try {
+    const res = await fetch(URL_, { headers: { "user-agent": "straight-tracker (github.com/jjmargolis/straight-tracker)" }, signal: AbortSignal.timeout(40000) });
+    const text = await res.text();
+    if (res.status === 429) { console.warn(`GDELT 429 (attempt ${attempt})`); continue; }
+    if (!res.ok) { console.warn(`GDELT HTTP ${res.status}: ${text.slice(0, 120)}`); continue; }
+    tl = JSON.parse(text);
+  } catch (e) { console.warn(`GDELT attempt ${attempt}: ${e.cause?.code ?? e.message}`); }
+}
+if (!tl) { console.warn("GDELT unavailable this run; coverage unchanged."); process.exit(0); }
 
+const series = tl.timeline?.[0]?.data ?? [];
+if (!series.length) { console.warn(`GDELT timeline empty: ${JSON.stringify(tl).slice(0, 200)}`); process.exit(0); }
+// Bins may be finer than a day: sum per UTC date. The first date is partial (the window starts
+// mid-day), so it is not allowed to overwrite a fuller value already on file.
+const day = new Map();
+for (const p of series) {
+  const d = String(p.date), date = `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6, 8)}`;
+  const v = day.get(date) ?? { date, articles: 0, total: 0 };
+  v.articles += +p.value || 0; v.total += +p.norm || 0; day.set(date, v);
+}
 const PATH = "data/coverage_gdelt.csv";
 const byDate = new Map(readCSV(PATH).rows.map((r) => [r.date, r]));
-for (const p of series) {
-  const d = String(p.date);
-  const date = `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6, 8)}`;
-  byDate.set(date, { date, articles: p.value, total: p.norm ?? "" });
+const dates = [...day.keys()].sort();
+for (const [date, v] of day) {
+  if (date === dates[0] && byDate.has(date)) continue;
+  byDate.set(date, v);
 }
 const rows = [...byDate.values()].sort((a, b) => a.date.localeCompare(b.date));
 writeCSV(PATH, ["date", "articles", "total"], rows);
-console.log(`coverage: ${rows.length} days, ${rows[0].date} to ${rows.at(-1).date}`);
-
-// 2) Latest articles (up to 75), newest first.
-const al = await get({ mode: "artlist", maxrecords: "75", sort: "datedesc", timespan: "7days" });
-const arts = (al.articles ?? []).map((a) => ({
-  seendate: String(a.seendate ?? "").replace(/^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})Z?$/, "$1-$2-$3T$4:$5:$6Z"),
-  title: a.title, url: a.url, domain: a.domain, language: a.language, sourcecountry: a.sourcecountry, image: a.socialimage ?? "",
-}));
-writeCSV("data/gdelt_articles.csv", ["seendate", "title", "url", "domain", "language", "sourcecountry", "image"], arts);
-console.log(`articles: ${arts.length}`);
+console.log(`GDELT: ${series.length} bins over ${day.size} days; file has ${rows.length} days (${rows[0].date} to ${rows.at(-1).date}).`);

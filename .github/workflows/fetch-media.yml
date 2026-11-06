@@ -1,7 +1,7 @@
-name: Fetch media signals
+name: Fetch X posts
 on:
   schedule:
-    - cron: "41 */6 * * *"   # every 6 hours: GDELT + one X query
+    - cron: "41 */6 * * *"   # every 6 hours: one X query (GDELT moved to fetch-free.yml, hourly)
   workflow_dispatch:
 permissions:
   contents: write
@@ -13,11 +13,6 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
-      - name: GDELT coverage and articles
-        # GDELT throttles and sometimes refuses GitHub runner IPs; don't let that block the X step.
-        continue-on-error: true
-        timeout-minutes: 4
-        run: node scripts/fetch-gdelt.mjs
       - name: X posts (each run, budget-capped)
         continue-on-error: true
         env:
