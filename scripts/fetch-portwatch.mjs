@@ -1,41 +1,75 @@
-// Fetches daily Strait of Hormuz transit counts from IMF PortWatch (ArcGIS FeatureServer)
-// and writes data/transits_portwatch.csv. Node 20+, no dependencies.
-// NOTE: field names below are from memory and have not been verified against the live API.
-// The script fails loudly, listing the real fields, if they differ.
+// Daily Strait of Hormuz transit counts (IMF PortWatch) -> data/transits_portwatch.csv.
+// Node 20+, no dependencies.
+//
+// 1) IMF PortWatch FeatureServer, layer 0, portid 'chokepoint6'. Since late Oct 2026 it fails
+//    intermittently with 200 + {"error":{code:400}} (seen in our runs and in other projects),
+//    so each page is retried with backoff.
+// 2) Fallback: straits.live's daily mirror of the same PortWatch series (CSV, IMF attribution).
+//    It has tanker and total counts but no capacity.
 import fs from "node:fs";
 
-const BASE = "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/ArcGIS/rest/services/Daily_Chokepoints_Data/FeatureServer/0/query";
-const WANT = ["date", "n_tanker", "n_total", "capacity_tanker"];
-const PAGE = 1000;
+const FS = "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/Daily_Chokepoints_Data/FeatureServer/0/query";
+const MIRROR = "https://straits.live/data/transits.csv";
+const OUT = "data/transits_portwatch.csv";
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-async function page(offset) {
+async function fsPage(offset) {
   const q = new URLSearchParams({
-    where: "portname='Strait of Hormuz'", outFields: "*", orderByFields: "date ASC",
-    resultOffset: String(offset), resultRecordCount: String(PAGE), f: "json",
+    where: "portid = 'chokepoint6'", outFields: "date,portname,n_tanker,n_total,capacity_tanker",
+    resultOffset: String(offset), resultRecordCount: "1000", f: "json",
   });
-  const res = await fetch(`${BASE}?${q}`);
-  if (!res.ok) throw new Error(`PortWatch HTTP ${res.status}`);
-  const j = await res.json();
-  if (j.error) throw new Error(`PortWatch error: ${JSON.stringify(j.error)}`);
-  return j;
-}
-
-const rows = [];
-for (let offset = 0; ; offset += PAGE) {
-  const j = await page(offset);
-  const feats = j.features ?? [];
-  if (offset === 0) {
-    if (!feats.length) throw new Error("PortWatch returned no rows for portname='Strait of Hormuz'");
-    const have = Object.keys(feats[0].attributes);
-    const missing = WANT.filter((f) => !have.includes(f));
-    if (missing.length) throw new Error(`Missing fields ${missing.join(", ")}. Available: ${have.join(", ")}`);
+  let last;
+  for (let attempt = 1; attempt <= 6; attempt++) {
+    try {
+      const res = await fetch(`${FS}?${q}`);
+      const j = await res.json();
+      if (res.ok && !j.error) return j;
+      last = JSON.stringify(j.error ?? res.status);
+    } catch (e) { last = e.message; }
+    console.warn(`FeatureServer offset ${offset} attempt ${attempt} failed: ${last}`);
+    await sleep(2000 * attempt);
   }
-  rows.push(...feats.map((f) => f.attributes));
-  if (!j.exceededTransferLimit && feats.length < PAGE) break;
+  throw new Error(`FeatureServer failed after retries: ${last}`);
 }
 
-const iso = (v) => new Date(typeof v === "number" ? v : Date.parse(v)).toISOString().slice(0, 10);
-const out = ["date,n_tanker,n_total,capacity_tanker",
-  ...rows.map((r) => [iso(r.date), r.n_tanker, r.n_total, r.capacity_tanker].join(","))];
-fs.writeFileSync("data/transits_portwatch.csv", out.join("\n") + "\n");
-console.log(`Wrote ${rows.length} days, ${iso(rows[0].date)} to ${iso(rows.at(-1).date)}`);
+async function viaFeatureServer() {
+  const rows = [];
+  for (let offset = 0; ; offset += 1000) {
+    const j = await fsPage(offset);
+    const feats = j.features ?? [];
+    rows.push(...feats.map((f) => f.attributes));
+    if (!j.exceededTransferLimit && feats.length < 1000) break;
+  }
+  if (!rows.length) throw new Error("FeatureServer returned no rows for chokepoint6");
+  console.log(`PortWatch portname: ${rows[0].portname}`);
+  return rows.map((r) => ({ date: toISO(r.date), n_tanker: r.n_tanker, n_total: r.n_total, capacity_tanker: Math.round(r.capacity_tanker) }));
+}
+
+async function viaMirror() {
+  const text = await (await fetch(MIRROR)).text();
+  const [head, ...lines] = text.trim().split(/\r?\n/);
+  const h = head.toLowerCase().split(",");
+  const col = (...names) => names.map((n) => h.indexOf(n)).find((i) => i >= 0) ?? -1;
+  const iDate = col("date"), iT = col("n_tanker", "tanker"), iN = col("n_total", "total");
+  if (iDate < 0 || iT < 0 || iN < 0) throw new Error(`Mirror header unexpected: ${head}`);
+  return lines.map((l) => l.split(",")).map((c) => ({ date: toISO(c[iDate]), n_tanker: +c[iT], n_total: +c[iN], capacity_tanker: "" }));
+}
+
+function toISO(v) {
+  if (typeof v === "number" || /^\d{10,}$/.test(String(v))) return new Date(Number(v)).toISOString().slice(0, 10);
+  const s = String(v).trim().replace(/\//g, "-");
+  const d = new Date(/^\d{4}-\d{2}-\d{2}$/.test(s) ? s + "T00:00:00Z" : s);
+  if (Number.isNaN(+d)) throw new Error(`Unparseable date "${v}"`);
+  return d.toISOString().slice(0, 10);
+}
+
+let rows, via;
+try { rows = await viaFeatureServer(); via = "IMF PortWatch FeatureServer"; }
+catch (e) { console.warn(`${e.message}; using straits.live mirror`); rows = await viaMirror(); via = "straits.live mirror of IMF PortWatch"; }
+
+const byDate = new Map(rows.map((r) => [r.date, r]));
+const dates = [...byDate.keys()].sort();
+const lines = ["date,n_tanker,n_total,capacity_tanker,via",
+  ...dates.map((d) => { const r = byDate.get(d); return [d, r.n_tanker, r.n_total, r.capacity_tanker, via].join(","); })];
+fs.writeFileSync(OUT, lines.join("\n") + "\n");
+console.log(`${via}: wrote ${dates.length} days, ${dates[0]} to ${dates.at(-1)}`);
