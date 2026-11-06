@@ -255,8 +255,8 @@ Principle: no server, no database, no build step unless it pays for itself.
 ---
 
 ## Changelog
-- 2026-11-06 v0.9: civil infrastructure in scope: `target` column, infrastructure X queries, map squares.
 - 2026-11-06 v0.10: X account registry (section 1B): one tag per author (type, lean), Claude first pass + Jacob overrides via app → issue → Action, review queue; fetcher looks up each author once; budget counts $0.005 units with daily pacing; spend readout.
+- 2026-11-06 v0.9: civil infrastructure in scope: `target` column, infrastructure X queries, map squares.
 - 2026-11-06 v0.8b: monitor becomes a wall of embedded X posts (videos inline); X fetch rotates 12 multilingual queries, 4 runs/day, same cap.
 - 2026-11-06 v0.8: monitor mode (4 full-screen columns) driven by a setup bar on the dashboard.
 - 2026-11-06 v0.1: initial research and proposal.
