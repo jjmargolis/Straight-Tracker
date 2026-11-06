@@ -16,6 +16,14 @@
     <p class="asof" id="asof"></p>
   </header>
 
+  <section class="card setup" id="setup" aria-label="Monitor setup">
+    <h2>Monitor</h2>
+    <div class="filters" id="m-window"></div>
+    <input id="m-terms" type="search" placeholder="Keywords, comma-separated (blank = all)" aria-label="Keywords">
+    <div class="filters"><button id="m-claimed" aria-pressed="false" title="Include unverified incident claims">Unverified claims</button></div>
+    <a class="go" href="#monitor">Open monitor</a>
+  </section>
+
   <section class="kpis" id="kpis" aria-label="Key figures"></section>
 
   <main class="grid">
@@ -82,6 +90,20 @@
       <div class="table-wrap"><table id="table"></table></div>
     </section>
   </main>
+
+  <section id="monitor" class="monitor" hidden>
+    <header class="m-bar">
+      <a href="#" class="back">Dashboard</a>
+      <span id="m-summary"></span>
+      <span class="m-asof" id="m-asof"></span>
+    </header>
+    <div class="m-cols">
+      <section class="m-col"><h2>X · most viewed</h2><div class="m-feed" id="m-xtop"></div></section>
+      <section class="m-col"><h2>X · latest</h2><div class="m-feed" id="m-xnew"></div></section>
+      <section class="m-col"><h2>News</h2><div class="m-feed" id="m-news"></div></section>
+      <section class="m-col"><h2>Incidents</h2><div class="m-feed" id="m-inc"></div></section>
+    </div>
+  </section>
 
   <footer class="foot">
     <p>Data: EIA (Vortexa tanker tracking), IMF PortWatch, UKMTO, and the per-incident sources listed in each record. Coastline: Natural Earth.

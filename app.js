@@ -29,7 +29,10 @@ const CLASSES = [
 const classOf = (d) => OUTCOME[d.outcome] ?? "other";
 const colorOf = (k) => CLASSES.find((c) => c.key === k).color;
 
-const state = { xWindow: 7, view: "strait", showClaimed: false, showNaval: false, selected: null };
+const state = { xWindow: 7, terms: "", view: "strait", showClaimed: false, showNaval: false, selected: null };
+const SAVED = "hormuz-monitor";
+try { Object.assign(state, JSON.parse(localStorage.getItem(SAVED)) ?? {}); } catch {}
+const save = () => { try { localStorage.setItem(SAVED, JSON.stringify({ xWindow: state.xWindow, terms: state.terms, showClaimed: state.showClaimed })); } catch {} };
 const fmtDate = d3.utcFormat("%-d %b %Y");
 const el = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -38,7 +41,7 @@ async function csv(path) {
   try { return await d3.csv(path, d3.autoType); } catch { return null; }
 }
 
-const [incidentsRaw, sources, flow, transits, land, xposts, articles, coverage, media] = await Promise.all([
+let [incidentsRaw, sources, flow, transits, land, xposts, articles, coverage, media] = await Promise.all([
   csv("data/incidents.csv"),
   csv("data/incident_sources.csv"),
   csv("data/flow_eia.csv"),
@@ -90,9 +93,9 @@ function renderFilters() {
   el("filters").onclick = (e) => {
     const b = e.target.closest("button"); if (!b) return;
     if (b.dataset.view) state.view = b.dataset.view;
-    if ("claimed" in b.dataset) state.showClaimed = !state.showClaimed;
+    if ("claimed" in b.dataset) { state.showClaimed = !state.showClaimed; save(); }
     if ("naval" in b.dataset) state.showNaval = !state.showNaval;
-    renderAll();
+    renderAll(); renderSetup();
   };
 }
 
@@ -255,7 +258,7 @@ const score = (p) => (Number.isFinite(p.views) && p.views > 0 ? p.views : (p.lik
 
 function renderX() {
   el("x-filters").innerHTML = [1, 7, 30].map((d) => `<button data-days="${d}" aria-pressed="${state.xWindow === d}">${d === 1 ? "24h" : d + "d"}</button>`).join("");
-  el("x-filters").onclick = (e) => { const b = e.target.closest("button"); if (b) { state.xWindow = +b.dataset.days; renderX(); } };
+  el("x-filters").onclick = (e) => { const b = e.target.closest("button"); if (b) { state.xWindow = +b.dataset.days; save(); renderX(); renderSetup(); } };
   if (!xposts?.length) {
     el("xfeed").innerHTML = `<p class="empty">The X feed starts after the first daily fetch once the API token is added to the repo.</p>`;
     el("x-note").textContent = "";
@@ -312,13 +315,98 @@ function renderCoverage() {
   el("coverage-note").innerHTML = `Line: articles per day matching attacks near Hormuz, from <a href="https://www.gdeltproject.org/">GDELT</a>. Dots: attacks in the incident dataset, coloured by outcome. Coverage counts news, not social media.`;
 }
 
+/* ---------- Monitor: setup on the dashboard, 4 columns full screen ---------- */
+const WINDOWS = [[1, "24h"], [7, "7 days"], [30, "30 days"]];
+const termList = () => state.terms.split(",").map((t) => t.trim().toLowerCase()).filter(Boolean);
+const matches = (...fields) => { const t = termList(); if (!t.length) return true; const h = fields.join(" ").toLowerCase(); return t.some((w) => h.includes(w)); };
+
+function renderSetup() {
+  el("m-window").innerHTML = WINDOWS.map(([d, l]) => `<button data-days="${d}" aria-pressed="${state.xWindow === d}">${l}</button>`).join("");
+  el("m-window").onclick = (e) => { const b = e.target.closest("button"); if (b) { state.xWindow = +b.dataset.days; save(); renderSetup(); renderX(); } };
+  const terms = el("m-terms");
+  if (document.activeElement !== terms) terms.value = state.terms;
+  terms.oninput = () => { state.terms = terms.value; save(); };
+  const c = el("m-claimed");
+  c.setAttribute("aria-pressed", state.showClaimed);
+  c.onclick = () => { state.showClaimed = !state.showClaimed; save(); renderSetup(); renderAll(); };
+}
+
+const xItem = (p) => `<a class="m-item" href="${esc(p.url)}" target="_blank" rel="noopener">
+  <div class="meta"><b>${esc(p.name)}</b><span>@${esc(p.username)}</span><span>${ago(p.created)}</span></div>
+  <div class="body">${esc(p.text)}</div>
+  <div class="meta">${Number.isFinite(p.views) ? `<span><b>${fmtN(p.views)}</b> views</span>` : ""}<span><b>${fmtN(p.likes || 0)}</b> likes</span><span><b>${fmtN(p.reposts || 0)}</b> reposts</span>${p.media_type ? `<span>${esc(p.media_type)}</span>` : ""}</div>
+  ${p.preview ? `<img src="${esc(p.preview)}" alt="" loading="lazy" referrerpolicy="no-referrer">` : ""}</a>`;
+
+function fill(id, items, render, emptyMsg) {
+  el(id).innerHTML = items.length ? items.map(render).join("") : `<p class="empty">${emptyMsg}</p>`;
+  el(id).previousElementSibling.querySelector(".n")?.remove();
+  el(id).previousElementSibling.insertAdjacentHTML("beforeend", `<span class="n">${items.length}</span>`);
+}
+
+function renderMonitor() {
+  const since = Date.now() - state.xWindow * 864e5;
+  const win = WINDOWS.find(([d]) => d === state.xWindow)?.[1] ?? `${state.xWindow}d`;
+  const t = termList();
+  el("m-summary").textContent = `Last ${win}${t.length ? ` · matching ${t.join(", ")}` : ""}${state.showClaimed ? " · incl. unverified claims" : ""}`;
+
+  const posts = (xposts ?? []).map((p) => ({ ...p, created: new Date(p.created_at) }))
+    .filter((p) => p.created >= since && matches(p.text, p.username, p.name));
+  const noX = xposts?.length ? "No posts match." : "No X posts fetched yet.";
+  fill("m-xtop", [...posts].sort((a, b) => score(b) - score(a)), xItem, noX);
+  fill("m-xnew", [...posts].sort((a, b) => b.created - a.created), xItem, noX);
+
+  const news = (articles ?? []).map((a) => ({ ...a, seen: new Date(a.seendate) }))
+    .filter((a) => a.seen >= since && matches(a.title, a.domain)).sort((a, b) => b.seen - a.seen);
+  fill("m-news", news, (a) => `<a class="m-item" href="${esc(a.url)}" target="_blank" rel="noopener">
+    <div class="body">${esc(a.title)}</div>
+    <div class="meta"><b>${esc(a.domain)}</b><span>${ago(a.seen)} ago</span>${a.language && a.language !== "English" ? `<span>${esc(a.language)}</span>` : ""}</div></a>`,
+    articles?.length ? "No articles match." : "No GDELT articles fetched yet.");
+
+  const all = visible().filter((d) => matches(d.vessel_name, d.location_text, d.notes, d.vessel_type, d.attacker)).sort((a, b) => b.date - a.date);
+  const recent = all.filter((d) => d.date >= since);
+  const incItem = (d) => `<a class="m-item" href="#" data-id="${esc(d.id)}">
+    <div class="meta"><span><i class="dot" style="background:${colorOf(d.cls)}"></i> <b>${esc(d.outcome)}</b></span><span>${fmtDate(d.date)}</span><span>${esc(d.confidence)}</span></div>
+    <div class="body"><b>${esc(d.vessel_name)}</b> · ${esc(d.vessel_type || "vessel")}<br>${esc(d.location_text)}</div>
+    <div class="meta"><span>${(trailById.get(d.id) ?? []).length} sources</span></div></a>`;
+  fill("m-inc", recent, incItem, "No incidents in this window.");
+  if (recent.length < 5 && all.length > recent.length) {
+    el("m-inc").insertAdjacentHTML("beforeend", `<div class="m-sep">Earlier</div>` + all.slice(recent.length, recent.length + 10).map(incItem).join(""));
+  }
+  el("m-inc").onclick = (e) => {
+    const a = e.target.closest("[data-id]"); if (!a) return;
+    e.preventDefault(); location.hash = ""; select(incidents.find((d) => d.id === a.dataset.id));
+    requestAnimationFrame(() => el("detail").scrollIntoView({ block: "start" }));
+  };
+  const fetched = d3.max(xposts ?? [], (p) => new Date(p.fetched_at));
+  el("m-asof").textContent = `X counts as of ${fetched ? fmtDate(fetched) : "n/a"} · refreshes every 10 min`;
+}
+
+async function refreshMedia() {
+  const t = `?t=${Date.now()}`;
+  const [x, a, inc] = await Promise.all([csv("data/x_posts.csv" + t), csv("data/gdelt_articles.csv" + t), csv("data/incidents.csv" + t)]);
+  if (x) xposts = x; if (a) articles = a;
+  if (inc && inc.length !== incidents.length) location.reload();
+  route();
+}
+
+let refreshTimer;
+function route() {
+  const on = location.hash === "#monitor";
+  document.body.classList.toggle("monitoring", on);
+  el("monitor").hidden = !on;
+  clearInterval(refreshTimer);
+  if (on) { renderMonitor(); refreshTimer = setInterval(refreshMedia, 10 * 60e3); }
+  else { renderX(); renderNews(); }
+}
+addEventListener("hashchange", route);
+
 function renderAll() {
   renderFilters(); renderKpis(); renderMap(); renderMonthly(); renderTable();
 }
 
 const updated = d3.max(incidents, (d) => d.date);
 el("asof").textContent = `Latest incident: ${fmtDate(updated)}`;
-renderAll(); renderFlow(); renderTransits(); renderX(); renderNews(); renderCurated(); renderCoverage();
+renderSetup(); renderAll(); renderFlow(); renderTransits(); renderX(); renderNews(); renderCurated(); renderCoverage(); route();
 
 let rt;
 addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { renderMap(); renderFlow(); renderTransits(); renderMonthly(); renderCoverage(); }, 150); });
