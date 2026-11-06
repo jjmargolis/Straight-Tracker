@@ -1,6 +1,6 @@
 # Hormuz Dashboard: SPEC
 
-Status: **v0.7** (2026-11-06). Living document, updated as work proceeds.
+Status: **v0.8** (2026-11-06). Living document, updated as work proceeds.
 Owner: Jacob. Repo: [`jjmargolis/straight-tracker`](https://github.com/jjmargolis/straight-tracker).
 
 Evidence tags used throughout:
@@ -74,11 +74,15 @@ verification,engagement,engagement_at,found_by,notes
 
 A weekly Claude routine reads these and opens a PR updating the numbers and adding any new incidents.
 
+### Screen targets (Jacob, 2026-11-06)
+Landscape only: laptop and phone held horizontally (S24 Ultra landscape is about 915 CSS px wide). Portrait phone layout is out of scope: no design or testing effort goes into it. The existing CSS still stacks columns below 860px, which costs nothing to keep.
+
 ### UI (proposed v1 of the refocus)
 1. **Media feed** (centerpiece): newest first, embed card per item, badges for verification and linked incident, filter by platform/verification.
 2. **Coverage volume** chart: GDELT daily article count for Hormuz-strike queries, with incident dates marked, so spikes can be read against events.
 3. **Map**: incidents as now; incidents with media get a marker ring, click shows the media.
 4. **Strait numbers** strip: oil flow, transits, UKMTO tally, JMIC threat levels, each with "as of" date.
+5. **Monitor mode** (Jacob, v0.8): a setup bar on the dashboard sets the time window (24h/7d/30d), keywords (comma-separated, OR) and whether unverified claims count. "Open monitor" goes to `#monitor`: the page fills the screen with 4 independently scrolling columns: X most viewed, X latest, news (GDELT), incidents (newest first; "Earlier" shown when the window has under 5). Refetches data every 10 min. Settings persist per browser (localStorage). Clicking an incident returns to the dashboard with its detail open.
 
 ---
 
@@ -193,11 +197,13 @@ Principle: no server, no database, no build step unless it pays for itself.
 ---
 
 ## Changelog
+- 2026-11-06 v0.8: monitor mode (4 full-screen columns) driven by a setup bar on the dashboard.
 - 2026-11-06 v0.1: initial research and proposal.
 - 2026-11-06 v0.2: added `confidence` field and manual X/Twitter ingest path.
 - 2026-11-06 v0.3: multi-source trail per incident (`incident_sources.csv`), source types, dedup rule.
 - 2026-11-06 v0.4: daily Claude news-search routine opens incident PRs.
 - 2026-11-06 v0.5: repo is `straight-tracker`; map moved from Leaflet to Plot geo; final incidents schema (`location_text`, `deaths`, `attacker`, `unknown` position); first build (seed data only).
+- 2026-11-06 v0.7c: landscape only; portrait phone dropped.
 - 2026-11-06 v0.7b: Jacob approved X API at ~$10/month cap.
 - 2026-11-06 v0.7: refocus on media tracker (section 1A): media.csv schema, verification states, free attention signals (GDELT), optional paid X API, official-report panel.
 - 2026-11-06 v0.6: ingested research-thread dataset v0.1 (151 incidents, 275 sources). UKMTO screenshot rows merged only when vessel name or a unique date+type match; otherwise kept and flagged POSSIBLE DUPLICATE (5 rows), so counts may be overstated by up to 5. Naval toggle added. `landmarks.csv` coordinates are from model memory, so every `inferred` position is approximate.
