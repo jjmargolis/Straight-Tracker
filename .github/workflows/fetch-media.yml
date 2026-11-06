@@ -3,6 +3,8 @@ on:
   schedule:
     - cron: "41 */6 * * *"   # GDELT every 6 hours
   workflow_dispatch:
+  push:
+    branches: [claude/media-tracker]   # TEMP: one test run with the X secret; removed next commit
 permissions:
   contents: write
 concurrency: { group: data-commit, cancel-in-progress: false }
