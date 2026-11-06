@@ -1,0 +1,31 @@
+name: Fetch media signals
+on:
+  schedule:
+    - cron: "41 */6 * * *"   # GDELT every 6 hours
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: { group: data-commit, cancel-in-progress: false }
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: GDELT coverage and articles
+        run: node scripts/fetch-gdelt.mjs
+      - name: X posts (once a day, budget-capped)
+        env:
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+        run: |
+          # Only the 06:41 UTC scheduled run (or a manual run) reads X, to keep spend to one batch a day.
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$(date -u +%H)" != "06" ]; then echo "Not the daily X slot; skipping."; exit 0; fi
+          node scripts/fetch-x.mjs
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet || git commit -m "data: media signals $(date -u +%FT%H:%MZ)"
+          git pull --rebase -q && git push

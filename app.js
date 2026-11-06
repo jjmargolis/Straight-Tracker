@@ -29,7 +29,7 @@ const CLASSES = [
 const classOf = (d) => OUTCOME[d.outcome] ?? "other";
 const colorOf = (k) => CLASSES.find((c) => c.key === k).color;
 
-const state = { view: "strait", showClaimed: false, showNaval: false, selected: null };
+const state = { xWindow: 7, view: "strait", showClaimed: false, showNaval: false, selected: null };
 const fmtDate = d3.utcFormat("%-d %b %Y");
 const el = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -38,12 +38,16 @@ async function csv(path) {
   try { return await d3.csv(path, d3.autoType); } catch { return null; }
 }
 
-const [incidentsRaw, sources, flow, transits, land] = await Promise.all([
+const [incidentsRaw, sources, flow, transits, land, xposts, articles, coverage, media] = await Promise.all([
   csv("data/incidents.csv"),
   csv("data/incident_sources.csv"),
   csv("data/flow_eia.csv"),
   csv("data/transits_portwatch.csv"),
   d3.json("data/land.json"),
+  csv("data/x_posts.csv"),
+  csv("data/gdelt_articles.csv"),
+  csv("data/coverage_gdelt.csv"),
+  csv("data/media.csv"),
 ]);
 
 const incidents = incidentsRaw.map((d) => ({
@@ -243,13 +247,78 @@ function select(d) {
   renderMap(); renderTable();
 }
 
+
+/* ---------- Media: X ---------- */
+const fmtN = d3.format(".2~s");
+const ago = (d) => { const h = (Date.now() - d) / 36e5; return h < 1 ? `${Math.max(1, Math.round(h * 60))}m` : h < 48 ? `${Math.round(h)}h` : `${Math.round(h / 24)}d`; };
+const score = (p) => (Number.isFinite(p.views) && p.views > 0 ? p.views : (p.likes || 0) * 50 + (p.reposts || 0) * 100);
+
+function renderX() {
+  el("x-filters").innerHTML = [1, 7, 30].map((d) => `<button data-days="${d}" aria-pressed="${state.xWindow === d}">${d === 1 ? "24h" : d + "d"}</button>`).join("");
+  el("x-filters").onclick = (e) => { const b = e.target.closest("button"); if (b) { state.xWindow = +b.dataset.days; renderX(); } };
+  if (!xposts?.length) {
+    el("xfeed").innerHTML = `<p class="empty">The X feed starts after the first daily fetch once the API token is added to the repo.</p>`;
+    el("x-note").textContent = "";
+    return;
+  }
+  const since = Date.now() - state.xWindow * 864e5;
+  const posts = xposts.map((p) => ({ ...p, created: new Date(p.created_at) }))
+    .filter((p) => p.created >= since).sort((a, b) => score(b) - score(a)).slice(0, 12);
+  el("xfeed").innerHTML = posts.length ? posts.map((p) => `<a class="post" href="${esc(p.url)}" target="_blank" rel="noopener">
+      <div><div class="who"><b>${esc(p.name)}</b> @${esc(p.username)} · ${ago(p.created)}</div>
+      <div class="txt">${esc(p.text)}</div>
+      <div class="stats">${Number.isFinite(p.views) ? `<span><b>${fmtN(p.views)}</b> views</span>` : ""}<span><b>${fmtN(p.likes || 0)}</b> likes</span><span><b>${fmtN(p.reposts || 0)}</b> reposts</span>${p.media_type ? `<span>${esc(p.media_type)}</span>` : ""}</div></div>
+      ${p.preview ? `<img src="${esc(p.preview)}" alt="" loading="lazy" referrerpolicy="no-referrer">` : ""}</a>`).join("")
+    : `<p class="empty">No posts in this window.</p>`;
+  const last = d3.max(xposts, (p) => new Date(p.fetched_at));
+  el("x-note").innerHTML = `Ranked by views (likes and reposts when views are hidden). Counts as of ${fmtDate(last)}. <strong>Unverified:</strong> footage is often recycled from older events.`;
+}
+
+/* ---------- Media: news (GDELT) ---------- */
+function renderNews() {
+  if (!articles?.length) { el("news").innerHTML = `<p class="empty">Waiting for the first GDELT fetch.</p>`; return; }
+  el("news").innerHTML = articles.slice(0, 40).map((a) => `<a href="${esc(a.url)}" target="_blank" rel="noopener">
+    <div class="t">${esc(a.title)}</div><div class="d">${esc(a.domain)} · ${ago(new Date(a.seendate))} ago${a.language && a.language !== "English" ? " · " + esc(a.language) : ""}</div></a>`).join("");
+}
+
+/* ---------- Media: curated ---------- */
+const VERIF = { unreviewed: "Unreviewed", matches_incident: "Matches an incident", geolocated: "Geolocated", recycled: "Recycled footage", fabricated: "Fabricated" };
+function renderCurated() {
+  if (!media?.length) { el("curated-card").hidden = true; return; }
+  el("curated-card").hidden = false;
+  el("curated").innerHTML = [...media].sort((a, b) => String(b.published_at).localeCompare(String(a.published_at))).map((m) => `<a class="post" href="${esc(m.url)}" target="_blank" rel="noopener"><div>
+    <div class="who"><b>${esc(m.author)}</b> · ${esc(m.platform)} · ${esc(m.kind)}</div><div class="txt">${esc(m.title)}</div>
+    <div class="stats"><span class="badge">${esc(VERIF[m.verification] ?? m.verification)}</span>${m.incident_id ? `<span>incident ${esc(m.incident_id)}</span>` : ""}</div></div></a>`).join("");
+}
+
+/* ---------- Coverage (GDELT volume) ---------- */
+function renderCoverage() {
+  if (!coverage?.length) { el("coverage").innerHTML = `<p class="empty">Waiting for the first GDELT fetch.</p>`; el("coverage-note").textContent = ""; return; }
+  const data = coverage.map((d) => ({ ...d, date: new Date(d.date) })).filter((d) => d.date >= WAR_START);
+  const hits = incidents.filter((d) => d.event_type === "attack" && d.vessel_type !== "naval");
+  const plot = Plot.plot({
+    width: el("coverage").clientWidth || 900, height: 220, marginLeft: 40,
+    x: { type: "utc", label: null }, y: { label: null, grid: true, ticks: 4 },
+    style: { fontFamily: "inherit", color: "var(--ink-2)" },
+    marks: [
+      Plot.areaY(data, { x: "date", y: "articles", fill: "var(--accent)", fillOpacity: 0.15, curve: "step" }),
+      Plot.lineY(data, { x: "date", y: "articles", stroke: "var(--accent)", strokeWidth: 1.5, curve: "step" }),
+      Plot.dot(hits, Plot.dodgeY({ x: "date", r: 2.5, fill: (d) => colorOf(d.cls), anchor: "bottom", padding: 0.5 })),
+      Plot.ruleY([0]),
+      Plot.tip(data, Plot.pointerX({ x: "date", y: "articles", title: (d) => `${fmtDate(d.date)}: ${d.articles} articles` })),
+    ],
+  });
+  el("coverage").replaceChildren(plot);
+  el("coverage-note").innerHTML = `Line: articles per day matching attacks near Hormuz, from <a href="https://www.gdeltproject.org/">GDELT</a>. Dots: attacks in the incident dataset, coloured by outcome. Coverage counts news, not social media.`;
+}
+
 function renderAll() {
   renderFilters(); renderKpis(); renderMap(); renderMonthly(); renderTable();
 }
 
 const updated = d3.max(incidents, (d) => d.date);
 el("asof").textContent = `Latest incident: ${fmtDate(updated)}`;
-renderAll(); renderFlow(); renderTransits();
+renderAll(); renderFlow(); renderTransits(); renderX(); renderNews(); renderCurated(); renderCoverage();
 
 let rt;
-addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { renderMap(); renderFlow(); renderTransits(); renderMonthly(); }, 150); });
+addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { renderMap(); renderFlow(); renderTransits(); renderMonthly(); renderCoverage(); }, 150); });

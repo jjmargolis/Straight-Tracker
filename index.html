@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hormuz Tracker</title>
+  <title>Hormuz Watch</title>
   <meta name="description" content="Oil flow through the Strait of Hormuz and attacks on shipping, with a source for every number.">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -11,7 +11,7 @@
   <header class="top">
     <div>
       <h1>Strait of Hormuz</h1>
-      <p class="sub">Oil flow and attacks on shipping. Every number links to its source.</p>
+      <p class="sub">What the internet is seeing from the strait, checked against the official record.</p>
     </div>
     <p class="asof" id="asof"></p>
   </header>
@@ -19,6 +19,32 @@
   <section class="kpis" id="kpis" aria-label="Key figures"></section>
 
   <main class="grid">
+    <section class="card media-card">
+      <div class="card-head">
+        <h2>Most shared on X</h2>
+        <div class="filters" id="x-filters"></div>
+      </div>
+      <div id="xfeed" class="feed"></div>
+      <p class="note" id="x-note"></p>
+    </section>
+
+    <aside class="card news-card">
+      <div class="card-head"><h2>Latest coverage</h2><span class="unit">news, last 7 days</span></div>
+      <div id="news" class="feed news"></div>
+      <p class="note">Articles matched by <a href="https://www.gdeltproject.org/">GDELT</a>. Not individually checked.</p>
+    </aside>
+
+    <section class="card wide" id="curated-card" hidden>
+      <div class="card-head"><h2>Footage and posts we've checked</h2></div>
+      <div id="curated" class="feed grid-feed"></div>
+    </section>
+
+    <section class="card wide">
+      <div class="card-head"><h2>News coverage per day</h2><span class="unit">articles mentioning attacks near Hormuz</span></div>
+      <div id="coverage"></div>
+      <p class="note" id="coverage-note"></p>
+    </section>
+
     <section class="card map-card">
       <div class="card-head">
         <h2>Incidents</h2>
