@@ -8,7 +8,19 @@ import fs from "node:fs";
 
 const ITEM = "3da2b9ca97684916b75c4013f95d18ab"; // Daily_Chokepoints_Data
 const CSV_URL = `https://hub.arcgis.com/api/download/v1/items/${ITEM}/csv?layers=0`;
-const FS_URL = "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/Daily_Chokepoints_Data/FeatureServer/0/query";
+const ITEM_URL = `https://www.arcgis.com/sharing/rest/content/items/${ITEM}?f=json`;
+const FS_FALLBACK = "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/Daily_Chokepoints_Data/FeatureServer";
+
+// Resolve the live FeatureServer URL from the item's metadata, so a renamed or moved
+// service doesn't break us. Falls back to the last known URL.
+async function featureServerUrl() {
+  try {
+    const j = await (await fetch(ITEM_URL)).json();
+    console.log(`Item: "${j.title}" type=${j.type} url=${j.url} modified=${j.modified ? new Date(j.modified).toISOString() : "?"}`);
+    if (j.url) return j.url.replace(/\/\d+$/, "");
+  } catch (e) { console.warn(`Item lookup failed: ${e.message}`); }
+  return FS_FALLBACK;
+}
 const WANT = ["date", "n_tanker", "n_total", "capacity_tanker"];
 const isHormuz = (r) => /hormuz/i.test(r.portname ?? "");
 
@@ -37,6 +49,11 @@ async function viaCsv() {
 }
 
 async function viaFeatureServer() {
+  const base = await featureServerUrl();
+  const svc = await (await fetch(`${base}?f=json`)).json();
+  const layer = svc.layers?.[0]?.id ?? 0;
+  console.log(`FeatureServer ${base}, layers: ${JSON.stringify(svc.layers?.map((l) => [l.id, l.name]) ?? svc.error)}`);
+  const FS_URL = `${base}/${layer}/query`;
   const out = [];
   for (let offset = 0; ; offset += 1000) {
     const q = new URLSearchParams({
