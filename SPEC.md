@@ -1,6 +1,6 @@
 # Hormuz Dashboard: SPEC
 
-Status: **v0.8b** (2026-11-06). Living document, updated as work proceeds.
+Status: **v0.9** (2026-11-06). Living document, updated as work proceeds.
 Owner: Jacob. Repo: [`jjmargolis/straight-tracker`](https://github.com/jjmargolis/straight-tracker).
 
 Evidence tags used throughout:
@@ -73,6 +73,13 @@ verification,engagement,engagement_at,found_by,notes
 | US MARAD MSCI advisories | As issued | US-flag guidance [M: verify current URL] |
 
 A weekly Claude routine reads these and opens a PR updating the numbers and adding any new incidents.
+
+### Civil infrastructure (Jacob, 2026-11-06)
+Explicitly in scope alongside ships: ports, oil terminals, refineries, desalination plants, power plants and the grid, undersea cables, airports and pipelines around the Gulf and Gulf of Oman.
+- `incidents.csv` gains a last column `target`: `vessel | port | oil_terminal | refinery | desalination | power | cable | airport | other_infrastructure`. For non-vessel targets `vessel_name` holds the facility name; `imo` and `flag` stay blank.
+- Map draws infrastructure as squares; the table and detail panel show the target; ship KPIs exclude infrastructure, which gets its own tile once any rows exist.
+- X rotation adds I1 (EN), I2 (AR), I3 (FA) infrastructure queries with engagement floors (20/10/10). Same 15 posts per run, so spend is unchanged; each query now comes round every ~3.75 days instead of ~3.
+- Terms in I1–I3 are from model memory [M], not yet checked against the source catalog.
 
 ### Screen targets (Jacob, 2026-11-06)
 Landscape only: laptop and phone held horizontally (S24 Ultra landscape is about 915 CSS px wide). Portrait phone layout is out of scope: no design or testing effort goes into it. The existing CSS still stacks columns below 860px, which costs nothing to keep.
@@ -200,6 +207,7 @@ Principle: no server, no database, no build step unless it pays for itself.
 ---
 
 ## Changelog
+- 2026-11-06 v0.9: civil infrastructure in scope: `target` column, infrastructure X queries, map squares.
 - 2026-11-06 v0.8b: monitor becomes a wall of embedded X posts (videos inline); X fetch rotates 12 multilingual queries, 4 runs/day, same cap.
 - 2026-11-06 v0.8: monitor mode (4 full-screen columns) driven by a setup bar on the dashboard.
 - 2026-11-06 v0.1: initial research and proposal.

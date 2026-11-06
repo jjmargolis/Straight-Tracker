@@ -25,7 +25,7 @@ const enumCheck = (file, i, row, key, allowed, optional = false) => {
 };
 const isDate = (s) => /^\d{4}-\d{2}-\d{2}$/.test(s) && !Number.isNaN(Date.parse(s));
 
-const INC_HEAD = "id,date,vessel_name,imo,vessel_type,flag,lat,lon,position_quality,location_text,event_type,outcome,deaths,casualties,attacker,conflict,confidence,source_primary,source_url,notes";
+const INC_HEAD = "id,date,vessel_name,imo,vessel_type,flag,lat,lon,position_quality,location_text,event_type,outcome,deaths,casualties,attacker,conflict,confidence,source_primary,source_url,notes,target";
 const SRC_HEAD = "incident_id,source_name,source_type,url,published,claim,lat,lon,notes";
 // Region box: Persian Gulf, Strait, Gulf of Oman, northern Arabian Sea.
 const BOX = { lon: [46, 66], lat: [12, 31] };
@@ -45,6 +45,8 @@ inc.rows.forEach((r, i) => {
   enumCheck(F, i, r, "attacker", ["iran", "us", "israel", "unknown"]);
   enumCheck(F, i, r, "conflict", ["tanker_war_1984_88", "2019_2021", "iran_war_2026"]);
   enumCheck(F, i, r, "confidence", ["confirmed", "reported", "claimed"]);
+  // Civil infrastructure is in scope (Jacob, 2026-11-06). For non-vessel targets, vessel_name holds the facility name.
+  enumCheck(F, i, r, "target", ["vessel", "port", "oil_terminal", "refinery", "desalination", "power", "cable", "airport", "other_infrastructure"]);
   const hasPos = r.lat !== "" || r.lon !== "";
   if (hasPos) {
     const lat = +r.lat, lon = +r.lon;

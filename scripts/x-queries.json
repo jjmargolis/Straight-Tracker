@@ -10,6 +10,11 @@
   "q": "(Hormuz OR \"Persian Gulf\" OR \"Arabian Gulf\" OR \"Gulf of Oman\" OR Iran OR IRGC OR Fujairah OR \"Bandar Abbas\" OR Qeshm OR Kharg OR Musandam OR Khasab) (ship OR boat OR vessel OR tanker OR sea OR water OR port OR navy OR coast OR harbor OR speedboat OR fleet OR sailors OR crew) has:media -is:retweet lang:en min_reposts:20"
  },
  {
+  "id": "I1",
+  "label": "EN civil infrastructure",
+  "q": "(Hormuz OR Fujairah OR \"Ras Tanura\" OR \"Ras Laffan\" OR \"Jebel Ali\" OR Kharg OR \"Bandar Abbas\" OR Jask OR Sohar OR Ruwais OR Abqaiq OR UAE OR Oman OR Qatar OR Bahrain OR Kuwait OR Saudi) (refinery OR \"oil terminal\" OR port OR desalination OR \"power plant\" OR \"power station\" OR blackout OR \"undersea cable\" OR \"subsea cable\" OR airport OR pipeline) (strike OR struck OR attack OR drone OR missile OR explosion OR ablaze) has:media -is:retweet lang:en min_reposts:20"
+ },
+ {
   "id": "Q2",
   "label": "AR viral",
   "q": "(هرمز OR الفجيرة OR خصب OR مسندم OR \"رأس الخيمة\" OR \"بندر عباس\" OR قشم OR خارك OR \"رأس تنورة\" OR \"رأس لفان\") (ناقلة OR سفينة OR ناقلات) (استهداف OR انفجار OR مسيرة OR صاروخ OR لغم OR غرق OR حريق) has:media -is:retweet lang:ar min_reposts:30"
@@ -20,9 +25,14 @@
   "q": "(هرمز OR الخليج OR \"خليج عمان\" OR إيران OR \"الحرس الثوري\" OR الفجيرة OR مسندم OR خصب OR \"بندر عباس\") (سفينة OR سفن OR قارب OR زورق OR زوارق OR بحر OR مياه OR ميناء OR بحرية OR ساحل OR ناقلة OR بحارة) has:media -is:retweet lang:ar min_reposts:10"
  },
  {
+  "id": "I2",
+  "label": "AR civil infrastructure",
+  "q": "(الفجيرة OR \"رأس تنورة\" OR \"رأس لفان\" OR \"جبل علي\" OR خارك OR \"بندر عباس\" OR الإمارات OR عمان OR قطر OR البحرين OR الكويت OR السعودية) (مصفاة OR \"محطة تحلية\" OR \"محطة كهرباء\" OR ميناء OR مطار OR \"كابل بحري\" OR \"خط أنابيب\" OR \"انقطاع الكهرباء\") (استهداف OR انفجار OR مسيرة OR صاروخ OR حريق OR هجوم) has:media -is:retweet lang:ar min_reposts:10"
+ },
+ {
   "id": "Q6",
   "label": "Ground-truth accounts",
-  "q": "(from:UK_MTO OR from:CENTCOM OR from:TankerTrackers OR from:mwbockmann OR from:detresfa_ OR from:GeoConfirmed) -is:retweet"
+  "q": "(from:UK_MTO OR from:CENTCOM OR from:TankerTrackers OR from:mwbockmann OR from:detresfa_ OR from:GeoConfirmed) -is:retweet min_reposts:3"
  },
  {
   "id": "Q3",
@@ -33,6 +43,11 @@
   "id": "W3",
   "label": "FA",
   "q": "(هرمز OR \"خلیج فارس\" OR \"دریای عمان\" OR سپاه OR بندرعباس OR قشم OR خارگ OR جاسک OR لارک) (کشتی OR قایق OR شناور OR دریا OR آب OR بندر OR ناوگان OR ساحل OR نفتکش OR \"نیروی دریایی\" OR ملوان) has:media -is:retweet lang:fa min_reposts:10"
+ },
+ {
+  "id": "I3",
+  "label": "FA civil infrastructure",
+  "q": "(بندرعباس OR خارگ OR جاسک OR عسلویه OR \"خلیج فارس\" OR امارات OR عربستان OR قطر) (پالایشگاه OR \"آب شیرین کن\" OR نیروگاه OR بندر OR فرودگاه OR \"کابل زیردریایی\" OR \"خط لوله\" OR خاموشی) (حمله OR انفجار OR پهپاد OR موشک OR آتش) has:media -is:retweet lang:fa min_reposts:10"
  },
  {
   "id": "Q8",

@@ -37,8 +37,12 @@ const fmtDate = d3.utcFormat("%-d %b %Y");
 const el = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
+// Data changes every few hours; a 10-minute cache-buster keeps browsers from showing stale files.
+const BUST = Math.floor(Date.now() / 6e5);
 async function csv(path) {
-  try { return await d3.csv(path, d3.autoType); } catch { return null; }
+  const url = path + (path.includes("?") ? "&" : "?") + "b=" + BUST;
+  // Keep "id" as text: X post ids exceed 2^53 and would be rounded as numbers.
+  try { return await d3.csv(url, (d) => { const id = d.id; d3.autoType(d); if (id !== undefined) d.id = id; return d; }); } catch { return null; }
 }
 
 let [incidentsRaw, sources, flow, transits, land, xposts, articles, coverage, media] = await Promise.all([
@@ -60,6 +64,7 @@ const incidents = incidentsRaw.map((d) => ({
   cls: classOf(d),
   located: Number.isFinite(d.lat) && Number.isFinite(d.lon),
   approx: d.position_quality !== "reported",
+  infra: !!d.target && d.target !== "vessel",
 }));
 const trailById = d3.group(sources ?? [], (s) => s.incident_id);
 
@@ -67,7 +72,9 @@ const visible = () => incidents.filter((d) => (state.showClaimed || d.confidence
 
 /* ---------- KPIs ---------- */
 function renderKpis() {
-  const inc = visible().filter((d) => d.conflict === "iran_war_2026");
+  const all = visible().filter((d) => d.conflict === "iran_war_2026");
+  const inc = all.filter((d) => !d.infra);
+  const infra = all.filter((d) => d.infra);
   const lost = inc.filter((d) => d.cls === "lost").length;
   const deaths = d3.sum(inc, (d) => d.deaths);
   const days = Math.floor((Date.now() - WAR_START) / 864e5);
@@ -78,6 +85,7 @@ function renderKpis() {
     { v: `${last.mbd}`, l: `mb/d oil flow, ${last.period}`, s: `${pct}% vs ${pre.mbd} in ${pre.period} · <a href="${esc(last.source_url)}">EIA</a>` },
     { v: inc.filter((d) => d.event_type === "attack").length, l: "attacks on ships since 28 Feb", s: `plus ${inc.filter((d) => d.event_type !== "attack").length} seizures, mines, near misses; true count is higher` },
     { v: lost, l: "sunk or total loss", s: "in this dataset" },
+    ...(infra.length ? [{ v: infra.length, l: "strikes on civil infrastructure", s: "ports, terminals, power, water, cables" }] : []),
     { v: deaths, l: "seafarer deaths recorded", s: "where a source gives a number" },
     { v: days, l: "days since war began", s: "28 Feb 2026" },
   ];
@@ -118,13 +126,13 @@ function renderMap() {
         fontSize: (p) => (p.big ? 12 : 10), fontWeight: (p) => (p.big ? 600 : 400),
         letterSpacing: (p) => (p.big ? 2 : 0),
       }),
-      // approximate / inferred positions: hollow ring
+      // approximate / inferred positions: hollow ring (square = civil infrastructure)
       Plot.dot(pts.filter((d) => d.approx), {
-        x: "lon", y: "lat", r: 6, stroke: (d) => colorOf(d.cls), strokeWidth: 2.5, fill: "var(--surface)", fillOpacity: 0.6,
+        x: "lon", y: "lat", r: 6, symbol: (d) => (d.infra ? "square" : "circle"), stroke: (d) => colorOf(d.cls), strokeWidth: 2.5, fill: "var(--surface)", fillOpacity: 0.6,
       }),
       // reported positions: solid with surface ring
       Plot.dot(pts.filter((d) => !d.approx), {
-        x: "lon", y: "lat", r: 6, fill: (d) => colorOf(d.cls), stroke: "var(--surface)", strokeWidth: 2,
+        x: "lon", y: "lat", r: 6, symbol: (d) => (d.infra ? "square" : "circle"), fill: (d) => colorOf(d.cls), stroke: "var(--surface)", strokeWidth: 2,
       }),
       Plot.dot(pts, { x: "lon", y: "lat", r: 11, stroke: (d) => (d === state.selected ? "var(--ink)" : "none"), strokeWidth: 1.5, fill: "none" }),
       Plot.tip(pts, Plot.pointer({
@@ -137,7 +145,8 @@ function renderMap() {
   el("map").replaceChildren(plot);
 
   el("map-legend").innerHTML = CLASSES.map((c) => `<span><i class="dot" style="background:${c.color}"></i>${c.label}</span>`).join("")
-    + `<span><i class="dot hollow" style="color:var(--muted)"></i>Approximate position</span>`;
+    + `<span><i class="dot hollow" style="color:var(--muted)"></i>Approximate position</span>`
+    + (pts.some((d) => d.infra) ? `<span><i class="dot" style="border-radius:1px;background:var(--muted)"></i>Civil infrastructure</span>` : "");
   const unlocated = visible().length - pts.length;
   el("map-note").textContent = unlocated
     ? `${unlocated} incident${unlocated > 1 ? "s have" : " has"} no reliable position yet and appear only in the table.`
@@ -218,9 +227,9 @@ function renderMonthly() {
 function renderTable() {
   const rows = [...visible()].sort((a, b) => b.date - a.date);
   el("table-count").textContent = `${rows.length} records`;
-  el("table").innerHTML = `<thead><tr><th>Date</th><th>Vessel</th><th>Type</th><th>Outcome</th><th>Where</th><th>Confidence</th></tr></thead><tbody>${
+  el("table").innerHTML = `<thead><tr><th>Date</th><th>Vessel or site</th><th>Type</th><th>Outcome</th><th>Where</th><th>Confidence</th></tr></thead><tbody>${
     rows.map((d, i) => `<tr data-i="${incidents.indexOf(d)}" class="${d === state.selected ? "sel" : ""}">
-      <td>${fmtDate(d.date)}</td><td>${esc(d.vessel_name)}</td><td>${esc(d.vessel_type)}</td>
+      <td>${fmtDate(d.date)}</td><td>${esc(d.vessel_name)}</td><td>${esc(d.infra ? d.target.replaceAll("_", " ") : d.vessel_type)}</td>
       <td><i class="dot" style="background:${colorOf(d.cls)}"></i> ${esc(d.outcome)}</td>
       <td>${esc(d.location_text)}</td><td>${esc(d.confidence)}</td></tr>`).join("")
   }</tbody>`;
@@ -239,7 +248,7 @@ function select(d) {
     <span class="badge"><i class="dot" style="background:${colorOf(d.cls)}"></i>${esc(d.outcome)}</span>
     <span class="badge">${esc(d.confidence)}</span>
     <dl>
-      ${f("Date", fmtDate(d.date))}${f("Type", d.vessel_type)}${f("Flag", d.flag)}${f("IMO", d.imo)}
+      ${f("Date", fmtDate(d.date))}${f("Target", d.infra ? d.target.replaceAll("_", " ") : "")}${f("Type", d.vessel_type)}${f("Flag", d.flag)}${f("IMO", d.imo)}
       ${f("Event", d.event_type)}${f("Attacker", d.attacker)}${f("Position", d.location_text)}
       ${f("Precision", d.position_quality)}${f("Deaths", d.deaths)}${f("Casualties", d.casualties)}
     </dl>
@@ -326,12 +335,29 @@ const isVideo = (p) => p.media_type === "video" || p.media_type === "animated_gi
 function renderSetup() {
   el("m-window").innerHTML = WINDOWS.map(([d, l]) => `<button data-days="${d}" aria-pressed="${state.xWindow === d}">${l}</button>`).join("");
   el("m-window").onclick = (e) => { const b = e.target.closest("button"); if (b) { state.xWindow = +b.dataset.days; save(); renderSetup(); renderX(); } };
+  renderTopStrip();
   const terms = el("m-terms");
   if (document.activeElement !== terms) terms.value = state.terms;
-  terms.oninput = () => { state.terms = terms.value; save(); };
+  terms.oninput = () => { state.terms = terms.value; save(); renderTopStrip(); };
   const v = el("m-video");
   v.setAttribute("aria-pressed", !!state.videoOnly);
   v.onclick = () => { state.videoOnly = !state.videoOnly; save(); renderSetup(); };
+}
+
+function monitorPosts() {
+  const since = Date.now() - state.xWindow * 864e5;
+  return (xposts ?? []).map((p) => ({ ...p, id: String(p.id), created: new Date(p.created_at) }))
+    .filter((p) => p.created >= since && matches(p.text, p.username, p.name) && (!state.videoOnly || isVideo(p)));
+}
+
+// Top posts strip in the setup bar: click one to open the wall with that post first.
+function renderTopStrip() {
+  const top = monitorPosts().sort((a, b) => score(b) - score(a)).slice(0, 12);
+  el("m-top").innerHTML = top.map((p) => `<button class="top-post" data-id="${esc(p.id)}" title="Open in the monitor">
+    <div class="thumb" style="${p.preview ? `background-image:url('${esc(p.preview)}')` : ""}">${isVideo(p) ? `<span class="play">▶ video</span>` : ""}</div>
+    <div class="meta"><b>${fmtN(score(p))}</b>${Number.isFinite(p.views) ? " views" : " score"}<span>@${esc(p.username)}</span></div>
+    <div class="t">${esc(p.text)}</div></button>`).join("");
+  el("m-top").onclick = (e) => { const b = e.target.closest("[data-id]"); if (b) { state.pin = b.dataset.id; location.hash = "#monitor"; } };
 }
 
 let widgets;
@@ -364,12 +390,10 @@ const PAGE = 16;
 function wallColumns() { return Math.max(1, Math.min(4, Math.floor((innerWidth - 16) / 260))); }
 
 function renderMonitor() {
-  const since = Date.now() - state.xWindow * 864e5;
   const win = WINDOWS.find(([d]) => d === state.xWindow)?.[1] ?? `${state.xWindow}d`;
   const t = termList();
-  const posts = (xposts ?? []).map((p) => ({ ...p, id: String(p.id), created: new Date(p.created_at) }))
-    .filter((p) => p.created >= since && matches(p.text, p.username, p.name) && (!state.videoOnly || isVideo(p)))
-    .sort((a, b) => (isVideo(b) - isVideo(a)) || score(b) - score(a));
+  const pinned = (p) => (p.id === state.pin ? 1 : 0);
+  const posts = monitorPosts().sort((a, b) => (pinned(b) - pinned(a)) || (isVideo(b) - isVideo(a)) || score(b) - score(a));
   el("m-summary").textContent = `${posts.length} posts · last ${win}${t.length ? ` · matching ${t.join(", ")}` : ""}${state.videoOnly ? " · videos only" : " · videos first"}`;
   const fetched = d3.max(xposts ?? [], (p) => new Date(p.fetched_at));
   el("m-asof").textContent = fetched ? `X batch ${ago(fetched)} ago` : "";
@@ -405,7 +429,7 @@ function route() {
   el("monitor").hidden = !on;
   clearInterval(refreshTimer);
   if (on) { scrollTo(0, 0); lastCols = wallColumns(); renderMonitor(); refreshTimer = setInterval(refreshMedia, 10 * 60e3); }
-  else { renderX(); }
+  else { state.pin = null; renderX(); }
 }
 addEventListener("hashchange", route);
 

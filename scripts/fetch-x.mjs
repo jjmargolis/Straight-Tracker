@@ -37,15 +37,22 @@ async function search(query) {
   const res = await fetch(`https://api.x.com/2/tweets/search/recent?${params}`, { headers: { authorization: `Bearer ${token}` } });
   return { res, j: await res.json() };
 }
+if (!/min_(reposts|likes):\d*[1-9]/.test(Q.q)) throw new Error(`${Q.id} has no engagement floor; refusing to spend reads on it.`);
 let { res, j } = await search(Q.q);
-// min_reposts: is documented but untested on pay-per-use; a rejected query returns no posts, so retrying is free.
-if (res.status === 400 && /min_reposts:/.test(Q.q)) {
-  console.log(`X rejected ${Q.id} (${JSON.stringify(j).slice(0, 200)}); retrying without min_reposts.`);
-  ({ res, j } = await search(Q.q.replace(/\s*min_reposts:\d+/, "")));
+// Every query carries an engagement floor (Jacob: no zero-engagement reads). min_reposts: is documented but
+// untested on pay-per-use; if X rejects it, try the same floor as min_likes (x3). Never fall back to no floor.
+// A rejected query returns no posts, so a retry costs nothing.
+if (res.status === 400) {
+  console.log(`X rejected ${Q.id} (${JSON.stringify(j).slice(0, 200)}); retrying with min_likes.`);
+  ({ res, j } = await search(Q.q.replace(/min_reposts:(\d+)/, (_, n) => `min_likes:${n * 3}`)));
 }
 if (!res.ok) { fs.writeFileSync(BPATH, JSON.stringify(budget, null, 2) + "\n"); throw new Error(`X API HTTP ${res.status} on ${Q.id}: ${JSON.stringify(j).slice(0, 300)}`); }
 
 const posts = j.data ?? [];
+// Check X actually applied the floor (if it silently ignored the operator, we'd be paying for low-engagement posts).
+const floor = +(Q.q.match(/min_reposts:(\d+)/)?.[1] ?? 0);
+const below = posts.filter((p) => (p.public_metrics?.retweet_count ?? 0) < floor).length;
+if (below) console.log(`WARNING: ${below}/${posts.length} posts from ${Q.id} are under min_reposts:${floor}; the operator may be ignored.`);
 budget.reads += posts.length;
 budget.updated = new Date().toISOString();
 fs.writeFileSync(BPATH, JSON.stringify(budget, null, 2) + "\n");
