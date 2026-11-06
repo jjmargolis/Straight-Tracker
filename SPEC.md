@@ -1,6 +1,6 @@
 # Hormuz Dashboard: SPEC
 
-Status: **v0.6** (2026-11-06). Living document, updated as work proceeds.
+Status: **v0.8b** (2026-11-06). Living document, updated as work proceeds.
 Owner: Jacob. Repo: [`jjmargolis/straight-tracker`](https://github.com/jjmargolis/straight-tracker).
 
 Evidence tags used throughout:
@@ -28,6 +28,62 @@ Data refreshes periodically and automatically. Historical data matters, especial
 ### Prior art (and why build this anyway)
 - [hormuz.now](https://hormuz.now/oil) already tracks daily crossings (AIS), oil-flow estimates (citing Kpler via CNN, EIA, IEA, Windward), with a daily CSV. It has a live ship map but **no map of attack locations** as far as the page shows. [R]
 - **Differentiator for us:** an attack/sinking map with *history* (2019 incidents, 1980s Tanker War) and an explicit source + confidence for every number.
+
+---
+
+## 1A. Refocus (v0.7, Jacob 2026-11-06): media tracker first
+
+**New centerpiece:** a tracker of the media coming out of the region about strikes (footage, posts, articles), showing what is getting attention, tied to incidents where possible. The strait numbers (oil flow, transits, official incident tallies) stay, as a smaller panel fed by **free official periodic reports**.
+
+### What "lighting up the internet" can honestly mean with free data
+Attention is measured by engagement, and the platforms where strike footage spreads (X, Telegram) either charge or have no public API. So:
+
+| Signal | Source | Cost | What it measures | Status |
+|---|---|---|---|---|
+| News volume over time, articles list | **GDELT DOC 2.0 API** (`timelinevolraw`, `artlist`, filter by keyword/country/theme, ~3-month lookback) | Free, no key in examples | Volume of *news coverage*, not social virality | [R: [gdelt-doc-api](https://github.com/kepler471/gdelt-doc-api)] Not yet tested from GitHub Actions |
+| X posts + engagement | X API pay-per-use, **$0.005 per post read** (no free read tier) | ~$5 per 1,000 posts | What is actually spreading | [R: [opentweet, checked against docs.x.com 2026-10-10](https://opentweet.io/x-api-pricing)] **Approved by Jacob: cap ~$10/month (~2,000 reads)**. Token stored as repo secret `X_BEARER_TOKEN`; the fetch script enforces a monthly read budget. |
+| Bluesky posts | `app.bsky.feed.searchPosts` | Free | Smaller audience, but open | [U: auth requirements not verified] |
+| YouTube videos | YouTube Data API | Free quota with a Google API key | Uploads and view counts for strike footage | [M: quota ~10k units/day; verify] |
+| Telegram channels (IRGC-aligned, OSINT) | Public channel web previews | Free, no API | Often the *first* place footage appears | [M] Manual or Claude-assisted; no automated scraping |
+| Curated finds | Jacob (X, YouTube incl. WGOWS) + daily Claude news search | Free | Judgement, not a metric | Already in spec |
+
+**Honest framing in the UI:** "Coverage volume" (GDELT) and "Most-shared items" (only if X/YouTube counts are fetched) are labelled separately. Nothing is called "trending" without an engagement number behind it.
+
+### Media items: data model
+`data/media.csv`
+```
+id,found_at,published_at,platform,url,author,kind,title,lang,incident_id,
+verification,engagement,engagement_at,found_by,notes
+```
+- `kind`: `video` | `image` | `post` | `article`
+- `incident_id`: links to `incidents.csv` when the item shows or reports a known incident; blank if unmatched. An item with new information can *create* an incident row at `confidence=claimed`.
+- `verification`: `unreviewed` | `matches_incident` (time/place consistent with a sourced incident) | `geolocated` (location confirmed from visual features, by us or a named OSINT source) | `recycled` (older footage or another conflict) | `fabricated`. Recycled and fabricated items are **kept and shown as such**: during this war both sides push fakes, and debunks are part of the story.
+- `engagement`: views/likes/reposts snapshot where a free or paid API gives it, with `engagement_at` timestamp.
+- `found_by`: `claude_routine` | `jacob` | `gdelt` | `api`.
+
+**Copyright:** link and embed only (platform embeds for X, YouTube, Bluesky, Telegram). Never rehost video or images in the repo.
+
+### Official periodic reports (the "strait numbers" panel)
+| Report | Cadence | Gives |
+|---|---|---|
+| UKMTO weekly report / dashboard | Weekly | Incident tally, outcomes, positions [R] |
+| JMIC advisories | Weekly-ish | Threat level per region [R] |
+| EIA STEO | Monthly | Hormuz flow by quarter [R] |
+| IMF PortWatch | Daily, 3–5 day lag | Tanker transits [R] |
+| US MARAD MSCI advisories | As issued | US-flag guidance [M: verify current URL] |
+
+A weekly Claude routine reads these and opens a PR updating the numbers and adding any new incidents.
+
+### Screen targets (Jacob, 2026-11-06)
+Landscape only: laptop and phone held horizontally (S24 Ultra landscape is about 915 CSS px wide). Portrait phone layout is out of scope: no design or testing effort goes into it. The existing CSS still stacks columns below 860px, which costs nothing to keep.
+
+### UI (proposed v1 of the refocus)
+1. **Media feed** (centerpiece): newest first, embed card per item, badges for verification and linked incident, filter by platform/verification.
+2. **Coverage volume** chart: GDELT daily article count for Hormuz-strike queries, with incident dates marked, so spikes can be read against events.
+3. **Map**: incidents as now; incidents with media get a marker ring, click shows the media.
+4. **Strait numbers** strip: oil flow, transits, UKMTO tally, JMIC threat levels, each with "as of" date.
+5. **Monitor mode** (Jacob, v0.8b): a setup bar on the dashboard sets the time window (24h/7d/30d), keywords (comma-separated, OR) and "videos only". "Open monitor" goes to `#monitor`: a scrolling wall of X posts, 4 across on a laptop (3 on a landscape phone, since X embeds need ~250px), videos first, then by views. Each tile is X's official embed (widgets.js, `dnt: true`), so video plays inline; tiles load as they scroll near. It is **not live X**: it shows what the fetch collected (~60 posts/day on the $10 cap). News and incidents stay on the dashboard.
+6. **X fetch**: every 6 h, one query per run (15 posts) from `scripts/x-queries.json`, rotating precise (Q1–Q5) and wide-net (W1–W5) queries in EN/AR/FA/HE/ZH plus ground-truth (Q6) and footage carriers (Q8), from research/source-catalog.md. Each post records which query found it.
 
 ---
 
@@ -144,9 +200,14 @@ Principle: no server, no database, no build step unless it pays for itself.
 ---
 
 ## Changelog
+- 2026-11-06 v0.8b: monitor becomes a wall of embedded X posts (videos inline); X fetch rotates 12 multilingual queries, 4 runs/day, same cap.
+- 2026-11-06 v0.8: monitor mode (4 full-screen columns) driven by a setup bar on the dashboard.
 - 2026-11-06 v0.1: initial research and proposal.
 - 2026-11-06 v0.2: added `confidence` field and manual X/Twitter ingest path.
 - 2026-11-06 v0.3: multi-source trail per incident (`incident_sources.csv`), source types, dedup rule.
 - 2026-11-06 v0.4: daily Claude news-search routine opens incident PRs.
 - 2026-11-06 v0.5: repo is `straight-tracker`; map moved from Leaflet to Plot geo; final incidents schema (`location_text`, `deaths`, `attacker`, `unknown` position); first build (seed data only).
+- 2026-11-06 v0.7c: landscape only; portrait phone dropped.
+- 2026-11-06 v0.7b: Jacob approved X API at ~$10/month cap.
+- 2026-11-06 v0.7: refocus on media tracker (section 1A): media.csv schema, verification states, free attention signals (GDELT), optional paid X API, official-report panel.
 - 2026-11-06 v0.6: ingested research-thread dataset v0.1 (151 incidents, 275 sources). UKMTO screenshot rows merged only when vessel name or a unique date+type match; otherwise kept and flagged POSSIBLE DUPLICATE (5 rows), so counts may be overstated by up to 5. Naval toggle added. `landmarks.csv` coordinates are from model memory, so every `inferred` position is approximate.

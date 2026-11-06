@@ -1,0 +1,34 @@
+name: Fetch media signals
+on:
+  schedule:
+    - cron: "41 */6 * * *"   # every 6 hours: GDELT + one X query
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: { group: data-commit, cancel-in-progress: false }
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: GDELT coverage and articles
+        # GDELT throttles and sometimes refuses GitHub runner IPs; don't let that block the X step.
+        continue-on-error: true
+        timeout-minutes: 4
+        run: node scripts/fetch-gdelt.mjs
+      - name: X posts (each run, budget-capped)
+        continue-on-error: true
+        env:
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+        run: |
+          # Four scheduled runs a day x 15 posts = ~1,800/month; the script enforces the monthly cap.
+          node scripts/fetch-x.mjs
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet || git commit -m "data: media signals $(date -u +%FT%H:%MZ)"
+          git pull --rebase -q && git push
