@@ -77,6 +77,7 @@ const ACC_HEAD = "handle,user_id,name,type,lean,identity,lang,reliability,flags,
 const OVR_HEAD = "handle,type,lean,reliability,note,at";
 const acc = parseCSV(fs.readFileSync("data/accounts.csv", "utf8"));
 if (acc.head.join(",") !== ACC_HEAD) err("data/accounts.csv", -1, `header mismatch.\n  want: ${ACC_HEAD}\n  got:  ${acc.head.join(",")}`);
+// Handles are case-insensitive on X, so duplicates are checked lowercased.
 const handles = new Set();
 acc.rows.forEach((r, i) => {
   const F = "data/accounts.csv", h = r.handle.toLowerCase();
@@ -85,6 +86,7 @@ acc.rows.forEach((r, i) => {
   for (const k of ["type", "lean", "identity", "reliability", "confidence"]) enumCheck(F, i, r, k, ACCOUNT[k]);
   for (const f of r.flags.split(";").filter(Boolean)) if (!ACCOUNT.flags.includes(f)) err(F, i, `flag "${f}" not in [${ACCOUNT.flags.join(", ")}]`);
   if (!r.basis.split(";").every((b) => ["R", "O", "M"].includes(b))) err(F, i, `basis must be R, O, M (;-joined), got "${r.basis}"`);
+  // "R" claims a source was read; without the link that claim cannot be checked, which is the point of the basis column.
   if (r.basis.includes("R") && !r.evidence) err(F, i, "basis R needs evidence (URL or catalog reference)");
 });
 const ovr = parseCSV(fs.readFileSync("data/account_overrides.csv", "utf8"));
@@ -92,6 +94,7 @@ if (ovr.head.join(",") !== OVR_HEAD) err("data/account_overrides.csv", -1, `head
 ovr.rows.forEach((r, i) => {
   const F = "data/account_overrides.csv";
   if (!/^\w{1,15}$/.test(r.handle)) err(F, i, `bad handle "${r.handle}"`);
+  // Blank is allowed in overrides: it means "keep Claude's value for this field".
   for (const k of ["type", "lean", "reliability"]) enumCheck(F, i, r, k, ACCOUNT[k], true);
 });
 

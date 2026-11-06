@@ -14,7 +14,9 @@ import { readCSV, writeCSV } from "./lib.mjs";
 
 const MONTHLY_CAP = 1800;   // units per month (~$9 at $0.005/unit)
 const PER_RUN = 15;         // posts per run (max_results)
+// Price of each billed resource in $0.005 units, so one counter tracks real dollars, not just posts.
 const COST = { post: 1, media: 1, user: 2 };
+// Re-read a profile monthly: bios and follower counts drift, but paying $0.010 per author per day would not be worth it.
 const USER_TTL_DAYS = 30;
 const QUERIES = JSON.parse(fs.readFileSync(new URL("./x-queries.json", import.meta.url), "utf8"));
 
@@ -33,9 +35,11 @@ if (budget.day !== today) { budget.day = today; budget.dayUnits = 0; }
 const days = new Date(Date.UTC(+month.slice(0, 4), +month.slice(5, 7), 0)).getUTCDate();
 const dailyCap = Math.floor(MONTHLY_CAP / days);
 const left = MONTHLY_CAP - budget.units;
+// Size the run for the worst case (every post has media and a new author) so the last run of the month cannot overshoot the cap.
 const n = Math.min(PER_RUN, Math.floor(left / (COST.post + COST.media + COST.user)));
 if (n < 10) { console.log(`Monthly X budget reached (${budget.units}/${MONTHLY_CAP} units); skipping.`); process.exit(0); }
 if (budget.dayUnits >= dailyCap) { console.log(`Daily X pace reached (${budget.dayUnits}/${dailyCap} units); skipping.`); process.exit(0); }
+// Record spend as it happens, so a crash mid-run still leaves an honest budget on disk.
 const spend = (kind, k) => { const u = k * COST[kind]; budget.units += u; budget.dayUnits += u; const key = { post: "posts", media: "media", user: "users" }[kind]; budget[key] = (budget[key] ?? 0) + k; };
 
 const Q = QUERIES[(budget.next ?? 0) % QUERIES.length];
@@ -45,6 +49,8 @@ async function search(query) {
   const params = new URLSearchParams({
     query, max_results: String(Math.max(10, n)), sort_order: "relevancy",
     "tweet.fields": "created_at,public_metrics,lang,author_id,attachments",
+    // Media is expanded because "videos first" needs the type. Authors are not: an expansion is all-or-nothing per
+    // request, so it would bill every author on every post. We look up only unseen authors below instead.
     expansions: "attachments.media_keys",
     "media.fields": "type,preview_image_url,url",
   });
@@ -76,16 +82,19 @@ const UHEAD = ["id", "username", "name", "verified_type", "created_at", "followe
 const cache = new Map(readCSV(UPATH).rows.map((u) => [u.id, u]));
 const stale = (u) => !u || Date.now() - Date.parse(u.fetched_at) > USER_TTL_DAYS * 864e5;
 const need = [...new Set(posts.map((p) => p.author_id))].filter((id) => stale(cache.get(id)));
+// One batched call (up to 100 ids) instead of one per author: fewer requests, same per-user price.
 if (need.length) {
   const params = new URLSearchParams({ ids: need.join(","), "user.fields": "username,name,verified_type,created_at,public_metrics,location,url,description,entities" });
   const ur = await fetch(`https://api.x.com/2/users?${params}`, { headers: { authorization: `Bearer ${token}` } });
   const uj = await ur.json();
+  // A failed lookup is not fatal: posts still save (username falls back to "i" in the URL) and the author is retried next run.
   if (!ur.ok) console.log(`WARNING: user lookup HTTP ${ur.status}: ${JSON.stringify(uj).slice(0, 200)}`);
   const got = uj.data ?? [];
   spend("user", got.length);
   const at = new Date().toISOString();
   for (const u of got) {
     const pm = u.public_metrics ?? {};
+    // u.url is a t.co shortlink; the expanded URL is what a human needs to judge the account.
     const link = u.entities?.url?.urls?.[0]?.expanded_url ?? u.url ?? "";
     cache.set(u.id, { id: u.id, username: u.username, name: u.name, verified_type: u.verified_type ?? "", created_at: u.created_at ?? "",
       followers: pm.followers_count ?? "", following: pm.following_count ?? "", posts: pm.tweet_count ?? "",
@@ -96,6 +105,7 @@ if (need.length) {
 budget.updated = new Date().toISOString();
 fs.writeFileSync(BPATH, JSON.stringify(budget, null, 2) + "\n");
 
+// Posts are joined to authors by id, not handle, because handles can change.
 const users = cache;
 const media = new Map((j.includes?.media ?? []).map((m) => [m.media_key, m]));
 const PATH = "data/x_posts.csv";
