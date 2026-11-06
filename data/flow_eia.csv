@@ -1,0 +1,10 @@
+period,start,end,mbd,kind,source,source_url,notes
+2020,2020-01-01,2020-12-31,19.2,annual,EIA (Vortexa tanker tracking),https://www.eia.gov/international/content/analysis/special_topics/World_Oil_Transit_Chokepoints/,
+2021,2021-01-01,2021-12-31,19.7,annual,EIA (Vortexa tanker tracking),https://www.eia.gov/international/content/analysis/special_topics/World_Oil_Transit_Chokepoints/,
+2022,2022-01-01,2022-12-31,21.9,annual,EIA (Vortexa tanker tracking),https://www.eia.gov/international/content/analysis/special_topics/World_Oil_Transit_Chokepoints/,
+2023,2023-01-01,2023-12-31,21.8,annual,EIA (Vortexa tanker tracking),https://www.eia.gov/international/content/analysis/special_topics/World_Oil_Transit_Chokepoints/,
+2024,2024-01-01,2024-12-31,20.7,annual,EIA (Vortexa tanker tracking),https://www.eia.gov/international/content/analysis/special_topics/World_Oil_Transit_Chokepoints/,
+1H25,2025-01-01,2025-06-30,20.9,half,EIA (Vortexa tanker tracking),https://www.eia.gov/international/content/analysis/special_topics/World_Oil_Transit_Chokepoints/,
+4Q25,2025-10-01,2025-12-31,21.6,quarter,EIA (Vortexa tanker tracking),https://www.eia.gov/outlooks/steo/archives/aug26.pdf,"EIA Global Energy Security Data (May 2026, via IER) gave 20.7 for 4Q25; using the later August STEO figure."
+1Q26,2026-01-01,2026-03-31,14.6,quarter,EIA (Vortexa tanker tracking),https://www.instituteforenergyresearch.org/fossil-fuels/gas-and-oil/new-eia-report-shows-extent-of-hormuz-oil-disruptions/,"EIA Global Energy Security Data, cited by IER. War began 28 Feb."
+2Q26,2026-04-01,2026-06-30,4.9,quarter,EIA (Vortexa tanker tracking),https://www.eia.gov/outlooks/steo/archives/aug26.pdf,
