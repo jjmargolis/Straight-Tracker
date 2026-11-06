@@ -10,8 +10,9 @@ const MONTHLY_CAP = 1800;   // posts read per month (~$9 at $0.005)
 const PER_RUN = 50;         // one run a day -> ~1,550/month
 const QUERY = '(hormuz OR "gulf of oman") (tanker OR ship OR vessel OR sank OR strike OR attack OR missile OR drone) has:media -is:retweet';
 
-const token = process.env.X_BEARER_TOKEN;
+const token = process.env.X_BEARER_TOKEN?.trim();
 if (!token) { console.log("X_BEARER_TOKEN not set; skipping X fetch."); process.exit(0); }
+if (/\s/.test(token)) throw new Error("X_BEARER_TOKEN contains spaces or line breaks. Save only the Bearer Token (one line) in the repo secret.");
 
 const BPATH = "data/x_budget.json";
 const month = new Date().toISOString().slice(0, 7);

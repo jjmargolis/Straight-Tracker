@@ -30,6 +30,8 @@ try { tl = await get({ mode: "timelinevolraw", startdatetime: WAR_START, enddate
 catch (e) { console.warn(`Full-range timeline failed (${e.message}); using 3 months`); tl = await get({ mode: "timelinevolraw", timespan: "3months", timelinesmooth: "0" }); }
 const series = tl.timeline?.[0]?.data;
 if (!series?.length) throw new Error(`GDELT timeline empty: ${JSON.stringify(tl).slice(0, 300)}`);
+console.log(`timeline: ${series.length} points, first ${JSON.stringify(series[0])}, last ${JSON.stringify(series.at(-1))}`);
+if (series.length < 7) console.warn(`Suspiciously short timeline. Raw: ${JSON.stringify(tl).slice(0, 600)}`);
 
 const PATH = "data/coverage_gdelt.csv";
 const byDate = new Map(readCSV(PATH).rows.map((r) => [r.date, r]));
