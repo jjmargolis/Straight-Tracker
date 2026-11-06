@@ -1,77 +1,60 @@
-// Fetches daily Strait of Hormuz transit counts from IMF PortWatch and writes
-// data/transits_portwatch.csv. Node 20+, no dependencies.
+// Daily Strait of Hormuz transit counts (IMF PortWatch) -> data/transits_portwatch.csv.
+// Node 20+, no dependencies.
 //
-// Primary: the ArcGIS Hub CSV export of the Daily_Chokepoints_Data item (served from cache).
-// Fallback: the FeatureServer query API, which has returned errors since late Oct 2026
-// (our first run got "400 Invalid URL"; see also koala73/worldmonitor PR #10001, 2026-11-01).
+// 1) IMF PortWatch FeatureServer, layer 0, portid 'chokepoint6'. Since late Oct 2026 it fails
+//    intermittently with 200 + {"error":{code:400}} (seen in our runs and in other projects),
+//    so each page is retried with backoff.
+// 2) Fallback: straits.live's daily mirror of the same PortWatch series (CSV, IMF attribution).
+//    It has tanker and total counts but no capacity.
 import fs from "node:fs";
 
-const ITEM = "3da2b9ca97684916b75c4013f95d18ab"; // Daily_Chokepoints_Data
-const CSV_URL = `https://hub.arcgis.com/api/download/v1/items/${ITEM}/csv?layers=0`;
-const ITEM_URL = `https://www.arcgis.com/sharing/rest/content/items/${ITEM}?f=json`;
-const FS_FALLBACK = "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/Daily_Chokepoints_Data/FeatureServer";
+const FS = "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/Daily_Chokepoints_Data/FeatureServer/0/query";
+const MIRROR = "https://straits.live/data/transits.csv";
+const OUT = "data/transits_portwatch.csv";
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-// Resolve the live FeatureServer URL from the item's metadata, so a renamed or moved
-// service doesn't break us. Falls back to the last known URL.
-async function featureServerUrl() {
-  try {
-    const j = await (await fetch(ITEM_URL)).json();
-    console.log(`Item: "${j.title}" type=${j.type} url=${j.url} modified=${j.modified ? new Date(j.modified).toISOString() : "?"}`);
-    if (j.url) return j.url.replace(/\/\d+$/, "");
-  } catch (e) { console.warn(`Item lookup failed: ${e.message}`); }
-  return FS_FALLBACK;
-}
-const WANT = ["date", "n_tanker", "n_total", "capacity_tanker"];
-const isHormuz = (r) => /hormuz/i.test(r.portname ?? "");
-
-function parseCSV(text) {
-  const rows = []; let row = [], f = "", q = false;
-  for (let i = 0; i < text.length; i++) {
-    const c = text[i];
-    if (q) { if (c === '"') { if (text[i + 1] === '"') { f += '"'; i++; } else q = false; } else f += c; }
-    else if (c === '"') q = true;
-    else if (c === ",") { row.push(f); f = ""; }
-    else if (c === "\n" || c === "\r") { if (c === "\r" && text[i + 1] === "\n") i++; row.push(f); rows.push(row); row = []; f = ""; }
-    else f += c;
+async function fsPage(offset) {
+  const q = new URLSearchParams({
+    where: "portid = 'chokepoint6'", outFields: "date,portname,n_tanker,n_total,capacity_tanker",
+    resultOffset: String(offset), resultRecordCount: "1000", f: "json",
+  });
+  let last;
+  for (let attempt = 1; attempt <= 6; attempt++) {
+    try {
+      const res = await fetch(`${FS}?${q}`);
+      const j = await res.json();
+      if (res.ok && !j.error) return j;
+      last = JSON.stringify(j.error ?? res.status);
+    } catch (e) { last = e.message; }
+    console.warn(`FeatureServer offset ${offset} attempt ${attempt} failed: ${last}`);
+    await sleep(2000 * attempt);
   }
-  if (f || row.length) { row.push(f); rows.push(row); }
-  const [head, ...body] = rows.filter((r) => r.length > 1);
-  const h = head.map((s) => s.replace(/^﻿/, "").trim().toLowerCase());
-  return body.map((r) => Object.fromEntries(h.map((k, i) => [k, r[i]])));
-}
-
-async function viaCsv() {
-  const res = await fetch(CSV_URL, { redirect: "follow" });
-  if (!res.ok) throw new Error(`CSV export HTTP ${res.status}`);
-  const text = await res.text();
-  if (!text.includes(",")) throw new Error(`CSV export returned non-CSV: ${text.slice(0, 200)}`);
-  return parseCSV(text).filter(isHormuz);
+  throw new Error(`FeatureServer failed after retries: ${last}`);
 }
 
 async function viaFeatureServer() {
-  const base = await featureServerUrl();
-  const svc = await (await fetch(`${base}?f=json`)).json();
-  const layer = svc.layers?.[0]?.id ?? 0;
-  console.log(`FeatureServer ${base}, layers: ${JSON.stringify(svc.layers?.map((l) => [l.id, l.name]) ?? svc.error)}`);
-  const FS_URL = `${base}/${layer}/query`;
-  const out = [];
+  const rows = [];
   for (let offset = 0; ; offset += 1000) {
-    const q = new URLSearchParams({
-      where: "portname LIKE '%Hormuz%'", outFields: [...WANT, "portname"].join(","),
-      resultOffset: String(offset), resultRecordCount: "1000", f: "json",
-    });
-    const res = await fetch(`${FS_URL}?${q}`);
-    if (!res.ok) throw new Error(`FeatureServer HTTP ${res.status}`);
-    const j = await res.json();
-    if (j.error) throw new Error(`FeatureServer error: ${JSON.stringify(j.error)}`);
+    const j = await fsPage(offset);
     const feats = j.features ?? [];
-    out.push(...feats.map((f) => f.attributes));
+    rows.push(...feats.map((f) => f.attributes));
     if (!j.exceededTransferLimit && feats.length < 1000) break;
   }
-  return out;
+  if (!rows.length) throw new Error("FeatureServer returned no rows for chokepoint6");
+  console.log(`PortWatch portname: ${rows[0].portname}`);
+  return rows.map((r) => ({ date: toISO(r.date), n_tanker: r.n_tanker, n_total: r.n_total, capacity_tanker: Math.round(r.capacity_tanker) }));
 }
 
-export function toISO(v) {
+async function viaMirror() {
+  const text = await (await fetch(MIRROR)).text();
+  const [head, ...lines] = text.trim().split(/\r?\n/);
+  const h = head.toLowerCase().split(",");
+  const iDate = h.indexOf("date"), iT = h.indexOf("tanker"), iN = h.indexOf("total");
+  if (iDate < 0 || iT < 0 || iN < 0) throw new Error(`Mirror header unexpected: ${head}`);
+  return lines.map((l) => l.split(",")).map((c) => ({ date: toISO(c[iDate]), n_tanker: +c[iT], n_total: +c[iN], capacity_tanker: "" }));
+}
+
+function toISO(v) {
   if (typeof v === "number" || /^\d{10,}$/.test(String(v))) return new Date(Number(v)).toISOString().slice(0, 10);
   const s = String(v).trim().replace(/\//g, "-");
   const d = new Date(/^\d{4}-\d{2}-\d{2}$/.test(s) ? s + "T00:00:00Z" : s);
@@ -80,17 +63,12 @@ export function toISO(v) {
 }
 
 let rows, via;
-try { rows = await viaCsv(); via = "Hub CSV export"; }
-catch (e) { console.warn(`CSV export failed (${e.message}); trying FeatureServer`); rows = await viaFeatureServer(); via = "FeatureServer"; }
+try { rows = await viaFeatureServer(); via = "IMF PortWatch FeatureServer"; }
+catch (e) { console.warn(`${e.message}; using straits.live mirror`); rows = await viaMirror(); via = "straits.live mirror of IMF PortWatch"; }
 
-if (!rows.length) throw new Error(`${via}: no Strait of Hormuz rows`);
-const missing = WANT.filter((k) => !(k in rows[0]));
-if (missing.length) throw new Error(`${via}: missing fields ${missing.join(", ")}. Available: ${Object.keys(rows[0]).join(", ")}`);
-
-const byDate = new Map();
-for (const r of rows) byDate.set(toISO(r.date), r);
+const byDate = new Map(rows.map((r) => [r.date, r]));
 const dates = [...byDate.keys()].sort();
-const out = ["date,n_tanker,n_total,capacity_tanker",
-  ...dates.map((d) => { const r = byDate.get(d); return [d, +r.n_tanker, +r.n_total, Math.round(+r.capacity_tanker)].join(","); })];
-fs.writeFileSync("data/transits_portwatch.csv", out.join("\n") + "\n");
-console.log(`${via}: wrote ${dates.length} days, ${dates[0]} to ${dates.at(-1)} (portname: ${rows[0].portname})`);
+const lines = ["date,n_tanker,n_total,capacity_tanker,via",
+  ...dates.map((d) => { const r = byDate.get(d); return [d, r.n_tanker, r.n_total, r.capacity_tanker, via].join(","); })];
+fs.writeFileSync(OUT, lines.join("\n") + "\n");
+console.log(`${via}: wrote ${dates.length} days, ${dates[0]} to ${dates.at(-1)}`);
