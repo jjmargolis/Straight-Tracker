@@ -23,10 +23,10 @@ flowchart TB
   subgraph GH["GitHub"]
     PR["pull request<br/>never auto-merged"]
     W3["validate.yml"]
-    S4["validate.mjs<br/>headers · enums · dates · region box ·<br/>IMO · every incident has a source"]
+    S4["validate.mjs<br/>headers · enums incl. target · dates ·<br/>region box · IMO · every incident has a source"]
     J(["Jacob · reviews + merges"])
     subgraph DATA["data/ on main"]
-      D7[("incidents.csv")]
+      D7[("incidents.csv<br/>ships + civil infrastructure<br/>target column")]
       D8[("incident_sources.csv")]
       D11[("landmarks.csv")]
       D6[("media.csv")]

@@ -13,10 +13,10 @@ flowchart TB
     W1["fetch-portwatch.yml<br/>cron 17 6 * * * · daily 06:17 UTC"]
     W2["fetch-media.yml<br/>cron 41 */6 * * * · every 6 h<br/>concurrency group data-commit"]
     SEC{{"secret X_BEARER_TOKEN"}}
-    QJ["x-queries.json<br/>12 queries · EN / AR / FA<br/>each with an engagement floor"]
+    QJ["x-queries.json<br/>15 queries · EN / AR / FA<br/>ships + civil infrastructure<br/>each with an engagement floor"]
     S1["fetch-portwatch.mjs<br/>6 tries per page, then mirror"]
     S2["step 1 · fetch-gdelt.mjs<br/>1 request per 6 s · 4 min timeout"]
-    S3["step 2 · fetch-x.mjs<br/>next query in rotation · 15 posts<br/>stops at 1,800 reads/month"]
+    S3["step 2 · fetch-x.mjs<br/>next query in rotation · 15 posts<br/>stops at 1,800 reads/month<br/>refuses a query without a floor"]
     subgraph WD["data/ in the runner's checkout"]
       D1[("transits_portwatch.csv")]
       D2[("coverage_gdelt.csv")]

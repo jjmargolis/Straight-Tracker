@@ -1,7 +1,7 @@
 # Architecture
 
 How data gets from the outside world onto the dashboard, and where the trust boundaries are.
-This describes `main` at `029f241` (2026-11-06), after the media tracker merged.
+This describes `main` at `0432a3d` (2026-11-06), after the media tracker (#3), cache-busting (#5) and civil-infrastructure (#6) changes merged.
 
 All diagrams are Mermaid. Their sources are the `.mmd` files in [`architecture/`](architecture/). [`render.sh`](architecture/render.sh) renders them with a pinned Mermaid CLI and the ELK layout, which gives right-angle lines. It then runs [`postprocess.mjs`](architecture/postprocess.mjs), which only moves box titles above the lines. To change a diagram, edit its `.mmd`, run `render.sh`, and commit both files.
 
@@ -34,14 +34,14 @@ Edge labels read `what · format · cadence · auth`. Parts that don't apply are
 |---|---|---|---|---|
 | `fetch-portwatch.yml` → `fetch-portwatch.mjs` | `17 6 * * *` + manual | PortWatch FeatureServer, else the straits.live mirror | `transits_portwatch.csv` (overwrite) | none |
 | `fetch-media.yml` step 1 → `fetch-gdelt.mjs` | `41 */6 * * *` + manual | GDELT DOC 2.0 | `coverage_gdelt.csv` (merge by date), `gdelt_articles.csv` (overwrite) | none · 1 request / 6 s · 4 min timeout |
-| `fetch-media.yml` step 2 → `fetch-x.mjs` | same run, after step 1 | X API v2 recent search; next of 12 queries in `x-queries.json` | `x_posts.csv` (merge by post id), `x_budget.json` | Bearer `X_BEARER_TOKEN` · 15 posts per run · stops at 1,800 reads a month |
+| `fetch-media.yml` step 2 → `fetch-x.mjs` | same run, after step 1 | X API v2 recent search; next of 15 queries in `x-queries.json` (ships and civil infrastructure, EN/AR/FA) | `x_posts.csv` (merge by post id), `x_budget.json` | Bearer `X_BEARER_TOKEN` · 15 posts per run · stops at 1,800 reads a month · refuses any query without an engagement floor |
 | `validate.yml` → `validate.mjs` | every PR + push to `main` | `incidents.csv`, `incident_sources.csv` | nothing (pass/fail check) | none |
 
 ## 3. Curated data (pull requests only)
 
 ![Curated data: incidents, media, oil flow, coastline](architecture/03-curated-data.svg)
 
-No scheduled job writes incident data. Claude threads research it, `_build/build.py` regenerates it, and it arrives as a pull request. The PR has to pass `validate.mjs`, and Jacob has to merge it. SPEC §3 has the schema and the confidence rules.
+Incidents cover ships and civil infrastructure (ports, oil terminals, refineries, desalination, power, cables, airports), set by the `target` column. No scheduled job writes incident data. Claude threads research it, `_build/build.py` regenerates it, and it arrives as a pull request. The PR has to pass `validate.mjs`, and Jacob has to merge it. SPEC §3 has the schema and the confidence rules.
 
 ## 4. Site runtime
 
@@ -55,5 +55,4 @@ Links to x.com and to news articles open in a new tab. They are navigation, not 
 2. **The X budget runs out early in 31-day months.** 4 runs × 15 posts × 31 days = 1,860, which is over the 1,800 cap. The script stops once fewer than 10 reads are left, so the last few runs of a long month skip X.
 3. **The two data jobs are not serialized.** `fetch-media.yml` uses concurrency group `data-commit` and `pull --rebase`. `fetch-portwatch.yml` uses neither, so if its push collides with a media push, it fails and that day's PortWatch commit is lost.
 4. **`#monitor` refreshes faster than its data changes.** It refetches `x_posts.csv` every 10 minutes. The file changes at most every 6 hours, and Pages' CDN caches for about 10 minutes.
-5. **Stale assets after a deploy.** Until PR #5 merges, `app.js` and `style.css` have no version stamp, so a browser can run old code against new data.
-6. **Pages has to be enabled.** Zone 4 exists only once Pages is turned on (Settings → Pages → `main`, root). Not checked from here.
+5. **Pages has to be enabled.** Zone 4 exists only once Pages is turned on (Settings → Pages → `main`, root). Not checked from here.

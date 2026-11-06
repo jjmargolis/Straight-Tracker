@@ -3,7 +3,7 @@
 %% Edge labels: what · format · cadence · auth. Shapes, colours and line styles: see 00-legend.mmd.
 flowchart TB
   subgraph REPO["main branch · public repo"]
-    CODE["index.html · style.css · app.js<br/>vendor/ d3 7.9.0 + Plot 0.6.17"]
+    CODE["index.html · style.css · app.js<br/>?v= stamps beat the browser cache<br/>vendor/ d3 7.9.0 + Plot 0.6.17"]
     DATA[("data/ · 8 CSV + land.json")]
   end
   PAGES[["GitHub Pages<br/>static files · CDN cache ≈ 10 min"]]
@@ -12,7 +12,7 @@ flowchart TB
     subgraph BR["viewer's browser · one page"]
       APP["app.js<br/>loads all data once"]
       LS[("localStorage<br/>window · keywords · Videos only")]
-      DASH["Dashboard (no hash)<br/>KPIs · X feed · news · coverage ·<br/>map · oil flow · transits · table"]
+      DASH["Dashboard (no hash)<br/>KPIs · X feed · news · coverage ·<br/>map of ship + infrastructure strikes ·<br/>oil flow · transits · table"]
       MON["#monitor<br/>wall of X posts, videos first<br/>16 more on each scroll<br/>shows our link card until the embed loads"]
     end
   end
