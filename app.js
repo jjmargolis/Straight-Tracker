@@ -367,7 +367,7 @@ function renderMonitor() {
   const incItem = (d) => `<a class="m-item" href="#" data-id="${esc(d.id)}">
     <div class="meta"><span><i class="dot" style="background:${colorOf(d.cls)}"></i> <b>${esc(d.outcome)}</b></span><span>${fmtDate(d.date)}</span><span>${esc(d.confidence)}</span></div>
     <div class="body"><b>${esc(d.vessel_name)}</b> · ${esc(d.vessel_type || "vessel")}<br>${esc(d.location_text)}</div>
-    <div class="meta"><span>${(trailById.get(d.id) ?? []).length} sources</span></div></a>`;
+    <div class="meta"><span>${((n) => `${n} source${n === 1 ? "" : "s"}`)((trailById.get(d.id) ?? []).length)}</span></div></a>`;
   fill("m-inc", recent, incItem, "No incidents in this window.");
   if (recent.length < 5 && all.length > recent.length) {
     el("m-inc").insertAdjacentHTML("beforeend", `<div class="m-sep">Earlier</div>` + all.slice(recent.length, recent.length + 10).map(incItem).join(""));
