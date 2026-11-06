@@ -1,0 +1,38 @@
+name: Fetch free feeds
+# Telegram previews, news RSS, straits.live events and GDELT volume. No keys, no cost.
+on:
+  schedule:
+    - cron: "23 * * * *"   # hourly
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: { group: data-commit, cancel-in-progress: false }
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      # Each step may fail on its own (a site down, a block) without stopping the others or the commit.
+      - name: Telegram public channels
+        continue-on-error: true
+        timeout-minutes: 4
+        run: node scripts/fetch-telegram.mjs
+      - name: News RSS and straits.live events
+        continue-on-error: true
+        timeout-minutes: 3
+        run: node scripts/fetch-news.mjs
+      - name: GDELT coverage volume
+        # GDELT often answers GitHub runner IPs with 429; the script then exits quietly.
+        continue-on-error: true
+        timeout-minutes: 4
+        run: node scripts/fetch-gdelt.mjs
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet || git commit -m "data: free feeds $(date -u +%FT%H:%MZ)"
+          git pull --rebase -q && git push

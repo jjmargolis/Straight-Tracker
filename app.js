@@ -29,10 +29,10 @@ const CLASSES = [
 const classOf = (d) => OUTCOME[d.outcome] ?? "other";
 const colorOf = (k) => CLASSES.find((c) => c.key === k).color;
 
-const state = { xWindow: 7, terms: "", videoOnly: false, who: "all", view: "strait", showClaimed: false, showNaval: false, selected: null };
+const state = { xWindow: 7, terms: "", videoOnly: false, who: "all", src: { x: true, tg: true, news: false }, view: "strait", showClaimed: false, showNaval: false, selected: null };
 const SAVED = "hormuz-monitor";
-try { const { xWindow, terms, videoOnly, who } = JSON.parse(localStorage.getItem(SAVED)) ?? {}; Object.assign(state, { xWindow: xWindow ?? 7, terms: terms ?? "", videoOnly: !!videoOnly, who: who ?? "all" }); } catch {}
-const save = () => { try { localStorage.setItem(SAVED, JSON.stringify({ xWindow: state.xWindow, terms: state.terms, videoOnly: state.videoOnly, who: state.who })); } catch {} };
+try { const { xWindow, terms, videoOnly, who, src } = JSON.parse(localStorage.getItem(SAVED)) ?? {}; Object.assign(state, { xWindow: xWindow ?? 7, terms: terms ?? "", videoOnly: !!videoOnly, who: who ?? "all", src: { ...state.src, ...src } }); } catch {}
+const save = () => { try { localStorage.setItem(SAVED, JSON.stringify({ xWindow: state.xWindow, terms: state.terms, videoOnly: state.videoOnly, who: state.who, src: state.src })); } catch {} };
 const fmtDate = d3.utcFormat("%-d %b %Y");
 const el = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -46,14 +46,13 @@ async function csv(path) {
   try { return await d3.csv(url, (d) => { const keep = TEXT.map((k) => d[k]); d3.autoType(d); TEXT.forEach((k, i) => { if (keep[i] !== undefined) d[k] = keep[i]; }); return d; }); } catch { return null; }
 }
 
-let [incidentsRaw, sources, flow, transits, land, xposts, articles, coverage, media, accountsRaw, overridesRaw, xusers, vocab, budget] = await Promise.all([
+let [incidentsRaw, sources, flow, transits, land, xposts, coverage, media, accountsRaw, overridesRaw, xusers, vocab, budget, tgposts, news] = await Promise.all([
   csv("data/incidents.csv"),
   csv("data/incident_sources.csv"),
   csv("data/flow_eia.csv"),
   csv("data/transits_portwatch.csv"),
   d3.json("data/land.json"),
   csv("data/x_posts.csv"),
-  csv("data/gdelt_articles.csv"),
   csv("data/coverage_gdelt.csv"),
   csv("data/media.csv"),
   csv("data/accounts.csv"),
@@ -61,6 +60,8 @@ let [incidentsRaw, sources, flow, transits, land, xposts, articles, coverage, me
   csv("data/x_users.csv"),
   d3.json("data/account_vocab.json").catch(() => null),
   d3.json(`data/x_budget.json?b=${BUST}`).catch(() => null),
+  csv("data/tg_posts.csv"),
+  csv("data/news.csv"),
 ]);
 
 const incidents = incidentsRaw.map((d) => ({
@@ -284,7 +285,7 @@ function renderX() {
     .filter((p) => p.created >= since).sort((a, b) => score(b) - score(a)).slice(0, 12);
   el("xfeed").innerHTML = posts.length ? posts.map((p) => `<a class="post" href="${esc(p.url)}" target="_blank" rel="noopener">
       <div><div class="who"><b>${esc(p.name)}</b> @${esc(p.username)} · ${ago(p.created)} ${chip(p.username)}</div>
-      <div class="txt">${esc(p.text)}</div>
+      <div class="txt" dir="auto">${esc(p.text)}</div>
       <div class="stats">${Number.isFinite(p.views) ? `<span><b>${fmtN(p.views)}</b> views</span>` : ""}<span><b>${fmtN(p.likes || 0)}</b> likes</span><span><b>${fmtN(p.reposts || 0)}</b> reposts</span>${p.media_type ? `<span>${esc(p.media_type)}</span>` : ""}</div></div>
       ${p.preview ? `<img src="${esc(p.preview)}" alt="" loading="lazy" referrerpolicy="no-referrer">` : ""}</a>`).join("")
     : `<p class="empty">No posts in this window.</p>`;
@@ -293,10 +294,16 @@ function renderX() {
 }
 
 /* ---------- Media: news (GDELT) ---------- */
+// News comes from scripts/fetch-news.mjs: Google News search in 5 languages, outlet RSS, straits.live events.
+// It replaced GDELT's article list (GDELT rate-limits GitHub's runners and matched off-topic stories).
+const LANG = { en: "", ar: "Arabic", fa: "Persian", he: "Hebrew", zh: "Chinese" };
+const newsItems = () => (news ?? []).map((n) => ({ ...n, when: new Date(n.published), lang: LANG[n.lang] ?? n.lang }));
+const sevBadge = (n) => n.kind === "event" ? `<span class="sev s-${esc(n.severity)}">${esc(n.severity || "event")}</span> ` : "";
 function renderNews() {
-  if (!articles?.length) { el("news").innerHTML = `<p class="empty">Waiting for the first GDELT fetch.</p>`; return; }
-  el("news").innerHTML = articles.slice(0, 40).map((a) => `<a href="${esc(a.url)}" target="_blank" rel="noopener">
-    <div class="t">${esc(a.title)}</div><div class="d">${esc(a.domain)} · ${ago(new Date(a.seendate))} ago${a.language && a.language !== "English" ? " · " + esc(a.language) : ""}</div></a>`).join("");
+  const items = newsItems();
+  if (!items.length) { el("news").innerHTML = `<p class="empty">Waiting for the first news fetch.</p>`; return; }
+  el("news").innerHTML = items.slice(0, 60).map((a) => `<a href="${esc(a.url)}" target="_blank" rel="noopener">
+    <div class="t">${sevBadge(a)}${esc(a.title)}</div><div class="d">${esc(a.source)} · ${ago(a.when)} ago${a.lang ? " · " + esc(a.lang) : ""}${a.feed && a.feed !== a.source ? " · via " + esc(a.feed) : ""}</div></a>`).join("");
 }
 
 /* ---------- Media: curated ---------- */
@@ -427,10 +434,12 @@ function renderSpend() {
   el("m-spend").title = `Estimate from data/x_budget.json (${budget.posts ?? "?"} posts, ${budget.users ?? "?"} author lookups, ${budget.media ?? "?"} media). The X developer console has the real balance.`;
 }
 
-/* ---------- Monitor: a wall of embedded X posts, set up from the dashboard ---------- */
-// Posts come from the X fetch (a few batches a day). Each tile is X's official embed, so video plays inline.
-// Until the embed loads (or if X's script is blocked) the tile shows our own preview.
+/* ---------- Monitor: a wall of embedded posts (X, Telegram) and news cards, set up from the dashboard ---------- */
+// X posts come from the X fetch (a few batches a day); Telegram posts and news from the free fetch (hourly).
+// X and Telegram tiles use each platform's official embed, so video plays inline.
+// Until an embed loads (or if its script is blocked) the tile shows our own preview.
 const WINDOWS = [[1, "24h"], [7, "7 days"], [30, "30 days"]];
+const SOURCES = { x: "X", tg: "Telegram", news: "News & events" };
 const termList = () => state.terms.split(",").map((t) => t.trim().toLowerCase()).filter(Boolean);
 const matches = (...fields) => { const t = termList(); if (!t.length) return true; const h = fields.join(" ").toLowerCase(); return t.some((w) => h.includes(w)); };
 const isVideo = (p) => p.media_type === "video" || p.media_type === "animated_gif";
@@ -438,6 +447,8 @@ const isVideo = (p) => p.media_type === "video" || p.media_type === "animated_gi
 function renderSetup() {
   el("m-window").innerHTML = WINDOWS.map(([d, l]) => `<button data-days="${d}" aria-pressed="${state.xWindow === d}">${l}</button>`).join("");
   el("m-window").onclick = (e) => { const b = e.target.closest("button"); if (b) { state.xWindow = +b.dataset.days; save(); renderSetup(); renderX(); } };
+  el("m-src").innerHTML = Object.entries(SOURCES).map(([k, l]) => `<button data-src="${k}" aria-pressed="${!!state.src[k]}">${l}</button>`).join("");
+  el("m-src").onclick = (e) => { const b = e.target.closest("button"); if (b) { state.src[b.dataset.src] = !state.src[b.dataset.src]; save(); renderSetup(); } };
   renderTopStrip();
   const terms = el("m-terms");
   if (document.activeElement !== terms) terms.value = state.terms;
@@ -445,7 +456,7 @@ function renderSetup() {
   const v = el("m-video");
   v.setAttribute("aria-pressed", !!state.videoOnly);
   v.onclick = () => { state.videoOnly = !state.videoOnly; save(); renderSetup(); };
-  el("m-who").innerHTML = Object.entries(WHO).map(([k, w]) => `<button data-who="${k}" aria-pressed="${state.who === k}" title="${esc(w.hint)}">${w.label}</button>`).join("");
+  el("m-who").innerHTML = Object.entries(WHO).map(([k, w]) => `<button data-who="${k}" aria-pressed="${state.who === k}" title="${esc(w.hint)} (X accounts only)">${w.label}</button>`).join("");
   el("m-who").onclick = (e) => { const b = e.target.closest("button"); if (b) { state.who = b.dataset.who; save(); renderSetup(); } };
   const q = reviewQueue(), pend = Object.keys(localTags).length;
   el("m-review").textContent = `Review accounts (${q.length})`;
@@ -456,47 +467,82 @@ function renderSetup() {
   renderSpend();
 }
 
+// One list of wall items from every enabled source. The account filter applies to X only (the registry is X's).
 function monitorPosts() {
-  const since = Date.now() - state.xWindow * 864e5;
-  return (xposts ?? []).map((p) => ({ ...p, id: String(p.id), created: new Date(p.created_at) }))
-    .filter((p) => p.created >= since && matches(p.text, p.username, p.name) && (!state.videoOnly || isVideo(p)) && WHO[state.who].test(account(p.username)));
+  const since = Date.now() - state.xWindow * 864e5, out = [];
+  if (state.src.x) for (const p of xposts ?? []) {
+    const it = { ...p, src: "x", id: String(p.id), created: new Date(p.created_at), who: `@${p.username}` };
+    if (WHO[state.who].test(account(p.username))) out.push(it);
+  }
+  if (state.src.tg) for (const p of tgposts ?? []) out.push({ ...p, src: "tg", id: String(p.id), created: new Date(p.created_at), username: p.channel, who: `t.me/${p.channel}` });
+  if (state.src.news) for (const n of newsItems()) out.push({ ...n, src: "news", id: n.url, created: n.when, text: n.title, name: n.source, who: n.feed });
+  return out.filter((p) => p.created >= since && matches(p.text, p.username, p.name) && (!state.videoOnly || isVideo(p)));
 }
+// Rank within each source, then interleave by rank, so X views and Telegram views don't have to be comparable.
+// News has no engagement number, so it ranks by recency.
+function ranked(items) {
+  const rank = new Map();
+  for (const [, g] of d3.group(items, (p) => p.src)) {
+    g.sort((a, b) => (a.src === "news" ? b.created - a.created : score(b) - score(a))).forEach((p, i) => rank.set(p, (i + 1) / g.length));
+  }
+  return items.sort((a, b) => rank.get(a) - rank.get(b));
+}
+const srcTag = (p) => p.src === "tg" ? `<span class="src s-tg">Telegram</span>` : p.src === "news" ? `<span class="src s-news">News</span>` : "";
+const kindChip = (p) => p.src === "x" ? chip(p.username) : p.src === "tg" ? `<span class="acct t-tg" title="Rough label from scripts/free-feeds.json, not the X account registry">${esc(p.kind)}</span>` : "";
 
-// Top posts strip in the setup bar: click one to open the wall with that post first.
+// Top posts strip in the setup bar (X and Telegram, by views): click one to open the wall with that post first.
 function renderTopStrip() {
-  const top = monitorPosts().sort((a, b) => score(b) - score(a)).slice(0, 12);
+  const top = monitorPosts().filter((p) => p.src !== "news").sort((a, b) => score(b) - score(a)).slice(0, 12);
   el("m-top").innerHTML = top.map((p) => `<button class="top-post" data-id="${esc(p.id)}" title="Open in the monitor">
     <div class="thumb" style="${p.preview ? `background-image:url('${esc(p.preview)}')` : ""}">${isVideo(p) ? `<span class="play">▶ video</span>` : ""}</div>
-    <div class="meta"><b>${fmtN(score(p))}</b>${Number.isFinite(p.views) ? " views" : " score"}<span>@${esc(p.username)}</span></div>
-    ${chip(p.username)}
-    <div class="t">${esc(p.text)}</div></button>`).join("");
+    <div class="meta"><b>${fmtN(score(p))}</b>${Number.isFinite(p.views) ? " views" : " score"}<span>${esc(p.who)}</span></div>
+    ${srcTag(p)}${kindChip(p)}
+    <div class="t" dir="auto">${esc(p.text)}</div></button>`).join("");
   el("m-top").onclick = (e) => { if (e.target.closest(".acct")) return; const b = e.target.closest("[data-id]"); if (b) { state.pin = b.dataset.id; location.hash = "#monitor"; } };
 }
 
-let widgets;
-const loadWidgets = () => (widgets ??= new Promise((resolve) => {
-  const s = Object.assign(document.createElement("script"), { src: "https://platform.twitter.com/widgets.js", async: true });
-  s.onload = () => (window.twttr?.ready ? twttr.ready(resolve) : resolve(null));
-  s.onerror = () => resolve(null);
+const loadScript = (src, ready) => new Promise((resolve) => {
+  const s = Object.assign(document.createElement("script"), { src, async: true });
+  s.onload = () => ready(resolve); s.onerror = () => resolve(null);
   document.head.append(s);
-  setTimeout(() => resolve(window.twttr ?? null), 8000);
-}));
+  setTimeout(() => resolve(null), 8000);
+});
+let widgets;
+const loadWidgets = () => (widgets ??= loadScript("https://platform.twitter.com/widgets.js", (r) => (window.twttr?.ready ? twttr.ready(r) : r(null))));
 const dark = () => document.documentElement.dataset.theme === "dark" || (!document.documentElement.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
 
+// Telegram's embed: a script tag per post that replaces itself with an auto-sized iframe (telegram.org/js/telegram-widget.js).
+function embedTelegram(tile) {
+  const s = document.createElement("script");
+  s.async = true; s.src = "https://telegram.org/js/telegram-widget.js?22";
+  Object.assign(s.dataset, { telegramPost: tile.dataset.id, width: "100%", userpic: "false", ...(dark() ? { dark: "1" } : {}) });
+  tile.append(s);
+  // The widget swaps the script for an iframe; once it has height, hide our placeholder.
+  const t0 = Date.now(), poll = setInterval(() => {
+    const f = tile.querySelector("iframe");
+    if (f && f.offsetHeight > 80) { tile.querySelector(".ph")?.remove(); tile.classList.add("embedded"); clearInterval(poll); }
+    else if (Date.now() - t0 > 15000) { clearInterval(poll); f?.remove(); }
+  }, 500);
+}
 const embedObs = new IntersectionObserver((entries) => {
   for (const e of entries) {
     if (!e.isIntersecting) continue;
     embedObs.unobserve(e.target);
     const tile = e.target;
+    if (tile.dataset.src === "tg") { embedTelegram(tile); continue; }
     loadWidgets().then((tw) => tw?.widgets?.createTweet(tile.dataset.id, tile, { theme: dark() ? "dark" : "light", dnt: true, conversation: "none", align: "center" })
       .then((node) => { if (node) { tile.querySelector(".ph")?.remove(); tile.classList.add("embedded"); } }));
   }
 }, { rootMargin: "800px 0px" });
 
-const tileHtml = (p) => `<div class="tile" data-id="${esc(p.id)}"><div class="tile-acct">${chip(p.username)}</div><a class="ph" href="${esc(p.url)}" target="_blank" rel="noopener">
-  <div class="who"><b>${esc(p.name)}</b> @${esc(p.username)} · ${ago(p.created)}${isVideo(p) ? ` · <span class="vid">▶ VIDEO</span>` : ""}</div>
-  <div class="txt">${esc(p.text)}</div>
-  ${p.preview ? `<img src="${esc(p.preview)}" alt="" loading="lazy" referrerpolicy="no-referrer">` : ""}</a></div>`;
+const tileHtml = (p) => p.src === "news"
+  ? `<div class="tile news-tile"><a class="ph" href="${esc(p.url)}" target="_blank" rel="noopener">
+      <div class="who">${srcTag(p)} <b>${esc(p.source)}</b> · ${ago(p.created)}${p.lang ? " · " + esc(p.lang) : ""}</div>
+      <div class="txt" dir="auto">${sevBadge(p)}${esc(p.title)}</div></a></div>`
+  : `<div class="tile" data-src="${p.src}" data-id="${esc(p.id)}"><div class="tile-acct">${srcTag(p)}${kindChip(p)}</div><a class="ph" href="${esc(p.url)}" target="_blank" rel="noopener">
+      <div class="who"><b>${esc(p.name)}</b> ${esc(p.who)} · ${ago(p.created)}${isVideo(p) ? ` · <span class="vid">▶ VIDEO</span>` : ""}${Number.isFinite(p.views) ? ` · ${fmtN(p.views)} views` : ""}</div>
+      <div class="txt" dir="auto">${esc(p.text)}</div>
+      ${p.preview ? `<img src="${esc(p.preview)}" alt="" loading="lazy" referrerpolicy="no-referrer">` : ""}</a></div>`;
 
 let wall = { posts: [], shown: 0, cols: [] };
 const PAGE = 16;
@@ -506,14 +552,16 @@ function renderMonitor() {
   const win = WINDOWS.find(([d]) => d === state.xWindow)?.[1] ?? `${state.xWindow}d`;
   const t = termList();
   const pinned = (p) => (p.id === state.pin ? 1 : 0);
-  const posts = monitorPosts().sort((a, b) => (pinned(b) - pinned(a)) || (isVideo(b) - isVideo(a)) || score(b) - score(a));
-  el("m-summary").textContent = `${posts.length} posts · last ${win}${t.length ? ` · matching ${t.join(", ")}` : ""}${state.videoOnly ? " · videos only" : " · videos first"}${state.who !== "all" ? ` · ${WHO[state.who].label.toLowerCase()}` : ""}`;
-  const fetched = d3.max(xposts ?? [], (p) => new Date(p.fetched_at));
-  el("m-asof").textContent = fetched ? `X batch ${ago(fetched)} ago` : "";
+  const items = ranked(monitorPosts());
+  const posts = items.map((p, i) => ({ p, i })).sort((a, b) => (pinned(b.p) - pinned(a.p)) || (isVideo(b.p) - isVideo(a.p)) || a.i - b.i).map((x) => x.p);
+  const on = Object.keys(SOURCES).filter((k) => state.src[k]).map((k) => SOURCES[k]);
+  el("m-summary").textContent = `${posts.length} items · ${on.join(", ") || "no sources"} · last ${win}${t.length ? ` · matching ${t.join(", ")}` : ""}${state.videoOnly ? " · videos only" : " · videos first"}${state.who !== "all" ? ` · X: ${WHO[state.who].label.toLowerCase()}` : ""}`;
+  const xf = d3.max(xposts ?? [], (p) => new Date(p.fetched_at)), tf = d3.max(tgposts ?? [], (p) => new Date(p.fetched_at));
+  el("m-asof").textContent = [xf && `X batch ${ago(xf)} ago`, tf && `Telegram ${ago(tf)} ago`].filter(Boolean).join(" · ");
   const n = wallColumns();
   el("m-wall").innerHTML = Array.from({ length: n }, () => `<div class="wall-col"></div>`).join("");
   wall = { posts, shown: 0, cols: [...el("m-wall").children] };
-  if (!posts.length) el("m-wall").innerHTML = `<p class="empty">${xposts?.length ? "No posts match these settings. Widen the window or clear keywords." : "No X posts fetched yet."}</p>`;
+  if (!posts.length) el("m-wall").innerHTML = `<p class="empty">${on.length ? "Nothing matches these settings. Widen the window, clear keywords or turn on more sources." : "Turn on at least one source."}</p>`;
   more();
 }
 function more() {
@@ -521,7 +569,7 @@ function more() {
   next.forEach((p, i) => {
     const col = wall.cols[(wall.shown + i) % wall.cols.length];
     col.insertAdjacentHTML("beforeend", tileHtml(p));
-    embedObs.observe(col.lastElementChild);
+    if (p.src !== "news") embedObs.observe(col.lastElementChild);
   });
   wall.shown += next.length;
   el("m-more").innerHTML = wall.posts.length && wall.shown >= wall.posts.length ? `<p class="m-end">That's everything in this window.</p>` : "";
@@ -531,8 +579,9 @@ let lastCols = 0;
 addEventListener("resize", () => { if (location.hash === "#monitor" && wallColumns() !== lastCols) { lastCols = wallColumns(); renderMonitor(); } });
 
 async function refreshMedia() {
-  const x = await csv(`data/x_posts.csv?t=${Date.now()}`);
-  if (x && x.length !== xposts?.length) { xposts = x; renderMonitor(); }
+  const t = Date.now(), [x, tg, nw] = await Promise.all([csv(`data/x_posts.csv?t=${t}`), csv(`data/tg_posts.csv?t=${t}`), csv(`data/news.csv?t=${t}`)]);
+  const changed = (a, b) => a && (a.length !== b?.length || a[0]?.fetched_at !== b?.[0]?.fetched_at);
+  if (changed(x, xposts) || changed(tg, tgposts) || changed(nw, news)) { xposts = x ?? xposts; tgposts = tg ?? tgposts; news = nw ?? news; renderMonitor(); }
 }
 
 let refreshTimer;

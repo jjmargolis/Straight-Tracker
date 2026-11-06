@@ -1,6 +1,6 @@
 # Hormuz Dashboard: SPEC
 
-Status: **v0.10** (2026-11-06). Living document, updated as work proceeds.
+Status: **v0.11** (2026-11-06). Living document, updated as work proceeds.
 Owner: Jacob. Repo: [`jjmargolis/straight-tracker`](https://github.com/jjmargolis/straight-tracker).
 
 Evidence tags used throughout:
@@ -44,7 +44,7 @@ Attention is measured by engagement, and the platforms where strike footage spre
 | X posts + engagement | X API pay-per-use, **$0.005 per post read** (no free read tier) | ~$5 per 1,000 posts | What is actually spreading | [R: [opentweet, checked against docs.x.com 2026-10-10](https://opentweet.io/x-api-pricing)] **Approved by Jacob: cap ~$10/month (~2,000 reads)**. Token stored as repo secret `X_BEARER_TOKEN`; the fetch script enforces a monthly budget in $0.005 units (section 1B). |
 | Bluesky posts | `app.bsky.feed.searchPosts` | Free | Smaller audience, but open | [U: auth requirements not verified] |
 | YouTube videos | YouTube Data API | Free quota with a Google API key | Uploads and view counts for strike footage | [M: quota ~10k units/day; verify] |
-| Telegram channels (IRGC-aligned, OSINT) | Public channel web previews | Free, no API | Often the *first* place footage appears | [M] Manual or Claude-assisted; no automated scraping |
+| Telegram channels (IRGC-aligned, OSINT) | Public channel web previews | Free, no API | Often the *first* place footage appears | Automated hourly since v0.11 (section 1C) |
 | Curated finds | Jacob (X, YouTube incl. WGOWS) + daily Claude news search | Free | Judgement, not a metric | Already in spec |
 
 **Honest framing in the UI:** "Coverage volume" (GDELT) and "Most-shared items" (only if X/YouTube counts are fetched) are labelled separately. Nothing is called "trending" without an engagement number behind it.
@@ -143,6 +143,40 @@ An account goes to the queue when it has no override and Claude has not tagged i
 - Handles from the source catalog are mostly [M]. `data/x_users.csv` records each author's permanent id, and the next tagging pass copies it into `user_id` (handles can change, ids don't).
 
 ---
+
+## 1C. Free feeds (v0.11, Jacob 2026-11-06)
+
+Everything here costs $0 and needs no key. Each feed was fetched from a real GitHub Actions runner on 2026-11-06 (temporary probe workflow on the PR branch). Tags: **[T]** = tested from a runner that day, **[M]** = model memory.
+
+### Wired in
+| Feed | What | Format | Cadence | Auth | Result |
+|---|---|---|---|---|---|
+| Telegram public channels via `t.me/s/<channel>` (20 channels in `scripts/free-feeds.json`) | Posts with view counts, video/photo flag, preview image | HTML | hourly | none | [T] 17 of 23 channels tried return posts; first run scanned 564 posts, kept 51 matches. Tasnimnews, AJArabic, alarabiya_brk, UKMTO, sentdefender, GeoConfirmed returned no posts (preview disabled or wrong handle) |
+| Telegram embed (`telegram-widget.js`, `t.me/<ch>/<id>?embed=1`) | Post shown on the wall, video plays inline [M] | iframe | on view | none | [T] embed page returns the widget. Inline video playback not checked in a browser (this build environment blocks t.me) |
+| Google News search RSS, 6 queries (EN ×2 incl. infrastructure, AR, FA, HE, ZH) | Headlines with outlet name | RSS | hourly | none | [T] all 200; EN 25, AR 100, FA 26, HE 34, ZH 49 items for a 2-day window |
+| Outlet RSS: gCaptain, Splash247, Seatrade, Windward, The National, Gulf News, Al Jazeera, IRNA, Iran International | Headlines, kept only if they match | RSS | hourly | none | [T] all 200 |
+| straits.live `data/events.csv` | Third-party event log (type, severity, title, source), mostly news-derived; few positions | CSV | hourly | none | [T] 200, 54 rows |
+| GDELT DOC 2.0 `timelinevolraw`, last 7 days | Coverage volume chart | JSON | hourly, 1 request | none | [T] first request 429, second OK. One small request per run, quiet exit on failure; 7-day overlap fills gaps |
+
+Matching (`scripts/match.mjs`): a place name near the strait (Hormuz, Fujairah, Qeshm, in 5 scripts) matches on its own. A topic word (tanker, port, refinery, desalination, نفتکش, کشتی, …) needs a region word (Iran, Gulf, UAE, …) too, unless the channel itself is Iranian/Gulf (`region: true`). Arabic-script terms must start a word, so قایق "boat" doesn't fire inside دقایق "minutes".
+
+### Tested and not wired
+| Feed | Result [T] | Why not |
+|---|---|---|
+| UKMTO site (advisories, warnings) | 403 Cloudflare challenge, also with a browser user agent | Blocked. Stays a Claude-routine read |
+| US MARAD MSCI page | 403 | Blocked |
+| Ambrey alerts via InterManager | 200, but the newest alert is **20 Jul 2026** | Mirror stopped updating. Not a live feed |
+| Bluesky `api.bsky.app` search | 200 without auth (`public.api.bsky.app` 403) | Works, but top Hormuz posts were punditry, not footage. Easy to add later |
+| Reddit search JSON | 403 (subreddit RSS 200) | Blocked |
+| YouTube channel RSS (WGOWS) | Channel handle guesses 404 | Needs the real channel id |
+| Global Fishing Watch API, NASA FIRMS, aisstream.io | 401 / 400 / key needed | Free, but each needs Jacob to register for a key. aisstream is a WebSocket, so it doesn't fit a static site's batch fetch |
+| GDELT raw 15-min files (`data.gdeltproject.org`) | 200, 3.5 MB per GKG file | No rate limit. Fallback if the DOC API keeps refusing runners |
+
+### Monitor
+- Setup bar gains source toggles: **X**, **Telegram** (on by default), **News & events** (off by default, since the wall is for watching).
+- Items are ranked within their own source (views for X and Telegram, recency for news) and then interleaved by rank, so X and Telegram view counts never have to be compared directly. Videos still come first.
+- The account filter (SPEC 1B) applies to X only. Telegram tiles carry a rough channel label from `free-feeds.json`, not a registry tag.
+- The "Latest coverage" card reads `data/news.csv`. `data/gdelt_articles.csv` is removed.
 
 ## 2. Data sources
 
@@ -257,6 +291,7 @@ Principle: no server, no database, no build step unless it pays for itself.
 ---
 
 ## Changelog
+- 2026-11-06 v0.11: free feeds (section 1C): Telegram channels, Google News in 5 languages, outlet RSS, straits.live events, hourly; GDELT reduced to one request per run; each feed tested from a GitHub runner, including the ones rejected.
 - 2026-11-06 v0.10: X account registry (section 1B): one tag per author (type, lean), Claude first pass + Jacob overrides via app → issue → Action, review queue; fetcher looks up each author once; budget counts $0.005 units with daily pacing; spend readout.
 - 2026-11-06 v0.9: civil infrastructure in scope: `target` column, infrastructure X queries, map squares.
 - 2026-11-06 v0.8b: monitor becomes a wall of embedded X posts (videos inline); X fetch rotates 12 multilingual queries, 4 runs/day, same cap.
