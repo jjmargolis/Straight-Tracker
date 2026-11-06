@@ -18,6 +18,7 @@ jobs:
       - name: GDELT coverage and articles
         # GDELT throttles and sometimes refuses GitHub runner IPs; don't let that block the X step.
         continue-on-error: true
+        timeout-minutes: 4
         run: node scripts/fetch-gdelt.mjs
       - name: X posts (once a day, budget-capped)
         continue-on-error: true
