@@ -1,6 +1,6 @@
 # Hormuz Dashboard: SPEC
 
-Status: **v0.8** (2026-11-06). Living document, updated as work proceeds.
+Status: **v0.8b** (2026-11-06). Living document, updated as work proceeds.
 Owner: Jacob. Repo: [`jjmargolis/straight-tracker`](https://github.com/jjmargolis/straight-tracker).
 
 Evidence tags used throughout:
@@ -82,7 +82,8 @@ Landscape only: laptop and phone held horizontally (S24 Ultra landscape is about
 2. **Coverage volume** chart: GDELT daily article count for Hormuz-strike queries, with incident dates marked, so spikes can be read against events.
 3. **Map**: incidents as now; incidents with media get a marker ring, click shows the media.
 4. **Strait numbers** strip: oil flow, transits, UKMTO tally, JMIC threat levels, each with "as of" date.
-5. **Monitor mode** (Jacob, v0.8): a setup bar on the dashboard sets the time window (24h/7d/30d), keywords (comma-separated, OR) and whether unverified claims count. "Open monitor" goes to `#monitor`: the page fills the screen with 4 independently scrolling columns: X most viewed, X latest, news (GDELT), incidents (newest first; "Earlier" shown when the window has under 5). Refetches data every 10 min. Settings persist per browser (localStorage). Clicking an incident returns to the dashboard with its detail open.
+5. **Monitor mode** (Jacob, v0.8b): a setup bar on the dashboard sets the time window (24h/7d/30d), keywords (comma-separated, OR) and "videos only". "Open monitor" goes to `#monitor`: a scrolling wall of X posts, 4 across on a laptop (3 on a landscape phone, since X embeds need ~250px), videos first, then by views. Each tile is X's official embed (widgets.js, `dnt: true`), so video plays inline; tiles load as they scroll near. It is **not live X**: it shows what the fetch collected (~60 posts/day on the $10 cap). News and incidents stay on the dashboard.
+6. **X fetch**: every 6 h, one query per run (15 posts) from `scripts/x-queries.json`, rotating precise (Q1–Q5) and wide-net (W1–W5) queries in EN/AR/FA/HE/ZH plus ground-truth (Q6) and footage carriers (Q8), from research/source-catalog.md. Each post records which query found it.
 
 ---
 
@@ -197,6 +198,7 @@ Principle: no server, no database, no build step unless it pays for itself.
 ---
 
 ## Changelog
+- 2026-11-06 v0.8b: monitor becomes a wall of embedded X posts (videos inline); X fetch rotates 12 multilingual queries, 4 runs/day, same cap.
 - 2026-11-06 v0.8: monitor mode (4 full-screen columns) driven by a setup bar on the dashboard.
 - 2026-11-06 v0.1: initial research and proposal.
 - 2026-11-06 v0.2: added `confidence` field and manual X/Twitter ingest path.

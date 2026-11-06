@@ -1,10 +1,8 @@
 name: Fetch media signals
 on:
   schedule:
-    - cron: "41 */6 * * *"   # GDELT every 6 hours
+    - cron: "41 */6 * * *"   # every 6 hours: GDELT + one X query
   workflow_dispatch:
-  push:
-    branches: [claude/media-tracker]   # TEMP: one test run with the X secret; removed next commit
 permissions:
   contents: write
 concurrency: { group: data-commit, cancel-in-progress: false }
@@ -20,13 +18,12 @@ jobs:
         continue-on-error: true
         timeout-minutes: 4
         run: node scripts/fetch-gdelt.mjs
-      - name: X posts (once a day, budget-capped)
+      - name: X posts (each run, budget-capped)
         continue-on-error: true
         env:
           X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
         run: |
-          # Only the 06:41 UTC scheduled run (or a manual run) reads X, to keep spend to one batch a day.
-          if [ "${{ github.event_name }}" = "schedule" ] && [ "$(date -u +%H)" != "06" ]; then echo "Not the daily X slot; skipping."; exit 0; fi
+          # Four scheduled runs a day x 15 posts = ~1,800/month; the script enforces the monthly cap.
           node scripts/fetch-x.mjs
       - name: Commit if changed
         run: |

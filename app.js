@@ -29,10 +29,10 @@ const CLASSES = [
 const classOf = (d) => OUTCOME[d.outcome] ?? "other";
 const colorOf = (k) => CLASSES.find((c) => c.key === k).color;
 
-const state = { xWindow: 7, terms: "", view: "strait", showClaimed: false, showNaval: false, selected: null };
+const state = { xWindow: 7, terms: "", videoOnly: false, view: "strait", showClaimed: false, showNaval: false, selected: null };
 const SAVED = "hormuz-monitor";
-try { Object.assign(state, JSON.parse(localStorage.getItem(SAVED)) ?? {}); } catch {}
-const save = () => { try { localStorage.setItem(SAVED, JSON.stringify({ xWindow: state.xWindow, terms: state.terms, showClaimed: state.showClaimed })); } catch {} };
+try { const { xWindow, terms, videoOnly } = JSON.parse(localStorage.getItem(SAVED)) ?? {}; Object.assign(state, { xWindow: xWindow ?? 7, terms: terms ?? "", videoOnly: !!videoOnly }); } catch {}
+const save = () => { try { localStorage.setItem(SAVED, JSON.stringify({ xWindow: state.xWindow, terms: state.terms, videoOnly: state.videoOnly })); } catch {} };
 const fmtDate = d3.utcFormat("%-d %b %Y");
 const el = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -315,10 +315,13 @@ function renderCoverage() {
   el("coverage-note").innerHTML = `Line: articles per day matching attacks near Hormuz, from <a href="https://www.gdeltproject.org/">GDELT</a>. Dots: attacks in the incident dataset, coloured by outcome. Coverage counts news, not social media.`;
 }
 
-/* ---------- Monitor: setup on the dashboard, 4 columns full screen ---------- */
+/* ---------- Monitor: a wall of embedded X posts, set up from the dashboard ---------- */
+// Posts come from the X fetch (a few batches a day). Each tile is X's official embed, so video plays inline.
+// Until the embed loads (or if X's script is blocked) the tile shows our own preview.
 const WINDOWS = [[1, "24h"], [7, "7 days"], [30, "30 days"]];
 const termList = () => state.terms.split(",").map((t) => t.trim().toLowerCase()).filter(Boolean);
 const matches = (...fields) => { const t = termList(); if (!t.length) return true; const h = fields.join(" ").toLowerCase(); return t.some((w) => h.includes(w)); };
+const isVideo = (p) => p.media_type === "video" || p.media_type === "animated_gif";
 
 function renderSetup() {
   el("m-window").innerHTML = WINDOWS.map(([d, l]) => `<button data-days="${d}" aria-pressed="${state.xWindow === d}">${l}</button>`).join("");
@@ -326,67 +329,73 @@ function renderSetup() {
   const terms = el("m-terms");
   if (document.activeElement !== terms) terms.value = state.terms;
   terms.oninput = () => { state.terms = terms.value; save(); };
-  const c = el("m-claimed");
-  c.setAttribute("aria-pressed", state.showClaimed);
-  c.onclick = () => { state.showClaimed = !state.showClaimed; save(); renderSetup(); renderAll(); };
+  const v = el("m-video");
+  v.setAttribute("aria-pressed", !!state.videoOnly);
+  v.onclick = () => { state.videoOnly = !state.videoOnly; save(); renderSetup(); };
 }
 
-const xItem = (p) => `<a class="m-item" href="${esc(p.url)}" target="_blank" rel="noopener">
-  <div class="meta"><b>${esc(p.name)}</b><span>@${esc(p.username)}</span><span>${ago(p.created)}</span></div>
-  <div class="body">${esc(p.text)}</div>
-  <div class="meta">${Number.isFinite(p.views) ? `<span><b>${fmtN(p.views)}</b> views</span>` : ""}<span><b>${fmtN(p.likes || 0)}</b> likes</span><span><b>${fmtN(p.reposts || 0)}</b> reposts</span>${p.media_type ? `<span>${esc(p.media_type)}</span>` : ""}</div>
-  ${p.preview ? `<img src="${esc(p.preview)}" alt="" loading="lazy" referrerpolicy="no-referrer">` : ""}</a>`;
+let widgets;
+const loadWidgets = () => (widgets ??= new Promise((resolve) => {
+  const s = Object.assign(document.createElement("script"), { src: "https://platform.twitter.com/widgets.js", async: true });
+  s.onload = () => (window.twttr?.ready ? twttr.ready(resolve) : resolve(null));
+  s.onerror = () => resolve(null);
+  document.head.append(s);
+  setTimeout(() => resolve(window.twttr ?? null), 8000);
+}));
+const dark = () => document.documentElement.dataset.theme === "dark" || (!document.documentElement.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
 
-function fill(id, items, render, emptyMsg) {
-  el(id).innerHTML = items.length ? items.map(render).join("") : `<p class="empty">${emptyMsg}</p>`;
-  el(id).previousElementSibling.querySelector(".n")?.remove();
-  el(id).previousElementSibling.insertAdjacentHTML("beforeend", `<span class="n">${items.length}</span>`);
-}
+const embedObs = new IntersectionObserver((entries) => {
+  for (const e of entries) {
+    if (!e.isIntersecting) continue;
+    embedObs.unobserve(e.target);
+    const tile = e.target;
+    loadWidgets().then((tw) => tw?.widgets?.createTweet(tile.dataset.id, tile, { theme: dark() ? "dark" : "light", dnt: true, conversation: "none", align: "center" })
+      .then((node) => { if (node) { tile.querySelector(".ph")?.remove(); tile.classList.add("embedded"); } }));
+  }
+}, { rootMargin: "800px 0px" });
+
+const tileHtml = (p) => `<div class="tile" data-id="${esc(p.id)}"><a class="ph" href="${esc(p.url)}" target="_blank" rel="noopener">
+  <div class="who"><b>${esc(p.name)}</b> @${esc(p.username)} · ${ago(p.created)}${isVideo(p) ? ` · <span class="vid">▶ VIDEO</span>` : ""}</div>
+  <div class="txt">${esc(p.text)}</div>
+  ${p.preview ? `<img src="${esc(p.preview)}" alt="" loading="lazy" referrerpolicy="no-referrer">` : ""}</a></div>`;
+
+let wall = { posts: [], shown: 0, cols: [] };
+const PAGE = 16;
+function wallColumns() { return Math.max(1, Math.min(4, Math.floor((innerWidth - 16) / 260))); }
 
 function renderMonitor() {
   const since = Date.now() - state.xWindow * 864e5;
   const win = WINDOWS.find(([d]) => d === state.xWindow)?.[1] ?? `${state.xWindow}d`;
   const t = termList();
-  el("m-summary").textContent = `Last ${win}${t.length ? ` · matching ${t.join(", ")}` : ""}${state.showClaimed ? " · incl. unverified claims" : ""}`;
-
-  const posts = (xposts ?? []).map((p) => ({ ...p, created: new Date(p.created_at) }))
-    .filter((p) => p.created >= since && matches(p.text, p.username, p.name));
-  const noX = xposts?.length ? "No posts match." : "No X posts fetched yet.";
-  fill("m-xtop", [...posts].sort((a, b) => score(b) - score(a)), xItem, noX);
-  fill("m-xnew", [...posts].sort((a, b) => b.created - a.created), xItem, noX);
-
-  const news = (articles ?? []).map((a) => ({ ...a, seen: new Date(a.seendate) }))
-    .filter((a) => a.seen >= since && matches(a.title, a.domain)).sort((a, b) => b.seen - a.seen);
-  fill("m-news", news, (a) => `<a class="m-item" href="${esc(a.url)}" target="_blank" rel="noopener">
-    <div class="body">${esc(a.title)}</div>
-    <div class="meta"><b>${esc(a.domain)}</b><span>${ago(a.seen)} ago</span>${a.language && a.language !== "English" ? `<span>${esc(a.language)}</span>` : ""}</div></a>`,
-    articles?.length ? "No articles match." : "No GDELT articles fetched yet.");
-
-  const all = visible().filter((d) => matches(d.vessel_name, d.location_text, d.notes, d.vessel_type, d.attacker)).sort((a, b) => b.date - a.date);
-  const recent = all.filter((d) => d.date >= since);
-  const incItem = (d) => `<a class="m-item" href="#" data-id="${esc(d.id)}">
-    <div class="meta"><span><i class="dot" style="background:${colorOf(d.cls)}"></i> <b>${esc(d.outcome)}</b></span><span>${fmtDate(d.date)}</span><span>${esc(d.confidence)}</span></div>
-    <div class="body"><b>${esc(d.vessel_name)}</b> · ${esc(d.vessel_type || "vessel")}<br>${esc(d.location_text)}</div>
-    <div class="meta"><span>${((n) => `${n} source${n === 1 ? "" : "s"}`)((trailById.get(d.id) ?? []).length)}</span></div></a>`;
-  fill("m-inc", recent, incItem, "No incidents in this window.");
-  if (recent.length < 5 && all.length > recent.length) {
-    el("m-inc").insertAdjacentHTML("beforeend", `<div class="m-sep">Earlier</div>` + all.slice(recent.length, recent.length + 10).map(incItem).join(""));
-  }
-  el("m-inc").onclick = (e) => {
-    const a = e.target.closest("[data-id]"); if (!a) return;
-    e.preventDefault(); location.hash = ""; select(incidents.find((d) => d.id === a.dataset.id));
-    requestAnimationFrame(() => el("detail").scrollIntoView({ block: "start" }));
-  };
+  const posts = (xposts ?? []).map((p) => ({ ...p, id: String(p.id), created: new Date(p.created_at) }))
+    .filter((p) => p.created >= since && matches(p.text, p.username, p.name) && (!state.videoOnly || isVideo(p)))
+    .sort((a, b) => (isVideo(b) - isVideo(a)) || score(b) - score(a));
+  el("m-summary").textContent = `${posts.length} posts · last ${win}${t.length ? ` · matching ${t.join(", ")}` : ""}${state.videoOnly ? " · videos only" : " · videos first"}`;
   const fetched = d3.max(xposts ?? [], (p) => new Date(p.fetched_at));
-  el("m-asof").textContent = `X counts as of ${fetched ? fmtDate(fetched) : "n/a"} · refreshes every 10 min`;
+  el("m-asof").textContent = fetched ? `X batch ${ago(fetched)} ago` : "";
+  const n = wallColumns();
+  el("m-wall").innerHTML = Array.from({ length: n }, () => `<div class="wall-col"></div>`).join("");
+  wall = { posts, shown: 0, cols: [...el("m-wall").children] };
+  if (!posts.length) el("m-wall").innerHTML = `<p class="empty">${xposts?.length ? "No posts match these settings. Widen the window or clear keywords." : "No X posts fetched yet."}</p>`;
+  more();
 }
+function more() {
+  const next = wall.posts.slice(wall.shown, wall.shown + PAGE);
+  next.forEach((p, i) => {
+    const col = wall.cols[(wall.shown + i) % wall.cols.length];
+    col.insertAdjacentHTML("beforeend", tileHtml(p));
+    embedObs.observe(col.lastElementChild);
+  });
+  wall.shown += next.length;
+  el("m-more").innerHTML = wall.posts.length && wall.shown >= wall.posts.length ? `<p class="m-end">That's everything in this window.</p>` : "";
+}
+new IntersectionObserver((e) => { if (e[0].isIntersecting && location.hash === "#monitor" && wall.shown < wall.posts.length) more(); }, { rootMargin: "1200px 0px" }).observe(el("m-more"));
+let lastCols = 0;
+addEventListener("resize", () => { if (location.hash === "#monitor" && wallColumns() !== lastCols) { lastCols = wallColumns(); renderMonitor(); } });
 
 async function refreshMedia() {
-  const t = `?t=${Date.now()}`;
-  const [x, a, inc] = await Promise.all([csv("data/x_posts.csv" + t), csv("data/gdelt_articles.csv" + t), csv("data/incidents.csv" + t)]);
-  if (x) xposts = x; if (a) articles = a;
-  if (inc && inc.length !== incidents.length) location.reload();
-  route();
+  const x = await csv(`data/x_posts.csv?t=${Date.now()}`);
+  if (x && x.length !== xposts?.length) { xposts = x; renderMonitor(); }
 }
 
 let refreshTimer;
@@ -395,8 +404,8 @@ function route() {
   document.body.classList.toggle("monitoring", on);
   el("monitor").hidden = !on;
   clearInterval(refreshTimer);
-  if (on) { renderMonitor(); refreshTimer = setInterval(refreshMedia, 10 * 60e3); }
-  else { renderX(); renderNews(); }
+  if (on) { scrollTo(0, 0); lastCols = wallColumns(); renderMonitor(); refreshTimer = setInterval(refreshMedia, 10 * 60e3); }
+  else { renderX(); }
 }
 addEventListener("hashchange", route);
 

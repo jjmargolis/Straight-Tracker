@@ -1,0 +1,62 @@
+[
+ {
+  "id": "Q1",
+  "label": "EN viral",
+  "q": "(Hormuz OR Fujairah OR Khasab OR Musandam OR \"Bandar Abbas\" OR Qeshm OR Larak OR Jask OR Kharg OR \"Ras Tanura\" OR \"Ras Laffan\") (tanker OR ship OR vessel OR freighter OR LNG) (hit OR struck OR attack OR explosion OR ablaze OR drone OR missile OR mine OR sinking OR sank) has:media -is:retweet lang:en min_reposts:50"
+ },
+ {
+  "id": "W1",
+  "label": "EN",
+  "q": "(Hormuz OR \"Persian Gulf\" OR \"Arabian Gulf\" OR \"Gulf of Oman\" OR Iran OR IRGC OR Fujairah OR \"Bandar Abbas\" OR Qeshm OR Kharg OR Musandam OR Khasab) (ship OR boat OR vessel OR tanker OR sea OR water OR port OR navy OR coast OR harbor OR speedboat OR fleet OR sailors OR crew) has:media -is:retweet lang:en min_reposts:20"
+ },
+ {
+  "id": "Q2",
+  "label": "AR viral",
+  "q": "(هرمز OR الفجيرة OR خصب OR مسندم OR \"رأس الخيمة\" OR \"بندر عباس\" OR قشم OR خارك OR \"رأس تنورة\" OR \"رأس لفان\") (ناقلة OR سفينة OR ناقلات) (استهداف OR انفجار OR مسيرة OR صاروخ OR لغم OR غرق OR حريق) has:media -is:retweet lang:ar min_reposts:30"
+ },
+ {
+  "id": "W2",
+  "label": "AR",
+  "q": "(هرمز OR الخليج OR \"خليج عمان\" OR إيران OR \"الحرس الثوري\" OR الفجيرة OR مسندم OR خصب OR \"بندر عباس\") (سفينة OR سفن OR قارب OR زورق OR زوارق OR بحر OR مياه OR ميناء OR بحرية OR ساحل OR ناقلة OR بحارة) has:media -is:retweet lang:ar min_reposts:10"
+ },
+ {
+  "id": "Q6",
+  "label": "Ground-truth accounts",
+  "q": "(from:UK_MTO OR from:CENTCOM OR from:TankerTrackers OR from:mwbockmann OR from:detresfa_ OR from:GeoConfirmed) -is:retweet"
+ },
+ {
+  "id": "Q3",
+  "label": "FA viral",
+  "q": "(هرمز OR بندرعباس OR قشم OR لارک OR خارگ OR خارک OR جاسک OR چابهار OR فجیره) (نفتکش OR کشتی OR شناور) (حمله OR انفجار OR پهپاد OR موشک OR مین OR غرق OR آتش) has:media -is:retweet lang:fa min_reposts:20"
+ },
+ {
+  "id": "W3",
+  "label": "FA",
+  "q": "(هرمز OR \"خلیج فارس\" OR \"دریای عمان\" OR سپاه OR بندرعباس OR قشم OR خارگ OR جاسک OR لارک) (کشتی OR قایق OR شناور OR دریا OR آب OR بندر OR ناوگان OR ساحل OR نفتکش OR \"نیروی دریایی\" OR ملوان) has:media -is:retweet lang:fa min_reposts:10"
+ },
+ {
+  "id": "Q8",
+  "label": "Fast footage carriers",
+  "q": "(from:sentdefender OR from:clashreport OR from:TehranTimes79 OR from:AJArabic OR from:AJEnglish OR from:MarioNawfal OR from:IranIntl_En) (Hormuz OR tanker OR ship OR vessel OR Fujairah OR هرمز OR ناقلة OR سفينة) has:media -is:retweet min_reposts:20"
+ },
+ {
+  "id": "Q4",
+  "label": "HE viral",
+  "q": "(הורמוז OR \"בנדר עבאס\" OR פוג'יירה OR קשם OR \"ראס תנורה\" OR מוסנדם) (מכלית OR ספינה OR אונייה) (פיצוץ OR טיל OR רחפן OR מוקש OR טבעה OR נפגעה) has:media -is:retweet lang:he min_reposts:20"
+ },
+ {
+  "id": "W4",
+  "label": "HE",
+  "q": "(הורמוז OR \"המפרץ הפרסי\" OR \"מפרץ עומאן\" OR איראן OR \"משמרות המהפכה\") (ספינה OR סירה OR אונייה OR ים OR מים OR נמל OR \"חיל הים\" OR חוף OR מכלית OR צי OR ימאים) has:media -is:retweet lang:he min_reposts:10"
+ },
+ {
+  "id": "Q5",
+  "label": "ZH viral",
+  "q": "(霍尔木兹 OR 霍爾木茲 OR 富查伊拉 OR 阿巴斯港 OR 格什姆 OR 哈尔克岛 OR 拉斯坦努拉) (油轮 OR 油輪 OR 货轮 OR 船只 OR 船隻) (遇袭 OR 遇襲 OR 爆炸 OR 无人机 OR 導彈 OR 导弹 OR 水雷 OR 沉没 OR 起火) has:media -is:retweet lang:zh min_reposts:10"
+ },
+ {
+  "id": "W5",
+  "label": "ZH",
+  "q": "(霍尔木兹 OR 霍爾木茲 OR 波斯湾 OR 波斯灣 OR 阿曼湾 OR 阿曼灣 OR 伊朗 OR 革命卫队 OR 革命衛隊) (船 OR 舰 OR 艦 OR 艇 OR 海 OR 港 OR 海军 OR 海軍 OR 油轮 OR 油輪 OR 船员 OR 船員) has:media -is:retweet lang:zh min_reposts:5"
+ }
+]
