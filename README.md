@@ -26,8 +26,12 @@ Then open http://localhost:8000. No build step and no npm install. d3 and Observ
 | `data/x_users.csv` | Profile of each X author seen (bio, followers, join date), looked up once | GitHub Action, with the X fetch |
 | `data/accounts.csv`, `data/account_vocab.json` | Who each author is: type, lean, reliability, with basis and evidence (SPEC 1B) | Claude, by pull request |
 | `data/account_overrides.csv` | Jacob's tags, which replace Claude's | Dashboard → GitHub issue → Action |
-| `data/coverage_gdelt.csv`, `data/gdelt_articles.csv` | News volume per day and latest articles | GitHub Action, every 6 h |
+| `data/coverage_gdelt.csv` | News volume per day (GDELT) | GitHub Action, hourly (often refused; gaps fill on later runs) |
+| `data/tg_posts.csv` | Matching posts from 20 public Telegram channels, with views and video flag | GitHub Action, hourly |
+| `data/news.csv` | Headlines from Google News (5 languages), outlet RSS and straits.live events | GitHub Action, hourly |
 | `data/land.json` | Natural Earth 1:10m coastline, clipped | `scripts/clip-land.mjs`, one-off |
+
+Free feeds (channels, queries, RSS list) are configured in `scripts/free-feeds.json`; the keyword filter is `scripts/match.mjs`.
 
 Check data before committing:
 ```

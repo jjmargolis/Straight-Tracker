@@ -5,7 +5,7 @@ flowchart TB
   subgraph SRC["External data sources"]
     PW[("IMF PortWatch<br/>+ straits.live mirror<br/>free, no auth")]
     XA[("X API v2 · recent search<br/>pay-per-use, needs key")]
-    GD[("GDELT DOC 2.0 API<br/>free, no key")]
+    FREE[("Free feeds: Telegram t.me/s previews,<br/>Google News + outlet RSS, straits.live events,<br/>GDELT DOC 2.0 volume · no key")]
     REP[("UKMTO, JMIC, EIA,<br/>trade press, Wikipedia")]
   end
   J(["Jacob<br/>owner · reviews + merges PRs"])
@@ -13,7 +13,8 @@ flowchart TB
   subgraph Z1["TRUST ZONE 1 · GitHub Actions · secrets live only here"]
     PWJ["fetch-portwatch.yml<br/>daily 06:17 UTC"]
     SEC{{"secret<br/>X_BEARER_TOKEN"}}
-    MEDIA["fetch-media.yml · every 6 h<br/>GDELT, then 1 X query (15 posts)"]
+    MEDIA["fetch-media.yml · every 6 h<br/>1 X query (15 posts)"]
+    FREEJ["fetch-free.yml · hourly<br/>Telegram · news · events · GDELT"]
     VAL["validate.yml<br/>every PR + push to main"]
   end
 
@@ -30,10 +31,10 @@ flowchart TB
     PAGES[["GitHub Pages<br/>static hosting, no server code"]]
     subgraph BR["viewer's browser · one page, two views"]
       DASH["Dashboard<br/>charts · strike map · X feed · news"]
-      MON["#monitor<br/>wall of embedded X posts"]
+      MON["#monitor<br/>wall of embedded X + Telegram posts"]
     end
   end
-  XEMB[("X embed service<br/>platform.twitter.com<br/>public, no key")]
+  XEMB[("X + Telegram embed services<br/>platform.twitter.com · telegram.org<br/>public, no key")]
 
   subgraph LEG["Legend"]
     direction LR
@@ -49,18 +50,19 @@ flowchart TB
   XEMB ~~~ LEG
   PW -->|"tanker transits · JSON/CSV · no auth"| PWJ
   XA -->|"X posts + counts · JSON · Bearer key"| MEDIA
-  GD -->|"news volume + articles · JSON · no key"| MEDIA
+  FREE -->|"posts, headlines, volume · HTML/RSS/CSV/JSON · hourly · no key"| FREEJ
   SEC -->|"env var"| MEDIA
   REP -.->|"read · HTML/PDF"| CL
   J -.->|"screenshots · X links"| CL
   CL -.->|"pull request · CSV"| VAL
   PWJ -->|"git commit · CSV"| DATA
   MEDIA -->|"git commit · CSV/JSON"| DATA
+  FREEJ -->|"git commit · CSV"| DATA
   VAL -->|"green check · Jacob merges"| DATA
   SITE -->|"push to main · deploy"| PAGES
   DATA -->|"push to main · deploy"| PAGES
   PAGES -->|"HTML, JS, CSV · on load"| DASH
-  PAGES -->|"x_posts.csv · every 10 min"| MON
+  PAGES -->|"x_posts, tg_posts, news CSV · every 10 min"| MON
   DASH <-->|"URL #monitor"| MON
   MON -->|"request embeds · JS + iframes · no key"| XEMB
 
@@ -77,10 +79,10 @@ flowchart TB
   classDef note fill:#fff7d6,stroke:#c9a227,color:#3a2e08
   classDef zone fill:#fffafa,stroke:#b3261e,stroke-width:2px,stroke-dasharray:10 5,color:#b3261e
   classDef group fill:#fafafa,stroke:#bbbbbb,color:#333333
-  class PW,XA,GD,REP,XEMB ext
+  class PW,XA,FREE,REP,XEMB ext
   class J human
   class CL claude
-  class PWJ,MEDIA,VAL job
+  class PWJ,MEDIA,FREEJ,VAL job
   class DATA data
   class SITE,PAGES,DASH,MON site
   class SEC secret

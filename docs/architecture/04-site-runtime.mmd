@@ -4,22 +4,24 @@
 flowchart TB
   subgraph REPO["main branch · public repo"]
     CODE["index.html · style.css · app.js<br/>?v= stamps beat the browser cache<br/>vendor/ d3 7.9.0 + Plot 0.6.17"]
-    DATA[("data/ · 8 CSV + land.json")]
+    DATA[("data/ · CSV + JSON files")]
   end
   PAGES[["GitHub Pages<br/>static files · CDN cache ≈ 10 min"]]
 
   subgraph WEB["TRUST ZONE · public web · read-only, no secrets or keys"]
     subgraph BR["viewer's browser · one page"]
       APP["app.js<br/>loads all data once"]
-      LS[("localStorage<br/>window · keywords · Videos only")]
+      LS[("localStorage<br/>window · sources · keywords · Videos only")]
       DASH["Dashboard (no hash)<br/>KPIs · X feed · news · coverage ·<br/>map of ship + infrastructure strikes ·<br/>oil flow · transits · table"]
-      MON["#monitor<br/>wall of X posts, videos first<br/>16 more on each scroll<br/>shows our link card until the embed loads"]
+      MON["#monitor<br/>X + Telegram posts (+ news if on)<br/>ranked within source, interleaved, videos first<br/>16 more on each scroll<br/>shows our link card until the embed loads"]
     end
   end
 
   subgraph X3["Third parties the browser contacts"]
     XCDN[("X media CDN<br/>preview images")]
     XEMB[("X embed service<br/>platform.twitter.com/widgets.js")]
+    TEMB[("Telegram embed<br/>telegram.org/js/telegram-widget.js<br/>+ t.me iframes")]
+    TCDN[("Telegram CDN<br/>preview images")]
   end
 
   CODE -->|"push · deploy"| PAGES
@@ -30,9 +32,11 @@ flowchart TB
   APP -->|"render"| MON
   DASH -->|"setup bar"| LS
   DASH <-->|"URL #monitor"| MON
-  MON -->|"every 10 min · x_posts.csv?t=now"| PAGES
+  MON -->|"every 10 min · x_posts, tg_posts, news CSV"| PAGES
   DASH -->|"img · no-referrer"| XCDN
   MON -->|"script once + 1 iframe per post · dnt"| XEMB
+  MON -->|"1 script + iframe per post · on scroll"| TEMB
+  MON -->|"img · no-referrer"| TCDN
 
   classDef ext fill:#e3eaf3,stroke:#5a6b80,color:#1b2430
   classDef human fill:#fbe8cc,stroke:#a8742a,color:#3a2a10
@@ -47,7 +51,7 @@ flowchart TB
   classDef note fill:#fff7d6,stroke:#c9a227,color:#3a2e08
   classDef zone fill:#fffafa,stroke:#b3261e,stroke-width:2px,stroke-dasharray:10 5,color:#b3261e
   classDef group fill:#fafafa,stroke:#bbbbbb,color:#333333
-  class XEMB,XCDN ext
+  class XEMB,XCDN,TEMB,TCDN ext
   class CODE,PAGES,APP,DASH,MON site
   class DATA,LS data
   class WEB zone
