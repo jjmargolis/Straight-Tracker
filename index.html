@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hormuz Watch</title>
   <meta name="description" content="Oil flow through the Strait of Hormuz and attacks on shipping, with a source for every number.">
-  <link rel="stylesheet" href="style.css?v=202611060339">
+  <link rel="stylesheet" href="style.css?v=202611060400">
 </head>
 <body>
   <header class="top">
@@ -21,8 +21,11 @@
     <div class="filters" id="m-window"></div>
     <input id="m-terms" type="search" placeholder="Keywords, comma-separated (blank = all)" aria-label="Keywords">
     <div class="filters"><button id="m-video" aria-pressed="false">Videos only</button></div>
+    <div class="filters" id="m-who" aria-label="Accounts"></div>
+    <div class="filters"><button id="m-review">Review accounts</button><button id="m-send" hidden></button></div>
     <a class="go" href="#monitor">Open monitor</a>
     <div class="top-strip" id="m-top" aria-label="Top posts"></div>
+    <p class="m-spend" id="m-spend"></p>
   </section>
 
   <section class="kpis" id="kpis" aria-label="Key figures"></section>
@@ -92,6 +95,8 @@
     </section>
   </main>
 
+  <dialog id="acct-dlg" class="acct-dlg" aria-label="Tag account"></dialog>
+
   <section id="monitor" class="monitor" hidden>
     <header class="m-bar">
       <a href="#" class="back">Dashboard</a>
@@ -110,6 +115,6 @@
 
   <script src="vendor/d3.min.js"></script>
   <script src="vendor/plot.umd.min.js"></script>
-  <script type="module" src="app.js?v=202611060339"></script>
+  <script type="module" src="app.js?v=202611060400"></script>
 </body>
 </html>

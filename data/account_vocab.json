@@ -1,0 +1,53 @@
+{
+  "type": {
+    "state": "State / official",
+    "state_media": "State media",
+    "media": "Media",
+    "analyst": "Analyst",
+    "verifier": "Verifier",
+    "hobbyist": "Hobbyist",
+    "aggregator": "Aggregator",
+    "other": "Other",
+    "unknown": "Unknown"
+  },
+  "lean": {
+    "none_evident": "No evident lean",
+    "iran_gov": "Iran gov",
+    "iran_opposition": "Iran opposition",
+    "israel": "Israel",
+    "us_gov": "US gov",
+    "western_gov": "Western gov",
+    "saudi": "Saudi",
+    "uae": "UAE",
+    "qatar": "Qatar",
+    "gulf_other": "Gulf (other)",
+    "prc": "PRC",
+    "prc_opposition": "PRC opposition",
+    "russia": "Russia",
+    "turkey": "Turkey",
+    "india": "India",
+    "pakistan": "Pakistan",
+    "western_right": "Western right",
+    "western_left": "Western left",
+    "other": "Other",
+    "unknown": "Unknown"
+  },
+  "identity": { "named": "Named", "pseudonymous": "Pseudonymous", "anonymous": "Anonymous", "unknown": "Unknown" },
+  "reliability": { "high": "High", "mixed": "Mixed", "low": "Low", "unknown": "Unknown" },
+  "confidence": { "high": "High", "med": "Medium", "low": "Low" },
+  "flags": {
+    "belligerent": "Party to the war",
+    "fabrication_record": "Documented fabrication",
+    "downplays_hits": "Documented downplaying",
+    "censored": "Under military censorship",
+    "impersonation_risk": "Impersonation risk",
+    "copy_network": "Posts copied text",
+    "possible_bot": "Possible bot",
+    "possible_ai": "Possibly AI-generated",
+    "fiction": "Posts fiction as news",
+    "promo": "Promotional",
+    "spam": "Spam",
+    "vendor": "Commercial vendor",
+    "suspended": "Suspended"
+  }
+}

@@ -29,10 +29,10 @@ const CLASSES = [
 const classOf = (d) => OUTCOME[d.outcome] ?? "other";
 const colorOf = (k) => CLASSES.find((c) => c.key === k).color;
 
-const state = { xWindow: 7, terms: "", videoOnly: false, view: "strait", showClaimed: false, showNaval: false, selected: null };
+const state = { xWindow: 7, terms: "", videoOnly: false, who: "all", view: "strait", showClaimed: false, showNaval: false, selected: null };
 const SAVED = "hormuz-monitor";
-try { const { xWindow, terms, videoOnly } = JSON.parse(localStorage.getItem(SAVED)) ?? {}; Object.assign(state, { xWindow: xWindow ?? 7, terms: terms ?? "", videoOnly: !!videoOnly }); } catch {}
-const save = () => { try { localStorage.setItem(SAVED, JSON.stringify({ xWindow: state.xWindow, terms: state.terms, videoOnly: state.videoOnly })); } catch {} };
+try { const { xWindow, terms, videoOnly, who } = JSON.parse(localStorage.getItem(SAVED)) ?? {}; Object.assign(state, { xWindow: xWindow ?? 7, terms: terms ?? "", videoOnly: !!videoOnly, who: who ?? "all" }); } catch {}
+const save = () => { try { localStorage.setItem(SAVED, JSON.stringify({ xWindow: state.xWindow, terms: state.terms, videoOnly: state.videoOnly, who: state.who })); } catch {} };
 const fmtDate = d3.utcFormat("%-d %b %Y");
 const el = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -41,11 +41,12 @@ const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<
 const BUST = Math.floor(Date.now() / 6e5);
 async function csv(path) {
   const url = path + (path.includes("?") ? "&" : "?") + "b=" + BUST;
-  // Keep "id" as text: X post ids exceed 2^53 and would be rounded as numbers.
-  try { return await d3.csv(url, (d) => { const id = d.id; d3.autoType(d); if (id !== undefined) d.id = id; return d; }); } catch { return null; }
+  // Keep X ids as text: they exceed 2^53 and would be rounded as numbers. Same for handles like "1500tasvir".
+  const TEXT = ["id", "author_id", "user_id", "handle", "username"];
+  try { return await d3.csv(url, (d) => { const keep = TEXT.map((k) => d[k]); d3.autoType(d); TEXT.forEach((k, i) => { if (keep[i] !== undefined) d[k] = keep[i]; }); return d; }); } catch { return null; }
 }
 
-let [incidentsRaw, sources, flow, transits, land, xposts, articles, coverage, media] = await Promise.all([
+let [incidentsRaw, sources, flow, transits, land, xposts, articles, coverage, media, accountsRaw, overridesRaw, xusers, vocab, budget] = await Promise.all([
   csv("data/incidents.csv"),
   csv("data/incident_sources.csv"),
   csv("data/flow_eia.csv"),
@@ -55,6 +56,11 @@ let [incidentsRaw, sources, flow, transits, land, xposts, articles, coverage, me
   csv("data/gdelt_articles.csv"),
   csv("data/coverage_gdelt.csv"),
   csv("data/media.csv"),
+  csv("data/accounts.csv"),
+  csv("data/account_overrides.csv"),
+  csv("data/x_users.csv"),
+  d3.json("data/account_vocab.json").catch(() => null),
+  d3.json(`data/x_budget.json?b=${BUST}`).catch(() => null),
 ]);
 
 const incidents = incidentsRaw.map((d) => ({
@@ -277,7 +283,7 @@ function renderX() {
   const posts = xposts.map((p) => ({ ...p, created: new Date(p.created_at) }))
     .filter((p) => p.created >= since).sort((a, b) => score(b) - score(a)).slice(0, 12);
   el("xfeed").innerHTML = posts.length ? posts.map((p) => `<a class="post" href="${esc(p.url)}" target="_blank" rel="noopener">
-      <div><div class="who"><b>${esc(p.name)}</b> @${esc(p.username)} · ${ago(p.created)}</div>
+      <div><div class="who"><b>${esc(p.name)}</b> @${esc(p.username)} · ${ago(p.created)} ${chip(p.username)}</div>
       <div class="txt">${esc(p.text)}</div>
       <div class="stats">${Number.isFinite(p.views) ? `<span><b>${fmtN(p.views)}</b> views</span>` : ""}<span><b>${fmtN(p.likes || 0)}</b> likes</span><span><b>${fmtN(p.reposts || 0)}</b> reposts</span>${p.media_type ? `<span>${esc(p.media_type)}</span>` : ""}</div></div>
       ${p.preview ? `<img src="${esc(p.preview)}" alt="" loading="lazy" referrerpolicy="no-referrer">` : ""}</a>`).join("")
@@ -324,6 +330,103 @@ function renderCoverage() {
   el("coverage-note").innerHTML = `Line: articles per day matching attacks near Hormuz, from <a href="https://www.gdeltproject.org/">GDELT</a>. Dots: attacks in the incident dataset, coloured by outcome. Coverage counts news, not social media.`;
 }
 
+/* ---------- Accounts: who is posting (SPEC 1B) ---------- */
+// One tag per account. Claude's first pass is data/accounts.csv; Jacob's override (data/account_overrides.csv,
+// or saved in this browser and not yet sent) replaces it. Unsure or untagged accounts go to the review queue.
+const V = vocab ?? { type: {}, lean: {}, identity: {}, reliability: {}, confidence: {}, flags: {} };
+const lc = (h) => String(h ?? "").toLowerCase();
+const claudeTags = new Map((accountsRaw ?? []).map((a) => [lc(a.handle), a]));
+const repoTags = new Map((overridesRaw ?? []).map((o) => [lc(o.handle), o]));
+const profiles = new Map((xusers ?? []).map((u) => [lc(u.username), u]));
+const TAGS = "hormuz-account-tags";
+let localTags = {};
+try { localTags = JSON.parse(localStorage.getItem(TAGS)) ?? {}; } catch {}
+// Drop local tags the repo already has (they were sent and applied).
+const same = (a, b) => ["type", "lean", "reliability"].every((k) => (a?.[k] ?? "") === (b?.[k] ?? ""));
+for (const [h, t] of Object.entries(localTags)) if (t.clear ? !repoTags.has(h) : same(t, repoTags.get(h))) delete localTags[h];
+const saveTags = () => { try { localStorage.setItem(TAGS, JSON.stringify(localTags)); } catch {} };
+
+function account(handle) {
+  const h = lc(handle), c = claudeTags.get(h);
+  const base = c ?? { handle, type: "unknown", lean: "unknown", identity: "unknown", reliability: "unknown", confidence: "low", flags: "", basis: "", notes: "" };
+  const o = localTags[h] ? (localTags[h].clear ? null : localTags[h]) : repoTags.get(h);
+  if (o) return { ...base, type: o.type || base.type, lean: o.lean || base.lean, reliability: o.reliability || base.reliability, note: o.note, by: "jacob", review: false, unsent: !!localTags[h] };
+  return { ...base, by: c ? "claude" : "none", review: !c || base.confidence === "low" || base.type === "unknown" || base.lean === "unknown" };
+}
+const SERIOUS = ["state", "state_media", "media", "analyst", "verifier"];
+const WHO = {
+  all: { label: "All accounts", hint: "Everyone", test: () => true },
+  serious: { label: "Official, media, analysts", hint: "State, state media, media, analysts, verifiers (reviewed tags only)", test: (a) => !a.review && SERIOUS.includes(a.type) },
+  crowd: { label: "Hobbyists, aggregators", hint: "Hobbyists, aggregators, other (reviewed tags only)", test: (a) => !a.review && !SERIOUS.includes(a.type) },
+  review: { label: "Needs review", hint: "Claude was unsure or hasn't tagged it", test: (a) => a.review },
+};
+const leanShown = (l) => l && l !== "none_evident" && l !== "unknown";
+function chip(handle) {
+  const a = account(handle);
+  const label = a.review ? "Needs review" : V.type[a.type] + (leanShown(a.lean) ? ` · ${V.lean[a.lean]}` : "");
+  const tip = a.review ? "Claude is unsure or hasn't tagged this account. Tap to tag it."
+    : `${a.by === "jacob" ? "Your tag" : `Claude's tag, ${V.confidence[a.confidence] ?? a.confidence} confidence`} · reliability ${V.reliability[a.reliability] ?? a.reliability}${a.notes ? " · " + a.notes : ""}`;
+  return `<span class="acct t-${esc(a.review ? "review" : a.type)}${a.by === "jacob" ? " mine" : ""}" role="button" tabindex="0" data-handle="${esc(handle)}" title="${esc(tip)}">${esc(label)}</span>`;
+}
+// Accounts needing review that actually appear in fetched posts, most-shared first.
+function reviewQueue() {
+  const eng = d3.rollup(xposts ?? [], (v) => ({ s: d3.sum(v, score), h: v[0].username }), (p) => lc(p.username));
+  return [...eng.values()].filter((e) => e.h && account(e.h).review).sort((a, b) => b.s - a.s).map((e) => e.h);
+}
+
+const dlg = el("acct-dlg");
+const opts = (m, cur) => Object.entries(m).map(([k, l]) => `<option value="${k}"${k === cur ? " selected" : ""}>${esc(l)}</option>`).join("");
+function openTag(handle, back) {
+  const a = account(handle), c = claudeTags.get(lc(handle)), u = profiles.get(lc(handle));
+  const first = c ? `${V.type[c.type]} · ${V.lean[c.lean]} · reliability ${V.reliability[c.reliability]} · ${V.confidence[c.confidence]} confidence (basis ${esc(c.basis)})` : "not tagged yet";
+  const ev = c?.evidence ? (/^https?:/.test(c.evidence) ? `<a href="${esc(c.evidence)}" target="_blank" rel="noopener">evidence</a>` : esc(c.evidence)) : "";
+  dlg.innerHTML = `<form method="dialog" class="tag-form">
+    <h3><a href="https://x.com/${esc(handle)}" target="_blank" rel="noopener">@${esc(handle)}</a> ${esc(c?.name ?? u?.name ?? "")}</h3>
+    ${u ? `<p class="bio">${esc(u.description)}</p><p class="muted">${fmtN(u.followers || 0)} followers · joined ${esc(String(u.created_at).slice(0, 4))}${u.location ? " · " + esc(u.location) : ""}${u.verified_type && u.verified_type !== "none" ? " · " + esc(u.verified_type) + " check" : ""}</p>` : ""}
+    <p class="muted">Claude's first pass: ${first}${c?.notes ? ". " + esc(c.notes) : ""} ${ev}</p>
+    <label>Type <select name="type">${opts(V.type, a.type)}</select></label>
+    <label>Lean <select name="lean">${opts(V.lean, a.lean)}</select></label>
+    <label>Reliability <select name="reliability">${opts(V.reliability, a.reliability)}</select></label>
+    <label class="wide">Note <input name="note" maxlength="300" value="${esc(a.by === "jacob" ? a.note ?? "" : "")}" placeholder="Why (optional)"></label>
+    <div class="row"><button value="save" class="go">Save my tag</button>${a.by === "jacob" ? `<button value="clear">Use Claude's tag</button>` : ""}<button value="cancel">Cancel</button></div>
+  </form>`;
+  dlg.onclose = () => {
+    const f = new FormData(dlg.querySelector("form")), h = lc(handle);
+    if (dlg.returnValue === "save") localTags[h] = { handle, type: f.get("type"), lean: f.get("lean"), reliability: f.get("reliability"), note: f.get("note") };
+    if (dlg.returnValue === "clear") localTags[h] = { handle, clear: true };
+    if (dlg.returnValue === "save" || dlg.returnValue === "clear") { saveTags(); renderSetup(); renderX(); if (location.hash === "#monitor") renderMonitor(); }
+    if (back) openQueue();
+  };
+  dlg.returnValue = ""; dlg.showModal();
+}
+function openQueue() {
+  const q = reviewQueue();
+  dlg.innerHTML = `<form method="dialog" class="queue"><h3>Accounts to review (${q.length})</h3>
+    <p class="muted">Accounts in the fetched posts that Claude was unsure about or hasn't tagged, most-shared first.</p>
+    <ul>${q.map((h) => { const c = claudeTags.get(lc(h)); return `<li><button value="${esc(h)}">@${esc(h)}</button> <span class="muted">${c ? `guess: ${esc(V.type[c.type])}${leanShown(c.lean) ? " · " + esc(V.lean[c.lean]) : ""}` : "untagged"}</span></li>`; }).join("") || "<li>Nothing to review.</li>"}</ul>
+    <div class="row"><button value="">Close</button></div></form>`;
+  dlg.onclose = () => { if (dlg.returnValue) openTag(dlg.returnValue, true); };
+  dlg.returnValue = ""; dlg.showModal();
+}
+// Saved tags reach the repo through a prefilled issue; an owner-only Action commits them (scripts/apply-account-tags.mjs).
+function sendTags() {
+  const cell = (v) => (/[",\n]/.test(v ?? "") ? `"${String(v).replace(/"/g, '""')}"` : v ?? "");
+  const lines = Object.values(localTags).map((t) => [t.handle, t.type, t.lean, t.reliability, t.note].map(cell).join(","));
+  const body = "Account tags from the dashboard. Submit to apply.\n\n```csv\nhandle,type,lean,reliability,note\n" + lines.join("\n") + "\n```\n";
+  open(`https://github.com/jjmargolis/straight-tracker/issues/new?${new URLSearchParams({ title: `account-tags (${lines.length})`, body })}`, "_blank", "noopener");
+}
+document.addEventListener("click", (e) => { const c = e.target.closest(".acct"); if (c) { e.preventDefault(); e.stopPropagation(); openTag(c.dataset.handle); } }, true);
+document.addEventListener("keydown", (e) => { const c = e.target.closest?.(".acct"); if (c && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); openTag(c.dataset.handle); } });
+
+// X spend: the fetcher counts units of $0.005 (post 1, media 1, author lookup 2). Jacob's balance is a prepaid $10.
+function renderSpend() {
+  const units = budget?.units ?? budget?.reads;
+  if (!units) { el("m-spend").textContent = ""; return; }
+  const usd = units * 0.005, perDay = usd / new Date().getUTCDate(), left = Math.max(0, 10 - usd);
+  el("m-spend").innerHTML = `X spend this month ≈ <b>$${usd.toFixed(2)}</b> of $10 · ~$${perDay.toFixed(2)}/day${perDay > 0 ? ` · lasts ~${Math.floor(left / perDay)} more days` : ""}`;
+  el("m-spend").title = `Estimate from data/x_budget.json (${budget.posts ?? "?"} posts, ${budget.users ?? "?"} author lookups, ${budget.media ?? "?"} media). The X developer console has the real balance.`;
+}
+
 /* ---------- Monitor: a wall of embedded X posts, set up from the dashboard ---------- */
 // Posts come from the X fetch (a few batches a day). Each tile is X's official embed, so video plays inline.
 // Until the embed loads (or if X's script is blocked) the tile shows our own preview.
@@ -342,12 +445,21 @@ function renderSetup() {
   const v = el("m-video");
   v.setAttribute("aria-pressed", !!state.videoOnly);
   v.onclick = () => { state.videoOnly = !state.videoOnly; save(); renderSetup(); };
+  el("m-who").innerHTML = Object.entries(WHO).map(([k, w]) => `<button data-who="${k}" aria-pressed="${state.who === k}" title="${esc(w.hint)}">${w.label}</button>`).join("");
+  el("m-who").onclick = (e) => { const b = e.target.closest("button"); if (b) { state.who = b.dataset.who; save(); renderSetup(); } };
+  const q = reviewQueue(), pend = Object.keys(localTags).length;
+  el("m-review").textContent = `Review accounts (${q.length})`;
+  el("m-review").onclick = openQueue;
+  el("m-send").hidden = !pend;
+  el("m-send").textContent = `Send ${pend} tag${pend === 1 ? "" : "s"} to repo`;
+  el("m-send").onclick = sendTags;
+  renderSpend();
 }
 
 function monitorPosts() {
   const since = Date.now() - state.xWindow * 864e5;
   return (xposts ?? []).map((p) => ({ ...p, id: String(p.id), created: new Date(p.created_at) }))
-    .filter((p) => p.created >= since && matches(p.text, p.username, p.name) && (!state.videoOnly || isVideo(p)));
+    .filter((p) => p.created >= since && matches(p.text, p.username, p.name) && (!state.videoOnly || isVideo(p)) && WHO[state.who].test(account(p.username)));
 }
 
 // Top posts strip in the setup bar: click one to open the wall with that post first.
@@ -356,8 +468,9 @@ function renderTopStrip() {
   el("m-top").innerHTML = top.map((p) => `<button class="top-post" data-id="${esc(p.id)}" title="Open in the monitor">
     <div class="thumb" style="${p.preview ? `background-image:url('${esc(p.preview)}')` : ""}">${isVideo(p) ? `<span class="play">▶ video</span>` : ""}</div>
     <div class="meta"><b>${fmtN(score(p))}</b>${Number.isFinite(p.views) ? " views" : " score"}<span>@${esc(p.username)}</span></div>
+    ${chip(p.username)}
     <div class="t">${esc(p.text)}</div></button>`).join("");
-  el("m-top").onclick = (e) => { const b = e.target.closest("[data-id]"); if (b) { state.pin = b.dataset.id; location.hash = "#monitor"; } };
+  el("m-top").onclick = (e) => { if (e.target.closest(".acct")) return; const b = e.target.closest("[data-id]"); if (b) { state.pin = b.dataset.id; location.hash = "#monitor"; } };
 }
 
 let widgets;
@@ -380,7 +493,7 @@ const embedObs = new IntersectionObserver((entries) => {
   }
 }, { rootMargin: "800px 0px" });
 
-const tileHtml = (p) => `<div class="tile" data-id="${esc(p.id)}"><a class="ph" href="${esc(p.url)}" target="_blank" rel="noopener">
+const tileHtml = (p) => `<div class="tile" data-id="${esc(p.id)}"><div class="tile-acct">${chip(p.username)}</div><a class="ph" href="${esc(p.url)}" target="_blank" rel="noopener">
   <div class="who"><b>${esc(p.name)}</b> @${esc(p.username)} · ${ago(p.created)}${isVideo(p) ? ` · <span class="vid">▶ VIDEO</span>` : ""}</div>
   <div class="txt">${esc(p.text)}</div>
   ${p.preview ? `<img src="${esc(p.preview)}" alt="" loading="lazy" referrerpolicy="no-referrer">` : ""}</a></div>`;
@@ -394,7 +507,7 @@ function renderMonitor() {
   const t = termList();
   const pinned = (p) => (p.id === state.pin ? 1 : 0);
   const posts = monitorPosts().sort((a, b) => (pinned(b) - pinned(a)) || (isVideo(b) - isVideo(a)) || score(b) - score(a));
-  el("m-summary").textContent = `${posts.length} posts · last ${win}${t.length ? ` · matching ${t.join(", ")}` : ""}${state.videoOnly ? " · videos only" : " · videos first"}`;
+  el("m-summary").textContent = `${posts.length} posts · last ${win}${t.length ? ` · matching ${t.join(", ")}` : ""}${state.videoOnly ? " · videos only" : " · videos first"}${state.who !== "all" ? ` · ${WHO[state.who].label.toLowerCase()}` : ""}`;
   const fetched = d3.max(xposts ?? [], (p) => new Date(p.fetched_at));
   el("m-asof").textContent = fetched ? `X batch ${ago(fetched)} ago` : "";
   const n = wallColumns();

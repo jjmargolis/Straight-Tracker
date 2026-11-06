@@ -1,6 +1,6 @@
 # Hormuz Dashboard: SPEC
 
-Status: **v0.9** (2026-11-06). Living document, updated as work proceeds.
+Status: **v0.10** (2026-11-06). Living document, updated as work proceeds.
 Owner: Jacob. Repo: [`jjmargolis/straight-tracker`](https://github.com/jjmargolis/straight-tracker).
 
 Evidence tags used throughout:
@@ -41,7 +41,7 @@ Attention is measured by engagement, and the platforms where strike footage spre
 | Signal | Source | Cost | What it measures | Status |
 |---|---|---|---|---|
 | News volume over time, articles list | **GDELT DOC 2.0 API** (`timelinevolraw`, `artlist`, filter by keyword/country/theme, ~3-month lookback) | Free, no key in examples | Volume of *news coverage*, not social virality | [R: [gdelt-doc-api](https://github.com/kepler471/gdelt-doc-api)] Not yet tested from GitHub Actions |
-| X posts + engagement | X API pay-per-use, **$0.005 per post read** (no free read tier) | ~$5 per 1,000 posts | What is actually spreading | [R: [opentweet, checked against docs.x.com 2026-10-10](https://opentweet.io/x-api-pricing)] **Approved by Jacob: cap ~$10/month (~2,000 reads)**. Token stored as repo secret `X_BEARER_TOKEN`; the fetch script enforces a monthly read budget. |
+| X posts + engagement | X API pay-per-use, **$0.005 per post read** (no free read tier) | ~$5 per 1,000 posts | What is actually spreading | [R: [opentweet, checked against docs.x.com 2026-10-10](https://opentweet.io/x-api-pricing)] **Approved by Jacob: cap ~$10/month (~2,000 reads)**. Token stored as repo secret `X_BEARER_TOKEN`; the fetch script enforces a monthly budget in $0.005 units (section 1B). |
 | Bluesky posts | `app.bsky.feed.searchPosts` | Free | Smaller audience, but open | [U: auth requirements not verified] |
 | YouTube videos | YouTube Data API | Free quota with a Google API key | Uploads and view counts for strike footage | [M: quota ~10k units/day; verify] |
 | Telegram channels (IRGC-aligned, OSINT) | Public channel web previews | Free, no API | Often the *first* place footage appears | [M] Manual or Claude-assisted; no automated scraping |
@@ -91,6 +91,56 @@ Landscape only: laptop and phone held horizontally (S24 Ultra landscape is about
 4. **Strait numbers** strip: oil flow, transits, UKMTO tally, JMIC threat levels, each with "as of" date.
 5. **Monitor mode** (Jacob, v0.8b): a setup bar on the dashboard sets the time window (24h/7d/30d), keywords (comma-separated, OR) and "videos only". "Open monitor" goes to `#monitor`: a scrolling wall of X posts, 4 across on a laptop (3 on a landscape phone, since X embeds need ~250px), videos first, then by views. Each tile is X's official embed (widgets.js, `dnt: true`), so video plays inline; tiles load as they scroll near. It is **not live X**: it shows what the fetch collected (~60 posts/day on the $10 cap). News and incidents stay on the dashboard.
 6. **X fetch**: every 6 h, one query per run (15 posts) from `scripts/x-queries.json`, rotating precise (Q1–Q5) and wide-net (W1–W5) queries in EN/AR/FA/HE/ZH plus ground-truth (Q6) and footage carriers (Q8), from research/source-catalog.md. Each post records which query found it.
+
+---
+
+## 1B. Who is posting: X account registry (v0.10, Jacob 2026-11-06)
+
+**Goal:** every post on the monitor says who its author is: a state body, institutional media, a serious analyst with a track record, a hobbyist ("a nerd online"), or an aggregator chasing reach. It also gives the account's lean, so a hobbyist with an agenda can be told apart from one without. Claude does the first pass. Jacob can override any tag, and his tag replaces Claude's. **Each account shows one tag.**
+
+### Data
+`data/accounts.csv` holds Claude's first pass, one row per handle:
+```
+handle,user_id,name,type,lean,identity,lang,reliability,flags,confidence,basis,evidence,notes
+```
+`data/account_overrides.csv` holds Jacob's tags (`handle,type,lean,reliability,note,at`). A blank field keeps Claude's value.
+`data/account_vocab.json` lists the allowed values and labels. The app, the validator and the tag script all read it.
+
+| Field | Values | Meaning |
+|---|---|---|
+| `type` | `state`, `state_media`, `media`, `analyst`, `verifier`, `hobbyist`, `aggregator`, `other`, `unknown` | What the account *is*. An analyst has a named track record. A hobbyist is an individual posting for interest. An aggregator reposts for reach, usually with no sourcing. |
+| `lean` | `none_evident`, `iran_gov`, `iran_opposition`, `israel`, `us_gov`, `western_gov`, `saudi`, `uae`, `qatar`, `gulf_other`, `prc`, `prc_opposition`, `russia`, `turkey`, `india`, `pakistan`, `western_right`, `western_left`, `other`, `unknown` | Whose line the account carries in *this* war: alignment with a party, not a US left/right score. `none_evident` is a finding. `unknown` means it hasn't been judged. |
+| `identity` | `named`, `pseudonymous`, `anonymous`, `unknown` | Pseudonymous = a stable persona with a history. Anonymous = no persona. |
+| `reliability` | `high`, `mixed`, `low`, `unknown` | Track record on claims and footage. |
+| `flags` | `belligerent`, `fabrication_record`, `downplays_hits`, `censored`, `impersonation_risk`, `copy_network`, `possible_bot`, `possible_ai`, `fiction`, `promo`, `spam`, `vendor`, `suspended` | `;`-joined. |
+| `confidence` | `high`, `med`, `low` | How sure the tag is. |
+| `basis` | `R`, `O`, `M` (`;`-joined) | **R** = read in a cited source (`evidence` required). **O** = observed in this account's own posts or profile (`evidence` = a post link). **M** = model memory, unverified. |
+
+**Rigour rule:** lean and reliability are judgements, so each one carries its basis and confidence. Basis M alone never gets more than `med` confidence for lean.
+
+### Review queue (Jacob tags what Claude is unsure of)
+An account goes to the queue when it has no override and Claude has not tagged it, or Claude's confidence is `low`, or its type or lean is `unknown`. Its chip reads **Needs review**, not a guess. The dashboard has a **Review accounts (N)** button. It lists queued accounts that appear in fetched posts, most-shared first. Opening one shows the X bio, follower count and join year from `data/x_users.csv`, plus Claude's guess and evidence, and Jacob picks type, lean and reliability.
+
+### Overrides (static site, no token in the browser)
+1. Jacob taps any chip or queue entry, picks the tags, then Save. The tag applies at once in his browser (localStorage).
+2. **Send N tags to repo** opens a prefilled GitHub issue (title `account-tags`, a CSV block in the body). He presses Submit.
+3. `.github/workflows/account-tags.yml` runs only for issues opened by the repo owner. It runs `scripts/apply-account-tags.mjs`, validates, commits `data/account_overrides.csv` and closes the issue. On bad input it comments and changes nothing.
+4. On the next page load, local tags that now match the repo are dropped. Sending a row with no type, lean or reliability clears the override (back to Claude's tag).
+
+### UI
+- One chip per post on the wall tiles, the top-posts strip and the "Most shared" list: `Type · Lean` (lean hidden when none or unknown), or `Needs review`. A ✓ marks Jacob's own tag. Hover shows confidence, reliability and notes.
+- Setup bar filter: All accounts / Official, media, analysts / Hobbyists, aggregators / Needs review. The two middle filters include only reviewed tags.
+
+### X cost (verified 2026-11-06)
+- Prices [R: [docs.x.com pricing](https://docs.x.com/x-api/getting-started/pricing.md)]: post read $0.005, **user read $0.010**, deduplicated per UTC day ("soft guarantee").
+- Expansions: the pricing page doesn't say whether objects returned through `includes` are billed. An open docs PR says they will bill at the standard per-resource rate, with production enablement **planned for 22 Nov 2026** [R: [xdevplatform/docs#520](https://github.com/xdevplatform/docs/pull/520), not merged]. **Unconfirmed, so we assume billed.**
+- Expansions can't be requested per author: it's all or nothing for a request. So the fetcher **no longer expands authors**. It reads `author_id` from each post and calls `GET /2/users` only for authors not already in `data/x_users.csv` (or older than 30 days). **Each account costs $0.010 once**, not once per post. Media is still expanded (needed for videos-first).
+- `data/x_budget.json` counts **units of $0.005, not posts**: post 1, media 1, author lookup 2. The cap is 1,800 units (~$9) per month. Jacob's X balance is a **prepaid $10 with no auto-renew**, so that's the hard stop. Runs are paced to cap ÷ days-in-month per day, so the money lasts the month. The dashboard shows an estimated spend and burn rate. The X developer console has the real balance.
+- Trade-off: if media expansion is billed, $9/month buys roughly half the posts it did before (about 30/day instead of 60). Raising the cap is Jacob's call.
+
+### Not yet
+- Claude's first pass for newly seen authors is manual (a Claude session reads `x_users.csv` and adds rows by PR). A scheduled routine can come later.
+- Handles from the source catalog are mostly [M]. `data/x_users.csv` records each author's permanent id, and the next tagging pass copies it into `user_id` (handles can change, ids don't).
 
 ---
 
@@ -206,6 +256,7 @@ Principle: no server, no database, no build step unless it pays for itself.
 
 ## Changelog
 - 2026-11-06 v0.9: civil infrastructure in scope: `target` column, infrastructure X queries, map squares.
+- 2026-11-06 v0.10: X account registry (section 1B): one tag per author (type, lean), Claude first pass + Jacob overrides via app → issue → Action, review queue; fetcher looks up each author once; budget counts $0.005 units with daily pacing; spend readout.
 - 2026-11-06 v0.8b: monitor becomes a wall of embedded X posts (videos inline); X fetch rotates 12 multilingual queries, 4 runs/day, same cap.
 - 2026-11-06 v0.8: monitor mode (4 full-screen columns) driven by a setup bar on the dashboard.
 - 2026-11-06 v0.1: initial research and proposal.
