@@ -37,8 +37,12 @@ const fmtDate = d3.utcFormat("%-d %b %Y");
 const el = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
+// Data changes every few hours; a 10-minute cache-buster keeps browsers from showing stale files.
+const BUST = Math.floor(Date.now() / 6e5);
 async function csv(path) {
-  try { return await d3.csv(path, d3.autoType); } catch { return null; }
+  const url = path + (path.includes("?") ? "&" : "?") + "b=" + BUST;
+  // Keep "id" as text: X post ids exceed 2^53 and would be rounded as numbers.
+  try { return await d3.csv(url, (d) => { const id = d.id; d3.autoType(d); if (id !== undefined) d.id = id; return d; }); } catch { return null; }
 }
 
 let [incidentsRaw, sources, flow, transits, land, xposts, articles, coverage, media] = await Promise.all([
@@ -326,12 +330,29 @@ const isVideo = (p) => p.media_type === "video" || p.media_type === "animated_gi
 function renderSetup() {
   el("m-window").innerHTML = WINDOWS.map(([d, l]) => `<button data-days="${d}" aria-pressed="${state.xWindow === d}">${l}</button>`).join("");
   el("m-window").onclick = (e) => { const b = e.target.closest("button"); if (b) { state.xWindow = +b.dataset.days; save(); renderSetup(); renderX(); } };
+  renderTopStrip();
   const terms = el("m-terms");
   if (document.activeElement !== terms) terms.value = state.terms;
-  terms.oninput = () => { state.terms = terms.value; save(); };
+  terms.oninput = () => { state.terms = terms.value; save(); renderTopStrip(); };
   const v = el("m-video");
   v.setAttribute("aria-pressed", !!state.videoOnly);
   v.onclick = () => { state.videoOnly = !state.videoOnly; save(); renderSetup(); };
+}
+
+function monitorPosts() {
+  const since = Date.now() - state.xWindow * 864e5;
+  return (xposts ?? []).map((p) => ({ ...p, id: String(p.id), created: new Date(p.created_at) }))
+    .filter((p) => p.created >= since && matches(p.text, p.username, p.name) && (!state.videoOnly || isVideo(p)));
+}
+
+// Top posts strip in the setup bar: click one to open the wall with that post first.
+function renderTopStrip() {
+  const top = monitorPosts().sort((a, b) => score(b) - score(a)).slice(0, 12);
+  el("m-top").innerHTML = top.map((p) => `<button class="top-post" data-id="${esc(p.id)}" title="Open in the monitor">
+    <div class="thumb" style="${p.preview ? `background-image:url('${esc(p.preview)}')` : ""}">${isVideo(p) ? `<span class="play">▶ video</span>` : ""}</div>
+    <div class="meta"><b>${fmtN(score(p))}</b>${Number.isFinite(p.views) ? " views" : " score"}<span>@${esc(p.username)}</span></div>
+    <div class="t">${esc(p.text)}</div></button>`).join("");
+  el("m-top").onclick = (e) => { const b = e.target.closest("[data-id]"); if (b) { state.pin = b.dataset.id; location.hash = "#monitor"; } };
 }
 
 let widgets;
@@ -364,12 +385,10 @@ const PAGE = 16;
 function wallColumns() { return Math.max(1, Math.min(4, Math.floor((innerWidth - 16) / 260))); }
 
 function renderMonitor() {
-  const since = Date.now() - state.xWindow * 864e5;
   const win = WINDOWS.find(([d]) => d === state.xWindow)?.[1] ?? `${state.xWindow}d`;
   const t = termList();
-  const posts = (xposts ?? []).map((p) => ({ ...p, id: String(p.id), created: new Date(p.created_at) }))
-    .filter((p) => p.created >= since && matches(p.text, p.username, p.name) && (!state.videoOnly || isVideo(p)))
-    .sort((a, b) => (isVideo(b) - isVideo(a)) || score(b) - score(a));
+  const pinned = (p) => (p.id === state.pin ? 1 : 0);
+  const posts = monitorPosts().sort((a, b) => (pinned(b) - pinned(a)) || (isVideo(b) - isVideo(a)) || score(b) - score(a));
   el("m-summary").textContent = `${posts.length} posts · last ${win}${t.length ? ` · matching ${t.join(", ")}` : ""}${state.videoOnly ? " · videos only" : " · videos first"}`;
   const fetched = d3.max(xposts ?? [], (p) => new Date(p.fetched_at));
   el("m-asof").textContent = fetched ? `X batch ${ago(fetched)} ago` : "";
@@ -405,7 +424,7 @@ function route() {
   el("monitor").hidden = !on;
   clearInterval(refreshTimer);
   if (on) { scrollTo(0, 0); lastCols = wallColumns(); renderMonitor(); refreshTimer = setInterval(refreshMedia, 10 * 60e3); }
-  else { renderX(); }
+  else { state.pin = null; renderX(); }
 }
 addEventListener("hashchange", route);
 
