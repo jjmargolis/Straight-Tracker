@@ -1,56 +1,52 @@
-%% 2. Automated ingest: GitHub Actions fetch jobs. Source of 02-automated-ingest.svg.
-%% Edge labels: WHAT · FORMAT · TRIGGER/CADENCE · AUTH
-%% Node outline: thick blue dashed = in open PR #3 (not merged) · grey dotted = planned
-%% Line: solid = automated · dotted = manual step by a person or a Claude thread
-%% Red dashed boxes = trust boundaries. Render: docs/architecture/render.sh
+%% 2. Automated ingest: the two scheduled GitHub Actions.
+%% Mermaid source. Render with ./render.sh (ELK layout, right-angle edges).
+%% Edge labels: what · format · cadence · auth. Shapes, colours and line styles: see 00-legend.mmd.
 flowchart TB
-  PW[("IMF PortWatch<br/>ArcGIS FeatureServer<br/>Daily_Chokepoints_Data<br/>portid chokepoint6 · 3-5 day lag")]
-  SL[("straits.live<br/>/data/transits.csv<br/>daily mirror of PortWatch")]
-  GD[("GDELT DOC 2.0 API<br/>timelinevolraw + artlist<br/>~3-month lookback")]
-  XA[("X API v2<br/>GET /2/tweets/search/recent<br/>~$0.005 per post read")]
-
-  subgraph RUN["TRUST ZONE: GitHub Actions runner · ubuntu-latest, Node 22 · GITHUB_TOKEN contents:write"]
-    W1["fetch-portwatch.yml<br/>cron 17 6 * * * = 06:17 UTC daily<br/>+ workflow_dispatch"]
-    S1["scripts/fetch-portwatch.mjs<br/>6 tries per page, 2 s x n backoff,<br/>then mirror"]
-    C1["fetch-portwatch.yml commit step<br/>git add transits_portwatch.csv<br/>commit only if diff · push"]
-    W2["fetch-media.yml (PR #3)<br/>cron 41 */6 * * * = every 6 h<br/>+ workflow_dispatch<br/>concurrency group data-commit"]
-    SEC{{"secret X_BEARER_TOKEN<br/>repo Actions secret<br/>masked in logs"}}
-    LIB["scripts/lib.mjs<br/>CSV parse + write, no deps<br/>imported by both fetch scripts"]
-    S2["step 1: scripts/fetch-gdelt.mjs<br/>1 request per 6 s · back off on 429<br/>timeout 4 min · continue-on-error"]
-    S3["step 2: scripts/fetch-x.mjs<br/>skips unless the 06:41 UTC run or manual<br/>50 posts per run · 1,800 per month cap"]
-    C2["fetch-media.yml commit step<br/>git add data/ · commit if diff<br/>pull --rebase · push"]
+  subgraph EXT["External APIs"]
+    SL[("straits.live/data/transits.csv<br/>mirror of PortWatch")]
+    PW[("IMF PortWatch FeatureServer<br/>Daily_Chokepoints_Data · chokepoint6")]
+    GD[("GDELT DOC 2.0 API<br/>timelinevolraw + artlist")]
+    XA[("X API v2<br/>/2/tweets/search/recent<br/>≈ $0.005 per post read")]
   end
 
-  subgraph DATA["data/ (public once pushed)"]
-    D1[("transits_portwatch.csv<br/>date, n_tanker, n_total,<br/>capacity_tanker")]
-    D2[("coverage_gdelt.csv<br/>date, articles, total")]
-    D3[("gdelt_articles.csv<br/>latest 75 articles, 7 days")]
-    D4[("x_posts.csv<br/>id, author, text, views, likes,<br/>reposts, preview, url<br/>max 2,000 rows")]
-    D5[("x_budget.json<br/>month, reads, cap")]
+  subgraph RUN["TRUST ZONE · GitHub Actions runner · Node 22 · GITHUB_TOKEN contents:write"]
+    W1["fetch-portwatch.yml<br/>cron 17 6 * * * · daily 06:17 UTC"]
+    W2["fetch-media.yml<br/>cron 41 */6 * * * · every 6 h<br/>concurrency group data-commit"]
+    SEC{{"secret X_BEARER_TOKEN"}}
+    QJ["x-queries.json<br/>12 queries · EN / AR / FA<br/>each with an engagement floor"]
+    S1["fetch-portwatch.mjs<br/>6 tries per page, then mirror"]
+    S2["step 1 · fetch-gdelt.mjs<br/>1 request per 6 s · 4 min timeout"]
+    S3["step 2 · fetch-x.mjs<br/>next query in rotation · 15 posts<br/>stops at 1,800 reads/month"]
+    subgraph WD["data/ in the runner's checkout"]
+      D1[("transits_portwatch.csv")]
+      D2[("coverage_gdelt.csv")]
+      D3[("gdelt_articles.csv")]
+      D4[("x_posts.csv")]
+      D5[("x_budget.json<br/>reads · cap · next query")]
+    end
+    C1["commit step<br/>commit if changed · push"]
+    C2["commit step<br/>commit if changed<br/>pull --rebase · push"]
   end
+  MAIN(["main branch · public<br/>push triggers Pages deploy"])
 
-  MAIN(["main branch<br/>push triggers Pages build"])
-
-  W1 -->|"starts"| S1
-  PW -->|"1st choice · JSON · 1,000 rows/page · no auth"| S1
-  SL -.->|"fallback · CSV · no auth · no capacity column"| S1
-  S1 -->|"overwrite series · CSV"| D1
-  D1 -->|"staged"| C1
-  C1 -->|"git push · bot identity"| MAIN
-
-  W2 -->|"starts step 1"| S2
-  W2 -->|"starts step 2"| S3
-  LIB -.- S2
-  LIB -.- S3
-  GD -->|"counts + article list · JSON · no key · max 1 req / 5 s"| S2
-  SEC -->|"env var at runtime"| S3
-  XA -->|"posts, metrics, authors, media · JSON · Bearer token · billed per post"| S3
-  S2 -->|"merge by date · CSV"| D2
-  S2 -->|"overwrite · CSV"| D3
-  S3 -->|"merge by post id · CSV"| D4
-  S3 <-->|"check, then add reads · JSON"| D5
-  D2 & D3 & D4 & D5 -->|"staged"| C2
-  C2 -->|"git push · bot identity"| MAIN
+  W1 -->|"runs"| S1
+  PW -->|"1st choice · JSON · no auth"| S1
+  SL -.->|"fallback · CSV · no auth"| S1
+  W2 -->|"runs step 1"| S2
+  W2 -->|"runs step 2"| S3
+  GD -->|"counts + articles · JSON · no key"| S2
+  XA -->|"posts + metrics · JSON · Bearer key"| S3
+  SEC -->|"env var"| S3
+  QJ -->|"query text"| S3
+  S1 -->|"overwrite"| D1
+  S2 -->|"merge by date"| D2
+  S2 -->|"overwrite"| D3
+  S3 -->|"merge by post id"| D4
+  S3 -->|"add reads, next index"| D5
+  D1 -->|"git add"| C1
+  D2 & D3 & D4 & D5 -->|"git add data/"| C2
+  C1 -->|"git push · bot"| MAIN
+  C2 -->|"git push · bot"| MAIN
   classDef ext fill:#e3eaf3,stroke:#5a6b80,color:#1b2430
   classDef human fill:#fbe8cc,stroke:#a8742a,color:#3a2a10
   classDef claude fill:#ebe3f6,stroke:#7a62a3,color:#2a2040
@@ -59,15 +55,16 @@ flowchart TB
   classDef data fill:#fff3c4,stroke:#8a6d1f,color:#2e2408
   classDef site fill:#e1ecf8,stroke:#2f5d8a,color:#10243a
   classDef secret fill:#f9d9d4,stroke:#b3261e,color:#3a120c,stroke-width:2px
-  classDef pr3 stroke:#1f5fa8,stroke-width:3px,stroke-dasharray:8 4
+  classDef pending stroke:#1f5fa8,stroke-width:3px,stroke-dasharray:8 4
   classDef planned fill:#f5f5f5,stroke:#999999,color:#666666,stroke-dasharray:2 3
   classDef note fill:#fff7d6,stroke:#c9a227,color:#3a2e08
-  classDef zone fill:#f6fbf7,stroke:#b3261e,stroke-width:2px,stroke-dasharray:10 5,color:#b3261e
+  classDef zone fill:#fffafa,stroke:#b3261e,stroke-width:2px,stroke-dasharray:10 5,color:#b3261e
+  classDef group fill:#fafafa,stroke:#bbbbbb,color:#333333
   class PW,SL,GD,XA ext
-  class MAIN site
-  class W1,W2,C1,C2 job
-  class S1,S2,S3,LIB script
+  class S1,S2,S3,QJ script
+  class C1,C2,W1,W2 job
   class D1,D2,D3,D4,D5 data
   class SEC secret
+  class MAIN site
   class RUN zone
-  class W2,S2,S3,LIB,C2,D2,D3,D4,D5 pr3
+  class EXT,WD group
