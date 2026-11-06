@@ -35,6 +35,18 @@ flowchart TB
   end
   XEMB[("X embed service<br/>platform.twitter.com<br/>public, no key")]
 
+  subgraph LEG["Legend"]
+    direction LR
+    a1[("data store<br/>file, API, storage")] ~~~ a2["GitHub workflow<br/>or job"] ~~~ a3["script"] ~~~ a4{{"secret"}} ~~~ a5(["person"]) ~~~ a6["Claude thread or<br/>Claude-built file"]
+    a7[["hosting"]] ~~~ a8["web page or<br/>site code"] ~~~ a9["external<br/>service"] ~~~ a10["planned,<br/>not built"] ~~~ a11["in an open PR,<br/>not merged"]
+    b1[" "] -->|"automated"| b2[" "] ~~~ c1[" "] -.->|"manual (person or Claude)"| c2[" "]
+    subgraph ZONE["TRUST ZONE"]
+      z1["red dashed box = trust boundary:<br/>who can write inside, and whether<br/>secrets or API keys exist there"]
+    end
+    c2 ~~~ ZONE
+  end
+
+  XEMB ~~~ LEG
   PW -->|"tanker transits · JSON/CSV · no auth"| PWJ
   XA -->|"X posts + counts · JSON · Bearer key"| MEDIA
   GD -->|"news volume + articles · JSON · no key"| MEDIA
@@ -73,4 +85,18 @@ flowchart TB
   class SITE,PAGES,DASH,MON site
   class SEC secret
   class Z1,Z2,Z3,Z4 zone
-  class SRC,BR group
+  class SRC,BR,LEG group
+  class a1 data
+  class a2 job
+  class a3 script
+  class a4 secret
+  class a5 human
+  class a6 claude
+  class a7,a8 site
+  class a9 ext
+  class a10 planned
+  class a11 script
+  class a11 pending
+  class b1,b2,c1,c2 group
+  class ZONE zone
+  class z1 group
