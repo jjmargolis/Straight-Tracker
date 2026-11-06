@@ -1,0 +1,45 @@
+{
+  "_note": "Free feeds, no keys. Each was fetched from a GitHub runner on 2026-11-06 (scripts in PR). 'region': true = the channel is about Iran/the Gulf, so a maritime or infrastructure word alone counts as a match. 'kind' is a rough label for display only, not the X account registry.",
+  "telegram": [
+    { "handle": "ClashReport",           "kind": "aggregator", "lang": "en", "pages": 2 },
+    { "handle": "Middle_East_Spectator", "kind": "aggregator", "lang": "en" },
+    { "handle": "warmonitors",           "kind": "aggregator", "lang": "en" },
+    { "handle": "OSINTdefender",         "kind": "aggregator", "lang": "en" },
+    { "handle": "rnintel",               "kind": "aggregator", "lang": "en" },
+    { "handle": "WarTranslated",         "kind": "aggregator", "lang": "en" },
+    { "handle": "TankerTrackers",        "kind": "analyst",    "lang": "en", "region": true },
+    { "handle": "englishabuali",         "kind": "partisan (Israel)", "lang": "en" },
+    { "handle": "tasnimnews_en",         "kind": "state media (Iran)", "lang": "en", "region": true },
+    { "handle": "presstv",               "kind": "state media (Iran)", "lang": "en", "region": true },
+    { "handle": "defapress_ir",          "kind": "state media (Iran)", "lang": "fa", "region": true, "pages": 2 },
+    { "handle": "farsna",                "kind": "state media (Iran)", "lang": "fa", "region": true, "pages": 3 },
+    { "handle": "mehrnews",              "kind": "state media (Iran)", "lang": "fa", "region": true, "pages": 2 },
+    { "handle": "iribnews",              "kind": "state media (Iran)", "lang": "fa", "region": true, "pages": 2 },
+    { "handle": "sepah",                 "kind": "IRGC-aligned", "lang": "fa", "region": true },
+    { "handle": "sepah_pasdaran",        "kind": "IRGC-aligned", "lang": "fa", "region": true },
+    { "handle": "akhbarefori",           "kind": "aggregator", "lang": "fa", "region": true, "pages": 3 },
+    { "handle": "IranintlTV",            "kind": "opposition media (Iran)", "lang": "fa", "region": true, "pages": 2 },
+    { "handle": "almayadeen",            "kind": "partisan (Axis)", "lang": "ar", "pages": 2 },
+    { "handle": "QudsNen",               "kind": "partisan (Axis)", "lang": "en" }
+  ],
+  "googleNews": [
+    { "lang": "en", "hl": "en-US", "gl": "US", "ceid": "US:en", "q": "Hormuz OR Fujairah OR \"Bandar Abbas\" OR \"Gulf of Oman\" OR \"Ras Tanura\" OR \"Ras Laffan\"" },
+    { "lang": "en", "hl": "en-US", "gl": "US", "ceid": "US:en", "q": "(desalination OR refinery OR \"oil terminal\" OR port OR \"power plant\") (UAE OR Oman OR Qatar OR Saudi OR Bahrain OR Kuwait OR Iran) (strike OR drone OR missile OR attack)" },
+    { "lang": "ar", "hl": "ar", "gl": "AE", "ceid": "AE:ar", "q": "هرمز OR الفجيرة OR ناقلة OR \"خليج عمان\"" },
+    { "lang": "fa", "hl": "fa", "gl": "IR", "ceid": "IR:fa", "q": "تنگه هرمز OR نفتکش OR بندرعباس" },
+    { "lang": "he", "hl": "he", "gl": "IL", "ceid": "IL:he", "q": "הורמוז OR מכלית" },
+    { "lang": "zh", "hl": "zh-CN", "gl": "CN", "ceid": "CN:zh-Hans", "q": "霍尔木兹 OR 霍爾木茲 OR 油轮 伊朗" }
+  ],
+  "rss": [
+    { "name": "gCaptain",          "url": "https://gcaptain.com/feed/" },
+    { "name": "Splash247",         "url": "https://splash247.com/feed/" },
+    { "name": "Seatrade Maritime", "url": "https://www.seatrade-maritime.com/rss.xml" },
+    { "name": "Windward",          "url": "https://windward.ai/feed/" },
+    { "name": "The National",      "url": "https://www.thenationalnews.com/arc/outboundfeeds/rss/?outputType=xml" },
+    { "name": "Gulf News",         "url": "https://gulfnews.com/feed" },
+    { "name": "Al Jazeera",        "url": "https://www.aljazeera.com/xml/rss/all.xml" },
+    { "name": "IRNA",              "url": "https://en.irna.ir/rss" },
+    { "name": "Iran International","url": "https://www.iranintl.com/en/feed" }
+  ],
+  "events": { "name": "straits.live", "url": "https://straits.live/data/events.csv" }
+}
