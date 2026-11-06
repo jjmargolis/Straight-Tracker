@@ -22,7 +22,7 @@
  {
   "id": "Q6",
   "label": "Ground-truth accounts",
-  "q": "(from:UK_MTO OR from:CENTCOM OR from:TankerTrackers OR from:mwbockmann OR from:detresfa_ OR from:GeoConfirmed) -is:retweet"
+  "q": "(from:UK_MTO OR from:CENTCOM OR from:TankerTrackers OR from:mwbockmann OR from:detresfa_ OR from:GeoConfirmed) -is:retweet min_reposts:3"
  },
  {
   "id": "Q3",
