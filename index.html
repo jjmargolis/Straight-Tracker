@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hormuz Tracker</title>
+  <meta name="description" content="Oil flow through the Strait of Hormuz and attacks on shipping, with a source for every number.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div>
+      <h1>Strait of Hormuz</h1>
+      <p class="sub">Oil flow and attacks on shipping. Every number links to its source.</p>
+    </div>
+    <p class="asof" id="asof"></p>
+  </header>
+
+  <section class="kpis" id="kpis" aria-label="Key figures"></section>
+
+  <main class="grid">
+    <section class="card map-card">
+      <div class="card-head">
+        <h2>Incidents</h2>
+        <div class="filters" id="filters"></div>
+      </div>
+      <div id="map" class="map"></div>
+      <div class="legend" id="map-legend"></div>
+      <p class="note" id="map-note"></p>
+    </section>
+
+    <aside class="card detail" id="detail" aria-live="polite">
+      <h2>Details</h2>
+      <p class="muted">Tap or click a point on the map, or a row in the table.</p>
+    </aside>
+
+    <section class="card">
+      <div class="card-head"><h2>Oil through the strait</h2><span class="unit">million barrels/day</span></div>
+      <div id="flow"></div>
+      <p class="note" id="flow-note"></p>
+    </section>
+
+    <section class="card">
+      <div class="card-head"><h2>Tanker transits per day</h2><span class="unit">AIS count, a floor</span></div>
+      <div id="transits"></div>
+      <p class="note" id="transits-note"></p>
+    </section>
+
+    <section class="card">
+      <div class="card-head"><h2>Incidents by month</h2></div>
+      <div id="monthly"></div>
+    </section>
+
+    <section class="card wide">
+      <div class="card-head"><h2>All incidents</h2><span class="unit" id="table-count"></span></div>
+      <div class="table-wrap"><table id="table"></table></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>Data: EIA (Vortexa tanker tracking), IMF PortWatch, UKMTO, and the per-incident sources listed in each record. Coastline: Natural Earth.
+    Incident counts cover only what is in this dataset; UKMTO says most attacked ships do not report.
+    <a href="https://github.com/jjmargolis/straight-tracker">Source and data</a>.</p>
+  </footer>
+
+  <script src="vendor/d3.min.js"></script>
+  <script src="vendor/plot.umd.min.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
