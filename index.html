@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hormuz Watch</title>
   <meta name="description" content="Oil flow through the Strait of Hormuz and attacks on shipping, with a source for every number.">
-  <link rel="stylesheet" href="style.css?v=202611060400">
+  <link rel="stylesheet" href="style.css?v=202611060500">
 </head>
 <body>
   <header class="top">
@@ -19,6 +19,7 @@
   <section class="card setup" id="setup" aria-label="Monitor setup">
     <h2>Monitor</h2>
     <div class="filters" id="m-window"></div>
+    <div class="filters" id="m-src" aria-label="Sources"></div>
     <input id="m-terms" type="search" placeholder="Keywords, comma-separated (blank = all)" aria-label="Keywords">
     <div class="filters"><button id="m-video" aria-pressed="false">Videos only</button></div>
     <div class="filters" id="m-who" aria-label="Accounts"></div>
@@ -43,7 +44,7 @@
     <aside class="card news-card">
       <div class="card-head"><h2>Latest coverage</h2><span class="unit">news, last 7 days</span></div>
       <div id="news" class="feed news"></div>
-      <p class="note">Articles matched by <a href="https://www.gdeltproject.org/">GDELT</a>. Not individually checked.</p>
+      <p class="note">Google News search (English, Arabic, Persian, Hebrew, Chinese), maritime and Gulf outlets' RSS, and the <a href="https://straits.live/">straits.live</a> event log. Matched by keyword, refreshed hourly. Not individually checked.</p>
     </aside>
 
     <section class="card wide" id="curated-card" hidden>
@@ -115,6 +116,6 @@
 
   <script src="vendor/d3.min.js"></script>
   <script src="vendor/plot.umd.min.js"></script>
-  <script type="module" src="app.js?v=202611060400"></script>
+  <script type="module" src="app.js?v=202611060500"></script>
 </body>
 </html>
