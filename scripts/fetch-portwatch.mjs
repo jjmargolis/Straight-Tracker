@@ -49,7 +49,8 @@ async function viaMirror() {
   const text = await (await fetch(MIRROR)).text();
   const [head, ...lines] = text.trim().split(/\r?\n/);
   const h = head.toLowerCase().split(",");
-  const iDate = h.indexOf("date"), iT = h.indexOf("tanker"), iN = h.indexOf("total");
+  const col = (...names) => names.map((n) => h.indexOf(n)).find((i) => i >= 0) ?? -1;
+  const iDate = col("date"), iT = col("n_tanker", "tanker"), iN = col("n_total", "total");
   if (iDate < 0 || iT < 0 || iN < 0) throw new Error(`Mirror header unexpected: ${head}`);
   return lines.map((l) => l.split(",")).map((c) => ({ date: toISO(c[iDate]), n_tanker: +c[iT], n_total: +c[iN], capacity_tanker: "" }));
 }
