@@ -9,12 +9,19 @@ const API = "https://api.gdeltproject.org/api/v2/doc/doc";
 const WAR_START = "20260228000000";
 const stamp = (d) => d.toISOString().replace(/[-:T]/g, "").slice(0, 14);
 
+// GDELT asks for at most one request every 5 seconds and answers 429 otherwise
+// (shared CI IPs can hit this too), so pace every call and back off on 429.
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 async function get(params) {
   const url = `${API}?${new URLSearchParams({ query: QUERY, format: "json", ...params })}`;
-  const res = await fetch(url, { headers: { "user-agent": "straight-tracker (github.com/jjmargolis/straight-tracker)" } });
-  const text = await res.text();
-  if (!res.ok) throw new Error(`GDELT HTTP ${res.status}: ${text.slice(0, 200)}`);
-  try { return JSON.parse(text); } catch { throw new Error(`GDELT non-JSON: ${text.slice(0, 200)}`); }
+  for (let attempt = 1; ; attempt++) {
+    await sleep(attempt === 1 ? 6000 : 15000 * attempt);
+    const res = await fetch(url, { headers: { "user-agent": "straight-tracker (github.com/jjmargolis/straight-tracker)" } });
+    const text = await res.text();
+    if (res.status === 429 && attempt < 5) { console.warn(`GDELT 429, retry ${attempt}`); continue; }
+    if (!res.ok) throw new Error(`GDELT HTTP ${res.status}: ${text.slice(0, 200)}`);
+    try { return JSON.parse(text); } catch { throw new Error(`GDELT non-JSON: ${text.slice(0, 200)}`); }
+  }
 }
 
 // 1) Volume timeline. Fetch from war start (beyond 3 months is best effort), fall back to 90 days.
